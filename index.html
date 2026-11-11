@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>gtr_game_v4.41</title>
+<title>gtr_game_v4.42</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2690,6 +2690,109 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
  const gp=$('gop'),og=gp.onclick;let lmem=null;const lgd=()=>{if(lmem!==null)return lmem;try{return localStorage.getItem('pf_cur')||localStorage.getItem('th_n')||''}catch(e){return ''}},pend=()=>{const v=$('nm').value.trim();return !!v&&v.toLowerCase()!==lgd().toLowerCase()};
  gp.onclick=e=>{if(!$('nm').value.trim()||pend()){wb.style.display='flex';clearTimeout(wt);wt=setTimeout(()=>{wb.style.display='none'},2200);const n=$('nm');n.classList.remove('nmshk');void n.offsetWidth;n.classList.add('nmshk');return}return og&&og.call(gp,e)};
  const er=()=>{$('nm').classList.toggle('nmerr',!$('nm').value.trim());$('nmgo').classList.toggle('nmblink',pend())};$('nm').addEventListener('input',()=>{er();if($('nm').value.trim()&&!pend())wb.style.display='none'});setInterval(er,400);er();$('nm').addEventListener('keydown',e=>{if(e.key==='Enter')goLogin()})})();
+/* Firebase hesap sistemi: Google ile giris + misafir, bulut kayit, ortak puan tablosu. Sadece github.io / localhost uzerinde calisir. */
+(function(){
+ if(!/(^|\.)github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))return;
+ const CFG={apiKey:"AIzaSyADa0OiRUHdF7LZL3J_WdLO6P2qU4E9Teo",authDomain:"gtr-game-61874.firebaseapp.com",projectId:"gtr-game-61874",storageBucket:"gtr-game-61874.firebasestorage.app",messagingSenderId:"877922117380",appId:"1:877922117380:web:e4b722b76aed2bbca5d251"};
+ const GL=/^(th_n|th_mute|th_q|th_cam|th_lb|th_lbt|th_evl_.*|th_tb217_.*|pf_.*)$/;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}};
+ const snapKeys=()=>{const a=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf('th_')===0&&!GL.test(k))a.push(k)}}catch(e){}return a};
+ const snap=()=>{const o={};snapKeys().forEach(k=>o[k]=ls(k));return JSON.stringify(o)};
+ const clearSnap=()=>snapKeys().forEach(k=>ls(k,null));
+ const applySnap=d=>{clearSnap();try{const o=JSON.parse(d||'{}');Object.keys(o).forEach(k=>{if(k.indexOf('th_')===0&&!GL.test(k))ls(k,o[k])})}catch(e){}};
+ const toast=(t,ok,ms)=>{const b=document.getElementById('lgn');if(!b)return;b.className=ok?'ok':'';b.innerHTML='<i>'+(ok?'✓':'')+'</i><span>'+t+'</span>';b.style.display='flex';clearTimeout(toast.t);if(ms)toast.t=setTimeout(()=>{b.style.display='none'},ms)};
+ const cleanName=n=>String(n||'').replace(/[^\p{L}\p{N} _.-]/gu,'').trim().slice(0,12);
+ let fb=null,user=null,lastKey='',busy=false;
+ const $$=id=>document.getElementById(id);
+ const setName=v=>{v=cleanName(v)||'Pilot';ls('th_n',v);ls('pf_cur',v);try{sel.name=v}catch(e){}const i=$$('nm');if(i)i.value=v;return v};
+ const myName=()=>cleanName(ls('th_n'))||'Pilot';
+ const tot=()=>+ls('th_tot')||0;
+ async function push(force){
+  if(!fb||!user||busy)return;const d=snap(),n=myName(),key=n+'|'+tot()+'|'+d;if(!force&&key===lastKey)return;
+  busy=true;try{const t=Date.now();
+   await fb.F.setDoc(fb.F.doc(fb.db,'users',user.uid),{n,d,t,tot:tot(),g:user.isAnonymous?0:1});
+   await fb.F.setDoc(fb.F.doc(fb.db,'lb',user.uid),{n,t:tot(),u:t});
+   ls('fb_t',String(t));lastKey=key}catch(e){console.warn('fb push',e)}busy=false}
+ function ui(){
+  const lg=$$('fbl'),rw=$$('fbr'),nw=$$('nmw'),on=!!user;
+  document.body.classList.add('fbon');
+  if(lg)lg.style.display=on?'none':'flex';
+  if(nw)nw.style.display=on?'flex':'none';
+  if(rw){rw.style.display=on?'flex':'none';const g=$$('fbL');if(g)g.style.display=(on&&user.isAnonymous)?'':'none';const t=$$('fbt');if(t)t.textContent=on?(user.isAnonymous?'Misafir hesabı':'Google hesabı'):''}
+ }
+ async function sync(){
+  try{
+   const uid=user.uid,last=ls('fb_uid'),tL=+ls('fb_t')||0,ref=fb.F.doc(fb.db,'users',uid),s=await fb.F.getDoc(ref);
+   const hasLocal=(+ls('th_coins2')||0)>0||snapKeys().length>3;
+   if(s.exists()){const c=s.data();
+    if(last===uid){if((c.t||0)>tL){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t));location.reload();return}}
+    else{
+     let useCloud=true;
+     if(hasLocal&&!last)useCloud=confirm('Bu hesapta kayıtlı ilerleme var.\n\nTamam: hesaptaki ilerleme yüklensin (bu cihazdaki silinir).\nİptal: bu cihazdaki ilerleme hesaba yazılsın.');
+     ls('fb_uid',uid);
+     if(useCloud){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t||Date.now()));location.reload();return}
+    }
+   }else{
+    if(last&&last!==uid){clearSnap();ls('th_n',null);ls('fb_uid',uid);ls('fb_t','0');location.reload();return}
+    if(!user.isAnonymous&&!ls('th_n'))setName(user.displayName||'Pilot');
+    if(!ls('th_n'))setName(user.isAnonymous?'Misafir'+(100+Math.floor(Math.random()*900)):'Pilot');
+   }
+   ls('fb_uid',uid);
+   if(ls('th_tot')===null){let t=0;try{const T=JSON.parse(ls('th_lbt')||'{}');t=Math.round(T[myName()]||0)}catch(e){}ls('th_tot',String(t))}
+   $$('nm').value=myName();try{sel.name=myName()}catch(e){}
+   await push(true);
+  }catch(e){console.warn('fb sync',e);toast('Bulut kaydı bağlanamadı',0,2500)}
+ }
+ async function load(){
+  const V='10.12.2',B='https://www.gstatic.com/firebasejs/'+V+'/';
+  const to=new Promise((_,r)=>setTimeout(()=>r(new Error('zaman asimi')),10000));
+  const [A,Au,F]=await Promise.race([Promise.all([import(B+'firebase-app.js'),import(B+'firebase-auth.js'),import(B+'firebase-firestore.js')]),to]);
+  const app=A.initializeApp(CFG),auth=Au.getAuth(app),db=F.initializeFirestore(app,{experimentalAutoDetectLongPolling:true});
+  fb={A,Au,F,auth,db};
+ }
+ function build(){
+  const nw=$$('nmw');if(!nw)return;
+  const css=document.createElement('style');css.textContent='body.fbon #nmgo{display:none!important}#fbl{display:none;flex-direction:column;gap:8px;width:100%;box-sizing:border-box}#fbl .btn,#fbr .btn{margin:0;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px}#fbr{display:none;align-items:center;gap:8px;width:100%;box-sizing:border-box}#fbr .btn{flex:1;min-height:36px;font-size:12px;padding:6px 8px}#fbt{flex:none;color:#c99bff;font:800 11px/1 system-ui;letter-spacing:.5px;text-transform:uppercase}#fbl svg{width:20px;height:20px;flex:none}';document.head.appendChild(css);
+  const g='<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
+  const lg=document.createElement('div');lg.id='fbl';lg.className='hom';lg.innerHTML='<button id="fbG" class="btn p" type="button">'+g+'GOOGLE İLE GİRİŞ</button><button id="fbA" class="btn" type="button">MİSAFİR OLARAK OYNA</button>';
+  const rw=document.createElement('div');rw.id='fbr';rw.className='hom';rw.innerHTML='<span id="fbt"></span><button id="fbL" class="btn" type="button">GOOGLE\'A BAĞLA</button><button id="fbX" class="btn" type="button">ÇIKIŞ</button>';
+  nw.parentNode.insertBefore(lg,nw.nextSibling);lg.parentNode.insertBefore(rw,lg.nextSibling);
+  const prov=()=>new fb.Au.GoogleAuthProvider();
+  $$('fbG').onclick=async()=>{try{toast('Google ile giriş yapılıyor...',0,0);await fb.Au.signInWithPopup(fb.auth,prov());toast('Giriş yapıldı',1,1200)}catch(e){toast(e&&e.code==='auth/popup-closed-by-user'?'Giriş iptal edildi':'Giriş yapılamadı',0,2500);console.warn(e)}};
+  $$('fbA').onclick=async()=>{try{toast('Misafir girişi...',0,0);await fb.Au.signInAnonymously(fb.auth);toast('Giriş yapıldı',1,1200)}catch(e){toast('Giriş yapılamadı',0,2500);console.warn(e)}};
+  $$('fbL').onclick=async()=>{try{await fb.Au.linkWithPopup(user,prov());toast('Google hesabına bağlandı ✓',1,1800);user=fb.auth.currentUser;ui();push(true)}catch(e){
+    if(e&&e.code==='auth/credential-already-in-use'){if(confirm('Bu Google hesabında başka bir ilerleme kayıtlı. Bu hesaba geçilsin mi? (Misafir ilerlemen silinir)')){try{const c=fb.Au.GoogleAuthProvider.credentialFromError(e);ls('fb_uid',null);await fb.Au.signInWithCredential(fb.auth,c)}catch(x){toast('Bağlanamadı',0,2500)}}}
+    else if(!(e&&e.code==='auth/popup-closed-by-user')){toast('Bağlanamadı',0,2500);console.warn(e)}}};
+  $$('fbX').onclick=async()=>{if(user.isAnonymous&&!confirm('Misafir hesabından çıkarsan ilerlemen silinir. Önce "Google\'a bağla" yapman önerilir. Yine de çıkılsın mı?'))return;
+   if(!user.isAnonymous&&!confirm('Çıkış yapılsın mı? İlerlemen hesabında saklı kalır.'))return;
+   toast('Çıkış yapılıyor...',0,0);await push(true);try{await fb.Au.signOut(fb.auth)}catch(e){}clearSnap();['th_n','pf_cur','fb_uid','fb_t'].forEach(k=>ls(k,null));location.reload()};
+  /* eski sahte giris devre disi: Enter ve isim */
+  const nm=$$('nm');
+  nm.addEventListener('keydown',e=>{if(e.key==='Enter'){e.stopImmediatePropagation();e.preventDefault();nm.blur()}},true);
+  nm.addEventListener('input',()=>{if(user){const v=cleanName(nm.value);if(v){ls('th_n',v);ls('pf_cur',v);try{sel.name=v}catch(e){}}}});
+  nm.addEventListener('change',()=>{if(user){setName(nm.value);push(true)}});
+  /* oynama kapisi */
+  const gp=$$('gop'),og=gp.onclick;
+  gp.onclick=e=>{if(!user){const w=$$('lgw');if(w){w.style.display='flex';setTimeout(()=>{w.style.display='none'},2200)}return}if(!cleanName(nm.value))setName('Pilot');else setName(nm.value);return og&&og.call(gp,e)};
+ }
+ function lbHook(){
+  const _sl=showLb;showLb=function(){_sl();if(!fb)return;
+   const L=$$('lbl'),R=$$('lbr');if(R)R.textContent=user?'Toplam puanın: '+Math.round(tot()):'';
+   fb.F.getDocs(fb.F.query(fb.F.collection(fb.db,'lb'),fb.F.orderBy('t','desc'),fb.F.limit(30))).then(q=>{
+    L.innerHTML='';let i=0,mine=-1;q.forEach(d=>{const x=d.data(),me=user&&d.id===user.uid;if(me)mine=i;const r=document.createElement('div');r.className='lr'+(me?' me':'');r.innerHTML='<span class="rk">'+(i+1)+'</span><span class="ln">'+esc(x.n||'?')+'</span><b>'+Math.round(x.t||0)+'</b>';L.appendChild(r);i++});
+    if(R&&user)R.textContent=(mine>=0?'Sıran: '+(mine+1)+'. · ':'')+'Toplam puanın: '+Math.round(tot());
+   }).catch(e=>console.warn('lb',e))};
+  const _la=lbAdd;lbAdd=function(s,k){_la(s,k);if(user){ls('th_tot',String(tot()+(+s||0)));push(true)}};
+ }
+ (async function(){
+  try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);return}
+  build();lbHook();
+  fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;ui();if(u)await sync()});
+  setInterval(()=>push(false),15000);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)push(false)});addEventListener('pagehide',()=>push(false));
+ })();
+})();
+
 /* Çubuksuz damalı bayrak (etkinlik araç seçimi) */
 (function(){let r='';for(let i=0;i<3;i++)for(let j=0;j<4;j++)r+='<rect x="'+(4+j*4)+'" y="'+(4+i*3.5)+'" width="4" height="3.5" fill="'+((i+j)%2?'#fff':'#3a1d9a')+'"/>';
  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="3.3 3.3 17.4 12">'+r+'<rect x="4" y="4" width="16" height="10.5" fill="none" stroke="#fff" stroke-width="1.3" rx="1"/></svg>';
