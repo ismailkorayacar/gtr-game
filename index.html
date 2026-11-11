@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>gtr_game_v4.43</title>
+<title>gtr_game_v4.44</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -789,18 +789,18 @@ body.ls #pdH{right:calc(max(24px,env(safe-area-inset-right,0px)) + 92px);bottom:
 body.ls #pdB{right:calc(max(24px,env(safe-area-inset-right,0px)) + 92px);bottom:calc(env(safe-area-inset-bottom,0px) + 96px);width:62px;height:62px}
 body.ls #hsdl{width:170px;height:88px}
 /* pause menüsü (%70 şeffaf) */
-body.v5 #pz{background:rgba(8,6,28,.3)!important}body.v5 #pz::before,body.v5 #pz::after,body.v5 #pz>.st{display:none!important}
+body.v5 #pz{background:rgba(8,6,28,.62)!important}body.v5 #pz::before,body.v5 #pz::after,body.v5 #pz>.st{display:none!important}
 body.v5 #pzE,body.v5 #pzs{display:none!important}
 #pzT{text-shadow:0 3px 10px #000a}
 #pzo{width:100%;display:flex;flex-direction:column;gap:8px}
-#pzo .pzr{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:rgba(10,6,40,.5);border:1.5px solid rgba(255,255,255,.3)}
+#pzo .pzr{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:rgba(10,6,40,.7);border:1.5px solid rgba(255,255,255,.3)}
 #pzo .pzr>span{flex:0 0 92px;font:900 12px system-ui;letter-spacing:1px;color:#ffd2f0;text-align:left}
 #pzo .qrow{flex:1}#pzo .qrow button{padding:9px 4px;font-size:13px}
 body.ls #pz .rt{max-width:520px;gap:8px}body.ls #pz .logo.big{font-size:34px!important}
 
 body.v5 #pzc,body.v5 #pzx,body.v5 #pzm{display:none!important}
 #pzo .pzb2{display:flex;gap:8px}
-#pzo .pzb2 button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 8px;border-radius:14px;border:1.5px solid rgba(255,255,255,.3);background:rgba(10,6,40,.5);color:#fff;font:italic 900 14px system-ui;letter-spacing:1px;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate}
+#pzo .pzb2 button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 8px;border-radius:14px;border:1.5px solid rgba(255,255,255,.3);background:rgba(10,6,40,.7);color:#fff;font:italic 900 14px system-ui;letter-spacing:1px;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate}
 #pzo .pzb2 button svg{width:20px;height:20px;flex:0 0 auto}
 #pzo .pzb2 button::after{content:"";position:absolute;right:-10px;top:50%;width:62px;height:62px;transform:translateY(-50%);background:var(--ic) center/contain no-repeat;opacity:.16;z-index:-1;pointer-events:none}
 #pzC2{border-color:transparent!important;background:linear-gradient(90deg,rgba(255,79,163,.85),rgba(255,154,61,.85)) padding-box,linear-gradient(135deg,#fff,#ffd2f0) border-box!important;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.5v15l12-7.5z' fill='white'/%3E%3C/svg%3E")}
@@ -2157,7 +2157,8 @@ const pad=n=>String(n).padStart(2,'0'),dstr=d=>d.getFullYear()+'-'+pad(d.getMont
 const today=()=>dstr(new Date()),yest=()=>dstr(new Date(Date.now()-864e5));
 const DR=[50,75,100,150,200,300,500];
 let drMem=null;function drState(){if(drMem)return drMem;let o={last:'',streak:0};try{o=JSON.parse(localStorage.getItem('th_dr'))||o}catch(e){}return o}
-const drCan=()=>drState().last!==today();
+const drGate=()=>!window.fbHost||!!window.fbUser;
+const drCan=()=>drGate()&&drState().last!==today();
 function drNext(){const o=drState();return o.last===yest()?o.streak+1:1}
 let ms={d:'',list:[]};try{ms=JSON.parse(localStorage.getItem('th_ms'))||ms}catch(e){}
 function mSave(){try{localStorage.setItem('th_ms',JSON.stringify(ms))}catch(e){}}
@@ -2179,7 +2180,7 @@ function msDot(){try{msCheck();$('evb').classList.toggle('dot',drCan()||(ms.d===
 function renderMs(){msCheck();$('msbal').innerHTML=COIN+'<span>'+coins+'</span>';const o=drState(),can=drCan(),nx=can?drNext():o.streak,pos=(nx-1)%7;
  $('drst').textContent=nx+'. GÜN SERİSİ';const d=$('drs');d.innerHTML='';
  DR.forEach((r,i)=>{const c=document.createElement('div');c.className='drc'+(can?(i<pos?' dn':i===pos?' td':''):(i<=pos?' dn':''));c.innerHTML='GÜN '+(i+1)+'<b>'+(i<pos||(!can&&i===pos)?'✓':COIN+r)+'</b>';d.appendChild(c)});
- const b=$('drbD');b.disabled=!can;b.classList.toggle('dim',!can);b.innerHTML=can?'ÖDÜLÜ AL · '+COIN+' '+DR[pos]:'YARIN TEKRAR GEL';
+ const b=$('drbD');b.disabled=!can;b.classList.toggle('dim',!can);b.innerHTML=can?'ÖDÜLÜ AL · '+COIN+' '+DR[pos]:(drGate()?'YARIN TEKRAR GEL':'GİRİŞ YAPINCA ALINIR');
  b.onclick=()=>{if(!drCan())return;const n=drNext();coins+=DR[(n-1)%7];saveAcct();drMem={last:today(),streak:n};try{localStorage.setItem('th_dr',JSON.stringify(drMem))}catch(e){}sfx('coin');renderMs();msDot()};
  const l=$('msl');l.innerHTML='';ms.list.forEach(m=>{const r=document.createElement('div'),ok=m.p>=m.n;r.className='msr';r.innerHTML='<div class="mt">'+m.tx+'<div class="mp"><u style="width:'+Math.round(m.p/m.n*100)+'%"></u></div><small style="opacity:.75">'+m.p+' / '+m.n+'</small></div><button class="btn'+(ok&&!m.c?' p':' dim')+'">'+(m.c?'✓':(ok?'AL · ':'')+COIN+' '+m.r)+'</button>';
   r.querySelector('button').onclick=()=>{if(!ok||m.c)return;m.c=1;coins+=m.r;saveAcct();mSave();sfx('coin');renderMs();msDot()};l.appendChild(r)});
@@ -2194,7 +2195,7 @@ function v21Step(dt){
  if(on){if(bub.parent!==P.mesh)P.mesh.add(bub);bub.position.set(0,.7,0);bub.scale.set((P.hw||.95)*1.5+.15,.95,(P.hl||2.2)*1.15+.15);bub.material.opacity=(shieldOn||invT>1)?.17+.05*Math.sin(performance.now()*.006):(Math.floor(performance.now()/90)%2?.3:.06)}
  bub.visible=on;
  cmbUI();pwUI()}
-function v21Init(){applyQ(Q,true);setQUI();setSndUI();msCheck();msDot();setTimeout(()=>{try{if(drCan()&&$('ov').style.display==='flex'&&st==='menu')openMs()}catch(e){}},3500)}
+function v21Init(){applyQ(Q,true);setQUI();setSndUI();msCheck();msDot();let _dt=0;const _dtry=()=>{try{if(window.fbHost&&!window.fbReady&&_dt++<20){setTimeout(_dtry,1000);return}if(drCan()&&$('ov').style.display==='flex'&&st==='menu')openMs()}catch(e){}};setTimeout(_dtry,3500)}
 
 // ---------- araç galerisi ----------
 let galOn=false,gx=0,gt=0,gDrag=null,gV=0,gList=[],gIdx=-1,galS='',gGoT=null,garG=null;
@@ -2693,6 +2694,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
 /* Firebase hesap sistemi: Google ile giris + misafir, bulut kayit, ortak puan tablosu. Sadece github.io / localhost uzerinde calisir. */
 (function(){
  if(!/(^|\.)github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))return;
+ window.fbHost=true;document.documentElement.classList.add('fbh');{const _s=document.createElement('style');_s.textContent='html.fbh:not(.fbr) #nmw,html.fbh:not(.fbr) #nmgo{display:none!important}';document.head.appendChild(_s)}setTimeout(()=>document.documentElement.classList.add('fbr'),8000);
  const CFG={apiKey:"AIzaSyADa0OiRUHdF7LZL3J_WdLO6P2qU4E9Teo",authDomain:"gtr-game-61874.firebaseapp.com",projectId:"gtr-game-61874",storageBucket:"gtr-game-61874.firebasestorage.app",messagingSenderId:"877922117380",appId:"1:877922117380:web:e4b722b76aed2bbca5d251"};
  const GL=/^(th_n|th_mute|th_q|th_cam|th_lb|th_lbt|th_evl_.*|th_tb217_.*|pf_.*)$/;
  const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}};
@@ -2715,7 +2717,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
    ls('fb_t',String(t));lastKey=key}catch(e){console.warn('fb push',e)}busy=false}
  function ui(){
   const lg=$$('fbl'),rw=$$('fbr'),nw=$$('nmw'),on=!!user;
-  document.body.classList.add('fbon');
+  document.body.classList.add('fbon');document.documentElement.classList.add('fbr');window.fbReady=true;try{if(typeof msDot==='function')msDot()}catch(e){}
   if(lg)lg.style.display=on?'none':'flex';
   if(nw)nw.style.display=on?'flex':'none';
   if(rw){rw.style.display=on?'flex':'none';const g=$$('fbL');if(g)g.style.display=(on&&user.isAnonymous)?'':'none';const t=$$('fbt');if(t)t.textContent=on?(user.isAnonymous?'Misafir hesabı':'Google hesabı'):''}
@@ -2785,9 +2787,9 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
   const _la=lbAdd;lbAdd=function(s,k){_la(s,k);if(user){ls('th_tot',String(tot()+(+s||0)));push(true)}};
  }
  (async function(){
-  try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);return}
+  try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);document.documentElement.classList.add('fbr');return}
   build();lbHook();
-  fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;ui();if(u)await sync()});
+  fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;window.fbUser=u;ui();if(u)await sync()});
   setInterval(()=>push(false),15000);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)push(false)});addEventListener('pagehide',()=>push(false));
  })();
