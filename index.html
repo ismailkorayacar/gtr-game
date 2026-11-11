@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.50</title>
+<title>gtr_game_v4.51</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -666,7 +666,7 @@ body.rp .hb,body.cin .hb,body.intro .hb,body.rp .pw,body.cin .pw,body.intro .pw,
 .rbg .rbn{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;font-style:italic;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;height:auto;padding:10px 40px 10px 14px;font-size:13px;line-height:1.15;letter-spacing:.4px;width:auto;min-width:0;margin:0;white-space:normal;flex:none}
 .rbg .rbn:last-child:nth-child(odd){grid-column:1/-1}
 .rbg .rbn::after{content:"";position:absolute;right:-10px;top:50%;width:70px;height:70px;transform:translateY(-50%);background:var(--ic) center/contain no-repeat;opacity:.3;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}
-#rtt.rtL{font-size:32px!important;line-height:1.1}body.ls #rtt.rtL{font-size:24px!important}
+#evbx .rbn{font-size:17px;min-height:60px}#rtt.rtL{font-size:32px!important;line-height:1.1}body.ls #rtt.rtL{font-size:24px!important}
 
 #pzm.ic{width:64px!important;height:56px;align-self:center}.bi{width:22px;height:22px;vertical-align:-5px;margin-right:8px}#pzc,#pzx{font-size:16px}#pzx{display:none}
 body.rrr::before,body.rrr::after{display:none}
@@ -1627,6 +1627,8 @@ const RIC={lobby:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fi
  next:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>',
  shop:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h3l2.2 11.2a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.2L20.6 8H6.2"/><circle cx="10" cy="20" r="1.5" fill="white"/><circle cx="17" cy="20" r="1.5" fill="white"/></svg>',
  trophy:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg>',
+ play:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="white"/></svg>',
+ trophyY:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg>',
  wu:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1.4" fill="white"/></svg>'};
 const icUrl=v=>'url("data:image/svg+xml,'+encodeURIComponent(v)+'")';
 function resBtns(items){const x=$('rbx');if(!x)return;x.innerHTML='';items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='btn rbn'+(it.p?' p':'');b.textContent=it.t;b.style.setProperty('--ic',icUrl(it.i));b.onclick=it.f;x.appendChild(b)})}
@@ -2428,8 +2430,9 @@ function evList(){const L=$('evl');L.innerHTML='';[...EVS.keys()].sort((x,y)=>ev
 function evOpen(i){evSel=i;const e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n);
  $('evdb').innerHTML='<div class="evh" style="background:'+e.bg+'"><small>'+e.tag+'</small><b>'+e.nm+'</b><span class="evt" data-i="'+i+'">◷ '+evFmt(c.end-Date.now())+'</span></div>'
   +'<div class="evk"><p>'+e.ds+'</p><div class="evr"><span>Zorluk</span><b>'+['Kolay','Normal','Zor'][e.df]+'</b></div>'+(e.loc?'<div class="evr"><span>Konum</span><b>'+e.loc+'</b></div>':'')+'<div class="evr"><span>Harita</span><b>'+(e.hm||(e.id==='dc'?THS[c.th].n:THS[e.th].n))+'</b></div><div class="evr"><span>Ödül</span><b>'+COIN+'<em>'+e.reward+'</em>'+'</b></div>'+'<h4>KURALLAR</h4><ul>'+e.ru.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
-  +'<button id="evgo" class="btn p'+(e.car?' sti2':'')+'" type="button">'+(e.car?'BAŞLA':'ETKİNLİĞİ OYNA')+'</button><button id="evrec" class="evrbtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d" stroke="#fff"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg><span>REKORLAR</span></button>';
- $('evgo').onclick=()=>{const e=EVS[evSel];if(e.car){galEv=null;evStart();return}galEv=e;openGal()};$('evrec').onclick=()=>{evrFromRes=false;evRecShow(evSel);show('evd',false);show('evr',true)};show('evs',false);show('evd',true)}
+  +'<div class="rbg" id="evbx"><button id="evpl" class="btn rbn p" type="button">OYNA</button><button id="evrk" class="btn rbn" type="button">REKORLAR</button></div>';
+ $('evpl').style.setProperty('--ic',icUrl(RIC.play));$('evrk').style.setProperty('--ic',icUrl(RIC.trophyY));
+ $('evpl').onclick=()=>{const e=EVS[evSel];if(e.car){galEv=null;evStart();return}galEv=e;openGal()};$('evrk').onclick=()=>{evrFromRes=false;evRecShow(evSel);show('evd',false);show('evr',true)};show('evs',false);show('evd',true)}
 function evStart(){const e=EVS[evSel],c=evCyc(e);if(e.car){const ri=CARS.findIndex(x=>x[0]===e.car);if(evSaveCar<0)evSaveCar=sel.car;sel.car=ri;try{setCar()}catch(x){}}else if(!isOwned(sel.car)||!evOK(sel.car,e))return;
  EV={id:e.id,car:e.car,nm:e.nm.toUpperCase(),hn:e.hn,th:c.th,km:e.km,laps:e.laps,lk:e.lk,reward:e.reward,cyc:c.n,t:30,nextCp:1000,endT:0,tout:0};if(evDf<0)evDf=dif;dif=e.df;evSaveLv=sel.lv;sel.lv=e.id==='dc'?c.th:3;show('evd',false);show('evs',false);startRace()}
 function evStep(dt){const e=EV;if(!e||!e.ta)return;e.rt=(e.rt||0)+dt;
@@ -2730,7 +2733,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
 /* Firebase hesap sistemi: Google ile giris + misafir, bulut kayit, ortak puan tablosu. Sadece github.io / localhost uzerinde calisir. */
 (function(){
  if(!/(^|\.)github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))return;
- window.fbHost=true;document.documentElement.classList.add('fbh');{const _s=document.createElement('style');_s.textContent='html.fbh:not(.fbr) #nmw,html.fbh:not(.fbr) #nmgo{display:none!important}html.fbh:not(.fbu):not(.fbf) #bal,html.fbh:not(.fbu):not(.fbf) #lbb,html.fbh:not(.fbu):not(.fbf) #hrow,html.fbh:not(.fbu):not(.fbf) #hbt{display:none!important}';document.head.appendChild(_s)}
+ window.fbHost=true;document.documentElement.classList.add('fbh');{const _s=document.createElement('style');_s.textContent='html.fbh:not(.fbr) #nmw,html.fbh:not(.fbr) #nmgo{display:none!important}html.fbh:not(.fbu):not(.fbf) #bal,html.fbh:not(.fbu):not(.fbf) #lbb,html.fbh:not(.fbu):not(.fbf) #hrow,html.fbh:not(.fbu):not(.fbf) #hbt{display:none!important}html.fbh:not(.fbu):not(.fbf) #ov .mh .logo.gtr{position:fixed;left:50%;top:calc(50% - 70px);transform:translate(-50%,-50%);align-items:center;z-index:3}html.fbh:not(.fbu):not(.fbf) #ov .gtr b{font-size:50px}html.fbh:not(.fbu):not(.fbf) #ov .gtr span{font-size:25px}html.fbh:not(.fbu):not(.fbf) #ov .gtr small{font-size:13px}';document.head.appendChild(_s)}
  const CFG={apiKey:"AIzaSyADa0OiRUHdF7LZL3J_WdLO6P2qU4E9Teo",authDomain:"gtr-game-61874.firebaseapp.com",projectId:"gtr-game-61874",storageBucket:"gtr-game-61874.firebasestorage.app",messagingSenderId:"877922117380",appId:"1:877922117380:web:e4b722b76aed2bbca5d251"};
  const GL=/^(th_n|th_mute|th_q|th_cam|th_lb|th_lbt|th_evl_.*|th_tb217_.*|pf_.*)$/;
  const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}};
