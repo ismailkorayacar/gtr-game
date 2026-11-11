@@ -9,7 +9,7 @@
 <html lang="tr"><head><meta charset="utf-8">
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>gtr_game_v4.46</title>
+<title>gtr_game_v4.47</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -785,6 +785,7 @@ body.ls.v5.drv #mm{width:92px!important;height:92px!important;top:calc(env(safe-
 body.ls #tpr{top:calc(env(safe-area-inset-top,0px) + 106px)}
 body.ls #tsc{top:calc(env(safe-area-inset-top,0px) + 8px);font-size:28px}
 body.ls #dmt{top:calc(env(safe-area-inset-top,0px) + 48px)}
+body.pve #dmt{top:calc(env(safe-area-inset-top,0px) + 124px)}body.ls.pve #dmt{top:calc(env(safe-area-inset-top,0px) + 96px)}
 body.ls #trt{max-width:240px}body.ls #trn{font-size:19px}body.ls #trm{font-size:11px}body.ls #trtm{font-size:15px}
 body.ls.v5.drv #pzb{top:calc(env(safe-area-inset-top,0px) + 78px)!important}body.ls.v5.drv #cvb{top:calc(env(safe-area-inset-top,0px) + 122px)!important}
 body.ls #stz{left:max(24px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 20px);gap:18px}
@@ -2702,7 +2703,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
 /* Firebase hesap sistemi: Google ile giris + misafir, bulut kayit, ortak puan tablosu. Sadece github.io / localhost uzerinde calisir. */
 (function(){
  if(!/(^|\.)github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))return;
- window.fbHost=true;document.documentElement.classList.add('fbh');{const _s=document.createElement('style');_s.textContent='html.fbh:not(.fbr) #nmw,html.fbh:not(.fbr) #nmgo{display:none!important}';document.head.appendChild(_s)}setTimeout(()=>document.documentElement.classList.add('fbr'),8000);
+ window.fbHost=true;document.documentElement.classList.add('fbh');{const _s=document.createElement('style');_s.textContent='html.fbh:not(.fbr) #nmw,html.fbh:not(.fbr) #nmgo{display:none!important}html.fbh:not(.fbu):not(.fbf) #bal,html.fbh:not(.fbu):not(.fbf) #lbb,html.fbh:not(.fbu):not(.fbf) #hrow,html.fbh:not(.fbu):not(.fbf) #hbt{display:none!important}';document.head.appendChild(_s)}setTimeout(()=>{document.documentElement.classList.add('fbr','fbf')},8000);
  const CFG={apiKey:"AIzaSyADa0OiRUHdF7LZL3J_WdLO6P2qU4E9Teo",authDomain:"gtr-game-61874.firebaseapp.com",projectId:"gtr-game-61874",storageBucket:"gtr-game-61874.firebasestorage.app",messagingSenderId:"877922117380",appId:"1:877922117380:web:e4b722b76aed2bbca5d251"};
  const GL=/^(th_n|th_mute|th_q|th_cam|th_lb|th_lbt|th_evl_.*|th_tb217_.*|pf_.*)$/;
  const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}};
@@ -2725,7 +2726,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
    ls('fb_t',String(t));lastKey=key}catch(e){console.warn('fb push',e)}busy=false}
  function ui(){
   const lg=$$('fbl'),rw=$$('fbr'),nw=$$('nmw'),on=!!user;
-  document.body.classList.add('fbon');document.documentElement.classList.add('fbr');window.fbReady=true;try{if(typeof msDot==='function')msDot()}catch(e){}
+  document.body.classList.add('fbon');document.documentElement.classList.add('fbr');document.documentElement.classList.remove('fbf');document.documentElement.classList.toggle('fbu',on);window.fbReady=true;try{if(typeof msDot==='function')msDot()}catch(e){}
   if(lg)lg.style.display=on?'none':'flex';
   if(nw)nw.style.display=on?'flex':'none';
   if(rw){rw.style.display=on?'flex':'none';const g=$$('fbL');if(g)g.style.display=(on&&user.isAnonymous)?'':'none';const t=$$('fbt');if(t)t.textContent=on?(user.isAnonymous?'Misafir hesabı':'Google hesabı'):''}
@@ -2795,7 +2796,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
   const _la=lbAdd;lbAdd=function(s,k){_la(s,k);if(user){ls('th_tot',String(tot()+(+s||0)));push(true)}};
  }
  (async function(){
-  try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);document.documentElement.classList.add('fbr');return}
+  try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);document.documentElement.classList.add('fbr','fbf');return}
   build();lbHook();
   fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;window.fbUser=u;ui();if(u)await sync()});
   setInterval(()=>push(false),15000);
