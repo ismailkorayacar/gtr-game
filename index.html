@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.53</title>
+<title>gtr_game_v4.54</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -666,7 +666,7 @@ body.rp .hb,body.cin .hb,body.intro .hb,body.rp .pw,body.cin .pw,body.intro .pw,
 .rbg .rbn{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;font-style:italic;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;height:auto;padding:10px 40px 10px 14px;font-size:13px;line-height:1.15;letter-spacing:.4px;width:auto;min-width:0;margin:0;white-space:normal;flex:none}
 .rbg .rbn:last-child:nth-child(odd){grid-column:1/-1}
 .rbg .rbn::after{content:"";position:absolute;right:-10px;top:50%;width:70px;height:70px;transform:translateY(-50%);background:var(--ic) center/contain no-repeat;opacity:.3;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}
-#cmb{left:max(10px,env(safe-area-inset-left,0px));transform:scale(.7);transform-origin:0 0;text-align:left}#cmb i{margin:4px 0 0}body.ls #rbx.rbg3{grid-template-columns:repeat(3,1fr)}body.ls #rbx.rbg3 .rbn:last-child:nth-child(odd){grid-column:auto}#evbx .rbn{font-size:17px;min-height:60px}#pzo .rbg{width:100%}#pzo .rbg .rbn{font-size:14px}
+#cmb,body.ls #cmb,body.evcnt #cmb{left:50%!important;top:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 64px)!important;transform:translateX(-50%) scale(.7);transform-origin:50% 100%;text-align:center}body.ls #cmb{bottom:calc(env(safe-area-inset-bottom,0px) + 94px)!important}#cmb i{margin:4px auto 0}body.ls #rbx.rbg3{grid-template-columns:repeat(3,1fr)}body.ls #rbx.rbg3 .rbn:last-child:nth-child(odd){grid-column:auto}#evbx .rbn{font-size:17px;min-height:60px}#pzo .rbg{width:100%}#pzo .rbg .rbn{font-size:14px}
 #dv #tpr{flex-direction:column;align-items:flex-start;gap:4px}
 #dv #tpr span{display:flex;align-items:center;gap:7px;padding:3px 18px 3px 10px;background:rgba(8,6,28,.62);border-left:3px solid #b06bff;transform:skewX(-14deg);color:#fff}
 #dv #tpr span>*{transform:skewX(14deg)}
@@ -1629,7 +1629,7 @@ let nosCnt=0;function startRace(){nosCnt=0;if(EV&&EV.car){const ri=CARS.findInde
 $('go').onclick=startRace;
 
 /* ortak bitis ekrani butonlari */
-const RIC={lobby:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8" fill="white"/></svg>',
+const RIC={career:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-5.5-5.2-5.5-9.6a5.5 5.5 0 0 1 11 0C17.5 15.8 12 21 12 21z"/><circle cx="12" cy="11.2" r="2"/><path d="M3.5 21h17" stroke-dasharray="2 2.6"/></svg>',lobby:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8" fill="white"/></svg>',
  again:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v4.6h-4.6"/></svg>',
  next:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>',
  shop:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h3l2.2 11.2a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.2L20.6 8H6.2"/><circle cx="10" cy="20" r="1.5" fill="white"/><circle cx="17" cy="20" r="1.5" fill="white"/></svg>',
@@ -2173,7 +2173,7 @@ $('setb').onclick=()=>{setQUI();$('set').style.display='flex'};$('setback').oncl
 const cmbMul=()=>cmbT>0?Math.min(5,Math.max(1,cmb)):1;
 let cmbS='';
 function nearMiss(){cmb=cmbT>0?cmb+1:1;cmbT=3.2;const m=Math.min(5,cmb);score+=100*m;sfx('coin');mAdd('near',1);mMax('combo',cmb);const x=$('cmbX');x.textContent='x'+m+'  +'+100*m;x.classList.remove('pop');void x.offsetWidth;x.classList.add('pop')}
-function cmbUI(){const on=cmbT>0&&st==='race';const c=$('cmb');c.classList.toggle('on',on);if(on){$('cmbB').style.width=Math.max(0,cmbT/3.2*100)+'%';const t=$('tpr');if(t){const r=t.getBoundingClientRect();if(r.height>0)c.style.setProperty('top',Math.round(r.bottom+6)+'px','important')}}}
+function cmbUI(){const on=cmbT>0&&st==='race';const c=$('cmb');c.classList.toggle('on',on);if(on){$('cmbB').style.width=Math.max(0,cmbT/3.2*100)+'%'}}
 // --- power-ups ---
 const bub=new THREE.Mesh(new THREE.SphereGeometry(1,20,14),new THREE.MeshBasicMaterial({color:0x4cc9ff,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));bub.visible=false;bub.renderOrder=5;
 let pwS='';
@@ -2304,7 +2304,7 @@ function cuWheelPos(){const g=gList[gIdx];if(!g||!g.car)return null;const c=g.ca
 function cuRebuild(){const g=gList[gIdx];if(!g)return;galKill(g);galEnsure(gIdx);if(g.car)g.car.mesh.rotation.y=gM?gHold:g.car.mesh.rotation.y}
 function cuMsg(t,er){const e=$('cusm');if(t){e.className=er?'er':'';e.textContent=t}else{e.className='';e.innerHTML=COIN+'<span>'+coins+'</span>'}}
 function cuRender(){const v=cuS.v,c=$('cuc'),pg=cuS.pg,key=pg+(cuS.pal?'1':'0'),sv=cuS.key===key?[...c.querySelectorAll('.cur')].map(e=>e.scrollLeft):null;c.innerHTML='';
- $('cus').dataset.pg=pg;$('cutt').textContent=pg==='m'?'ARACI GELİŞTİR':pg==='p'?'BOYA':pg==='n'?'NEON':'JANT';$('cuno').textContent=pg==='m'?'İPTAL':'GERİ';$('cuno').classList.toggle('bk',pg!=='m');
+ $('cus').dataset.pg=pg;$('cutt').textContent=pg==='m'?'ARACI GELİŞTİR':pg==='p'?'BOYA':pg==='n'?'NEON':'JANT';$('cuno').textContent=pg==='m'?'İPTAL':'GERİ';{const lb=pg==='m'&&!galEv&&!galCr,bk=$('cubk');bk.textContent=lb?'LOBİ':'GERİ';bk.style.setProperty('--ic',lb?icUrl(RIC.lobby):'')}$('cuno').classList.toggle('bk',pg!=='m');
  const pl=$('cupl');pl.style.display=pg==='w'&&v.w?'flex':'none';pl.classList.toggle('on',!!cuS.pal);pl.innerHTML=cuS.pal?IC_BK:IC_PAL;
  if(pg==='m'){const r=document.createElement('div');r.className='cum';
   const mk=(ic,t,sm,pgx)=>{const b=document.createElement('button');b.type='button';b.className='cub cb-'+pgx;b.innerHTML=ic+'<b>'+t+'</b>';b.onclick=()=>{cuS.pg=pgx;cuS.pal=false;cuMode(pgx==='w'?2:1);cuRender()};return b};
@@ -2325,7 +2325,7 @@ function cuHide(){cuOn=false;$('gal').classList.remove('cuo');cuTmp=null;$('cus'
 function cuAbort(){cuHide();cuS=null}
 $('galcu').onclick=cuOpen;
 $('cupl').onclick=()=>{cuS.pal=!cuS.pal;cuRender()};
-$('cubk').onclick=()=>{cuHide();cuRebuild()};$('cuno').onclick=()=>{if(cuS.pg==='m'){cuHide();cuRebuild()}else{cuS.pg='m';cuS.pal=false;cuMode(1);cuRender()}};
+$('cubk').onclick=()=>{const lb=!galEv&&!galCr;cuHide();cuRebuild();if(lb)closeGal(false)};$('cuno').onclick=()=>{if(cuS.pg==='m'){cuHide();cuRebuild()}else{cuS.pg='m';cuS.pal=false;cuMode(1);cuRender()}};
 $('cuok').onclick=()=>{const v=cuS.v,n=cuNm(),nW=v.w>0&&!WO.has(v.w),nN=v.n>0&&!NO.has(v.n),cost=(nW?WPRICE:0)+(nN?NPRICE:0);if(cost){if(coins<cost){cuMsg('Yetersiz bakiye',1);return}coins-=cost;if(nW)WO.add(v.w);if(nN)NO.add(v.n);saveAcct()}
  const nv={c:v.c,f:v.f,w:v.w,wc:v.wc,n:v.n|0};if(!nv.c&&!nv.f&&!nv.w&&!nv.n)delete CSV[n];else CSV[n]=nv;cuSave();cuDirty=true;cuHide();cuRebuild()};
 function openGal(){{const t=$('galttl');t.textContent=galEv?'Araç Seç ve Başla':'GARAJ';t.style.cssText=galEv?'flex:1;margin:0 0 0 10px;text-align:left;white-space:nowrap;font-size:23px':'';const gs=$('galsel');gs.classList.toggle('sti2',!!galEv)}gPrevCol=sel.col;gColTouched=false;sel.col=0;mark();const ol=ownedList().filter(i=>!galEv||evOK(i,galEv));$('galsel').textContent=galEv?'BAŞLA':galCr?'BÖLÜMÜ OYNA':'SEÇ';gList=ol.map(i=>({idx:i,car:null,sh:null,col:-2}));if(!gScene.environment)gScene.environment=mkStudio();galBuild();gx=Math.max(0,ol.indexOf(sel.car));gV=0;gIdx=-1;gt=0;gtq=0;galS='';show('ov',false);show('evd',false);show('evs',false);show('cr',false);show('pm',false);show('gal',true);galOn=true;galThumbs()}
@@ -2623,7 +2623,7 @@ function crFinish(win){document.body.classList.remove('rp');$('rp').style.displa
  {const shopB={t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()},lobB={t:'LOBİ',i:RIC.lobby,f:toMenu};
   if(s.wu)resBtns([lobB,{t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}},{t:'PUAN TABLOSU',i:RIC.trophy,f:()=>{v7_lbMenu=false;showLb()}},shopB]);
   else{const nIn=win&&g<CRST.length-1&&CRST[g+1].c===s.c&&crOpen(g+1);
-   resBtns([lobB,shopB,win?{t:'KARİYERE DEVAM ET',i:RIC.next,p:1,f:()=>{if(nIn){crSel=g+1;startRace()}else{crSel=g;toMenu();crOpenScr()}}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}}],'rbg3')}}
+   resBtns([lobB,shopB,win?{t:'KARİYER',i:RIC.career,p:1,f:()=>{if(nIn){crSel=g+1;startRace()}else{crSel=g;toMenu();crOpenScr()}}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}}],'rbg3')}}
  show('ov',false);show('res',true);if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
 $('crback').onclick=()=>{show('cr',false);show('pm',true)};
 
