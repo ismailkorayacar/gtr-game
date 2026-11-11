@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.52</title>
+<title>gtr_game_v4.53</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -666,7 +666,7 @@ body.rp .hb,body.cin .hb,body.intro .hb,body.rp .pw,body.cin .pw,body.intro .pw,
 .rbg .rbn{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;font-style:italic;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;height:auto;padding:10px 40px 10px 14px;font-size:13px;line-height:1.15;letter-spacing:.4px;width:auto;min-width:0;margin:0;white-space:normal;flex:none}
 .rbg .rbn:last-child:nth-child(odd){grid-column:1/-1}
 .rbg .rbn::after{content:"";position:absolute;right:-10px;top:50%;width:70px;height:70px;transform:translateY(-50%);background:var(--ic) center/contain no-repeat;opacity:.3;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}
-#evbx .rbn{font-size:17px;min-height:60px}#pzo .rbg{width:100%}#pzo .rbg .rbn{font-size:14px}
+#cmb{left:max(10px,env(safe-area-inset-left,0px));transform:scale(.7);transform-origin:0 0;text-align:left}#cmb i{margin:4px 0 0}body.ls #rbx.rbg3{grid-template-columns:repeat(3,1fr)}body.ls #rbx.rbg3 .rbn:last-child:nth-child(odd){grid-column:auto}#evbx .rbn{font-size:17px;min-height:60px}#pzo .rbg{width:100%}#pzo .rbg .rbn{font-size:14px}
 #dv #tpr{flex-direction:column;align-items:flex-start;gap:4px}
 #dv #tpr span{display:flex;align-items:center;gap:7px;padding:3px 18px 3px 10px;background:rgba(8,6,28,.62);border-left:3px solid #b06bff;transform:skewX(-14deg);color:#fff}
 #dv #tpr span>*{transform:skewX(14deg)}
@@ -1639,7 +1639,7 @@ const RIC={lobby:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fi
  trophyY:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg>',
  wu:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1.4" fill="white"/></svg>'};
 const icUrl=v=>'url("data:image/svg+xml,'+encodeURIComponent(v)+'")';
-function resBtns(items){const x=$('rbx');if(!x)return;x.innerHTML='';items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='btn rbn'+(it.p?' p':'');b.textContent=it.t;b.style.setProperty('--ic',icUrl(it.i));b.onclick=it.f;x.appendChild(b)})}
+function resBtns(items,cls){const x=$('rbx');if(!x)return;x.className='rbg'+(cls?' '+cls:'');x.innerHTML='';items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='btn rbn'+(it.p?' p':'');b.textContent=it.t;b.style.setProperty('--ic',icUrl(it.i));b.onclick=it.f;x.appendChild(b)})}
 function toMenu(){rrClean();ovMode('home');if(EV){EV=null;sel.lv=evSaveLv}if(evSaveCar>=0){sel.car=evSaveCar;evSaveCar=-1}if(evDf>=0){dif=evDf;evDf=-1}reset();setCar();st='menu';show('res',false);show('lb',false);show('shop',false);show('ov',true);mark()}
 function lbTot(){let T=null,a=[];try{T=JSON.parse(localStorage.getItem('th_lbt')||'null')}catch(e){}if(!T){T={};try{a=JSON.parse(localStorage.getItem('th_lb')||'[]')}catch(e){}a.forEach(e=>{T[e.n]=(T[e.n]||0)+e.s})}return T}
 function lbAdd(s,k){let a=[];try{a=JSON.parse(localStorage.getItem('th_lb')||'[]')}catch(e){}const T=lbTot();T[sel.name]=(T[sel.name]||0)+s;try{localStorage.setItem('th_lbt',JSON.stringify(T))}catch(x){}const e={id:Date.now(),n:sel.name,s,k,l:sel.lv,c:CARS[sel.car][1]};a.push(e);a.sort((x,y)=>y.s-x.s);a=a.slice(0,50);try{localStorage.setItem('th_lb',JSON.stringify(a))}catch(x){}lastLb=e.id}
@@ -2173,7 +2173,7 @@ $('setb').onclick=()=>{setQUI();$('set').style.display='flex'};$('setback').oncl
 const cmbMul=()=>cmbT>0?Math.min(5,Math.max(1,cmb)):1;
 let cmbS='';
 function nearMiss(){cmb=cmbT>0?cmb+1:1;cmbT=3.2;const m=Math.min(5,cmb);score+=100*m;sfx('coin');mAdd('near',1);mMax('combo',cmb);const x=$('cmbX');x.textContent='x'+m+'  +'+100*m;x.classList.remove('pop');void x.offsetWidth;x.classList.add('pop')}
-function cmbUI(){const on=cmbT>0&&st==='race';$('cmb').classList.toggle('on',on);if(on)$('cmbB').style.width=Math.max(0,cmbT/3.2*100)+'%'}
+function cmbUI(){const on=cmbT>0&&st==='race';const c=$('cmb');c.classList.toggle('on',on);if(on){$('cmbB').style.width=Math.max(0,cmbT/3.2*100)+'%';const t=$('tpr');if(t){const r=t.getBoundingClientRect();if(r.height>0)c.style.setProperty('top',Math.round(r.bottom+6)+'px','important')}}}
 // --- power-ups ---
 const bub=new THREE.Mesh(new THREE.SphereGeometry(1,20,14),new THREE.MeshBasicMaterial({color:0x4cc9ff,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));bub.visible=false;bub.renderOrder=5;
 let pwS='';
@@ -2623,7 +2623,7 @@ function crFinish(win){document.body.classList.remove('rp');$('rp').style.displa
  {const shopB={t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()},lobB={t:'LOBİ',i:RIC.lobby,f:toMenu};
   if(s.wu)resBtns([lobB,{t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}},{t:'PUAN TABLOSU',i:RIC.trophy,f:()=>{v7_lbMenu=false;showLb()}},shopB]);
   else{const nIn=win&&g<CRST.length-1&&CRST[g+1].c===s.c&&crOpen(g+1);
-   resBtns([lobB,win?{t:'KARİYERE DEVAM ET',i:RIC.next,p:1,f:()=>{if(nIn){crSel=g+1;startRace()}else{crSel=g;toMenu();crOpenScr()}}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}},shopB])}}
+   resBtns([lobB,shopB,win?{t:'KARİYERE DEVAM ET',i:RIC.next,p:1,f:()=>{if(nIn){crSel=g+1;startRace()}else{crSel=g;toMenu();crOpenScr()}}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}}],'rbg3')}}
  show('ov',false);show('res',true);if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
 $('crback').onclick=()=>{show('cr',false);show('pm',true)};
 
@@ -3230,7 +3230,7 @@ var pdG=false,pdB=false,pdH=false;
  // ---- HUD tick ----
  const set=(id,v)=>{const e=$(id);if(e&&e.textContent!==v)e.textContent=v};
  const p2=n=>String(n).padStart(2,'0'),fmt=t=>{t=Math.max(0,t||0);return p2(Math.floor(t/60))+':'+p2(Math.floor(t%60))+'.'+String(Math.floor((t*1000)%1000)).padStart(3,'0')};
- const IF='<svg viewBox="0 0 24 24"><path d="M5 3h2v18H5z" fill="#b06bff"/><rect x="7" y="4" width="12" height="9" fill="none" stroke="#b06bff" stroke-width="1.2"/><path fill="#b06bff" d="M7 4h3v3H7zM13 4h3v3h-3zM10 7h3v3h-3zM16 7h3v3h-3zM7 10h3v3H7zM13 10h3v3h-3z"/></svg>',IL='<svg viewBox="0 0 24 24"><path d="M5 3h2v18H5z" fill="#b06bff"/><rect x="7" y="4" width="12" height="9" fill="none" stroke="#b06bff" stroke-width="1.2"/><path fill="#b06bff" d="M7 4h3v3H7zM13 4h3v3h-3zM10 7h3v3h-3zM16 7h3v3h-3zM7 10h3v3H7zM13 10h3v3h-3z"/></svg>',IP='<svg viewBox="0 0 24 24" fill="#b06bff"><path d="M9 3h6v18H9zM2 10h6v11H2zM16 13h6v8h-6z"/></svg>';
+ const IF='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5" fill="none" stroke="#b06bff" stroke-width="1.2"/><path fill="#b06bff" d="M3 3h4.5v4.5h-4.5zM12 3h4.5v4.5h-4.5zM7.5 7.5h4.5v4.5h-4.5zM16.5 7.5h4.5v4.5h-4.5zM3 12h4.5v4.5h-4.5zM12 12h4.5v4.5h-4.5zM7.5 16.5h4.5v4.5h-4.5zM16.5 16.5h4.5v4.5h-4.5z"/></svg>',IL='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5" fill="none" stroke="#b06bff" stroke-width="1.2"/><path fill="#b06bff" d="M3 3h4.5v4.5h-4.5zM12 3h4.5v4.5h-4.5zM7.5 7.5h4.5v4.5h-4.5zM16.5 7.5h4.5v4.5h-4.5zM3 12h4.5v4.5h-4.5zM12 12h4.5v4.5h-4.5zM7.5 16.5h4.5v4.5h-4.5zM16.5 16.5h4.5v4.5h-4.5z"/></svg>',IP='<svg viewBox="0 0 24 24" fill="#b06bff"><path d="M9 3h6v18H9zM2 10h6v11H2zM16 13h6v8h-6z"/></svg>';
  let prK='',ring=-1;
  const tick=()=>{try{
   const vis=(st==='race'||st==='count')&&!(introT>0);if(vis!==B.classList.contains('drv'))B.classList.toggle('drv',vis);
