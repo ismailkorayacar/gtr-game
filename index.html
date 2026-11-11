@@ -9,8 +9,8 @@
 <html lang="tr"><head><meta charset="utf-8">
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Grand Traffic Racing">
-<title>gtr_game_v4.48</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
+<title>gtr_game_v4.49</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2730,22 +2730,22 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
   document.body.classList.add('fbon');document.documentElement.classList.add('fbr');document.documentElement.classList.remove('fbf');document.documentElement.classList.toggle('fbu',on);window.fbReady=true;try{if(typeof msDot==='function')msDot()}catch(e){}
   if(lg)lg.style.display=on?'none':'flex';
   if(nw)nw.style.display=on?'flex':'none';
-  if(rw){rw.style.display=on?'flex':'none';const g=$$('fbL');if(g)g.style.display=(on&&user.isAnonymous)?'':'none';const t=$$('fbt');if(t)t.textContent=on?(user.isAnonymous?'Misafir hesabı':'Google hesabı'):''}
+  if(rw){rw.style.display=(on&&user.isAnonymous)?'flex':'none';const g=$$('fbL');if(g)g.style.display='';const t=$$('fbt');if(t)t.textContent=on?(user.isAnonymous?'Misafir hesabı':'Google hesabı'):''}
  }
  async function sync(){
   try{
    const uid=user.uid,last=ls('fb_uid'),tL=+ls('fb_t')||0,ref=fb.F.doc(fb.db,'users',uid),s=await fb.F.getDoc(ref);
    const hasLocal=(+ls('th_coins2')||0)>0||snapKeys().length>3;
    if(s.exists()){const c=s.data();
-    if(last===uid){if((c.t||0)>tL){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t));location.reload();return}}
+    if(last===uid){if((c.t||0)>tL){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t));location.reload();return 1}}
     else{
      let useCloud=true;
      if(hasLocal&&!last)useCloud=confirm('Bu hesapta kayıtlı ilerleme var.\n\nTamam: hesaptaki ilerleme yüklensin (bu cihazdaki silinir).\nİptal: bu cihazdaki ilerleme hesaba yazılsın.');
      ls('fb_uid',uid);
-     if(useCloud){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t||Date.now()));location.reload();return}
+     if(useCloud){applySnap(c.d);setName(c.n);ls('fb_t',String(c.t||Date.now()));location.reload();return 1}
     }
    }else{
-    if(last&&last!==uid){clearSnap();ls('th_n',null);ls('fb_uid',uid);ls('fb_t','0');location.reload();return}
+    if(last&&last!==uid){clearSnap();ls('th_n',null);ls('fb_uid',uid);ls('fb_t','0');location.reload();return 1}
     if(!user.isAnonymous&&!ls('th_n'))setName(user.displayName||'Pilot');
     if(!ls('th_n'))setName(user.isAnonymous?'Misafir'+(100+Math.floor(Math.random()*900)):'Pilot');
    }
@@ -2767,8 +2767,11 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
   const css=document.createElement('style');css.textContent='body.fbon #nmgo{display:none!important}#fbl{display:none;flex-direction:column;gap:8px;width:100%;box-sizing:border-box}#fbl .btn,#fbr .btn{margin:0;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px}#fbr{display:none;align-items:center;gap:8px;width:100%;box-sizing:border-box}#fbr .btn{flex:1;min-height:36px;font-size:12px;padding:6px 8px}#fbt{flex:none;color:#c99bff;font:800 11px/1 system-ui;letter-spacing:.5px;text-transform:uppercase}#fbl svg{width:20px;height:20px;flex:none}';document.head.appendChild(css);
   const g='<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
   const lg=document.createElement('div');lg.id='fbl';lg.className='hom';lg.innerHTML='<button id="fbG" class="btn p" type="button">'+g+'GOOGLE İLE GİRİŞ</button><button id="fbA" class="btn" type="button">MİSAFİR OLARAK OYNA</button>';
-  const rw=document.createElement('div');rw.id='fbr';rw.className='hom';rw.innerHTML='<span id="fbt"></span><button id="fbL" class="btn" type="button">GOOGLE\'A BAĞLA</button><button id="fbX" class="btn" type="button">ÇIKIŞ</button>';
+  const rw=document.createElement('div');rw.id='fbr';rw.className='hom';rw.innerHTML='<span id="fbt"></span><button id="fbL" class="btn" type="button">GOOGLE\'A BAĞLA</button>';
   nw.parentNode.insertBefore(lg,nw.nextSibling);lg.parentNode.insertBefore(rw,lg.nextSibling);
+   {const x=document.createElement('button');x.id='fbX';x.type='button';x.className=($$('nmgo')||{}).className||'';x.textContent='Çıkış';x.style.setProperty('--ic','url("data:image/svg+xml,'+encodeURIComponent(g.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" '))+'")');nw.appendChild(x);
+    const c2=document.createElement('style');c2.textContent='#nmw #fbX{flex:none;position:relative;overflow:hidden;isolation:isolate;border-radius:14px;font:italic 900 13px system-ui;text-transform:uppercase;padding:0 22px;letter-spacing:.4px;color:#fff;background:linear-gradient(180deg,#8456ff,#4d28cc);border:2px solid #ff7ad0;box-shadow:0 3px 0 #231080;margin:0}#nmw #fbX::after{content:"";position:absolute;right:-8px;top:50%;width:56px;height:56px;transform:translateY(-50%);background:var(--ic) center/contain no-repeat;opacity:.3;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}#lbr{display:none!important}#lb .logo.sm{font-size:19px;line-height:1.05;text-align:center}body.ls #lb .logo.sm{font-size:19px!important}';document.head.appendChild(c2);
+    const lt=document.querySelector('#lb .logo.sm');if(lt)lt.textContent='DÜNYA GENELİ PUAN TABLOSU'}
   const prov=()=>new fb.Au.GoogleAuthProvider();
   $$('fbG').onclick=async()=>{try{toast('Google ile giriş yapılıyor...',0,0);await fb.Au.signInWithPopup(fb.auth,prov());toast('Giriş yapıldı',1,1200)}catch(e){toast(e&&e.code==='auth/popup-closed-by-user'?'Giriş iptal edildi':'Giriş yapılamadı',0,2500);console.warn(e)}};
   $$('fbA').onclick=async()=>{try{toast('Misafir girişi...',0,0);await fb.Au.signInAnonymously(fb.auth);toast('Giriş yapıldı',1,1200)}catch(e){toast('Giriş yapılamadı',0,2500);console.warn(e)}};
@@ -2799,7 +2802,7 @@ function padStep(dt,live){const on=!!EV&&EV.id==='dc'&&st!=='menu'&&st!=='win';
  (async function(){
   try{await load()}catch(e){console.warn('Firebase yuklenemedi, yerel giris kullaniliyor',e);document.documentElement.classList.add('fbr','fbf');return}
   build();lbHook();
-  fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;window.fbUser=u;ui();if(u)await sync()});
+  fb.Au.onAuthStateChanged(fb.auth,async u=>{user=u;window.fbUser=u;let rl=0;if(u){try{rl=await sync()}catch(e){console.warn(e)}}if(!rl)ui()});
   setInterval(()=>push(false),15000);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)push(false)});addEventListener('pagehide',()=>push(false));
  })();
