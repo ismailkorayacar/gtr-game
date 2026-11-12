@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.74</title>
+<title>gtr_game_v4.75</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1184,6 +1184,19 @@ function addLines(g){const add=(geo,x,z)=>{const m=new THREE.Mesh(geo,lnM);m.pos
  for(const lx of LANES)for(const d of[-.85,.85]){const m=new THREE.Mesh(wearG,wearM);m.position.set(lx+d,.025,0);m.frustumCulled=false;tagK(m,'wr');g.add(m)}
  for(const s of[-1,1]){const m=new THREE.Mesh(grG,grM);m.position.set(s*9,.6,0);m.frustumCulled=false;tagK(m,'gr');g.add(m);const r=new THREE.Mesh(grRG,grRM);r.position.set(s*9,.6,0);r.frustumCulled=false;tagK(r,'gr');g.add(r)}}
 for(let i=0;i<22;i++){const t=buildParts(A.road,1);scene.add(t);tiles.push(t)}
+// ---- Kış Rallisi: harici yol modeli (assets/snow_road/*) — dosyalar yoksa eski yol kullanılır ----
+const SNR={ms:[],ready:false,loading:false,want:false};
+function snowRoadVis(){const on=SNR.want&&SNR.ready;SNR.ms.forEach(m=>m.visible=on);tiles.forEach(t=>t.visible=!on)}
+function snowRoadLoad(){if(SNR.ready||SNR.loading)return;SNR.loading=true;
+ fetch('assets/snow_road/road.bin').then(r=>{if(!r.ok)throw new Error('yok');return r.arrayBuffer()}).then(buf=>{
+  const dv=new DataView(buf),nV=dv.getUint32(0,true),nI=dv.getUint32(4,true);let o=8;
+  const pos=new Float32Array(buf,o,nV*3);o+=nV*12;const nor=new Float32Array(buf,o,nV*3);o+=nV*12;const uv=new Float32Array(buf,o,nV*2);o+=nV*8;const idx=new Uint16Array(buf,o,nI);
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('normal',new THREE.BufferAttribute(nor,3));g.setAttribute('uv',new THREE.BufferAttribute(uv,2));g.setAttribute('uv2',new THREE.BufferAttribute(uv,2));g.setIndex(new THREE.BufferAttribute(idx,1));g.computeBoundingSphere();
+  const tl=new THREE.TextureLoader(),lt=(u,srgb)=>{const t=tl.load(u,()=>{SNR.loaded++;if(SNR.loaded>=3){SNR.ready=true;snowRoadVis()}});t.flipY=false;t.anisotropy=8;if(srgb)t.encoding=THREE.sRGBEncoding;return t};
+  SNR.loaded=0;const mat=bendMat(new THREE.MeshStandardMaterial({map:lt('assets/snow_road/c.jpg',1),normalMap:lt('assets/snow_road/n.jpg',0),aoMap:null,roughnessMap:null,roughness:.92,metalness:0}));
+  const orm=lt('assets/snow_road/orm.jpg',0);mat.aoMap=orm;mat.roughnessMap=orm;mat.aoMapIntensity=.8;mat.needsUpdate=true;SNR.loaded=SNR.loaded;
+  for(let i=0;i<22;i++){const m=new THREE.Mesh(g,mat);m.frustumCulled=false;m.visible=false;scene.add(m);SNR.ms.push(m)}
+ }).catch(()=>{SNR.loading=false;SNR.failed=true})}
 for(let i=0;i<46;i++){const b=buildParts(A.b2);b.userData.s=i%2?1:-1;b.rotation.y=i%2?0:Math.PI;b.position.y=-.1;scene.add(b);blocks.push(b)}
 const grassT=(()=>{const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');g.fillStyle='#5f594f';g.fillRect(0,0,256,256);for(let i=0;i<6000;i++){g.fillStyle=`hsl(${28+R()*14},${10+R()*10}%,${26+R()*20}%)`;g.fillRect(R()*256,R()*256,2,2)}
  const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(90,60);t.anisotropy=8;t.encoding=THREE.sRGBEncoding;return t})();
@@ -1511,7 +1524,7 @@ function step(dt){
  flames.forEach(f=>{const k=boost?2.6:(live?.7:.2),kk=isDrag?2.2:1;f.scale.set(isDrag?2.4:1,k*kk*(.8+R()*.4),isDrag?2.4:1);f.position.z=P.hl+.1+.8*k*kk;f.material.opacity=boost?.95:.6;f.material.color.set(isDrag?(boost?0x9dff5a:0x2dff3a):(boost?0x5fd0ff:0xff8a1a))});
  if(boost&&!isTM)puff(P.x,.5,P.z+P.hl+1,0x6fd4ff,1,1,.15,.3);tmStep(dt,boost,live);if(isDrag&&(live||st==='win'))puff(P.x+(R()-.5)*.8,.55,P.z+P.hl+.8,0x39ff4a,2,2.5,.45,.55);
  if(st==='race'||st==='crash')rcd();const pz=P.z,tb=Math.round(pz/RL)*RL,bb=Math.round(pz/BL)*BL,lb=Math.round(pz/RL)*RL;
- tiles.forEach((t,i)=>t.position.set(0,0,tb-(i-4)*RL));
+ tiles.forEach((t,i)=>t.position.set(0,0,tb-(i-4)*RL));if(SNR.ready)SNR.ms.forEach((m,i)=>m.position.set(0,0,tb-(i-4)*RL));
  blocks.forEach((b,i)=>{const j=i>>1;b.position.set(b.userData.s*(11.1+BL/2),-.1,bb-(j-5)*BL)});
  lamps.forEach((l,i)=>{const z=lb-((i>>1)-3)*RL;l.position.set(l.userData.s*(TH.dr?13:10.1)+cx(z),uHs.value?HYf(z)-HYf(P.z):0,z);l.rotation.y=Math.atan(cd(z))+(l.userData.s>0?Math.PI:0)});
  ground.position.set(0,-.5,pz-100);grassT.offset.y=-(pz-100)/10;if(rgGT)rgGT.offset.y=-(pz-100)/11.25;snowGT.offset.y=-(pz-100)/11.25;
@@ -1997,7 +2010,7 @@ function applyTheme(L){L=Math.max(1,Math.min(16,L||1));if(curTh===L)return;curTh
  {const fo=T.key==='forest',des=T.key==='desert',sn=T.key==='snow',nm=des?dirtRoadT:sn?snowRoadT:asT;if(asphaltMat.map!==nm){asphaltMat.map=asphaltMat.bumpMap=nm;asphaltMat.needsUpdate=true}
   if(sn){asphaltMat.color.set(0xffffff);asphaltMat.roughness=.8}
   asphaltMat.bumpScale=des?1.1:sn?.25:.6;v9_conM.color.set(sn?0xe6edf5:0xffffff);
-  const tn=T.key==='tunnel';tunG.visible=tn;ROADK.forEach(m=>m.visible=!(((des||fo)&&m.userData.k)||(T.dr&&m.userData.k==='ln')||(sn&&m.userData.k==='wr')));ROADM.forEach(m=>{const w=fo?(T.wn?winMat:rallyMat):asphaltMat;if(m.material!==w)m.material=w});lamps.forEach(l=>l.visible=!des&&!tn&&!fo);if(fo){LANES.length=0;LANES.push(-1.7,1.7);LIM=3.3}else if(LANES.length!==5){LANES.length=0;LANES.push(-7,-3.5,0,3.5,7);LIM=7.5}(window.ridgeM||[]).forEach(m=>m.visible=!des&&!tn&&!T.dr);ground.visible=!T.dr;tiles.forEach(t=>t.scale.x=T.dr?1.3:1);grM.color.set(T.dr?0xe4e8ee:0xb8bcc2);grM.roughness=T.dr?.22:.4;try{if(T.tm)tsBuild();if(window.tsG)tsG.visible=!!T.tm;if(window.drCity)drCity.visible=!!T.dr;if(window.drSg)drSg.visible=!!T.dr}catch(e){}LIM=fo?3.3:T.dr?9.8:7.5;dunes.forEach(h=>h.visible=des);dunesF.forEach(h=>h.visible=des);try{treeS.forEach(g=>{g.im.visible=!des&&!tn&&!T.dr&&(!fo||!!T.wn);g.im.count=g.n1})}catch(e){}try{rgF.visible=fo&&!T.wn;rgHills(fo)}catch(e){}uHs.value=fo?1:T.dr?2:0;lnM.opacity=sn?.82:1;lnM.transparent=sn}
+  const tn=T.key==='tunnel';tunG.visible=tn;ROADK.forEach(m=>m.visible=!(((des||fo)&&m.userData.k)||(T.dr&&m.userData.k==='ln')||(sn&&m.userData.k==='wr')));ROADM.forEach(m=>{const w=fo?(T.wn?winMat:rallyMat):asphaltMat;if(m.material!==w)m.material=w});SNR.want=!!(fo&&T.wn);if(SNR.want)snowRoadLoad();snowRoadVis();lamps.forEach(l=>l.visible=!des&&!tn&&!fo);if(fo){LANES.length=0;LANES.push(-1.7,1.7);LIM=3.3}else if(LANES.length!==5){LANES.length=0;LANES.push(-7,-3.5,0,3.5,7);LIM=7.5}(window.ridgeM||[]).forEach(m=>m.visible=!des&&!tn&&!T.dr);ground.visible=!T.dr;tiles.forEach(t=>t.scale.x=T.dr?1.3:1);grM.color.set(T.dr?0xe4e8ee:0xb8bcc2);grM.roughness=T.dr?.22:.4;try{if(T.tm)tsBuild();if(window.tsG)tsG.visible=!!T.tm;if(window.drCity)drCity.visible=!!T.dr;if(window.drSg)drSg.visible=!!T.dr}catch(e){}LIM=fo?3.3:T.dr?9.8:7.5;dunes.forEach(h=>h.visible=des);dunesF.forEach(h=>h.visible=des);try{treeS.forEach(g=>{g.im.visible=!des&&!tn&&!T.dr&&(!fo||!!T.wn);g.im.count=g.n1})}catch(e){}try{rgF.visible=fo&&!T.wn;rgHills(fo)}catch(e){}uHs.value=fo?1:T.dr?2:0;lnM.opacity=sn?.82:1;lnM.transparent=sn}
  hlS.intensity=(T.hl||0)*.75;document.body.classList.toggle('rainfx',T.w==='rain');rainL.visible=T.w==='rain';snowP.visible=T.w==='snow';flashT=0;flashN=4+R()*5}
 function weatherStep(dt){rgTailStep();uHb.value=uHs.value?HYf(P.z):0;if(uHs.value&&skid.count){const a=skid.instanceMatrix.array;for(let i=0;i<skid.count;i++)a[i*16+13]=.05+skH[i]-uHb.value;skid.instanceMatrix.needsUpdate=true}{const a=uHs.value?Math.atan((HYf(P.z-2)-HYf(P.z+2))/4):0,kp=(st==='count'||st==='menu')?1:Math.min(1,dt*5);drSl+=(a-drSl)*kp;gPit+=((uHs.value>1.5?a*.45:a)-gPit)*kp}v21Step(dt);driverStep(dt);treeStep(P.z);beamStep();dropsStep(dt);sprayStep(dt);boltStep(dt);const T=TH,cp=cam.position,v=Math.max(P.v||0,0);
  if(T.hl){const z=P.z;hlS.position.set(P.x+cx(z),.9,z-P.hl);hlS.target.position.set(P.x+cx(z-45),0,z-45);hlS.target.updateMatrixWorld()}
