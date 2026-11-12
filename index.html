@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.64</title>
+<title>gtr_game_v4.65</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2705,7 +2705,7 @@ function evFinish(win){if(EV&&PVE.includes(EV.id))return rrDone(win);{const w=$(
  $('rtt').innerHTML=win?'KAZANDIN!':(e.tout?(e.tmsg||'SÜRE BİTTİ!'):'MAKSİMUM<br>HASAR');$('rtt').classList.toggle('scrap',!win&&!e.tout);evCard(e,win,txT);resFail(!win&&!dw);$('rs').textContent=sc;$('rs').classList.toggle('drp',isDR());$('rs').previousElementSibling.textContent=isDR()?'DRIFT PUANI':'TOPLAM PUAN';
  $('rsub').textContent=!win&&!dw?(e.tx?(e.tmsg==='MÜŞTERİ<br>KAÇTI'?'Müşteriyi alamadın, müşteri gitti.':e.tmsg?'Varış noktasını geçtin, müşteriyi bırakamadın.':'Müşteriyi zamanında hedefe ulaştıramadın.'):e.tout?'Süre dolmadan hedefe ulaşamadın.':'Aracın tamamen hasar gördü.'):dw?(rec&&sc>0?'YENİ REKOR':''):(rec&&sc>0?'YENİ REKOR · ':'')+(bonus?'ETKİNLİK ÖDÜLÜ +'+bonus:win?'ÖDÜL BU DÖNEM ALINDI':'');$('rpl').textContent=win?'TEKRAR OYNA':(e.tout?'TEKRAR OYNA':'TEKRAR DENE');$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';$('nxl').style.display='none';$('rcn').innerHTML=COIN+' +'+earn;$('rbt2').style.display='flex';$('rlb').className='evrbtn';$('rlb').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d" stroke="#fff"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg><span>REKORLAR</span>';$('rdf').style.display='none';$('rbt2').dataset.ev=e.id;
  if(win){$('rtt').innerHTML='ETKİNLİĞİ<br>TAMAMLADIN'}$('rtt').classList.toggle('rtL',!!win);
- resBtns([{t:'LOBİ',i:RIC.lobby,f:toMenu},{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},{t:'ETKİNLİK REKORLARI',i:RIC.trophy,f:()=>{const i=EVS.findIndex(x=>x.id===e.id);if(i>=0){evrFromRes=true;evRecShow(i);show('res',false);show('evr',true)}}},{t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()}]);
+ {const eb=[{t:'LOBİ',i:RIC.lobby,f:toMenu},{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},{t:'ETKİNLİK REKORLARI',i:RIC.trophy,f:()=>{const i=EVS.findIndex(x=>x.id===e.id);if(i>=0){evrFromRes=true;evRecShow(i);show('res',false);show('evr',true)}}},{t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()}];if(!win&&!dw)resBtns([eb[0],eb[3],eb[1]],'rbg3');else resBtns(eb)}
  show('ov',false);show('res',true);evDeco($('res'),e,true);if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
 
 let evrSel=0,evrLast=0,evrFromRes=false,evrFromRr=false;function evRecHtml(e){let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}let h='<h4>ETKİNLİK REKORLARI</h4>';if(!a.length)return h+'<div class="evr"><span>Henüz kayıt yok</span><b>-</b></div>';a.slice(0,5).forEach((r,k)=>{h+='<div class="evr"><span>'+(k+1)+'. '+esc(r.n)+'</span><b>'+r.s+(e.drift?' DP':'')+'</b></div>'});return h}
@@ -2871,7 +2871,7 @@ function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp')
  else if(nx&&win){nl.innerHTML='<small>SIRADAKİ BÖLÜM</small><span class="nn">'+CRST[g+1].n.toUpperCase()+'</span>';nl.style.display='block'}else nl.style.display='none';
  $('rcn').innerHTML=COIN+' +'+earn;
  {const shopB={t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()},lobB={t:'LOBİ',i:RIC.lobby,f:toMenu};
-  if(s.wu)resBtns([lobB,{t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}},{t:'PUAN TABLOSU',i:RIC.trophy,f:()=>{v7_lbMenu=false;showLb()}},shopB]);
+  if(s.wu){const wuB={t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}};if(win)resBtns([lobB,wuB,{t:'PUAN TABLOSU',i:RIC.trophy,f:()=>{v7_lbMenu=false;showLb()}},shopB]);else resBtns([lobB,{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},wuB,shopB])}
   else{const nIn=win&&g<CRST.length-1&&CRST[g+1].c===s.c&&crOpen(g+1);
    resBtns([lobB,shopB,win?{t:'KARİYER',i:RIC.career,p:1,f:()=>{if(nIn){crSel=g+1;startRace()}else{crSel=g;toMenu();crOpenScr()}}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}}],'rbg3')}}
  show('ov',false);show('res',true);if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
