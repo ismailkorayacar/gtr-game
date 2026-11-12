@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.73</title>
+<title>gtr_game_v4.74</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1481,7 +1481,7 @@ function step(dt){
  if(st==='crash'){crashT+=dt;dt*=.5;if(crashT>1.4)rpStart()}if(st==='replay'){rpApply(dt);if(!RRP)dt*=.55}if(st==='race'||st==='crash')rt+=dt;
  if(st==='count'&&introT>0){introT-=dt;if(introT<=0){document.body.classList.remove('intro');$('intro').style.display='none';P.z=0;P.v=0}}else if(st==='count'){cdT-=dt;if(cdT<=0){st='race';$('cd').textContent='GO!';setTimeout(()=>$('cd').textContent='',900)}else $('cd').textContent=Math.ceil(cdT)}
  const live=st==='race';if(live){raceT+=dt;if(EV)evStep(dt);const nl=Math.floor(-P.z/1000);if(nl>lvl){lvl=nl;if(!RR&&!isDR()){score+=1000;sfx('coin')}}raceCoins=RR||(CR&&CR.wu)?0:Math.floor(Math.min(Math.max(-P.z,0),FINISH)/20*v7_coinM());if((CR&&CR.wu))score=0}
- if(nosTap){nosTap=false;if(live&&!nosAct&&nos>0){nosAct=true;nosCnt++}}if(!live||nos<=0)nosAct=false;const boost=live&&nosAct&&nos>0;const Vb00=(TH.key==='forest'?spdK*1.375:spdK+25*lvl)/3.6,Vb0=Math.max(Math.min(Vb00,150/3.6),Vb00*(1-dmgN));curV=Vb0;cvS+=((TH.key==='forest'&&live&&st==='race'?Math.min(1,Math.abs(ccd(P.z-25))/.02):0)-cvS)*Math.min(1,dt*2.5);const Vb=Vb0*(1-.5*cvS);
+ if(nosTap){nosTap=false;if(live&&!nosAct&&nos>0){nosAct=true;nosCnt++}}if(!live||nos<=0)nosAct=false;const boost=live&&nosAct&&nos>0;const Vb00=(TH.key==='forest'?spdK*1.375:spdK+25*lvl)/3.6,Vb0=Math.max(Math.min(Vb00,150/3.6),Vb00*(1-dmgN));curV=Vb0;cvS=0;const Vb=Vb0*(1-.5*cvS);
  if(boost){nos=Math.max(0,nos-NOSMAX/7*dt);if(nos<=0)sfx('empty')}
  {const rv=live&&st==='race'&&pdB&&!pdG&&!pdH&&P.v<=.3&&!(typeof TX!=='undefined'&&TX&&TX.cin);if(rv)revT+=dt;else{revT=0;revD=0}revOn=rv&&revT>=1.5}
  if(!live)P.v+=((st==='menu'?7:0)-P.v)*Math.min(1,dt*1.3);else if(padT>0){const tg=padT>.7?padVt:Vb+(padVt-Vb)*(padT/.7);P.v+=(tg-P.v)*Math.min(1,dt*7)}else if(boost)P.v+=(Vb*1.1-P.v)*Math.min(1,dt*2.2);else if(revOn){if(revD<35){P.v=Math.max(-6,P.v-8*dt);revD+=-P.v*dt}else P.v=0}else if(pdB||pdH||!pdG)P.v=Math.max(0,P.v-(pdB?16:pdH?(isDR()?1.5:10):3.5)*dt);else if(P.v<Vb*.985){const kk=-Math.log(Math.max(.05,1-27.78/Vb))/2.5;P.v=Math.min(Vb,P.v+(Vb-P.v)*kk*dt)}else P.v+=(Vb-P.v)*Math.min(1,dt*1.3);
