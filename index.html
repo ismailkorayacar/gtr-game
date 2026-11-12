@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.61</title>
+<title>gtr_game_v4.62</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1696,9 +1696,9 @@ function showLb(){const T=lbTot(),a=Object.keys(T).map(n=>({n,s:T[n]})).sort((x,
  a.slice(0,15).forEach((e,i)=>{const d=document.createElement('div');d.className='lr'+(e.n===sel.name?' me':'');d.innerHTML='<span class="rk">'+(i+1)+'</span><span class="ln">'+esc(e.n)+'</span><b>'+Math.round(e.s)+'</b>';L.appendChild(d)});
  const r=a.findIndex(e=>e.n===sel.name);$('lbr').textContent=r>=0?'Sıran: '+(r+1)+'. · Toplam puanın: '+Math.round(a[r].s):'';show('res',false);show('lb',true)}
 function finish(win){if(win&&finDone)return;if(win)finDone=true;if(EV)return evFinish(win);resCardStd();if(CR)return crFinish(win);document.body.classList.remove('rp');$('rp').style.display='none';$('win').style.display='none';
- const bonus=win?Math.round((sel.km*200)*v7_coinM()):0,earn=raceCoins+bonus;coins+=earn;saveAcct();const dist=(win?FINISH:crashDist)/1000;lbAdd(Math.floor(score),dist);const plv=runLv;if(win&&plv>=(v7_ul[10]||1)&&plv<10){v7_ul[10]=plv+1;sel.lv=plv+1;try{localStorage.setItem('th_ul',JSON.stringify(v7_ul))}catch(e){}}
+ const bonus=win?Math.round((sel.km*200)*v7_coinM()):0,earn=win?raceCoins+bonus:0;coins+=earn;saveAcct();const dist=(win?FINISH:crashDist)/1000;if(win)lbAdd(Math.floor(score),dist);resFail(!win);const plv=runLv;if(win&&plv>=(v7_ul[10]||1)&&plv<10){v7_ul[10]=plv+1;sel.lv=plv+1;try{localStorage.setItem('th_ul',JSON.stringify(v7_ul))}catch(e){}}
  $('rtt').innerHTML=win?'KAZANDIN!':'MAKSİMUM<br>HASAR';$('rtt').classList.toggle('scrap',!win);$('rn').textContent=sel.name;$('rs').textContent=Math.floor(score);$('rm').textContent=dist.toFixed(2)+' km · SEVİYE '+plv;
- {const nxt=win&&plv<10;$('rtt').innerHTML=win?'KAZANDIN!':'MAKSİMUM<br>HASAR';$('rsub').textContent=win?(plv<10?'SEVİYE '+plv+' TAMAMLANDI':'10 SEVİYEYİ BİTİRDİN'):'';$('rpl').textContent=nxt?sel.lv+'. SEVİYEYE DEVAM ET':(win?'TEKRAR OYNA':'TEKRAR DENE');$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';const nl=$('nxl');
+ {const nxt=win&&plv<10;$('rtt').innerHTML=win?'KAZANDIN!':'MAKSİMUM<br>HASAR';$('rsub').textContent=win?(plv<10?'SEVİYE '+plv+' TAMAMLANDI':'10 SEVİYEYİ BİTİRDİN'):'Aracın tamamen hasar gördü.';$('rpl').textContent=nxt?sel.lv+'. SEVİYEYE DEVAM ET':(win?'TEKRAR OYNA':'TEKRAR DENE');$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';const nl=$('nxl');
   if(nxt){nl.innerHTML='<small>SONRAKİ SEVİYE '+sel.lv+'</small><span class="nn">'+THS[sel.lv].n.toUpperCase()+'</span><ul>'+lvChanges(sel.lv).map(x=>'<li>'+x+'</li>').join('')+'</ul>';nl.style.display='block'}else nl.style.display='none'}$('rcn').innerHTML=COIN+' +'+earn;
  show('ov',false);show('res',true);
  if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
@@ -2681,6 +2681,7 @@ function txHud(){const h=$('txh'),c=$('evc'),f=$('txf'),e=$('evt');if(e&&e.style
  {const m=txMood(),v=Math.round(T.sat);if(T.mood!==m){T.mood=m;txFace($('txFc'),m);f.style.setProperty('--mc',TXMC[m])}set('txFp',String(v));const lb=T.rx?T.rx.l:(T.ph===2?TXMT[m]:'');set('txFt',lb);f.classList.toggle('bump',!!T.rx)}
  if(T.ph===2&&T.cin===0&&EV.endT<=0)evCnt(c,Math.max(0,EV.t));else{c.style.display='none';document.body.classList.remove('evcnt')}}
 const RES_STD=(document.querySelector('#res .card')||{}).innerHTML;
+function resFail(f){const c=document.querySelector('#res .card');if(c)c.style.display=f?'none':''}
 function resCardStd(){{const o=document.querySelector('#res>.evd');if(o)o.remove()}const c=document.querySelector('#res .card');if(c&&c.dataset.ev){c.dataset.ev='';c.innerHTML=RES_STD}}
 function evDeco(host,e,full){try{const o=host.querySelector(':scope>.evd');if(o)o.remove();if(!e)return;const ee=EVS.find(x=>x.id===e.id)||e,d=document.createElement('div');d.className='evd'+(full?'':' nb');
  d.innerHTML=(full?'<canvas class="evb" width="300" height="120"></canvas>':'')+'<canvas class="evp"></canvas><i class="evv"></i><i class="evs2"></i><div class="evn"><small>ETKİNLİK</small><b></b></div>';d.querySelector('b').textContent=ee.nm;
@@ -2703,7 +2704,7 @@ function evFinish(win){if(EV&&PVE.includes(EV.id))return rrDone(win);{const w=$(
  const dw=win&&isDR();let bonus=0;if(win&&!dw&&!evClaimed(e.id,e.cyc)){bonus=e.reward;try{localStorage.setItem('th_evc_'+e.id,String(e.cyc))}catch(x){}}
  const b0=evBest(e.id,e.cyc),rec=(win||dw)&&sc>b0;if(rec){try{localStorage.setItem('th_evb_'+e.id,JSON.stringify({c:e.cyc,s:sc}))}catch(x){}}
  const txT=(e.tx&&win&&TX)?(TX.tipC|0):0;if(!win&&!dw){sc=0;raceCoins=0}const earn=dw?100:(win?raceCoins+bonus+txT:0);coins+=earn;saveAcct();score=sc;if(win||dw)evRecAdd(e,sc,win);
- $('rtt').innerHTML=win?'KAZANDIN!':(e.tout?(e.tmsg||'SÜRE BİTTİ!'):'MAKSİMUM<br>HASAR');$('rtt').classList.toggle('scrap',!win&&!e.tout);evCard(e,win,txT);$('rs').textContent=sc;$('rs').classList.toggle('drp',isDR());$('rs').previousElementSibling.textContent=isDR()?'DRIFT PUANI':'TOPLAM PUAN';
+ $('rtt').innerHTML=win?'KAZANDIN!':(e.tout?(e.tmsg||'SÜRE BİTTİ!'):'MAKSİMUM<br>HASAR');$('rtt').classList.toggle('scrap',!win&&!e.tout);evCard(e,win,txT);resFail(!win&&!dw);$('rs').textContent=sc;$('rs').classList.toggle('drp',isDR());$('rs').previousElementSibling.textContent=isDR()?'DRIFT PUANI':'TOPLAM PUAN';
  $('rsub').textContent=!win&&!dw?(e.tx?(e.tmsg==='MÜŞTERİ<br>KAÇTI'?'Müşteriyi alamadın, müşteri gitti.':e.tmsg?'Varış noktasını geçtin, müşteriyi bırakamadın.':'Müşteriyi zamanında hedefe ulaştıramadın.'):e.tout?'Süre dolmadan hedefe ulaşamadın.':'Aracın tamamen hasar gördü.'):dw?(rec&&sc>0?'YENİ REKOR':''):(rec&&sc>0?'YENİ REKOR · ':'')+(bonus?'ETKİNLİK ÖDÜLÜ +'+bonus:win?'ÖDÜL BU DÖNEM ALINDI':'');$('rpl').textContent=win?'TEKRAR OYNA':(e.tout?'TEKRAR OYNA':'TEKRAR DENE');$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';$('nxl').style.display='none';$('rcn').innerHTML=COIN+' +'+earn;$('rbt2').style.display='flex';$('rlb').className='evrbtn';$('rlb').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d" stroke="#fff"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg><span>REKORLAR</span>';$('rdf').style.display='none';$('rbt2').dataset.ev=e.id;
  if(win){$('rtt').innerHTML='ETKİNLİĞİ<br>TAMAMLADIN'}$('rtt').classList.toggle('rtL',!!win);
  resBtns([{t:'LOBİ',i:RIC.lobby,f:toMenu},{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},{t:'ETKİNLİK REKORLARI',i:RIC.trophy,f:()=>{const i=EVS.findIndex(x=>x.id===e.id);if(i>=0){evrFromRes=true;evRecShow(i);show('res',false);show('evr',true)}}},{t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()}]);
@@ -2858,15 +2859,15 @@ function crRender(){const B=$('crbody'),c=CRC[crTab],tot=crSum(crTab);
  B.querySelectorAll('.crs').forEach(b=>b.onclick=()=>{const g=+b.dataset.g;if(!crOpen(g)){$('crmsg').textContent='Önce önceki bölümü tamamla';return}crSel=g;galCr=true;openGal()})}
 function crOpenScr(){crTab=CRST[crSel].c;$('crbal').innerHTML=COIN+'<span>'+coins+'</span>';crRender();show('ov',false);show('cr',true)}
 function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp').style.display='none';$('win').style.display='none';const s=CR,g=s.g;
- const dist=(win?FINISH:crashDist)/1000,bonus=win?Math.round((sel.km*200)*v7_coinM()):0;let earn=raceCoins+bonus,note='',stars=0,rw=null;
- lbAdd(Math.floor(score),dist);
+ const dist=(win?FINISH:crashDist)/1000,bonus=win?Math.round((sel.km*200)*v7_coinM()):0;let earn=win?raceCoins+bonus:0,note='',stars=0,rw=null;
+ if(win)lbAdd(Math.floor(score),dist);resFail(!win);
  if(win&&!s.wu){stars=dmgP<=0&&(dif<2||nosCnt>=3)?3:(dif===0?dmgP<85:dif===1?dmgP<50:dmgP<=0)?2:1;const old=crP[g];
   if(stars>old){earn+=(old?0:s.coin)+100*(stars-old);crP[g]=stars;crSave();
    if(!old&&s.car){const i=CARS.findIndex(x=>x[0]===s.car);if(i>=0&&!isOwned(i)){owned.add(s.car);rw=crCarName(s.car)}else if(i>=0)earn+=CARS[i][3]}}
   if(g<CRST.length-1&&crOpen(g+1))crSel=g+1}
  coins+=earn;saveAcct();
  $('rtt').innerHTML=win?(s.wu?'ISINMA TURUNU<br>TAMAMLADIN':esc(String(s.n).toLocaleUpperCase('tr'))+'<br>TAMAMLANDI'):'MAKSİMUM<br>HASAR';$('rtt').classList.toggle('scrap',!win);$('rtt').classList.toggle('rtL',!!win);$('rtt').classList.toggle('tbr',!!(win&&s.wu));$('rn').textContent=sel.name;$('rs').textContent=Math.floor(score);$('rm').textContent=dist.toFixed(2)+' km';
- $('rsub').innerHTML=win?(s.wu?s.hn+' · '+s.n:s.hn+' · '+crStr(stars)):'';
+ $('rsub').innerHTML=win?(s.wu?s.hn+' · '+s.n:s.hn+' · '+crStr(stars)):'Aracın tamamen hasar gördü.';
  const nx=win&&!s.wu&&g<CRST.length-1;$('rpl').textContent=win?(nx?'SONRAKİ BÖLÜM':'TEKRAR OYNA'):'TEKRAR DENE';$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';
  const nl=$('nxl');if(rw){nl.innerHTML='<small>KARİYER ÖDÜLÜ · YENİ ARAÇ</small><span class="nn">'+rw.toUpperCase()+'</span>';nl.style.display='block'}
  else if(nx&&win){nl.innerHTML='<small>SIRADAKİ BÖLÜM</small><span class="nn">'+CRST[g+1].n.toUpperCase()+'</span>';nl.style.display='block'}else nl.style.display='none';
