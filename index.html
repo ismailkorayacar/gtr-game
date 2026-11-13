@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v6.7</title>
+<title>gtr_game_v7.0</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1548,6 +1548,10 @@ body.lgup #tbp,body.lgup #tbb{display:none!important}
 #snsk{position:absolute;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff;border:3px solid #b06bff;box-shadow:0 0 14px rgba(176,107,255,.8)}
 #snsv{min-width:62px;text-align:right;font:900 20px/1 system-ui;color:#fff;font-style:italic}
 #snsl{display:flex;justify-content:space-between;font:700 12px/1 system-ui;color:rgba(255,255,255,.55);margin-top:-6px;position:relative;z-index:2}
+/* v7.0 giriş ekranı: ayarlar/puan tablosu gizli, logo ekranın ortasında; misafir şeridi lobiden kaldırıldı */
+body.lgup #tbs,body.lgup #lbb,body.lgup.ls #ov .mh #lbb,body.lgup #ov .mh .mr,body.lgup.ls #ov .mh .mr,body.lgup.ls #ov .mh .mr2{display:none!important}
+body.lgup #ov .mh .logo.gtr{position:fixed!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(var(--lgs,1.6))!important;transform-origin:center center!important;margin:0!important;z-index:3}
+#fbr{display:none!important}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -4208,7 +4212,7 @@ upd();setInterval(upd,800);
 (function(){
 const $$=id=>document.getElementById(id);
 const p=document.createElement('div');p.id='pfp';
-p.innerHTML='<div class="pfc"><button class="pfx" type="button" aria-label="Kapat">×</button><div class="pfa"><b id="pfi">P</b></div><div class="pfn" id="pfn">Pilot</div><div class="pfl" id="pfl"></div><div class="pfk" id="pfk"></div><button class="pfo" id="pfo" type="button">ÇIKIŞ</button></div>';
+p.innerHTML='<div class="pfc"><button class="pfx" type="button" aria-label="Kapat">×</button><div class="pfa"><b id="pfi">P</b></div><div class="pfn" id="pfn">Pilot</div><div class="pfl" id="pfl"></div><div class="pfk" id="pfk"></div><button class="pfo" id="pfg" type="button" style="display:none;align-items:center;justify-content:center;gap:10px"><svg viewBox="0 0 48 48" width="20" height="20"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg><span>GOOGLE\'A BAĞLA</span></button><button class="pfo" id="pfo" type="button">ÇIKIŞ</button></div>';
 document.body.appendChild(p);
 const close=()=>p.classList.remove('on');
 p.onclick=e=>{if(e.target===p)close()};p.querySelector('.pfx').onclick=close;
@@ -4217,9 +4221,9 @@ $$('tbp').onclick=()=>{
  const nm=($$('tbnm').textContent||'Pilot').trim();
  $$('pfn').textContent=nm;$$('pfi').textContent=nm.charAt(0)||'P';
  $$('pfl').textContent='Seviye '+$$('tblv').textContent;
- const t=$$('fbt');$$('pfk').textContent=t?t.textContent:'';
+ const t=$$('fbt');$$('pfk').textContent=t?t.textContent:'';{const g=$$('pfg');if(g)g.style.display=(t&&/Misafir/i.test(t.textContent)&&$$('fbL'))?'flex':'none'}
  p.classList.add('on')};
-$$('pfo').onclick=()=>{close();$$('fbX').click()};
+$$('pfo').onclick=()=>{close();$$('fbX').click()};$$('pfg').onclick=()=>{close();const b=$$('fbL');if(b)b.click()};
 })();
 /* ===== v5.0 etkinlik hero (moda göre) ===== */
 (function(){
@@ -4383,5 +4387,12 @@ t.addEventListener('pointermove',e=>{if(drag)apply(fromX(e.clientX))});
 ['pointerup','pointercancel'].forEach(n=>t.addEventListener(n,()=>{drag=false}));
 const sync=()=>{if(drag)return;const v=rd();window.__sens=v;draw(v)};sync();setInterval(sync,1500);
 }catch(e){console.error(e)}})();
+
+/* ===== v7.0 giriş ekranı logosu: ekranın ortası, butonlara binmeyecek şekilde ölçeklenir ===== */
+(function(){try{
+const fit=()=>{if(!document.body.classList.contains('lgup'))return;const lg=document.querySelector('#ov .mh .logo.gtr');if(!lg)return;const W=innerWidth,H=innerHeight,lw=lg.offsetWidth||157,lh=lg.offsetHeight||66,f=document.getElementById('fbl'),top=f&&f.offsetParent!==null?f.getBoundingClientRect().top:H*.72,half=Math.min(H/2-66,top-H/2-14);
+ const k=Math.max(.5,Math.min(.72*W/lw,2*half/lh,2.4));document.body.style.setProperty('--lgs',k.toFixed(3))};
+setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,200));
+}catch(e){}})();
 </script>
 </body></html>
