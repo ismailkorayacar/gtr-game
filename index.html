@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.98</title>
+<title>gtr_game_v4.99</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1441,6 +1441,39 @@ body.u2 #ms .msr .mp u{background:linear-gradient(90deg,#b06bff,#ffd24a)}
  body.u2 #ms #drbD{font-size:14px;padding:10px 6px;min-height:0;margin-top:8px}
  body.u2 #ms .drc{padding:3px 0}
 }
+/* ===== v4.99 Sonuç ===== */
+#res{background-color:#0a0620}
+#res::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--rh) center 35%/cover no-repeat}
+#res::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.68) 30%,rgba(8,4,26,.9) 100%)}
+#res:has(>.evd)::after,#res:has(>.evd)::before{display:none}
+#res>.st{display:none!important}
+body #res{padding:calc(env(safe-area-inset-top,0px) + 14px) 0 calc(env(safe-area-inset-bottom,0px) + 14px)!important;justify-content:flex-start!important;overflow-y:auto!important}
+body #res .rt{max-width:560px;min-height:100%;margin:0 auto;padding:0 14px;gap:10px;justify-content:flex-start}
+body #res #rbx{margin-top:auto;padding-top:6px}
+body #res .card{border:1.5px solid rgba(176,107,255,.55)!important;background:rgba(14,8,44,.72)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 0 18px rgba(140,70,255,.25)!important;border-radius:18px;padding:4px 16px}
+body #res .card,body #res #nxl,body #res #rbx{box-sizing:border-box}
+body #res .rr{padding:11px 0}
+body #res .rr b{font-size:20px}
+body #res #nxl{border:1.5px solid rgba(255,122,208,.7);background:rgba(14,8,44,.72)}
+body #res #rsub{font-style:italic}
+body #res #rtt.scrap{margin-top:0;transform:none}
+@media (orientation:landscape){
+ body #res{padding:calc(env(safe-area-inset-top,0px) + 10px) 0 calc(env(safe-area-inset-bottom,0px) + 10px)!important;overflow:hidden!important}
+ body #res .rt{max-width:none;width:100%;height:100%;min-height:0;padding:0 18px;display:grid;grid-template-columns:40% 1fr;grid-template-rows:auto auto auto 1fr;column-gap:20px;row-gap:8px;align-items:start;justify-items:stretch}
+ body #res #rtt{grid-column:1;grid-row:1;text-align:center}
+ body #res #rsub{grid-column:1;grid-row:2;text-align:center}
+ body #res #nxl{grid-column:1;grid-row:3}
+ body #res .card{grid-column:2;grid-row:1/4}
+ body #res #rbx{grid-column:2;grid-row:4;align-self:end;margin-top:0}
+ body #res .rr{padding:6px 0}
+ body #res .rr b{font-size:17px}
+ body #res .rr span{font-size:11px;letter-spacing:1.5px}
+ body #res .rbg .rbn{min-height:46px;padding-top:6px;padding-bottom:6px}
+ body #res #rtt{font-size:30px}
+ body #res #rtt.scrap{font-size:34px!important;margin-top:0;transform:none}
+ body #res:has(>.evd) #rtt{margin-top:50px}
+}
+@media (orientation:portrait){body #res:has(>.evd) .rt{padding-top:52px}}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -4088,6 +4121,7 @@ const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 const $$=id=>document.getElementById(id);
 const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 try{$$('ms').style.setProperty('background','#0a0620 url("'+A.hero.ev+'") center 35%/cover no-repeat','important')}catch(e){}
+try{$$('res').style.setProperty('--rh','url("'+A.hero.ci+'")')}catch(e){}
 try{$$('shop').style.setProperty('background','#0a0620 url("'+A.hero.dr+'") center 35%/cover no-repeat','important')}catch(e){}
 try{['evd','evr'].forEach(k=>$$(k).style.setProperty('background','#0a0620 url("'+A.hero.ev+'") center 35%/cover no-repeat','important'));$$('lb').style.setProperty('background','#0a0620 url("'+A.hero.ci+'") center 35%/cover no-repeat','important')}catch(e){}
 [...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=function(){if(vis('set'))show('set',false);if(vis('ms'))$$('ms').style.display='none';if(vis('shop')){if(i===4)return;$$('sback').click();if(vis('res'))return}const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
