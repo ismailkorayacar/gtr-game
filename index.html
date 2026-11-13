@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v7.7</title>
+<title>gtr_game_v7.8</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -3033,7 +3033,7 @@ function galStep(dt){if(!gM)gt+=dt;const W=innerWidth,H=innerHeight,n=gList.leng
   if(e>.002&&gWh){const gc=gList[gIdx],cxp=gc&&gc.car?gc.car.mesh.position.x:SX,Wx=cxp+gWh.lz,Wy=gWh.ly,Wz=SZ-gWh.lx,dd=1.75+gWh.r*1.3;px+=(Wx-.55-px)*e;py+=(Wy+.3-py)*e;pz+=(Wz-dd-pz)*e;lx+=(Wx-lx)*e;ly+=(Wy-ly)*e;lz+=(Wz-lz)*e}
   gCam.position.set(px,py,pz);gCam.lookAt(lx,ly,lz);
   const act=cuOn||gOff>.3||Math.abs(gOffX)>.5||gZ>.002;if(act||gCam._mod){const base=W/H<1?62:46;gCam.fov=base+(38-base)*e;gCam.setViewOffset(W,H,gLx(W,H),Math.round(H*.04+gOff),W,H);gCam.updateProjectionMatrix();gCam._mod=act}
-  if(cuOn&&!gLs(W,H)&&cuS&&(cuS.pg==='p'||cuS.pg==='n')){try{const cs=$('cus'),tp=cs?cs.getBoundingClientRect().top:0;gCam.updateMatrixWorld();const pv=new THREE.Vector3(SX,.6,SZ).project(gCam),ys=(1-pv.y)/2*H;if(isFinite(ys)&&tp>80)gFB=Math.max(-H,Math.min(H,gOff+(ys-(64+tp)/2)))}catch(x){}}else gFB=null}
+  if(cuOn&&!gLs(W,H)&&cuS&&(cuS.pg==='p'||cuS.pg==='n')){try{const cs=$('cus'),tp=cs?cs.getBoundingClientRect().top:0;gCam.updateMatrixWorld();const pv=new THREE.Vector3(SX,.6,SZ).project(gCam),ys=(1-pv.y)/2*H;if(isFinite(ys)&&tp>80)gFB=Math.max(-H,Math.min(H,gOff+(ys-(64+tp)/2)));window.__galTrk=1}catch(x){}}else{gFB=null;window.__galTrk=0}}
  galLabel();galLen()}
 let gPrevCol=0,gColTouched=false;
 
@@ -3456,10 +3456,10 @@ const CRST=[
 CRST.forEach((s,g)=>{s.g=g;s.i=g%5;s.km=[3,4,5,6,7][g%5];s.coin=200+60*g;s.hn=CRC[s.c].nm+' '+(s.i+1)});
 let crP=[];try{crP=JSON.parse(localStorage.getItem('th_cr')||'[]')}catch(e){}
 crP=CRST.map((s,g)=>Math.max(0,Math.min(3,+crP[g]||0)));
-const crOpen=g=>g===0||(g>0&&g<CRST.length&&crP[g-1]>0);
+const crOpen=g=>g===0||(g>0&&g<CRST.length&&(crP[g-1]>=3||crP[g]>0));
 const crSum=c=>crP.slice(c*5,c*5+5).reduce((a,b)=>a+b,0);
 const crCarName=k=>{const c=CARS.find(x=>x[0]===k);return c?c[1]:k};
-{const f=crP.findIndex(v=>!v);crSel=f<0?CRST.length-1:f}
+{const f=crP.findIndex(v=>v<3);crSel=f<0?CRST.length-1:f}
 let crTab=0,crArtC={};
 function crSave(){try{localStorage.setItem('th_cr',JSON.stringify(crP))}catch(e){}}
 // --- bayraklar ---
@@ -3552,19 +3552,19 @@ const CRM={1:['Gündüz'],2:['Gündüz',0,'Virajlı yol'],3:[0,'Yağmur'],4:['Ge
 function crInfo(th){const m=CRM[th];if(!m)return THS[th].n;const a=[];if(m[0])a.push(CRI.t+' '+m[0]);if(m[1])a.push(CRI.w+' '+m[1]);if(m[2])a.push(m[2]);return a.join(' · ')}
 const crStr=n=>'<span class="crst">'+[0,1,2].map(i=>'<s'+(i<n?' class="on"':'')+'>★</s>').join('')+'</span>';
 function crRender(){const B=$('crbody'),c=CRC[crTab],L=CRST.filter(s=>s.c===crTab);
- if(!L.some(s=>s.g===crSel))crSel=(L.find(s=>crOpen(s.g)&&!(crP[s.g]>0))||L[0]).g;
+ if(!L.some(s=>s.g===crSel))crSel=(L.find(s=>crOpen(s.g)&&crP[s.g]<3)||L[0]).g;
  const S=CRST[crSel],rw=S.car?crCarName(S.car):COIN+' +'+S.coin,th=S.car&&thumbs[S.car]?'<img alt="" src="'+thumbs[S.car]+'">':'';
  let h='<div class="k2t"><span class="k2f"></span><b>KARİYER MODU</b></div><div class="k2s">YARIŞ<i>•</i>KAZAN<i>•</i>YÜKSEL</div><div class="k2g"></div>';
  h+='<div class="k2c">'+CRC.map((x,i)=>{const lk=!crOpen(i*5);return '<button class="k2ct'+(i===crTab?' on':'')+(lk?' lk':'')+'" data-c="'+i+'"><canvas data-f="'+i+'" width="44" height="30"></canvas><span><b>'+x.nm+'</b><small>'+(lk?'🔒 KİLİTLİ':'★ '+crSum(i)+'/15')+'</small></span></button>'}).join('')+'</div>';
  h+='<div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
   return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+'<small>'+(cu?s.n:'')+'</small>'+(dn?crStr(crP[s.g]):'')+'</button>'}).join('')+'</div>';
  h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="crdf k2d"><em class="k2rl" id="crrule"></em><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
- h+='<p class="crhint">'+crInfo(S.th)+' · '+S.km+' km · Bölümü bitirince sıradaki açılır. Bir ülkeyi bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
+ h+='<p class="crhint">'+crInfo(S.th)+' · '+S.km+' km · Bölümü 3 yıldızla bitirince sıradaki açılır. Bir ülkenin tüm bölümlerini 3 yıldızla bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
  B.innerHTML=h;
  B.querySelectorAll('canvas[data-f]').forEach(cv=>crFlag(cv.getContext('2d'),+cv.dataset.f,2,2,cv.width-4,cv.height-4));
  B.querySelectorAll('.k2ct').forEach(b=>b.onclick=()=>{crTab=+b.dataset.c;crRender()});B.querySelectorAll('#dfr2 .dfb').forEach(b=>b.onclick=()=>dfPick(+b.dataset.d,false));dfMark();
- B.querySelectorAll('.k2h').forEach(b=>b.onclick=()=>{const g=+b.dataset.g;if(!crOpen(g)){$('crmsg').textContent='Önce önceki bölümü tamamla';return}crSel=g;crRender()});
- $('k2go').onclick=()=>{if(!crOpen(crSel)){$('crmsg').textContent='Önce önceki bölümü tamamla';return}galCr=true;openGal()}}
+ B.querySelectorAll('.k2h').forEach(b=>b.onclick=()=>{const g=+b.dataset.g;if(!crOpen(g)){$('crmsg').textContent='Önce önceki bölümü 3 yıldızla tamamla';return}crSel=g;crRender()});
+ $('k2go').onclick=()=>{if(!crOpen(crSel)){$('crmsg').textContent='Önce önceki bölümü 3 yıldızla tamamla';return}galCr=true;openGal()}}
 function crOpenScr(){crTab=CRST[crSel].c;$('crbal').innerHTML=COIN+'<span>'+coins+'</span>';crRender();show('ov',false);show('cr',true)}
 function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp').style.display='none';$('win').style.display='none';const s=CR,g=s.g;if(s.wu)mAdd('wu',1);
  const dist=(win?FINISH:crashDist)/1000,bonus=win&&!s.wu?Math.round((sel.km*200)*v7_coinM()):0;let earn=win&&!s.wu?raceCoins+bonus:0,note='',stars=0,rw=null;
@@ -4401,7 +4401,7 @@ const v3=new THREE.Vector3();
 window.__galLayout=function(W,H,live){const a=window.__galAnchor(W,H);let s=a.g.s,ax=a.x,ay=a.y;
  if(live){try{gCam.updateMatrixWorld();v3.set(SX,0,SZ).project(gCam);const p=new THREE.Vector3(SX,0,SZ).applyMatrix4(gCam.matrixWorldInverse),dep=-p.z;
   if(isFinite(v3.x)&&isFinite(v3.y)&&dep>.1){const ppmA=(H/2)/Math.tan(gCam.fov*Math.PI/360)/dep,ppmB=(H/2)/a.th/a.z;ax=(v3.x+1)/2*W;ay=(1-v3.y)/2*H;s=a.g.s*ppmA/ppmB}}catch(e){}}
- ay+=34*s;const iw=IW*s,ih=IH*s;let cx=ax+(IW/2-PX)*s,cy=ay+(IH/2-PY)*s;if(!a.g.ls&&ih>=H)cy=Math.min(cy,ih/2);else if(!a.g.ls)cy=H/2;return{cx,cy,iw,ih,ax,ay,s,d:a.g.d}};
+ ay+=34*s;const iw=IW*s,ih=IH*s;let cx=ax+(IW/2-PX)*s,cy=ay+(IH/2-PY)*s;if(!a.g.ls&&(ih>=H||window.__galTrk))cy=Math.min(cy,ih/2);else if(!a.g.ls)cy=H/2;return{cx,cy,iw,ih,ax,ay,s,d:a.g.d}};
 window.__galDraw=function(){const W=innerWidth,H=innerHeight,L=window.__galLayout(W,H,true);quad.scale.set(L.iw,L.ih,1);quad.position.set(L.cx-W/2,H/2-L.cy,0);fade.scale.copy(quad.scale);fade.position.copy(quad.position);bgCam.left=-W/2;bgCam.right=W/2;bgCam.top=H/2;bgCam.bottom=-H/2;bgCam.updateProjectionMatrix();
  const cc=new THREE.Color(),ca=ren.getClearAlpha();ren.getClearColor(cc);ren.setClearColor(0x15121d,1);ren.autoClear=false;ren.clear();ren.render(bgScene,bgCam);ren.render(gScene,gCam);ren.autoClear=true;ren.setClearColor(cc,ca)};
 }catch(e){console.error(e)}})();
