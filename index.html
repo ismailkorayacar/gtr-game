@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v7.1</title>
+<title>gtr_game_v7.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1269,6 +1269,11 @@ body.u2 #galst #gsn{font:italic 900 15px system-ui!important;color:#ffc24a;backg
 .e2c{touch-action:pan-x!important;overscroll-behavior-x:contain}
 .k2h small{display:flex;align-items:flex-start;justify-content:center;min-height:23px;text-align:center}
 .k2h .crst{min-height:14px}
+/* v7.2 bölüm adı alanı sabit 2 satır, dikey ortalı; ikon farkı telafi */
+.k2h small{display:flex;align-items:center;justify-content:center;height:24px;min-height:24px;max-height:24px;overflow:hidden;line-height:12px}
+.k2h:not(.cu) .k2x{margin-bottom:14px}
+@media (orientation:landscape){.k2h:not(.cu) .k2x{margin-bottom:9px}}
+.k2rt .k2rl{display:block;font-style:normal;font:600 10.5px/1.25 system-ui;color:#cbb8ff;margin-top:3px;height:auto}
 /* alt ekranlar: etkinlik detay, rekorlar, puan tablosu */
 #evd,#evr,#lb{background-color:#0a0620;background-size:cover;background-position:center 35%;background-repeat:no-repeat}
 #evd::before,#evr::before,#lb::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.6) 30%,rgba(8,4,26,.82) 100%)}
@@ -1443,7 +1448,7 @@ body.u2 #ms .msr .mp u{background:linear-gradient(90deg,#b06bff,#ffd24a)}
 }
 /* ===== v4.99 Sonuç ===== */
 #res{background-color:#0a0620}
-#res::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--rh) center 35%/cover no-repeat}
+#res::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),var(--rh) center 35%/cover no-repeat}
 #res::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.68) 30%,rgba(8,4,26,.9) 100%)}
 #res:has(>.evd)::after,#res:has(>.evd)::before{display:none}
 #res>.st{display:none!important}
@@ -1479,8 +1484,8 @@ body.u2 #setback,body.u2 #msback{padding:0!important;display:flex!important;alig
 body.u2 #setback svg,body.u2 #msback svg{display:block;margin:0}
 @media (orientation:landscape){body.u2 #evd #evdb{grid-template-rows:auto auto!important;grid-auto-rows:min-content}body.u2 #evd .evk{align-self:start;height:auto!important;overflow:visible}}
 /* ===== v5.0 hero: sabit %15 siyah katman ===== */
-#cr::before,#evs::before,#pm::before,#evd::before,#evr::before,#lb::before,#shop::before,body.u2 #set.lby::before,body.u2 #ms::before,#res::before{background:rgba(0,0,0,.15)!important}
-#ov[data-m=pre],body.ls #ov[data-m=pre]{background-image:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)),var(--hsp)!important}
+#cr::before,#evs::before,#pm::before,#evd::before,#evr::before,#lb::before,#shop::before,body.u2 #set.lby::before,body.u2 #ms::before,#res::before{background:transparent!important}
+#ov[data-m=pre],body.ls #ov[data-m=pre]{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),var(--hsp)!important}
 body.lgup #ov,body.lgup.ls #ov{background:transparent!important}
 body.lgup #ov::after{display:none!important}
 /* ===== v5.2 lobi mor gradient: butonların üstünde biter ===== */
@@ -1506,7 +1511,7 @@ body #set.igs .qrow button.on{background:linear-gradient(180deg,#ffe066,#ffb300)
  body #set.igs .sbx{width:calc((100% - 24px)/3)!important;max-width:none!important;margin:0!important;box-sizing:border-box}
  body #set.igs .sbx p{font-size:11px}
 }
-body #set.igs::before{background:rgba(0,0,0,.15)!important}
+body #set.igs::before{background:transparent!important}
 body #set.igs,body.ls #set.igs{overflow-y:auto!important;padding-top:calc(env(safe-area-inset-top,0px) + 66px)!important}
 /* ===== v5.3 üst bar puan kutusu ===== */
 #tb #tbpt{position:relative;align-self:center;display:inline-flex;align-items:center;background:linear-gradient(180deg,rgba(40,24,96,.82),rgba(18,10,52,.86))!important;color:#fff!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:999px;box-shadow:none!important;padding:3px 14px 3px 4px!important;font:800 14px system-ui!important;min-width:70px;gap:6px!important;height:34px;box-sizing:border-box;cursor:default}
@@ -3523,9 +3528,9 @@ function crRender(){const B=$('crbody'),c=CRC[crTab],L=CRST.filter(s=>s.c===crTa
  let h='<div class="k2t"><span class="k2f"></span><b>KARİYER MODU</b></div><div class="k2s">YARIŞ<i>•</i>KAZAN<i>•</i>YÜKSEL</div><div class="k2g"></div>';
  h+='<div class="k2c">'+CRC.map((x,i)=>{const lk=!crOpen(i*5);return '<button class="k2ct'+(i===crTab?' on':'')+(lk?' lk':'')+'" data-c="'+i+'"><canvas data-f="'+i+'" width="44" height="30"></canvas><span><b>'+x.nm+'</b><small>'+(lk?'🔒 KİLİTLİ':'★ '+crSum(i)+'/15')+'</small></span></button>'}).join('')+'</div>';
  h+='<div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
-  return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+(cu?'<small>'+s.n+'</small>':'')+(dn?crStr(crP[s.g]):'')+'</button>'}).join('')+'</div>';
- h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
- h+='<p class="crhint"><span id="crrule"></span><br>'+crInfo(S.th)+' · '+S.km+' km · Bölümü bitirince sıradaki açılır. Bir ülkeyi bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
+  return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+'<small>'+(cu?s.n:'')+'</small>'+(dn?crStr(crP[s.g]):'')+'</button>'}).join('')+'</div>';
+ h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small><em class="k2rl" id="crrule"></em></div>'+th+'</div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
+ h+='<p class="crhint">'+crInfo(S.th)+' · '+S.km+' km · Bölümü bitirince sıradaki açılır. Bir ülkeyi bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
  B.innerHTML=h;
  B.querySelectorAll('canvas[data-f]').forEach(cv=>crFlag(cv.getContext('2d'),+cv.dataset.f,2,2,cv.width-4,cv.height-4));
  B.querySelectorAll('.k2ct').forEach(b=>b.onclick=()=>{crTab=+b.dataset.c;crRender()});B.querySelectorAll('#dfr2 .dfb').forEach(b=>b.onclick=()=>dfPick(+b.dataset.d,false));dfMark();
@@ -4208,14 +4213,14 @@ const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home
 const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
 [['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb2').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
 const OT=['res','galw'];
-function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','#0a0620 url("'+A.hero.lg+'") center 35%/cover no-repeat','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
 window.evHero=function(e){const n=(e&&e.nm)||'';if(e&&e.drift||/^Drift/i.test(n))return A.hero.dr;if(e&&e.ta||/^Speedrun/i.test(n))return A.hero.sr;if(/^Sprint/i.test(n))return A.hero.sp;if(/^Circuit/i.test(n))return A.hero.ci;return A.hero.pv};
-window.evsBg=function(u){try{$$('evs').style.setProperty('background','#0a0620 url("'+u+'") center 30%/cover no-repeat','important')}catch(e){}};
+window.evsBg=function(u){try{$$('evs').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+u+'") center 30%/cover no-repeat #0a0620','important')}catch(e){}};
 try{if(!window.__evsPick)evsBg(A.hero.ev)}catch(e){}
-try{$$('cr').style.setProperty('background','#0a0620 url("'+A.hero.kr+'") center 30%/cover no-repeat','important')}catch(e){}
+try{$$('cr').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.kr+'") center 30%/cover no-repeat #0a0620','important')}catch(e){}
 setInterval(sync,500);sync();
 upd();setInterval(upd,800);
 })();
@@ -4239,7 +4244,7 @@ $$('pfo').onclick=()=>{close();$$('fbX').click()};$$('pfg').onclick=()=>{close()
 /* ===== v5.0 etkinlik hero (moda göre) ===== */
 (function(){
 const $$=id=>document.getElementById(id);
-const bg=(id,e)=>{try{$$(id).style.setProperty('background','#0a0620 url("'+evHero(e)+'") center 35%/cover no-repeat','important')}catch(x){}};
+const bg=(id,e)=>{try{$$(id).style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+evHero(e)+'") center 35%/cover no-repeat #0a0620','important')}catch(x){}};
 const eo=evOpen;evOpen=function(i){const r=eo.apply(this,arguments);bg('evd',EVS[i]);return r};
 const er=evRecShow;evRecShow=function(i){const r=er.apply(this,arguments);bg('evr',EVS[i]);return r};
 })();
@@ -4248,7 +4253,7 @@ const er=evRecShow;evRecShow=function(i){const r=er.apply(this,arguments);bg('ev
 const $$=id=>document.getElementById(id);
 try{
  const pm=$$('pm');
- pm.style.setProperty('background','#0a0620 url("'+A.hero.lg+'") center 30%/cover no-repeat','important');
+ pm.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 30%/cover no-repeat #0a0620','important');
  const h=document.createElement('div');h.className='pmh';h.innerHTML='<div class="k2t"><span class="k2f"></span><b>OYNA</b></div><div class="k2s">MODUNU SEÇ</div>';
  pm.insertBefore(h,$$('pml'));
  const m={wu:A.hero.sp,cr:A.hero.kr,ev:A.hero.ev,mp:A.hero.mp};
@@ -4266,10 +4271,10 @@ const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 (function(){
 const $$=id=>document.getElementById(id);
 const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
-try{$$('ms').style.setProperty('background','#0a0620 url("'+A.hero.ev+'") center 35%/cover no-repeat','important')}catch(e){}
+try{$$('ms').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.ev+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
 try{$$('res').style.setProperty('--rh','url("'+A.hero.lg+'")')}catch(e){}
-try{$$('shop').style.setProperty('background','#0a0620 url("'+A.hero.mp+'") center 35%/cover no-repeat','important')}catch(e){}
-try{$$('evd').style.setProperty('background','#0a0620 url("'+evHero(EVS[evSel])+'") center 35%/cover no-repeat','important');$$('evr').style.setProperty('background','#0a0620 url("'+evHero(EVS[evrSel])+'") center 35%/cover no-repeat','important');$$('lb').style.setProperty('background','#0a0620 url("'+A.hero.lg+'") center 35%/cover no-repeat','important')}catch(e){}
+try{$$('shop').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.mp+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
+try{$$('evd').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+evHero(EVS[evSel])+'") center 35%/cover no-repeat #0a0620','important');$$('evr').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+evHero(EVS[evrSel])+'") center 35%/cover no-repeat #0a0620','important');$$('lb').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
 [...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=function(){if(vis('set'))show('set',false);if(vis('ms'))$$('ms').style.display='none';if(vis('shop')){if(i===4)return;$$('sback').click();if(vis('res'))return}const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
 })();
 /* ===== v4.93 lobi videosu ===== */
@@ -4294,7 +4299,7 @@ function tick(){
  else{if(v.ended){v.currentTime=0;v.play().catch(()=>{})}setVol(v,1);if(v.paused&&!document.hidden)v.play().catch(()=>{})}
 }
 (function raf(){tick();requestAnimationFrame(raf)})();
-const LG=document.createElement('div');LG.id='lgh';LG.style.cssText='position:fixed;inset:0;z-index:8;pointer-events:none;display:none;background:#0a0620 url("'+A.hero.lg+'") center 35%/cover no-repeat';LG.innerHTML='<i style="position:absolute;inset:0;background:rgba(0,0,0,.15)"></i>';document.body.insertBefore(LG,document.body.firstChild);
+const LG=document.createElement('div');LG.id='lgh';LG.style.cssText='position:fixed;inset:0;z-index:8;pointer-events:none;display:none;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620';LG.innerHTML='';document.body.insertBefore(LG,document.body.firstChild);
 function lobby(){try{const o=$$('ov');return !!o&&getComputedStyle(o).display!=='none'&&o.dataset.m!=='pre'&&!document.hidden}catch(e){return false}}
 function loginUp(){try{const f=$$('fbl');return !!f&&getComputedStyle(f).display!=='none'}catch(e){return false}}
 const chk=()=>{const l=lobby(),lg=l&&loginUp(),v=l&&!lg;LG.style.display=lg?'block':'none';document.body.classList.toggle('lgup',lg);if(v&&!on)start();else if(!v&&on)stop()};window.__lobChk=chk;setInterval(chk,250);
@@ -4325,7 +4330,7 @@ drSqGraph=function(C){const out=C.createGain();out.gain.value=0;out.connect(C.de
 (function(){try{
 const $$=id=>document.getElementById(id);
 function heroFor(){try{const e=(typeof EV!=='undefined'&&EV)?(EVS.find(x=>x.id===EV.id)||EV):null;return e?evHero(e):A.hero.lg}catch(x){return A.hero.lg}}
-function setHero(u,f){const r=$$('res');r.classList.toggle('evfail',!!f);r.style.setProperty('--rh','url("'+u+'")');if(u===A.hero.lg)r.style.removeProperty('background');else r.style.setProperty('background','#0a0620 url("'+u+'") center 35%/cover no-repeat','important')}
+function setHero(u,f){const r=$$('res');r.classList.toggle('evfail',!!f);r.style.setProperty('--rh','url("'+u+'")');if(u===A.hero.lg)r.style.removeProperty('background');else r.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+u+'") center 35%/cover no-repeat #0a0620','important')}
 function topTot(e){try{const a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]');return a.length?(+a[0].s||0):0}catch(x){return 0}}
 const _rs=reset;reset=function(){try{setHero(A.hero.lg,0)}catch(x){}return _rs.apply(this,arguments)};
 const _ef=evFinish;evFinish=function(win){const e=EV;const sp=!!(e&&e.ta);const h=(win&&!sp)?A.hero.lg:heroFor();const r=_ef.apply(this,arguments);
