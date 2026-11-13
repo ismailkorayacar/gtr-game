@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.87</title>
+<title>gtr_game_v4.88</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1181,6 +1181,42 @@ body.u2n #snv{display:flex}
  #ov[data-m=pre] .pn{left:96px!important;width:auto!important;grid-template-columns:minmax(0,1.3fr) minmax(0,1.1fr) minmax(0,.9fr)!important;padding:6px 14px calc(env(safe-area-inset-bottom,0px) + 8px) 6px!important;gap:8px!important}
  #ov[data-m=pre] #wum{grid-template-columns:repeat(6,1fr)!important;gap:6px!important}
  #ov[data-m=pre] #wum .wub{height:52px!important}
+}
+/* ===== v4.88 profil pop-up, etkinlik kartı/süre, alt hizalama ===== */
+html.fbr.fbu #ov #nmw{display:none!important}
+#tbp{cursor:pointer;-webkit-tap-highlight-color:transparent}
+#pfp{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;background:rgba(6,3,22,.72);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+#pfp.on{display:flex}
+#pfp .pfc{position:relative;width:min(340px,86vw);box-sizing:border-box;padding:22px 20px 18px;border-radius:22px;border:2px solid rgba(176,107,255,.7);background:linear-gradient(180deg,rgba(52,30,128,.96),rgba(18,9,52,.98));box-shadow:0 0 34px rgba(150,80,255,.5),0 14px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;text-align:center}
+#pfp .pfa{width:76px;height:76px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#b06bff,#ff7ad0);box-shadow:0 0 20px rgba(176,107,255,.7)}
+#pfp .pfa b{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a2aa8,#1a0e55);font:900 34px system-ui;text-transform:uppercase}
+#pfp .pfn{font:italic 900 22px/1.1 system-ui;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#pfp .pfl{font:800 12px system-ui;color:#d8c6ff;letter-spacing:.6px}
+#pfp .pfk{font:800 10.5px system-ui;letter-spacing:1px;color:#ffc24a;text-transform:uppercase}
+#pfp .pfx{position:absolute;right:10px;top:10px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font:700 18px/1 system-ui;cursor:pointer}
+#pfp .pfo{margin-top:8px;width:100%;height:46px;border-radius:14px;border:2px solid #ff7ad0;background:linear-gradient(180deg,#8456ff,#4d28cc);box-shadow:0 3px 0 #231080;color:#fff;font:italic 900 15px system-ui;letter-spacing:.5px;text-transform:uppercase;cursor:pointer}
+/* etkinlik: süre kutusu */
+.e2b .e2tc{display:flex;gap:5px;margin:2px 0 0;padding:0;background:none;border:0;box-shadow:none}
+.e2tc u{text-decoration:none;display:flex;flex-direction:column;align-items:center;min-width:40px;padding:3px 4px;border-radius:9px;background:rgba(10,5,60,.7);border:1px solid rgba(255,190,80,.6)}
+.e2tc u b{font:italic 900 18px/1.05 system-ui;color:#ffc24a}
+.e2tc u i{font:800 8px system-ui;letter-spacing:.8px;color:#e8d8ff;font-style:normal}
+/* etkinlik kartı: görsel üstte, isim ve süre ayrı şeritte */
+.e2k{flex:0 0 164px!important;height:112px!important;display:flex!important;flex-direction:column}
+.e2k::after{display:none!important}
+.e2k canvas{position:relative!important;inset:auto!important;flex:1 1 auto;min-height:0;width:100%!important;height:auto!important}
+.e2k .e2ki{flex:0 0 auto;display:flex;flex-direction:column;gap:2px;padding:5px 8px 6px;background:linear-gradient(180deg,rgba(26,14,76,.96),rgba(12,6,38,.98))}
+.e2k .e2ki b{position:static!important;font:800 12px/1.15 system-ui;color:#fff;text-shadow:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.e2k .e2ki .evtp{position:static!important;margin:0;padding:0;background:none;border:0;box-shadow:none;font:700 10px system-ui;color:#ffd9a8;display:block;white-space:nowrap}
+.e2k .e2ki .evtp em{font:inherit;font-style:normal}
+/* alt hizalama: seçim alanları en altta, hero görünür */
+body.ls #evs #evl,body.ls #cr #crbody{display:flex!important;flex-direction:column;max-width:none!important}
+body.ls #evs #evl{overflow:hidden!important}
+body.ls #cr #crbody{overflow-y:auto!important}
+.k2g{flex:1 1 auto!important;min-height:0!important}
+@media (orientation:landscape){
+ #evs #evl,#cr #crbody{bottom:calc(env(safe-area-inset-bottom,0px) + 6px)!important}
+ .e2k{flex-basis:158px!important;height:98px!important}
+ .e2tc u{min-width:34px;padding:2px 3px}.e2tc u b{font-size:15px}
 }
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
@@ -2681,6 +2717,8 @@ const EVS=[
 const evCyc=e=>{const per=e.days*864e5,n=Math.floor((Date.now()-EVT0)/per);return{n,end:EVT0+(n+1)*per,th:e.id==='dc'?(((n%9)+9)%9)+2:e.th}};
 const EVSW='<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V9.5M10 3.5h4M12 3.5v3M18.5 6.5l1.4-1.4"/></svg>';
 const evFmtT=ms=>{const s=Math.max(0,Math.floor(ms/1000)),p=v=>String(v).padStart(2,'0');return p(Math.floor(s%86400/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60)};
+const evFmtL=ms=>{const s=Math.max(0,Math.floor(ms/1000)),p=v=>String(v).padStart(2,'0');return p(Math.floor(s/86400))+' gün '+p(Math.floor(s%86400/3600))+' sa '+p(Math.floor(s%3600/60))+' dk '+p(s%60)+' sn'};
+const evCells=ms=>{const s=Math.max(0,Math.floor(ms/1000)),p=v=>String(v).padStart(2,'0');return [[Math.floor(s/86400),'GÜN'],[Math.floor(s%86400/3600),'SAAT'],[Math.floor(s%3600/60),'DK'],[s%60,'SN']].map(x=>'<u><b>'+p(x[0])+'</b><i>'+x[1]+'</i></u>').join('')};
 const evFmt=ms=>{const s=Math.max(0,Math.floor(ms/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60,p=v=>String(v).padStart(2,'0');return(d?d+'g ':'')+p(h)+':'+p(m)+':'+p(x)};
 const evOK=(i,e)=>e.car?CARS[i][0]===e.car:(CARS[i][0]!=='RallyCar'&&CARS[i][0]!=='Taxi'&&CARS[i][2]<=e.max);
 function evBest(id,c){try{const o=JSON.parse(localStorage.getItem('th_evb_'+id)||'{}');return o.c===c?o.s:0}catch(e){return 0}}
@@ -2774,10 +2812,10 @@ function evArt(cv,e,c){try{const W=cv.width=300,H=cv.height=120,g=cv.getContext(
 var evFeat=-1;
 function evList(){const L=$('evl');L.innerHTML='';const ks=[...EVS.keys()].sort((x,y)=>evCyc(EVS[x]).end-evCyc(EVS[y]).end);if(!EVS[evFeat])evFeat=ks[0];
  const top=EVS[ks[0]],tc=evCyc(top);
- L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b"><small>SINIRLI SÜRELİ ETKİNLİK</small><small>KALAN SÜRE</small><span class="evtp" data-i="'+ks[0]+'"><em>'+evFmtT(tc.end-Date.now())+'</em></span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
+ L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b"><small>SINIRLI SÜRELİ ETKİNLİK</small><small>KALAN SÜRE</small><span class="e2tc evtp" data-i="'+ks[0]+'">'+evCells(tc.end-Date.now())+'</span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
  const C=$('e2c');
  ks.forEach(i=>{const e=EVS[i],c=evCyc(e),d=document.createElement('button');d.type='button';d.className='e2k'+(i===evFeat?' on':'');d.dataset.i=i;
-  d.innerHTML='<canvas></canvas><b>'+e.nm+'</b><span class="evtp" data-i="'+i+'">◷ <b>'+evFmtT(c.end-Date.now())+'</b></span>';
+  d.innerHTML='<canvas></canvas><div class="e2ki"><b>'+e.nm+'</b><span class="evtp" data-i="'+i+'">◷ <em>'+evFmtL(c.end-Date.now())+'</em></span></div>';
   evArt(d.querySelector('canvas'),e,c);d.onclick=()=>{evFeat=i;C.querySelectorAll('.e2k').forEach(x=>x.classList.toggle('on',+x.dataset.i===i));e2Feat()};C.appendChild(d)});
  e2Feat();$('evbal').innerHTML=COIN+' '+coins}
 function e2Feat(){const i=evFeat,e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n),f=$('e2f');if(!f||!e)return;
@@ -2993,7 +3031,7 @@ function evSide(){const e=EV;if(!e)return;hudG._ev=1;document.body.classList.tog
 
 $('evback').onclick=()=>{show('evs',false);if(fromPm)show('pm',true);else{show('ov',true);mark()}};
 $('evdback').onclick=()=>{show('evd',false);evList();show('evs',true)};
-setInterval(()=>{if($('evs').style.display==='flex'||$('evd').style.display==='flex'){document.querySelectorAll('.evt').forEach(s=>{const e=EVS[+s.dataset.i];if(e)s.textContent='◷ '+evFmt(evCyc(e).end-Date.now())});document.querySelectorAll('.evtp').forEach(s=>{const e=EVS[+s.dataset.i];if(!e)return;const r=evCyc(e).end-Date.now();s.lastChild.textContent=evFmtT(r);const n=s.parentNode.querySelector('.evdn');if(n)n.textContent=Math.floor(Math.max(0,r)/864e5)})}},1000);
+setInterval(()=>{if($('evs').style.display==='flex'||$('evd').style.display==='flex'){document.querySelectorAll('.evt').forEach(s=>{const e=EVS[+s.dataset.i];if(e)s.textContent='◷ '+evFmt(evCyc(e).end-Date.now())});document.querySelectorAll('.evtp').forEach(s=>{const e=EVS[+s.dataset.i];if(!e)return;const r=evCyc(e).end-Date.now();if(s.classList.contains('e2tc'))s.innerHTML=evCells(r);else s.lastChild.textContent=evFmtL(r);const n=s.parentNode.querySelector('.evdn');if(n)n.textContent=Math.floor(Math.max(0,r)/864e5)})}},1000);
 // ===== v2.39 KARİYER MODU =====
 const CRC=[
  {id:'my',nm:'MALEZYA',city:'Kuala Lumpur',lm:'Petronas İkiz Kuleleri'},
@@ -3116,9 +3154,9 @@ const crStr=n=>'<span class="crst">'+[0,1,2].map(i=>'<s'+(i<n?' class="on"':'')+
 function crRender(){const B=$('crbody'),c=CRC[crTab],L=CRST.filter(s=>s.c===crTab);
  if(!L.some(s=>s.g===crSel))crSel=(L.find(s=>crOpen(s.g)&&!(crP[s.g]>0))||L[0]).g;
  const S=CRST[crSel],rw=S.car?crCarName(S.car):COIN+' +'+S.coin,th=S.car&&thumbs[S.car]?'<img alt="" src="'+thumbs[S.car]+'">':'';
- let h='<div class="k2t"><span class="k2f"></span><b>KARİYER MODU</b></div><div class="k2s">YARIŞ<i>•</i>KAZAN<i>•</i>YÜKSEL</div>';
+ let h='<div class="k2t"><span class="k2f"></span><b>KARİYER MODU</b></div><div class="k2s">YARIŞ<i>•</i>KAZAN<i>•</i>YÜKSEL</div><div class="k2g"></div>';
  h+='<div class="k2c">'+CRC.map((x,i)=>{const lk=!crOpen(i*5);return '<button class="k2ct'+(i===crTab?' on':'')+(lk?' lk':'')+'" data-c="'+i+'"><canvas data-f="'+i+'" width="44" height="30"></canvas><span><b>'+x.nm+'</b><small>'+(lk?'🔒 KİLİTLİ':'★ '+crSum(i)+'/15')+'</small></span></button>'}).join('')+'</div>';
- h+='<div class="k2g"></div><div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
+ h+='<div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
   return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+(cu?'<small>'+s.n+'</small>':'')+(dn?crStr(crP[s.g]):'')+'</button>'}).join('')+'</div>';
  h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
  h+='<p class="crhint"><span id="crrule"></span><br>'+crInfo(S.th)+' · '+S.km+' km · Bölümü bitirince sıradaki açılır. Bir ülkeyi bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
@@ -3802,7 +3840,7 @@ const I={
 const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
 const out=f=>()=>{if(vis('cr')||vis('evs')){show('cr',false);show('evs',false);show('ov',true)}f()};
-[['home','ANA SAYFA',()=>{if(vis('cr')||vis('evs')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
+[['home','LOBİ',()=>{if(vis('cr')||vis('evs')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
 const OT=['pm','shop','ms','lb','res','evr','evd','gal','set','galw'];
 function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const on=(o||c)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
@@ -3812,5 +3850,22 @@ try{$$('evs').style.setProperty('background','#0a0620 url("'+A.hero.ev+'") cente
 try{$$('cr').style.setProperty('background','#0a0620 url("'+A.hero.kr+'") center 30%/cover no-repeat','important')}catch(e){}
 setInterval(sync,500);sync();
 upd();setInterval(upd,800);
+})();
+/* ===== v4.88 profil pop-up ===== */
+(function(){
+const $$=id=>document.getElementById(id);
+const p=document.createElement('div');p.id='pfp';
+p.innerHTML='<div class="pfc"><button class="pfx" type="button" aria-label="Kapat">×</button><div class="pfa"><b id="pfi">P</b></div><div class="pfn" id="pfn">Pilot</div><div class="pfl" id="pfl"></div><div class="pfk" id="pfk"></div><button class="pfo" id="pfo" type="button">ÇIKIŞ</button></div>';
+document.body.appendChild(p);
+const close=()=>p.classList.remove('on');
+p.onclick=e=>{if(e.target===p)close()};p.querySelector('.pfx').onclick=close;
+$$('tbp').onclick=()=>{
+ if(!$$('fbX'))return;
+ const nm=($$('tbnm').textContent||'Pilot').trim();
+ $$('pfn').textContent=nm;$$('pfi').textContent=nm.charAt(0)||'P';
+ $$('pfl').textContent='Seviye '+$$('tblv').textContent;
+ const t=$$('fbt');$$('pfk').textContent=t?t.textContent:'';
+ p.classList.add('on')};
+$$('pfo').onclick=()=>{close();$$('fbX').click()};
 })();
 </script></body></html>
