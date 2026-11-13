@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.94</title>
+<title>gtr_game_v4.95</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1347,6 +1347,43 @@ body.u2:not(.u2n) #gal #galst,body.u2:not(.u2n) #gal #galt{top:calc(env(safe-are
 @media (orientation:portrait){
  body.u2n #gal #cus{bottom:calc(env(safe-area-inset-bottom,0px) + 74px)!important}
 }
+/* ===== v4.95 Market ===== */
+#shop{background-color:#0a0620;background-size:cover;background-position:center 35%;background-repeat:no-repeat}
+#shop::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.62) 30%,rgba(8,4,26,.84) 100%)}
+#shop>.st{display:none!important}
+#shop>.sh{justify-content:center!important;position:absolute!important;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);height:46px;box-sizing:border-box;padding:2px 14px 0!important;max-width:none!important;width:auto!important;z-index:3}
+#shop .logo.sm{font:italic 900 24px/1 system-ui!important;background:none!important;color:#fff!important;-webkit-text-fill-color:#fff;filter:none!important;text-shadow:0 0 18px rgba(176,107,255,.9),0 2px 0 rgba(0,0,0,.4)}
+#shop #sbal{display:none!important}
+#shop>.sh #sback{position:absolute;left:14px;top:2px}
+#shop>.stabs{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 110px);z-index:3;width:auto;padding:0 14px 6px;gap:10px}
+#shop>.stabs button{height:40px;padding:0 6px;border-radius:12px!important;border:1.5px solid rgba(176,107,255,.6)!important;background:linear-gradient(180deg,rgba(40,24,100,.82),rgba(16,9,48,.9))!important;color:#fff!important;font:italic 900 13px system-ui;box-shadow:none!important}
+#shop>.stabs button::after{display:none!important}
+#shop>.stabs button.on{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border-color:rgba(255,255,255,.6)!important;box-shadow:0 0 14px rgba(255,179,0,.45)!important}
+#shop #sgrid{position:absolute!important;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 158px);bottom:calc(env(safe-area-inset-bottom,0px) + 144px);width:auto!important;max-width:none!important;padding:4px 14px 8px!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:2;flex:none!important;touch-action:pan-y;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#shop #sgrid .cd{border-radius:16px!important;border:1.5px solid rgba(176,107,255,.55)!important;background:linear-gradient(180deg,rgba(40,24,100,.78),rgba(16,9,48,.88))!important;box-shadow:0 0 12px rgba(140,70,255,.25)!important}
+#shop #sgrid .cd.on{border-color:#ffc24a!important;box-shadow:0 0 16px rgba(255,194,74,.55)!important}
+#shop #sgrid .cd .cn2{font-style:italic}
+#shop #sgrid .pr2 .pc,#shop #sgrid .bp{color:#ffe9a8}
+#shop #sgrid .adc{border-radius:10px;border:1.5px solid rgba(176,107,255,.7);background:rgba(40,24,100,.8);color:#fff}
+#shop #sgrid .pbuy,#shop #sbuy{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
+#shop #sbuy{transform:skewX(-8deg);border-radius:14px!important}
+#shop #sbuy::after{display:none!important}
+#shop #sbuy.dim{filter:grayscale(.5) brightness(.8)}
+#shop #sad{background:linear-gradient(180deg,rgba(40,24,100,.85),rgba(16,9,48,.92))!important;border:1.5px solid rgba(176,107,255,.7)!important;box-shadow:0 0 12px rgba(140,70,255,.25)!important;color:#fff!important;border-radius:14px!important;font-style:italic}
+#shop #sad::after{display:none!important}
+body.u2 #shop div.sbar{position:absolute!important;left:0!important;right:0!important;bottom:calc(env(safe-area-inset-bottom,0px) + 78px)!important;transform:none!important;width:auto!important;padding:6px 14px!important;background:linear-gradient(180deg,rgba(8,4,26,0),rgba(8,4,26,.85) 45%)!important;z-index:4;gap:12px}
+body.u2 #shop div.sbar .btn{height:52px;min-height:0}
+@media (orientation:landscape){
+ #shop>.sh{left:96px;right:auto;width:60px!important}
+ #shop #sgrid{bottom:calc(env(safe-area-inset-bottom,0px) + 8px)!important}
+ #shop:has(.sbar[style*=flex]) #sgrid{bottom:calc(env(safe-area-inset-bottom,0px) + 58px)!important}
+ #shop>.sh .logo{display:none}
+ #shop>.stabs{left:162px;top:calc(env(safe-area-inset-top,0px) + 64px)}
+ #shop #sgrid{left:96px;top:calc(env(safe-area-inset-top,0px) + 116px);bottom:calc(env(safe-area-inset-bottom,0px) + 56px);grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ body.u2 #shop div.sbar{left:96px!important;bottom:calc(env(safe-area-inset-bottom,0px) + 4px)!important}
+ body.u2 #shop div.sbar .btn{height:46px}
+}
+#shop .cd.cant{opacity:.78!important}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -2101,7 +2138,7 @@ function renderShop(){shopTabUI();if(shopTab==='p')return renderPU();const g=$('
   d.innerHTML='<div class="spb"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#ff7ad0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/></svg>'+c[2]+' km/s</div><div class="im"'+(thumbs[c[0]]?' style="background-image:url('+thumbs[c[0]]+')"':'')+'></div><div class="cn2">'+c[1]+'</div><div class="pr2'+(o?' ok':'')+'">'+(o?'Garajda':'<span class="pc">'+COIN+' '+c[3]+'</span><button class="adc" data-i="'+i+'">▶ REKLAM</button>')+'</div>';
   d.onclick=()=>{shopSel=i;renderShop()};{const ab=d.querySelector('.adc');if(ab)ab.onclick=e=>{e.stopPropagation();shopSel=i;adWatch(i)}};g.appendChild(d)});
  $('sbal').innerHTML=COIN+'<span>'+coins+'</span>';if(shopSel<0)return;const c=CARS[shopSel],o=isOwned(shopSel),b=$('sbuy');
- if(o){b.classList.remove('b2l');b.textContent='✓';b.disabled=true}else{b.classList.add('b2l');b.innerHTML='<span>SATIN AL</span><span class="bp">'+COIN+'<i style="font-style:inherit">'+c[3]+'</i></span>';b.disabled=false;b.classList.toggle('dim',coins<c[3])}$('sad').style.display=!o?'flex':'none'}
+ if(o){b.classList.remove('b2l');b.textContent='✓';b.disabled=true}else{b.classList.add('b2l');b.innerHTML='<span>SATIN AL</span><span class="bp">'+COIN+'<i style="font-style:inherit">'+c[3]+'</i></span>';b.disabled=false;b.classList.toggle('dim',coins<c[3])}$('sad').style.display=!o?'flex':'none';document.querySelector('#shop .sbar').style.display=(o||shopTab==='p')?'none':'flex'}
 function ensureThumbs(){if(thBusy||CARS.every(c=>thumbs[c[0]]))return;thBusy=true;
  try{const ts=new THREE.Scene();if(!skyC.day)skyC.day=mkSky(THS[1]);ts.environment=skyC.day.env;ts.add(new THREE.HemisphereLight(0xffffff,0x6a5a80,.5));const dl=new THREE.DirectionalLight(0xffffff,1.5);dl.position.set(4,6,-4);ts.add(dl);
   const tc=new THREE.PerspectiveCamera(32,1.6,.1,50);tc.position.set(4.6,1.7,-5.4);tc.lookAt(0,.55,0);const W=384,H=240,rt=new THREE.WebGLRenderTarget(W,H);rt.texture.encoding=THREE.sRGBEncoding;
@@ -2629,7 +2666,7 @@ function pwUI(){const k=[pu.sh,shieldOn||invT>0,pu.mg,magT>0,Math.ceil(magT)].jo
 function pwBtn(id,fn){const b=$(id);b.addEventListener('pointerdown',e=>{e.stopPropagation();e.preventDefault();if(RR)return;fn()});b.addEventListener('contextmenu',e=>e.preventDefault())}
 pwBtn('pw1',()=>{if(st!=='race')return;if(EV&&(EV.id==='dc'||EV.tx)){banner('BU ETKİNLİKTE GÜÇLENDİRİCİ YOK');return}if(shieldOn)return;if(pu.sh<1){toast('Kalkan yok · Mağaza > Güçlendiriciler');return}pu.sh--;savePu();shieldOn=true;sfx('pick');banner('KALKAN AKTİF');pwUI()});
 pwBtn('pw2',()=>{if(st!=='race')return;if(EV&&(EV.id==='dc'||EV.tx)){banner('BU ETKİNLİKTE GÜÇLENDİRİCİ YOK');return}if(magT>0)return;if(pu.mg<1){toast('Mıknatıs yok · Mağaza > Güçlendiriciler');return}pu.mg--;savePu();magT=10;sfx('pick');banner('MIKNATIS · 10 SN');pwUI()});
-function shopTabUI(){$('stA').classList.toggle('on',shopTab==='c');$('stP').classList.toggle('on',shopTab==='p');document.querySelector('#shop .sbar').style.display=(shopTab==='p'||shopSel<0)?'none':'flex'}
+function shopTabUI(){$('stA').classList.toggle('on',shopTab==='c');$('stP').classList.toggle('on',shopTab==='p');document.querySelector('#shop .sbar').style.display=(shopTab==='p'||shopSel<0||isOwned(shopSel))?'none':'flex'}
 $('stA').onclick=()=>{shopTab='c';renderShop()};$('stP').onclick=()=>{shopTab='p';renderShop()};
 const PUS=[{k:'sh',pr:100,n:'KALKAN',d:'Etkinken bir araca vurduğunda, araç hasar almaz.',svg:document.querySelector('#pw1 svg').outerHTML},{k:'mg',pr:100,n:'MIKNATIS',d:'10 saniye boyunca yoldaki P puanlarını sana çeker.',svg:document.querySelector('#pw2 svg').outerHTML}];
 const canAfford=p=>coins>=p;
@@ -3943,8 +3980,8 @@ const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).displ
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
 const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
 [['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
-const OT=['shop','ms','res','set','galw'];
-function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('lb')?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+const OT=['ms','res','set','galw'];
+function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('shop')?i===4:vis('lb')?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
@@ -3993,8 +4030,9 @@ const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 (function(){
 const $$=id=>document.getElementById(id);
 const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
+try{$$('shop').style.setProperty('background','#0a0620 url("'+A.hero.dr+'") center 35%/cover no-repeat','important')}catch(e){}
 try{['evd','evr'].forEach(k=>$$(k).style.setProperty('background','#0a0620 url("'+A.hero.ev+'") center 35%/cover no-repeat','important'));$$('lb').style.setProperty('background','#0a0620 url("'+A.hero.ci+'") center 35%/cover no-repeat','important')}catch(e){}
-[...$$('snv').children].forEach(b=>{const f=b.onclick;b.onclick=function(){const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
+[...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=function(){if(vis('shop')){if(i===4)return;$$('sback').click();if(vis('res'))return}const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
 })();
 /* ===== v4.93 lobi videosu ===== */
 (function(){
