@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v6.4</title>
+<title>gtr_game_v6.5</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2581,7 +2581,7 @@ function tunBuild(){tunG.children.forEach(o=>{if(o.geometry)o.geometry.dispose()
   const prof=s=>{let k=1;const L=P0.L;while(k<L.length-1&&L[k]<s)k++;const t=Math.max(0,Math.min(1,(s-L[k-1])/Math.max(1e-6,L[k]-L[k-1]))),a=P0.p[k-1],b=P0.p[k],dx=b[0]-a[0],dy=b[1]-a[1],dl=Math.hypot(dx,dy)||1;return{x:a[0]+dx*t,y:a[1]+dy*t,nx:dy/dl,ny:-dx/dl}};
   const band=(s0,s1,nS,zList,len,mat,arrow)=>{const pos=[],uv=[],idx=[];let vc=0;
    for(const sd of[-1,1])for(const zA of zList){const nz=arrow?1:Math.max(1,Math.round(len/6)),off=.07;
-    for(let i=0;i<=nz;i++){const z=zA-len*i/nz,x0=cx(z);for(let r=0;r<=nS;r++){const q=prof(s0+(s1-s0)*r/nS),wx=sd<0?q.x+q.nx*off:-q.x-q.nx*off;pos.push(x0+wx,q.y+q.ny*off,z);uv.push(arrow?(sd<0?i/nz:1-i/nz):i/nz,r/nS)}}
+    for(let i=0;i<=nz;i++){const z=zA-len*i/nz,x0=cx(z);for(let r=0;r<=nS;r++){const q=prof(s0+(s1-s0)*r/nS),wx=sd<0?q.x+q.nx*off:-q.x-q.nx*off;pos.push(x0+wx,q.y+q.ny*off,z);uv.push(arrow?(sd<0?1-i/nz:1-i/nz):i/nz,r/nS)}}
     for(let i=0;i<nz;i++)for(let r=0;r<nS;r++){const a=vc+i*(nS+1)+r,b=a+1,c=a+nS+1,d=c+1;idx.push(a,c,b,b,c,d)}vc+=(nz+1)*(nS+1)}
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);const m=new THREE.Mesh(g,mat);m.frustumCulled=false;m.renderOrder=2;return m};
   const pol={polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3,side:THREE.DoubleSide,fog:false,toneMapped:false};
