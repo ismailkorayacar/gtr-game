@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.82</title>
+<title>gtr_game_v4.83</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1711,7 +1711,7 @@ const RIC={career:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" f
  wu:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1.4" fill="white"/></svg>'};
 const icUrl=v=>'url("data:image/svg+xml,'+encodeURIComponent(v)+'")';
 function resBtns(items,cls){const x=$('rbx');if(!x)return;x.className='rbg'+(cls?' '+cls:'');x.innerHTML='';items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='btn rbn'+(it.p?' p':'');b.textContent=it.t;b.style.setProperty('--ic',icUrl(it.i));b.onclick=it.f;x.appendChild(b)})}
-function toMenu(){rrClean();ovMode('home');if(EV){EV=null;sel.lv=evSaveLv}if(evSaveCar>=0){sel.car=evSaveCar;evSaveCar=-1}if(evDf>=0){dif=evDf;evDf=-1}try{applyTheme(1)}catch(e){}reset();setCar();st='menu';show('res',false);show('lb',false);show('shop',false);show('ov',true);mark()}
+function toMenu(){rrClean();ovMode('home');if(EV){EV=null;sel.lv=evSaveLv}if(evSaveCar>=0){sel.car=evSaveCar;evSaveCar=-1}if(evDf>=0){dif=evDf;evDf=-1}reset();setCar();st='menu';show('res',false);show('lb',false);show('shop',false);show('ov',true);mark()}
 function lbTot(){let T=null,a=[];try{T=JSON.parse(localStorage.getItem('th_lbt')||'null')}catch(e){}if(!T){T={};try{a=JSON.parse(localStorage.getItem('th_lb')||'[]')}catch(e){}a.forEach(e=>{T[e.n]=(T[e.n]||0)+e.s})}return T}
 function lbAdd(s,k){let a=[];try{a=JSON.parse(localStorage.getItem('th_lb')||'[]')}catch(e){}const T=lbTot();T[sel.name]=(T[sel.name]||0)+s;try{localStorage.setItem('th_lbt',JSON.stringify(T))}catch(x){}const e={id:Date.now(),n:sel.name,s,k,l:sel.lv,c:CARS[sel.car][1]};a.push(e);a.sort((x,y)=>y.s-x.s);a=a.slice(0,50);try{localStorage.setItem('th_lb',JSON.stringify(a))}catch(x){}lastLb=e.id}
 function showLb(){const T=lbTot(),a=Object.keys(T).map(n=>({n,s:T[n]})).filter(x=>x.s>0).sort((x,y)=>y.s-x.s),L=$('lbl');L.innerHTML='';
@@ -1918,7 +1918,7 @@ function lvmShow(on){$('lvm').style.display=on?'flex':'none'}
 $('lvt').onclick=()=>{const L=sel.lv;if(L>5||L<=(v7_ul[10]||1))return;$('lvmT').textContent='SEVİYE '+L;$('lvmP').textContent=L+'. seviyeye ilerlemeyi 2000 coin karşılığında satın almak ister misiniz?';$('lvmE').textContent='';lvmShow(true)};
 $('lvmno').onclick=()=>lvmShow(false);
 $('lvmok').onclick=()=>{const L=sel.lv;if(L>5||L<=(v7_ul[10]||1)){lvmShow(false);return}if(coins<2000){$('lvmE').textContent='Yetersiz bakiye';return}coins-=2000;v7_ul[10]=Math.max(v7_ul[10]||1,L);saveAcct();try{localStorage.setItem('th_ul',JSON.stringify(v7_ul))}catch(e){}$('bal').innerHTML=COIN+'<span>'+coins+'</span>';lvmShow(false);v7_lvMark()};
-function v7_lvMark(){wuMark();if($('ov').dataset.m!=='pre'){try{applyTheme(1)}catch(e){}}}
+function v7_lvMark(){wuMark()}
 
 // ---------- v8: seviye temaları ----------
 const DAYSK=[[0,'#1a55b0'],[.3,'#4a93e0'],[.48,'#a4cdf2'],[.56,'#e6f0f9'],[1,'#a3b3a2']];
