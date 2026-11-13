@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.99</title>
+<title>gtr_game_v4.100</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1365,8 +1365,8 @@ body.u2:not(.u2n) #gal #galst,body.u2:not(.u2n) #gal #galt{top:calc(env(safe-are
 #shop #sgrid .cd .cn2{font-style:italic}
 #shop #sgrid .pr2 .pc,#shop #sgrid .bp{color:#ffe9a8}
 #shop #sgrid .adc{border-radius:10px;border:1.5px solid rgba(176,107,255,.7);background:rgba(40,24,100,.8);color:#fff}
-#shop #sgrid .pbuy,#shop #sbuy{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
-#shop #sbuy{transform:skewX(-8deg);border-radius:14px!important}
+#shop #sgrid .pbuy,#shop #sbuy,#shop #sad{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
+#shop #sbuy,#shop #sad{transform:skewX(-8deg);border-radius:14px!important}
 #shop #sbuy::after{display:none!important}
 #shop #sbuy.dim{filter:grayscale(.5) brightness(.8)}
 #shop #sad{background:linear-gradient(180deg,rgba(40,24,100,.85),rgba(16,9,48,.92))!important;border:1.5px solid rgba(176,107,255,.7)!important;box-shadow:0 0 12px rgba(140,70,255,.25)!important;color:#fff!important;border-radius:14px!important;font-style:italic}
@@ -1474,6 +1474,7 @@ body #res #rtt.scrap{margin-top:0;transform:none}
  body #res:has(>.evd) #rtt{margin-top:50px}
 }
 @media (orientation:portrait){body #res:has(>.evd) .rt{padding-top:52px}}
+#shop #sad{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
