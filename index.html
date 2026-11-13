@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.88</title>
+<title>gtr_game_v4.89</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1217,6 +1217,35 @@ body.ls #cr #crbody{overflow-y:auto!important}
  #evs #evl,#cr #crbody{bottom:calc(env(safe-area-inset-bottom,0px) + 6px)!important}
  .e2k{flex-basis:158px!important;height:98px!important}
  .e2tc u{min-width:34px;padding:2px 3px}.e2tc u b{font-size:15px}
+}
+/* ===== v4.89 Oyna menüsü ===== */
+#pm{background-color:#0a0620;background-size:cover;background-position:center 30%;background-repeat:no-repeat}
+#pm::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.55) 0,rgba(8,4,26,0) 18%,rgba(8,4,26,0) 40%,rgba(8,4,26,.6) 72%,rgba(8,4,26,.92) 100%)}
+#pm>.sh{display:none!important}
+#pm .pmh{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px}
+#pm #pml,body.ls #pm #pml{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 74px);padding:6px 14px 8px;box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:flex-end;gap:10px;overflow:hidden!important;max-width:none!important;flex:none;width:auto!important}
+#pm .pmc{min-height:0;height:96px;flex:0 0 auto;padding:10px 14px 10px 18px;border-radius:18px;border:2px solid rgba(176,107,255,.65);background:linear-gradient(90deg,rgba(14,7,44,.96) 0,rgba(14,7,44,.72) 52%,rgba(14,7,44,.08) 100%),var(--img) center/cover no-repeat #150a48;box-shadow:0 0 16px rgba(140,70,255,.35)}
+#pm .pmc::before{display:none}
+#pm .pmc .pma{display:none}
+#pm .pmc .gc{font-size:28px;color:#ffc24a}
+#pm .pmt b{font:italic 900 24px/1 system-ui;letter-spacing:0;color:#fff;-webkit-text-fill-color:#fff;background:none;text-shadow:0 0 16px rgba(176,107,255,.9),0 2px 0 rgba(0,0,0,.4)}
+#pm .pmt b br{display:none}
+#pm .pmt em{font:700 12px/1.25 system-ui;color:#e0d4ff}
+#pm .pmc[data-k=mp]{filter:grayscale(.55) brightness(.85)}
+#pm #pmmsg{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 74px);padding:0 14px 4px;z-index:3;transform:translateY(-100%)}
+@media (orientation:landscape){
+ #pm::before{background:linear-gradient(180deg,rgba(8,4,26,.45) 0,rgba(8,4,26,0) 20%,rgba(8,4,26,0) 46%,rgba(8,4,26,.5) 70%,rgba(8,4,26,.88) 100%)}
+ #pm{background-position:center 42%}
+ #pm .pmh{left:96px;top:calc(env(safe-area-inset-top,0px) + 62px)}
+ #pm .pmh .k2s{display:block;font-size:10px}
+ #pm #pml,body.ls #pm #pml{left:96px;bottom:calc(env(safe-area-inset-bottom,0px) + 6px);flex-direction:row;padding:4px 18px 4px;gap:10px}
+ #pm #pml,body.ls #pm #pml{align-items:flex-end}
+ #pm .pmc{width:auto;flex:1 1 0;min-width:0;height:150px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:10px 12px;background:linear-gradient(180deg,rgba(14,7,44,0) 25%,rgba(14,7,44,.94) 85%),var(--img) center/cover no-repeat #150a48}
+ #pm .pmc .gc{position:absolute;right:10px;top:8px;font-size:22px}
+ #pm .pmt{flex:none;width:100%}
+ #pm .pmt b{font-size:19px}
+ #pm .pmt em{font-size:10.5px}
+ #pm #pmmsg{bottom:calc(env(safe-area-inset-bottom,0px) + 162px);left:96px}
 }
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
@@ -3839,10 +3868,10 @@ const I={
  mrk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h3l2.2 11.2a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.2L20.6 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>'};
 const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
-const out=f=>()=>{if(vis('cr')||vis('evs')){show('cr',false);show('evs',false);show('ov',true)}f()};
-[['home','LOBİ',()=>{if(vis('cr')||vis('evs')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
-const OT=['pm','shop','ms','lb','res','evr','evd','gal','set','galw'];
-function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const on=(o||c)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
+[['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
+const OT=['shop','ms','lb','res','evr','evd','gal','set','galw'];
+function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const pmv=vis('pm'),on=(o||c||pmv)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
@@ -3867,5 +3896,18 @@ $$('tbp').onclick=()=>{
  const t=$$('fbt');$$('pfk').textContent=t?t.textContent:'';
  p.classList.add('on')};
 $$('pfo').onclick=()=>{close();$$('fbX').click()};
+})();
+/* ===== v4.89 Oyna menüsü ===== */
+(function(){
+const $$=id=>document.getElementById(id);
+try{
+ const pm=$$('pm');
+ pm.style.setProperty('background','#0a0620 url("'+A.hero.ci+'") center 30%/cover no-repeat','important');
+ const h=document.createElement('div');h.className='pmh';h.innerHTML='<div class="k2t"><span class="k2f"></span><b>OYNA</b></div><div class="k2s">MODUNU SEÇ</div>';
+ pm.insertBefore(h,$$('pml'));
+ const m={wu:A.hero.sp,cr:A.hero.kr,ev:A.hero.ev,mp:A.hero.dr};
+ document.querySelectorAll('.pmt b').forEach(x=>x.innerHTML=x.innerHTML.replace(/<br\s*\/?>/g,' '));
+ document.querySelectorAll('.pmc').forEach(b=>b.style.setProperty('--img','url("'+m[b.dataset.k]+'")'));
+}catch(e){}
 })();
 </script></body></html>
