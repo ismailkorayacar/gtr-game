@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.80</title>
+<title>gtr_game_v4.81</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1918,7 +1918,7 @@ function lvmShow(on){$('lvm').style.display=on?'flex':'none'}
 $('lvt').onclick=()=>{const L=sel.lv;if(L>5||L<=(v7_ul[10]||1))return;$('lvmT').textContent='SEVİYE '+L;$('lvmP').textContent=L+'. seviyeye ilerlemeyi 2000 coin karşılığında satın almak ister misiniz?';$('lvmE').textContent='';lvmShow(true)};
 $('lvmno').onclick=()=>lvmShow(false);
 $('lvmok').onclick=()=>{const L=sel.lv;if(L>5||L<=(v7_ul[10]||1)){lvmShow(false);return}if(coins<2000){$('lvmE').textContent='Yetersiz bakiye';return}coins-=2000;v7_ul[10]=Math.max(v7_ul[10]||1,L);saveAcct();try{localStorage.setItem('th_ul',JSON.stringify(v7_ul))}catch(e){}$('bal').innerHTML=COIN+'<span>'+coins+'</span>';lvmShow(false);v7_lvMark()};
-function v7_lvMark(){wuMark()}
+function v7_lvMark(){wuMark();if($('ov').dataset.m!=='pre'){try{applyTheme(1)}catch(e){}}}
 
 // ---------- v8: seviye temaları ----------
 const DAYSK=[[0,'#1a55b0'],[.3,'#4a93e0'],[.48,'#a4cdf2'],[.56,'#e6f0f9'],[1,'#a3b3a2']];
