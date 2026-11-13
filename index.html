@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v7.6</title>
+<title>gtr_game_v7.7</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1225,7 +1225,7 @@ body.ls #cr #crbody{overflow-y:auto!important}
 #pm>.sh{display:none!important}
 #pm .pmh{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px}
 #pm #pml,body.ls #pm #pml{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 74px);padding:6px 14px 8px;box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:flex-end;gap:10px;overflow:hidden!important;max-width:none!important;flex:none;width:auto!important}
-#pm .pmc{min-height:0;height:96px;flex:0 0 auto;padding:10px 14px 10px 18px;border-radius:18px;border:2px solid rgba(176,107,255,.65);background:linear-gradient(90deg,rgba(14,7,44,.96) 0,rgba(14,7,44,.72) 52%,rgba(14,7,44,.08) 100%),var(--img) center/cover no-repeat #150a48;box-shadow:0 0 16px rgba(140,70,255,.35)}
+#pm .pmc{min-height:0;height:96px;flex:0 0 auto;padding:10px 14px 10px 18px;border-radius:18px;border:2px solid rgba(176,107,255,.65);background:linear-gradient(90deg,rgba(14,7,44,.96) 0,rgba(14,7,44,.72) 52%,rgba(14,7,44,.08) 100%),linear-gradient(rgba(21,10,72,.3),rgba(21,10,72,.3)),var(--img) center/cover no-repeat #150a48;box-shadow:0 0 16px rgba(140,70,255,.35)}
 #pm .pmc::before{display:none}
 #pm .pmc .pma{display:none}
 #pm .pmc .gc{font-size:28px;color:#ffc24a}
@@ -1241,7 +1241,7 @@ body.ls #cr #crbody{overflow-y:auto!important}
  #pm .pmh .k2s{display:block;font-size:10px}
  #pm #pml,body.ls #pm #pml{left:96px;bottom:calc(env(safe-area-inset-bottom,0px) + 6px);flex-direction:row;padding:4px 18px 4px;gap:10px}
  #pm #pml,body.ls #pm #pml{align-items:flex-end}
- #pm .pmc{width:auto;flex:1 1 0;min-width:0;height:150px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:10px 12px;background:linear-gradient(180deg,rgba(14,7,44,0) 25%,rgba(14,7,44,.94) 85%),var(--img) center/cover no-repeat #150a48}
+ #pm .pmc{width:auto;flex:1 1 0;min-width:0;height:150px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:10px 12px;background:linear-gradient(180deg,rgba(14,7,44,0) 25%,rgba(14,7,44,.94) 85%),linear-gradient(rgba(21,10,72,.3),rgba(21,10,72,.3)),var(--img) center/cover no-repeat #150a48}
  #pm .pmc .gc{position:absolute;right:10px;top:8px;font-size:22px}
  #pm .pmt{flex:none;width:100%}
  #pm .pmt b{font-size:19px}
@@ -1485,7 +1485,7 @@ body.u2 #setback svg,body.u2 #msback svg{display:block;margin:0}
 @media (orientation:landscape){body.u2 #evd #evdb{grid-template-rows:auto auto!important;grid-auto-rows:min-content}body.u2 #evd .evk{align-self:start;height:auto!important;overflow:visible}}
 /* ===== v5.0 hero: sabit %15 siyah katman ===== */
 #cr::before,#evs::before,#pm::before,#evd::before,#evr::before,#lb::before,#shop::before,body.u2 #set.lby::before,body.u2 #ms::before,#res::before{background:transparent!important}
-#ov[data-m=pre],body.ls #ov[data-m=pre]{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),var(--hsp)!important}
+#ov[data-m=pre],body.ls #ov[data-m=pre]{background-image:linear-gradient(rgba(10,6,32,.3),rgba(10,6,32,.3)),var(--hsp)!important}
 body.lgup #ov,body.lgup.ls #ov{background:transparent!important}
 body.lgup #ov::after{display:none!important}
 /* ===== v5.2 lobi mor gradient: butonların üstünde biter ===== */
@@ -4282,7 +4282,7 @@ const er=evRecShow;evRecShow=function(i){const r=er.apply(this,arguments);bg('ev
 const $$=id=>document.getElementById(id);
 try{
  const pm=$$('pm');
- pm.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 30%/cover no-repeat #0a0620','important');
+ pm.style.setProperty('background','linear-gradient(rgba(10,6,32,.3),rgba(10,6,32,.3)),url("'+A.hero.lg+'") center 30%/cover no-repeat #0a0620','important');
  const h=document.createElement('div');h.className='pmh';h.innerHTML='<div class="k2t"><span class="k2f"></span><b>OYNA</b></div><div class="k2s">MODUNU SEÇ</div>';
  pm.insertBefore(h,$$('pml'));
  const m={wu:A.hero.sp,cr:A.hero.kr,ev:A.hero.ev,mp:A.hero.mp};
@@ -4312,7 +4312,7 @@ const $$=id=>document.getElementById(id);
 let url=null;
 try{const a=atob(A.lobv),n=a.length,u=new Uint8Array(n);for(let i=0;i<n;i++)u[i]=a.charCodeAt(i);url=URL.createObjectURL(new Blob([u],{type:'video/mp4'}));A.lobv=null}catch(e){return}
 const VOL=.5,FADE=.7;
-const mk=()=>{const v=document.createElement('video');v.src=url;v.muted=true;v.loop=false;v.preload='auto';v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.disablePictureInPicture=true;v.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:8;opacity:0;pointer-events:none;display:none;background:#000;filter:brightness(.7)';document.body.insertBefore(v,document.body.firstChild);return v};
+const mk=()=>{const v=document.createElement('video');v.src=url;v.muted=true;v.loop=false;v.preload='auto';v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.disablePictureInPicture=true;v.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:8;opacity:0;pointer-events:none;display:none;background:#000';document.body.insertBefore(v,document.body.firstChild);return v};
 const V=[mk(),mk()];let cur=0,on=false,unlocked=false,fade=null;
 const aud=()=>unlocked&&!(typeof muted!=='undefined'&&muted);
 const setVol=(v,k)=>{try{v.volume=Math.max(0,Math.min(1,VOL*k));v.muted=!aud()}catch(e){}};
