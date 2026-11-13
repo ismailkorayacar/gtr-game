@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.82</title>
+<title>gtr_game_v4.83</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -3286,7 +3286,7 @@ function rgTail(){const i=P.inner;if(!i)return;const g=new THREE.Group(),lm=new 
  for(const sd of[-1,1]){const l=new THREE.Mesh(new THREE.BoxGeometry(.42,.14,.06),lm);l.position.set(sd*P.hw*.68,.7,P.hl+.02);g.add(l);const sp=new THREE.Sprite(sm);sp.scale.set(.9,.9,1);sp.position.set(sd*P.hw*.68,.7,P.hl+.1);g.add(sp)}
  g._lm=lm;g._sm=sm;i.add(g);i._rgT=g}
 function rgTailStep(){const i=P.inner;if(!i)return;if(!i._rgT){if(TH.key!=='forest')return;rgTail()}const g=i._rgT,fo=TH.key==='forest';g.visible=fo;if(fo){const br=cvS>.15||P.v<curV*.8;g._lm.color.setHex(br?0xff1a1a:0x8a0c0c);g._sm.opacity=br?.85:.35}}
-function rgFStep(pz){if(!rgF.visible)return;rgFS.forEach(g=>{for(let i=0;i<g.n;i++){const o=g.it[i];let d=(pz+130-o.z)%650;if(d<0)d+=650;o.z=pz+130-d;_tQ.setFromEuler(_tE.set(0,o.rot,0));g.im.setMatrixAt(i,_tM.compose(_tV.set(o.bx+(o.bx<0?-rgOff:rgOff)+cx(o.z),-.45+HYf(o.z)-HYf(pz),o.z),_tQ,(g.k&&o.q<.75&&o.z<-FINISH+90&&o.z>-FINISH-200)?_tS.set(1e-4,1e-4,1e-4):_tS.set(o.s,o.s*o.sy,o.s)))}g.im.instanceMatrix.needsUpdate=true})}
+function rgFStep(pz){if(!rgF.visible)return;const mpn=!!(TH&&TH.mt&&MT.pine&&st!=='menu');rgFS.forEach((g,gi)=>{if(g.mtP)g.im.visible=mpn;else if(gi<6||gi===12||gi===13)g.im.visible=!mpn;for(let i=0;i<g.n;i++){const o=g.it[i];let d=(pz+130-o.z)%650;if(d<0)d+=650;o.z=pz+130-d;_tQ.setFromEuler(_tE.set(0,o.rot,0));g.im.setMatrixAt(i,_tM.compose(_tV.set(o.bx+(o.bx<0?-rgOff:rgOff)+cx(o.z),-.45+HYf(o.z)-HYf(pz),o.z),_tQ,(g.k&&o.q<.75&&o.z<-FINISH+90&&o.z>-FINISH-200)?_tS.set(1e-4,1e-4,1e-4):_tS.set(o.s,o.s*o.sy,o.s)))}g.im.instanceMatrix.needsUpdate=true})}
 addEventListener('resize',resize);resize();reset();buildUI();v21Init();galInit();
 // ===== OYUN MODU (yatay/dikey) v4.19 =====
 let ORI='v';try{ORI=localStorage.getItem('th_ori')==='h'?'h':'v'}catch(e){}
