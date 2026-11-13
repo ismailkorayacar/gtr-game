@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v5.1</title>
+<title>gtr_game_v5.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1483,6 +1483,9 @@ body.u2 #setback svg,body.u2 #msback svg{display:block;margin:0}
 #ov[data-m=pre],body.ls #ov[data-m=pre]{background-image:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)),var(--hsp)!important}
 body.lgup #ov,body.lgup.ls #ov{background:transparent!important}
 body.lgup #ov::after{display:none!important}
+/* ===== v5.2 lobi mor gradient: butonların üstünde biter ===== */
+#ov:not([data-m=pre]){background:radial-gradient(120% 40% at 0% 100%,rgba(140,70,255,.28),rgba(140,70,255,0) 60%),radial-gradient(90% 30% at 100% 100%,rgba(176,107,255,.18),rgba(176,107,255,0) 62%),linear-gradient(rgba(10,6,32,0) 0,rgba(10,6,32,0) calc(var(--gt,62%) - 110px),rgba(14,8,40,.88) calc(var(--gt,62%) - 40px),rgba(10,6,30,.96) var(--gt,62%),rgba(8,5,24,.99) 100%)!important}
+#ov:not([data-m=pre])::after{top:calc(var(--gt,62%) - 110px)!important}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -4064,7 +4067,7 @@ try{const _f=finish;finish=function(){const r=_f.apply(this,arguments);if(!xpDon
 try{const _r=reset;reset=function(){xpDone=false;return _r.apply(this,arguments)}}catch(e){}
 function upd(){try{
  const nm=(typeof sel!=='undefined'&&sel.name)||'Pilot';$$('tbnm').textContent=nm;$$('tba').firstChild.textContent=(nm||'P').trim().charAt(0)||'P';
- const lv=Math.floor(xp/10000);$$('tblv').textContent=lv;$$('tbxf').style.width=((xp%10000)/100).toFixed(1)+'%';
+ let tp=0;try{tp=Math.max(0,+localStorage.getItem('th_tot')||0)}catch(e){}const lv=Math.floor(tp/10000);$$('tblv').textContent=lv;$$('tbxf').style.width=((tp%10000)/100).toFixed(1)+'%';
  const d=$$('evb').classList.contains('dot');$$('tbb').classList.toggle('dot',d)}catch(e){}}
 $$('tbs').onclick=()=>$$('setb').click();
 $$('tbb').onclick=()=>$$('evb').click();
@@ -4172,4 +4175,5 @@ function loginUp(){try{const f=$$('fbl');return !!f&&getComputedStyle(f).display
 const chk=()=>{const l=lobby(),lg=l&&loginUp(),v=l&&!lg;LG.style.display=lg?'block':'none';document.body.classList.toggle('lgup',lg);if(v&&!on)start();else if(!v&&on)stop()};window.__lobChk=chk;setInterval(chk,250);
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&on)stop()});
 })();
-</script></body></html>
+</script><script>(function(){try{const o=document.getElementById('ov');function g(){try{const p=o.querySelector('.pn');if(!p||o.dataset.m==='pre'||!p.offsetHeight)return;o.style.setProperty('--gt',Math.round(p.getBoundingClientRect().top-o.getBoundingClientRect().top)+'px')}catch(e){}}setInterval(g,400);addEventListener('resize',g);g()}catch(e){}})();</script>
+</body></html>
