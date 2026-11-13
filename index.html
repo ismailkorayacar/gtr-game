@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v7.5</title>
+<title>gtr_game_v7.6</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1569,6 +1569,17 @@ body #tb #bal{min-width:0;padding:2px 28px 2px 3px!important;font-size:12.5px!im
 body #tb #bal::after{width:22px;height:22px;font:700 17px/19px system-ui;right:3px}
 .tbi{width:30px;height:30px}.tbi svg{width:17px;height:17px}.tbi u{right:4px;top:4px;width:8px;height:8px}
 #tb .cpill .cn{width:22px;height:22px;font-size:13px;line-height:22px}
+}
+/* v7.6 etkinlik detayı: butonlar sabit, detay kutusu kendi içinde kaydırılır */
+@media (orientation:portrait){
+body.u2 #evd #evdb{display:flex!important;flex-direction:column;overflow:hidden!important;gap:10px}
+body.u2 #evd .evh{flex:0 0 auto}
+body.u2 #evd .evk{flex:1 1 auto;min-height:0;overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
+body.u2 #evd #evbx{position:static;flex:0 0 auto;padding:2px 0 0;background:none}
+}
+@media (orientation:landscape){
+body.u2.ls #evd #evdb{overflow:hidden!important;grid-template-rows:auto minmax(0,1fr)!important;align-content:stretch!important}
+body.u2 #evd .evk{min-height:0;overflow-y:auto!important;height:auto!important;align-self:stretch;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 }
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
