@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.86</title>
+<title>gtr_game_v4.87</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1152,6 +1152,35 @@ body.u2n #snv{display:flex}
  .e2go{height:40px}
  .e2k{flex-basis:150px;height:78px}
  .e2k b{bottom:20px;font-size:11px}
+}
+/* ===== v4.87 Isınma Turu ekranı ===== */
+#ov[data-m=pre]{background:linear-gradient(180deg,rgba(8,4,26,.5) 0,rgba(8,4,26,0) 18%,rgba(8,4,26,0) 44%,rgba(8,4,26,.6) 72%,rgba(8,4,26,.92) 100%),var(--hsp) center 35%/cover no-repeat #0a0620!important}
+#ov[data-m=pre]::after,#ov[data-m=pre]>.st{display:none!important}
+#ov[data-m=pre] #prh{top:calc(env(safe-area-inset-top,0px) + 62px)!important;display:flex;align-items:center;justify-content:center;position:fixed!important}
+#ov[data-m=pre] #prh .gbk{position:absolute;left:14px;top:2px;width:42px;height:42px;border-radius:12px;border:1px solid rgba(176,107,255,.55);background:linear-gradient(180deg,rgba(40,24,100,.7),rgba(16,9,48,.8));color:#fff;font-size:26px;line-height:1}
+#ov[data-m=pre] #prh>b{display:flex;flex-direction:column;align-items:center;gap:4px;font:italic 900 30px/1 system-ui;color:#fff;text-shadow:0 0 20px rgba(176,107,255,.9),0 3px 0 rgba(0,0,0,.35);-webkit-text-fill-color:#fff;background:none}
+#ov[data-m=pre] #prh>b::after{content:"HARİTANI VE ARACINI SEÇ · SERBEST SÜRÜŞ";font:700 10.5px system-ui;letter-spacing:1.6px;color:#f0c8ff;text-shadow:0 1px 6px #000a;font-style:normal}
+#ov[data-m=pre] .pn{grid-template-columns:1fr!important;padding:10px 14px calc(env(safe-area-inset-bottom,0px) + 82px)!important;background:none!important;gap:10px!important}
+#ov[data-m=pre] #wum{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+#ov[data-m=pre] #wum .wub{flex-direction:column!important;gap:3px!important;height:56px!important;padding:4px!important;transform:skewX(-8deg);border-radius:12px!important;border:1px solid rgba(176,107,255,.55)!important;background:linear-gradient(180deg,rgba(40,24,100,.6),rgba(16,9,48,.72))!important;box-shadow:none!important;color:#fff}
+#ov[data-m=pre] #wum .wub>*{transform:skewX(8deg)}
+#ov[data-m=pre] #wum .wub i{font-size:20px!important}
+#ov[data-m=pre] #wum .wub span{font:italic 800 11px system-ui!important}
+#ov[data-m=pre] #wum .wub.on{background:linear-gradient(180deg,#8a4dff,#4a1fb8)!important;border:2px solid rgba(255,255,255,.85)!important;box-shadow:0 0 16px rgba(160,90,255,.85)!important}
+#ov[data-m=pre] #galb2{border-radius:14px;border:1px solid rgba(176,107,255,.55);background:linear-gradient(180deg,rgba(40,24,100,.6),rgba(16,9,48,.72))}
+#ov[data-m=pre] .dfb{transform:skewX(-8deg);border-radius:12px!important;border:1px solid rgba(176,107,255,.5)!important;background:linear-gradient(180deg,rgba(40,24,100,.55),rgba(16,9,48,.7))!important}
+#ov[data-m=pre] .dfb>*{transform:skewX(8deg)}
+#ov[data-m=pre] .dfb.on{background:linear-gradient(180deg,#8a4dff,#4a1fb8)!important;border:2px solid rgba(255,255,255,.85)!important;box-shadow:0 0 14px rgba(160,90,255,.8)}
+#ov[data-m=pre] #go{border-radius:14px!important;border:2px solid rgba(255,255,255,.55)!important;background:linear-gradient(180deg,var(--u-gd1),var(--u-gd2))!important;color:#3a2200!important;font:italic 900 22px/1 system-ui!important;letter-spacing:1px;transform:skewX(-8deg);box-shadow:0 0 22px rgba(255,179,0,.5),0 5px 0 #a86c00,0 10px 18px rgba(0,0,0,.4)!important;text-shadow:none!important}
+#ov[data-m=pre] #go::after{content:" ››";background:none;position:static;opacity:1;font-size:26px}
+#ov[data-m=pre] #go::before{display:none}
+@media (orientation:landscape){
+ #ov[data-m=pre]{background-position:center 42%!important;background-image:linear-gradient(180deg,rgba(8,4,26,.45) 0,rgba(8,4,26,0) 18%,rgba(8,4,26,0) 46%,rgba(8,4,26,.55) 70%,rgba(8,4,26,.9) 100%),var(--hsp)!important}
+ #ov[data-m=pre] #prh{left:96px!important}
+ #ov[data-m=pre] #prh .gbk{display:none}
+ #ov[data-m=pre] .pn{left:96px!important;width:auto!important;grid-template-columns:minmax(0,1.3fr) minmax(0,1.1fr) minmax(0,.9fr)!important;padding:6px 14px calc(env(safe-area-inset-bottom,0px) + 8px) 6px!important;gap:8px!important}
+ #ov[data-m=pre] #wum{grid-template-columns:repeat(6,1fr)!important;gap:6px!important}
+ #ov[data-m=pre] #wum .wub{height:52px!important}
 }
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
@@ -3773,11 +3802,12 @@ const I={
 const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
 const out=f=>()=>{if(vis('cr')||vis('evs')){show('cr',false);show('evs',false);show('ov',true)}f()};
-[['home','ANA SAYFA',()=>{if(vis('cr')||vis('evs'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
+[['home','ANA SAYFA',()=>{if(vis('cr')||vis('evs')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
 const OT=['pm','shop','ms','lb','res','evr','evd','gal','set','galw'];
-function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const on=(o||c)&&!oth,nvOn=on&&!pre,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const on=(o||c)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
+try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
 try{$$('evs').style.setProperty('background','#0a0620 url("'+A.hero.ev+'") center 30%/cover no-repeat','important')}catch(e){}
 try{$$('cr').style.setProperty('background','#0a0620 url("'+A.hero.kr+'") center 30%/cover no-repeat','important')}catch(e){}
 setInterval(sync,500);sync();
