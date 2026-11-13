@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v5.3</title>
+<title>gtr_game_v5.4</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1505,6 +1505,7 @@ body #set.igs .qrow button.on{background:linear-gradient(180deg,#ffe066,#ffb300)
  body #set.igs{align-items:flex-start!important}
  body #set.igs .sbx{width:calc((100% - 24px)/3)!important;max-width:none!important;margin:0!important;box-sizing:border-box}
  body #set.igs .sbx p{font-size:11px}
+}
 body #set.igs::before{background:rgba(0,0,0,.15)!important}
 body #set.igs,body.ls #set.igs{overflow-y:auto!important;padding-top:calc(env(safe-area-inset-top,0px) + 66px)!important}
 /* ===== v5.3 üst bar puan kutusu ===== */
@@ -1512,6 +1513,11 @@ body #set.igs,body.ls #set.igs{overflow-y:auto!important;padding-top:calc(env(sa
 #tb #tbpt span{color:#fff}
 #tb #tbpt .pti{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font:900 15px/1 system-ui;font-style:normal;color:#fff;background:radial-gradient(circle at 38% 32%,#c98cff,#5b1fb0);border:1.5px solid #ecd3ff;box-shadow:0 0 6px #a45cff99}
 html.fbh:not(.fbu):not(.fbf) #tbpt{display:none!important}
+/* ===== v5.4 sonuç: toplam etkinlik puanı P ikonu ===== */
+#rte::before{content:'P';display:inline-block;width:1.15em;height:1.15em;border-radius:50%;background:radial-gradient(circle at 38% 32%,#c98cff,#5b1fb0);border:1.5px solid #ecd3ff;box-shadow:0 0 6px #a45cff;box-sizing:border-box;color:#fff;font:900 .7em/1.05em system-ui;font-style:normal;text-align:center;flex:none}
+#res.evfail:has(>.evd)::after,#res.evfail:has(>.evd)::before{display:block}
+#res.evfail>.evd{z-index:2}
+#res.evfail>.evd .evb,#res.evfail>.evd .evp,#res.evfail>.evd .evv,#res.evfail>.evd .evs2{display:none}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -2040,9 +2046,9 @@ function step(dt){
  if(live&&v7_oils.length)for(const o of v7_oils){if(Math.abs(P.z-o.z)<1.8&&Math.abs(P.x-o.x)<1.25){if(v7_oilT<=.2){banner('YAĞ!');shake=Math.max(shake,.35);oilSfx()}v7_oilT=1.8;break}}
  if(live&&v7_wp.length){for(const o of v7_wp){if(Math.abs(P.z-o.z)<o.len/2+.6&&Math.abs(P.x-o.x)<o.w/2+.9&&P.v>8)spEmit(P,3,Math.max(P.v,30),true);for(const tr of traffic){if(tr.on!==false&&Math.abs(tr.z-o.z)<o.len/2&&Math.abs(tr.x-o.x)<o.w/2+.6&&R()<.4)spEmit(tr,2,Math.max(tr.v||0,30),true)}}}
  if(v7_oilT>0){v7_oilT-=dt;if(R()<.5)puff(P.x,.3,P.z+P.hl*.6,0xcfcfcf,1,1.2,.5,.5)}
- const sRaw=live?(steer||((keys.ArrowRight||keys.KeyD?1:0)-(keys.ArrowLeft||keys.KeyA?1:0))):0;if(sRaw){const r=(swv!==0&&Math.sign(sRaw)!==Math.sign(swv))?4.5:1.7;swv+=Math.max(-r*dt,Math.min(r*dt,sRaw-swv))}else{const r=3.5*dt;swv=Math.abs(swv)<=r?0:swv-Math.sign(swv)*r}const s=isDR()?sRaw:swv;if(isDR())drStep(dt,s,live);
+ const sRaw=live?(steer||((keys.ArrowRight||keys.KeyD?1:0)-(keys.ArrowLeft||keys.KeyA?1:0))):0;if(sRaw){const r=(swv!==0&&Math.sign(sRaw)!==Math.sign(swv))?5.4:2.04;swv+=Math.max(-r*dt,Math.min(r*dt,sRaw-swv))}else{const r=3.5*dt;swv=Math.abs(swv)<=r?0:swv-Math.sign(swv)*r}const s=isDR()?sRaw:swv;if(isDR())drStep(dt,s,live);
  if(skwT>0){skwT-=dt;if(live&&st==='race')skwSkid()}if(live&&st==='race'&&(TH.key==='snow'||TH.key==='forest'||(dif===2&&(TH.key==='rain'||TH.key==='storm')))){if(Math.abs(s)>.2){if(!skwA||Math.sign(s)!==skwD){skwA=1;skwD=Math.sign(s);skwX=P.x;skwF=0}else if(!skwF&&Math.abs(P.x-skwX)>(TH.key==='forest'?3.2:5.25)){skwF=1;skwT=1.2;skwK=TH.key==='forest'?.3:TH.key==='snow'?1:.25}}else skwA=0}
- if(st==='win')winStep(dt);else if(st!=='replay'){if(lnSw.t>0){lnSw.t-=dt;P.vx=(lnSw.to-P.x)*7}else P.vx+=(s*12*(isDR()?1:(Math.min(1,.35+Math.max(0,P.v)/12)/(1+Math.pow(Math.max(0,P.v)/45,1.2)*.6)))-P.vx)*Math.min(1,dt*(v7_oilT>0?2.95:7));if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*dt;if(isDR())drPost(dt,s)}
+ if(st==='win')winStep(dt);else if(st!=='replay'){if(lnSw.t>0){lnSw.t-=dt;P.vx=(lnSw.to-P.x)*7}else P.vx+=(s*14.4*(isDR()?1:(Math.min(1,.35+Math.max(0,P.v)/12)/(1+Math.pow(Math.max(0,P.v)/45,1.2)*.6)))-P.vx)*Math.min(1,dt*(v7_oilT>0?2.95:7));if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*dt;if(isDR())drPost(dt,s)}
  if(Math.abs(P.x)>LIM){const sg=Math.sign(P.x);if(Math.abs(P.vx)>3){if(padT<=0)P.hp=Math.max(0,P.hp-Math.abs(P.vx)*.3);shake=Math.max(shake,.3);puff(sg*(LIM+1.3),.8,P.z,0xffc040,8,8,.07,.4)}P.x=sg*LIM;P.vx=-P.vx*.3}
  if(st==='crash'){P.yaw+=P.yr*dt;P.yr*=Math.pow(.4,dt)}else if(st!=='replay'&&st!=='win')P.yaw=-P.vx*.025+(v7_oilT>0?Math.sin(raceT*8+1.5)*.105*Math.min(1,v7_oilT):0)+(TH.key==='forest'?.5:1)*((skwT>0?Math.sin(raceT*9+1.5)*.105*Math.min(1,skwT)*skwK:0)+(cvS>0?Math.sin(raceT*9+1.5)*.105*.35*cvS:0));if(isDR()&&st==='race')P.yaw+=drA;
  if(live&&st==='race'&&TH.key!=='forest')for(const s of v7_segs){if(P.z<s.z0+15&&P.z>s.z0-s.len-P.hl){const lc=LANES[s.l],d=P.x-lc,mn=1.75+P.hw+.1;if(Math.abs(d)<mn){const sg=Math.abs(d)>.9?Math.sign(d):(lc<0?1:lc>0?-1:(d>=0?1:-1));P.x+=(lc+sg*mn-P.x)*Math.min(1,dt*10);if(P.vx*sg<0)P.vx=0}}}
@@ -2988,7 +2994,7 @@ const evFmtL=ms=>{const s=Math.max(0,Math.floor(ms/1000)),p=v=>String(v).padStar
 const evCells=ms=>{const s=Math.max(0,Math.floor(ms/1000)),p=v=>String(v).padStart(2,'0');return [[Math.floor(s/86400),'GÜN'],[Math.floor(s%86400/3600),'SAAT'],[Math.floor(s%3600/60),'DK'],[s%60,'SN']].map(x=>'<u><b>'+p(x[0])+'</b><i>'+x[1]+'</i></u>').join('')};
 const evFmt=ms=>{const s=Math.max(0,Math.floor(ms/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60,p=v=>String(v).padStart(2,'0');return(d?d+'g ':'')+p(h)+':'+p(m)+':'+p(x)};
 const evOK=(i,e)=>e.car?CARS[i][0]===e.car:(CARS[i][0]!=='RallyCar'&&CARS[i][0]!=='Taxi'&&CARS[i][2]<=e.max);
-function evBest(id,c){try{const o=JSON.parse(localStorage.getItem('th_evb_'+id)||'{}');return o.c===c?o.s:0}catch(e){return 0}}
+function evBest(id,c){try{const a=JSON.parse(localStorage.getItem('th_evl_'+id)||'[]');return a.length?(+a[0].s||0):0}catch(e){return 0}}
 function evClaimed(id,c){try{return localStorage.getItem('th_evc_'+id)===String(c)}catch(e){return false}}
 function evBonus(){return EV&&!evClaimed(EV.id,EV.cyc)?EV.reward:0}
 
@@ -4220,6 +4226,18 @@ initAudio=function(){const had=!!AC;_ia.apply(this,arguments);
  }catch(e){console.error(e)}};
 drSqGraph=function(C){const out=C.createGain();out.gain.value=0;out.connect(C.destination);
  const src=C.createBufferSource();src.buffer=mkBuf(C,SND.skd);src.loop=true;const g=C.createGain();g.gain.value=2.2;src.connect(g);g.connect(out);src.start();return{g:out,src}};
+}catch(e){console.error(e)}})();
+</script>
+<script>/* ===== v5.4 başarısız etkinlik ekranı: etkinliğin hero'su + toplam puan = rekor listesi ===== */
+(function(){try{
+const $$=id=>document.getElementById(id);
+function heroFor(){try{const e=(typeof EV!=='undefined'&&EV)?(EVS.find(x=>x.id===EV.id)||EV):null;return e?evHero(e):A.hero.lg}catch(x){return A.hero.lg}}
+function setHero(u,f){const r=$$('res');r.classList.toggle('evfail',!!f);r.style.setProperty('--rh','url("'+u+'")');if(u===A.hero.lg)r.style.removeProperty('background');else r.style.setProperty('background','#0a0620 url("'+u+'") center 35%/cover no-repeat','important')}
+function topTot(e){try{const a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]');return a.length?(+a[0].s||0):0}catch(x){return 0}}
+const _rs=reset;reset=function(){try{setHero(A.hero.lg,0)}catch(x){}return _rs.apply(this,arguments)};
+const _ef=evFinish;evFinish=function(win){const e=EV;const h=win?A.hero.lg:heroFor();const r=_ef.apply(this,arguments);
+ try{setHero(h,!win);if(e){const te=$$('rte');if(te&&te.textContent!==''){te.textContent=topTot(e)}}}catch(x){}return r};
+if(typeof rrDone==='function'){const _rd=rrDone;rrDone=function(win){const h=win?A.hero.lg:heroFor();const r=_rd.apply(this,arguments);try{setHero(h,!win)}catch(x){}return r}}
 }catch(e){console.error(e)}})();
 </script>
 </body></html>
