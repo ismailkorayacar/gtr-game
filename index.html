@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v6.0</title>
+<title>gtr_game_v6.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1793,19 +1793,40 @@ const G=new THREE.Group(),signC=document.createElement('canvas');signC.width=512
 {const g=signC.getContext('2d');g.fillStyle='#101418';g.fillRect(0,0,512,128);g.strokeStyle='#ffd24a';g.lineWidth=8;g.strokeRect(4,4,504,120);g.fillStyle='#fff';g.font='bold 56px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillText('FINISH',256,66);signT.needsUpdate=true}
 const chk=rx=>{const c=document.createElement('canvas');c.width=128;c.height=32;const g=c.getContext('2d');for(let i=0;i<16;i++)for(let j=0;j<4;j++){g.fillStyle=(i+j)%2?'#fff':'#111';g.fillRect(i*8,j*8,8,8)}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,1);t.encoding=THREE.sRGBEncoding;return t};
 const chkP=()=>{const c=document.createElement('canvas');c.width=32;c.height=256;const g=c.getContext('2d');for(let i=0;i<4;i++)for(let j=0;j<32;j++){g.fillStyle=(i+j)%2?'#fff':'#111';g.fillRect(i*8,j*8,8,8)}const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t},pMat=new THREE.MeshBasicMaterial({map:chkP()});
-G.userData.pst=[];for(const s of[-1,1]){const p=new THREE.Mesh(new THREE.BoxGeometry(.7,10,.7),pMat);p.position.set(s*10.3,5,0);G.add(p);G.userData.pst.push({m:p,s})}
-const beam=new THREE.Mesh(new THREE.BoxGeometry(21.8,1.2,.9),new THREE.MeshBasicMaterial({map:chk(10)}));beam.position.y=10;G.add(beam);
-const sign=new THREE.Mesh(new THREE.PlaneGeometry(10,2.5),new THREE.MeshBasicMaterial({map:signT,toneMapped:false}));sign.position.set(0,7.9,.5);G.add(sign);
+const mkCk=(cols,rows,c1,c2)=>{const c=document.createElement('canvas');c.width=cols*16;c.height=rows*16;const g=c.getContext('2d');for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){g.fillStyle=(i+j)%2?c1:c2;g.fillRect(i*16,j*16,16,16)}const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.magFilter=THREE.NearestFilter;t.minFilter=THREE.NearestFilter;t.generateMipmaps=false;return t};
+/* v6.1 finish kapısı: koyu metal kemer, yanlarda mor parlayan damalı paneller, üstte kehribar ışık hattı (referans 3) */
+function mkFinish(hw,H,th,d){const g=new THREE.Group(),c=H*.3,ao=hw+th,bo=H+th-c,ai=hw,bi=H-c,N=28,sh=new THREE.Shape();
+ sh.moveTo(-ao,0);sh.lineTo(-ao,c);for(let i=1;i<=N;i++){const a=Math.PI-i/N*Math.PI;sh.lineTo(ao*Math.cos(a),c+bo*Math.sin(a))}sh.lineTo(ao,0);sh.lineTo(ai,0);sh.lineTo(ai,c);for(let i=1;i<=N;i++){const a=i/N*Math.PI;sh.lineTo(ai*Math.cos(a),c+bi*Math.sin(a))}sh.lineTo(-ai,0);sh.closePath();
+ const eg=new THREE.ExtrudeGeometry(sh,{depth:d,bevelEnabled:false,steps:1});eg.translate(0,0,-d/2);
+ g.add(new THREE.Mesh(eg,new THREE.MeshStandardMaterial({color:0x2a2238,metalness:.7,roughness:.34,emissive:0x1c0f38,emissiveIntensity:.8})));
+ const rim=(r,m,z)=>{const pts=[];for(let i=0;i<=40;i++){const a=Math.PI-i/40*Math.PI;pts.push(new THREE.Vector3((ao-th*.16)*Math.cos(a),c+(bo-th*.16)*Math.sin(a),z))}return new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),56,r,5,false),m)};
+ const am=new THREE.MeshBasicMaterial({color:0xffb24a,toneMapped:false,fog:false}),ag=new THREE.MeshBasicMaterial({color:0xff8a1a,transparent:true,opacity:.28,blending:THREE.AdditiveBlending,depthWrite:false,toneMapped:false,fog:false});
+ for(const z of[d/2+.04,-d/2-.04]){g.add(rim(th*.055,am,z));const q=rim(th*.2,ag,z);q.renderOrder=3;g.add(q)}
+ const pw=th*.8,ph=Math.min(c*1.45,4),cols=3,rows=Math.max(4,Math.round(ph/pw*cols)),ct=mkCk(cols,rows,'#e0a0ff','#4a1a8a'),cm=new THREE.MeshBasicMaterial({map:ct,toneMapped:false,fog:false});
+ for(const sx of[-1,1])for(const sz of[1,-1]){const pn=new THREE.Mesh(new THREE.PlaneGeometry(pw,ph),cm);pn.position.set(sx*(hw+th/2),c*.92,sz*(d/2+.03));if(sz<0)pn.rotation.y=Math.PI;g.add(pn);
+  const gl=new THREE.Mesh(new THREE.PlaneGeometry(pw*1.9,ph*1.25),new THREE.MeshBasicMaterial({color:0xb040ff,transparent:true,opacity:.22,blending:THREE.AdditiveBlending,depthWrite:false,toneMapped:false,fog:false}));gl.position.copy(pn.position);gl.position.z+=sz*.02;if(sz<0)gl.rotation.y=Math.PI;gl.renderOrder=3;g.add(gl)}
+ return g}
+G.userData.pst=[];const Go=mkFinish(10.4,9.4,1.9,1.5),Gt=mkFinish(7.6,4.5,1.1,1.0);G.add(Go,Gt);Gt.visible=false;
+
 scene.add(G);const ckLM=()=>bendMat(new THREE.MeshStandardMaterial({map:chk(8),roughness:.85,polygonOffset:true,polygonOffsetFactor:-8,polygonOffsetUnits:-8})),ckLG=new THREE.PlaneGeometry(17.6,2.2,64,4).rotateX(-Math.PI/2),finL=new THREE.Mesh(ckLG,ckLM()),staL=new THREE.Mesh(ckLG,ckLM());finL.geometry=ckLG.clone();staL.geometry=ckLG.clone();const CKB=ckLG.attributes.position.array.slice();finL.frustumCulled=staL.frustumCulled=false;scene.add(finL,staL);
 function ckPlace(m,z0,sx){if(!m.visible)return;const th=Math.atan(cd(z0)),c=Math.cos(th),sn=Math.sin(th),x0=cx(z0),p=m.geometry.attributes.position,a=p.array;for(let i=0;i<a.length;i+=3){const u=CKB[i]*sx*c,w=CKB[i+2],zw=z0-u*sn-w*c,xw=x0+u*c-w*sn;a[i]=xw-cx(zw);a[i+1]=.045;a[i+2]=zw}p.needsUpdate=true;m.scale.set(1,1,1);m.position.set(0,0,0)}
 // Circuit lap gate (purple); always same build for every Circuit event/map
-const LG=new THREE.Group(),lgC=document.createElement('canvas');lgC.width=512;lgC.height=128;const lgT=new THREE.CanvasTexture(lgC);lgT.encoding=THREE.sRGBEncoding;let lgN=0;
-function lgDraw(n){if(lgN===n)return;lgN=n;const g=lgC.getContext('2d');const gr=g.createLinearGradient(0,0,512,128);gr.addColorStop(0,'#3a1590');gr.addColorStop(1,'#7a3dff');g.fillStyle=gr;g.fillRect(0,0,512,128);g.strokeStyle='#e4c6ff';g.lineWidth=8;g.strokeRect(4,4,504,120);g.fillStyle='#fff';g.font='bold 60px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillText('LAP '+n,256,66);lgT.needsUpdate=true}
-{const pm=new THREE.MeshBasicMaterial({color:0x8a4dff});for(const s of[-1,1]){const p=new THREE.Mesh(new THREE.BoxGeometry(.7,10,.7),pm);p.position.set(s*10.3,5,0);LG.add(p)}
-const bm=new THREE.Mesh(new THREE.BoxGeometry(21.8,1.2,.9),new THREE.MeshBasicMaterial({color:0x6a2fe0}));bm.position.y=10;LG.add(bm);
-const tr=new THREE.Mesh(new THREE.BoxGeometry(21.8,.18,.95),new THREE.MeshBasicMaterial({color:0xe4c6ff}));tr.position.y=10.65;LG.add(tr);
-const sg=new THREE.Mesh(new THREE.PlaneGeometry(10,2.5),new THREE.MeshBasicMaterial({map:lgT,toneMapped:false}));sg.position.set(0,7.9,.5);LG.add(sg);
-const fl=new THREE.Mesh(new THREE.PlaneGeometry(17.6,2.2),new THREE.MeshBasicMaterial({color:0x7a3dff,transparent:true,opacity:.75}));fl.rotation.x=-Math.PI/2;fl.position.y=.05;LG.add(fl)}
+const LG=new THREE.Group(),lgC=document.createElement('canvas');lgC.width=1024;lgC.height=176;const lgT=new THREE.CanvasTexture(lgC);lgT.encoding=THREE.sRGBEncoding;lgT.anisotropy=4;let lgN=0;
+/* v6.1 lap kapısı: mavi LED tabelalı kafes çelik kapı, LAP n yazar (referans 2) */
+function lgDraw(n){if(lgN===n)return;lgN=n;const g=lgC.getContext('2d'),W=1024,H=176;const gr=g.createLinearGradient(0,0,0,H);gr.addColorStop(0,'#0a1020');gr.addColorStop(1,'#04060d');g.fillStyle=gr;g.fillRect(0,0,W,H);
+ g.save();g.shadowColor='#2ab8ff';g.shadowBlur=16;g.fillStyle='#3cc4ff';g.fillRect(150,10,W-300,9);g.fillRect(150,H-20,W-300,9);g.restore();
+ const ck=(x0)=>{for(let i=0;i<4;i++)for(let j=0;j<4;j++){if((i+j)%2===0){g.fillStyle='#35c0ff';g.shadowColor='#35c0ff';g.shadowBlur=10;g.fillRect(x0+i*22,44+j*22,22,22)}}g.shadowBlur=0};ck(40);ck(W-40-88);
+ g.font='italic 900 112px "Arial Black",Arial,system-ui,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillStyle='#fff';g.shadowColor='rgba(120,200,255,.9)';g.shadowBlur=12;g.fillText('LAP '+n,W/2,H/2+6);g.shadowBlur=0;lgT.needsUpdate=true}
+{const trT=h=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');g.strokeStyle='#c4ccd8';g.lineWidth=4.5;g.lineCap='round';const P=(a,b)=>h?[b,a]:[a,b];const L=(x0,y0,x1,y1)=>{const A=P(x0,y0),B=P(x1,y1);g.beginPath();g.moveTo(A[0],A[1]);g.lineTo(B[0],B[1]);g.stroke()};L(3,0,3,64);L(61,0,61,64);L(3,0,61,32);L(61,32,3,64);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.encoding=THREE.sRGBEncoding;return t};
+ const tv=trT(0),th=trT(1);const mm=(t,rx,ry)=>{const q=t.clone();q.needsUpdate=true;q.repeat.set(rx,ry);return new THREE.MeshBasicMaterial({map:q,transparent:true,alphaTest:.4,side:THREE.DoubleSide,toneMapped:false})};
+ const HW=10.3,TW=1.2,TH=11.3,BX=HW+1.2+TW/2;
+ for(const s of[-1,1]){const x=s*(HW+1.2),m=mm(tv,1,Math.round(TH/TW));for(const[px,pz,ry]of[[0,TW/2,0],[0,-TW/2,0],[TW/2,0,Math.PI/2],[-TW/2,0,Math.PI/2]]){const pl=new THREE.Mesh(new THREE.PlaneGeometry(TW,TH),m);pl.position.set(x+px,TH/2,pz);pl.rotation.y=ry;LG.add(pl)}
+  for(let k=0;k<2;k++){const lb=new THREE.Mesh(new THREE.BoxGeometry(.8,.55,.5),new THREE.MeshBasicMaterial({color:0xfff6e6,toneMapped:false}));lb.position.set(x+(k?.5:-.5)*.9+(s>0?-.2:.2),TH+.45,0);LG.add(lb);const hb=new THREE.Mesh(new THREE.PlaneGeometry(2.2,2.2),new THREE.MeshBasicMaterial({color:0xcfe8ff,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false,toneMapped:false,fog:false}));hb.position.copy(lb.position);hb.position.z=.4;LG.add(hb)}}
+ const BW=2*BX,bm=mm(th,Math.round(BW/1.3),1);for(const z of[.65,-.65]){const pl=new THREE.Mesh(new THREE.PlaneGeometry(BW,1.3),bm);pl.position.set(0,10.65,z);LG.add(pl)}
+ for(const y of[10,11.3]){const pl=new THREE.Mesh(new THREE.PlaneGeometry(BW,1.3),bm);pl.rotation.x=Math.PI/2;pl.position.set(0,y,0);LG.add(pl)}
+ const bw=2*HW,bh=3.4,by=8.3;const bd=new THREE.Mesh(new THREE.BoxGeometry(bw,bh,.4),new THREE.MeshBasicMaterial({color:0x04070e,toneMapped:false}));bd.position.y=by;LG.add(bd);
+ const lm=new THREE.MeshBasicMaterial({map:lgT,toneMapped:false});for(const z of[1,-1]){const pl=new THREE.Mesh(new THREE.PlaneGeometry(bw-.3,bh-.3),lm);pl.position.set(0,by,z*.21);if(z<0)pl.rotation.y=Math.PI;LG.add(pl)}
+ const fl=new THREE.Mesh(new THREE.PlaneGeometry(17.6,2.2),new THREE.MeshBasicMaterial({color:0x2aa8ff,transparent:true,opacity:.5}));fl.rotation.x=-Math.PI/2;fl.position.y=.05;LG.add(fl)}
 LG.visible=false;scene.add(LG);
 
 // ---------- cars ----------
@@ -2088,7 +2109,7 @@ function step(dt){
  hills.forEach(h=>{if(h.position.z>pz+120)h.position.z-=850;h.position.x=h.userData.bx+cx(h.position.z)});
  if(TH.key==='desert'){dunes.forEach(h=>{if(h.position.z>pz+60)h.position.z-=510;h.position.x=h.userData.bx+cx(h.position.z)});dunesF.forEach(h=>{if(h.position.z>pz+120)h.position.z-=1190;h.position.x=h.userData.bx+cx(h.position.z)})}
  trees.forEach(t=>{if(t.position.z>pz+40)t.position.z-=500;t.position.x=t.userData.bx+cx(t.position.z)});
- const gz=-FINISH;G.visible=pz<gz+500&&!(EV&&EV.tx);{const th=Math.atan(cd(gz)),ck=Math.cos(th);G.position.set(cx(gz),uHs.value?HYf(gz)-HYf(pz):0,gz);G.rotation.y=th;G.scale.x=ck;if(G.userData.pst)G.userData.pst.forEach(q=>{let dy=0;if(uHs.value)dy=HYf(gz-q.s*10.3*ck*Math.sin(th))-HYf(gz);q.m.scale.y=(10-dy)/10;q.m.position.y=(10+dy)/2})}{const sx=TH.dr?1.3:1;finL.visible=G.visible;ckPlace(finL,gz,sx);staL.visible=!RR&&pz>-300&&st!=='menu';ckPlace(staL,-2,sx)}if(window.tsG)tsStep(pz);
+ const gz=-FINISH;G.visible=pz<gz+500&&!(EV&&EV.tx);{const tn=TH.key==='tunnel';Go.visible=!tn;Gt.visible=tn}{const th=Math.atan(cd(gz)),ck=Math.cos(th);G.position.set(cx(gz),uHs.value?HYf(gz)-HYf(pz):0,gz);G.rotation.y=th;G.scale.x=ck;if(G.userData.pst)G.userData.pst.forEach(q=>{let dy=0;if(uHs.value)dy=HYf(gz-q.s*10.3*ck*Math.sin(th))-HYf(gz);q.m.scale.y=(10-dy)/10;q.m.position.y=(10+dy)/2})}{const sx=TH.dr?1.3:1;finL.visible=G.visible;ckPlace(finL,gz,sx);staL.visible=!RR&&pz>-300&&st!=='menu';ckPlace(staL,-2,sx)}if(window.tsG)tsStep(pz);
  {const e=EV,cl=e&&e.laps?Math.min(e.laps,Math.floor(Math.max(0,-pz)/(e.lk*1000))+1):0;if(cl&&cl<e.laps){const lz=-cl*e.lk*1000;lgDraw(cl+1);LG.visible=pz<lz+500;LG.position.set(cx(lz),0,lz);LG.rotation.y=Math.atan(cd(lz))}else LG.visible=false}
  const sx=Math.round((P.x+cx(pz))/4)*4,sz=Math.round(pz/4)*4;sun.target.position.set(sx,0,sz-6);sun.position.set(sx+SO[0],SO[1],sz+SO[2]);sun.target.updateMatrixWorld();
  if((st==='crash'||(st==='replay'&&!pre))&&R()<.72){const fz=P.z-P.hl*.78,fx=P.x+(R()-.5)*.9;puff(fx,.75,fz,0xff6a00,1,1.4,.34,.55);puff(fx,.8,fz,0xffb020,1,1.1,.2,.4);if(R()<.4)puff(fx,.95,fz,R()<.5?0x1a1a1a:0x777777,1,1.6,.8,1.9)}pp.forEach(p=>{if(p.l>0){p.l-=dt;p.v.y+=p.g*dt;p.m.position.addScaledVector(p.v,dt);const k=p.l/p.L;p.m.scale.setScalar(p.s*(p.f?(.4+k*.8):(p.g>0?1.8-k:1)));p.m.material.opacity=Math.max(0,k)*(p.o!==undefined?p.o:(p.f?.9:(p.g>0?.5:1)));if(p.l<=0)p.m.visible=false}});
@@ -2519,12 +2540,16 @@ const tunProf=(()=>{const W=10.4,H0=3.2,Hr=3.4,p=[[-W,-.5],[-W,H0]];for(let i=1;
 const tunProfM=(()=>{const W=10.5,H0=0,Hr=9.6,p=[[-W,-.5],[-W,H0]];for(let i=1;i<14;i++){const a=Math.PI-i/14*Math.PI;p.push([W*Math.cos(a),H0+Hr*Math.sin(a)])}p.push([W,H0],[W,-.5]);const L=[0];for(let i=1;i<p.length;i++)L.push(L[i-1]+Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]));return{p,L,T:L[L.length-1],W,H0,Hr}})();
 const tunT=(()=>{const c=document.createElement('canvas');c.width=1024;c.height=128;const g=c.getContext('2d'),P0=tunProf;
  for(let x=0;x<1024;x++){const s=x/1023*P0.T,wl=P0.H0+.5;let h=s<wl?s-.5:(P0.T-s<wl?P0.T-s-.5:null),col='#7f828a';
-  if(h!==null){if(h<0)col='#2a2c30';else if(h<.55)col='#4a4d55';else if(h>=1&&h<1.45)col='#ff8a1e';else if(h>=2.15&&h<2.3)col='#f2f2f2';else col='#8b8e95'}
+  if(h!==null){if(h<0)col='#1c1e24';else if(h<.55)col='#34373f';else if(Math.abs(((h*1.15)%1)-.5)>.485)col='#2b2d34';else col='#4c505a'}else col='#454953'
   g.fillStyle=col;g.fillRect(x,0,1,128)}
  for(let i=0;i<9000;i++){const v=90+R()*90|0;g.fillStyle='rgba('+v+','+v+','+(v+4)+','+(.1+R()*.2)+')';g.fillRect(R()*1024,R()*128,1+R()*2,1+R()*2)}
  g.fillStyle='rgba(0,0,0,.4)';g.fillRect(0,0,1024,3);
  const tx=new THREE.CanvasTexture(c);tx.wrapS=THREE.ClampToEdgeWrapping;tx.wrapT=THREE.RepeatWrapping;tx.anisotropy=8;tx.encoding=THREE.sRGBEncoding;return tx})();
 const tunM=new THREE.MeshStandardMaterial({map:tunT,roughness:.88,metalness:.04,side:THREE.DoubleSide,emissive:0x23262c}),tunLM=new THREE.MeshBasicMaterial({color:0xfff3d6}),tunGM=new THREE.MeshBasicMaterial({color:0xffd21a,side:THREE.DoubleSide,fog:false}),tunGH=new THREE.MeshBasicMaterial({color:0xffc400,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}),tunEM=new THREE.MeshBasicMaterial({color:0xeaf6ff,fog:false});
+function arrowTex(){const c=document.createElement('canvas');c.width=256;c.height=128;const g=c.getContext('2d');g.lineJoin='round';
+ for(let k=0;k<3;k++){const x=16+k*72;g.beginPath();g.moveTo(x,64);g.lineTo(x+52,6);g.lineTo(x+84,6);g.lineTo(x+32,64);g.lineTo(x+84,122);g.lineTo(x+52,122);g.closePath();
+  const gr=g.createLinearGradient(x,0,x+84,0);gr.addColorStop(0,'#ff9be8');gr.addColorStop(1,'#ff35c0');g.shadowColor='#ff3ad0';g.shadowBlur=18;g.fillStyle=gr;g.fill();g.shadowBlur=0;g.strokeStyle='rgba(255,230,250,.85)';g.lineWidth=3;g.stroke()}
+ const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t}
 function tunBuild(){tunG.children.forEach(o=>{if(o.geometry)o.geometry.dispose()});tunG.clear();tunIc.length=0;
  const P0=TH.tm?tunProfM:tunProf,np=P0.p.length,z0=60,z1=-(FINISH+260),step=6,n=Math.ceil((z0-z1)/step),pos=new Float32Array((n+1)*np*3),uv=new Float32Array((n+1)*np*2),idx=[];
  for(let i=0;i<=n;i++){const z=z0-i*step,x0=cx(z);for(let j=0;j<np;j++){const o=i*np+j;pos[o*3]=x0+P0.p[j][0];pos[o*3+1]=P0.p[j][1];pos[o*3+2]=z;uv[o*2]=P0.L[j]/P0.T;uv[o*2+1]=i}}
@@ -2534,8 +2559,28 @@ function tunBuild(){tunG.children.forEach(o=>{if(o.geometry)o.geometry.dispose()
  const lg=new THREE.BoxGeometry(.45,.08,3.2),zs=[];for(let z=-20;z>z1+10;z-=9)zs.push(z);
  const lm=new THREE.InstancedMesh(lg,tunLM,zs.length*2),M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(1,1,1),V=new THREE.Vector3();
  zs.forEach((z,i)=>[-3.4,3.4].forEach((sx,k)=>{lm.setMatrixAt(i*2+k,M.compose(V.set(cx(z)+sx,P0.H0+P0.Hr*Math.sqrt(1-(sx/P0.W)*(sx/P0.W))-.08,z),Q,S))}));lm.frustumCulled=false;if(!TH.tm)tunG.add(lm);
- if(typeof EV!=='undefined'&&EV&&EV.ta){for(let d=1000;d<FINISH-100;d+=1000){const z=-d;for(const[hw,sc,mat]of[[1.44,.985,tunGM],[3.4,.968,tunGH]]){const pp=[],ii=[];for(const zz of[z+hw,z-hw]){for(let j=0;j<np;j++){const q=P0.p[j];pp.push(cx(zz)+q[0]*sc,P0.H0+(q[1]-P0.H0)*sc,zz)}}
-   for(let j=0;j<np-1;j++)ii.push(j,j+np,j+1,j+1,j+np,j+np+1);const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(pp,3));gg.setIndex(ii);const m=new THREE.Mesh(gg,mat);m.frustumCulled=false;if(mat===tunGH)m.renderOrder=3;tunG.add(m)}const ic=new THREE.Sprite(tunIcM);ic.scale.set(2.25,2.25,1);ic.position.set(cx(z),4.7,z);ic.renderOrder=4;tunG.add(ic);tunIc.push(ic)}}
+ if(typeof EV!=='undefined'&&EV&&EV.ta){
+  /* v6.1 süre kapısı: çift neon kemer (dış turkuaz, iç pembe) — referans 1 */
+  const base=[[-P0.W,0]];P0.p.forEach(q=>{if(q[1]<0)return;const l=base[base.length-1];if(Math.abs(l[0]-q[0])<1e-6&&Math.abs(l[1]-q[1])<1e-6)return;base.push(q)});{const l=base[base.length-1];if(!(Math.abs(l[0]-P0.W)<1e-6&&l[1]===0))base.push([P0.W,0])}
+  const arc=(sc,zo,r,mat)=>new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(base.map(q=>new THREE.Vector3(q[0]*sc,q[1]*sc,zo))),72,r,6,false),mat);
+  const cM=new THREE.MeshBasicMaterial({color:0x35d8ff,fog:false,toneMapped:false}),cH=new THREE.MeshBasicMaterial({color:0x1aa0ff,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false,fog:false,toneMapped:false}),pM=new THREE.MeshBasicMaterial({color:0xff4fd8,fog:false,toneMapped:false}),pH=new THREE.MeshBasicMaterial({color:0xff1fc0,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false,fog:false,toneMapped:false});
+  const gs=[arc(.94,-.9,.11,cM),arc(.94,-.9,.42,cH),arc(.85,.3,.11,pM),arc(.85,.3,.42,pH)].map(m=>m.geometry);gs[1]=gs[1];
+  for(let d=1000;d<FINISH-100;d+=1000){const z=-d,gp=new THREE.Group();[[.94,-.9,.11,cM,0],[.94,-.9,.42,cH,3],[.85,.3,.11,pM,0],[.85,.3,.42,pH,3]].forEach((a,k)=>{const m=new THREE.Mesh(gs[k],a[3]);m.frustumCulled=false;if(a[4])m.renderOrder=a[4];gp.add(m)});gp.position.set(cx(z),0,z);tunG.add(gp);
+   const ic=new THREE.Sprite(tunIcM);ic.scale.set(2.25,2.25,1);ic.position.set(cx(z),4.7,z);ic.renderOrder=4;tunG.add(ic);tunIc.push(ic)}}
+ /* v6.1 tünel iç tasarımı (referans 4): duvarda neon şeritler + pembe ok işaretleri */
+ {const wl=P0.H0+.5;
+  const prof=s=>{let k=1;const L=P0.L;while(k<L.length-1&&L[k]<s)k++;const t=Math.max(0,Math.min(1,(s-L[k-1])/Math.max(1e-6,L[k]-L[k-1]))),a=P0.p[k-1],b=P0.p[k],dx=b[0]-a[0],dy=b[1]-a[1],dl=Math.hypot(dx,dy)||1;return{x:a[0]+dx*t,y:a[1]+dy*t,nx:dy/dl,ny:-dx/dl}};
+  const band=(s0,s1,nS,zList,len,mat,arrow)=>{const pos=[],uv=[],idx=[];let vc=0;
+   for(const sd of[-1,1])for(const zA of zList){const nz=arrow?1:Math.max(1,Math.round(len/6)),off=.07;
+    for(let i=0;i<=nz;i++){const z=zA-len*i/nz,x0=cx(z);for(let r=0;r<=nS;r++){const q=prof(s0+(s1-s0)*r/nS),wx=sd<0?q.x+q.nx*off:-q.x-q.nx*off;pos.push(x0+wx,q.y+q.ny*off,z);uv.push(arrow?(sd<0?i/nz:1-i/nz):i/nz,r/nS)}}
+    for(let i=0;i<nz;i++)for(let r=0;r<nS;r++){const a=vc+i*(nS+1)+r,b=a+1,c=a+nS+1,d=c+1;idx.push(a,c,b,b,c,d)}vc+=(nz+1)*(nS+1)}
+   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);const m=new THREE.Mesh(g,mat);m.frustumCulled=false;m.renderOrder=2;return m};
+  const pol={polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3,side:THREE.DoubleSide,fog:false,toneMapped:false};
+  const nm=new THREE.MeshBasicMaterial(Object.assign({color:0xff4fd8},pol)),nc=new THREE.MeshBasicMaterial(Object.assign({color:0x35d8ff},pol));
+  const zEnd=z1+8,seg=Math.ceil((z0-zEnd)/600);
+  for(let k=0;k<seg;k++){const zA=z0-k*600,len=Math.min(600,zA-zEnd);tunG.add(band(1.55,1.8,1,[zA],len,nm,0));tunG.add(band(5.0,5.2,1,[zA],len,nc,0))}
+  const am=new THREE.MeshBasicMaterial(Object.assign({map:arrowTex(),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false},pol,{polygonOffsetFactor:-4}));
+  const za=[];for(let z=-70;z>z1+20;z-=64)za.push(z);for(let q=0;q<za.length;q+=300)tunG.add(band(1.2,3.7,5,za.slice(q,q+300),5.4,am,1))}
  const ex=new THREE.Mesh(new THREE.PlaneGeometry(P0.W*2+2,P0.H0+P0.Hr+1),tunEM);ex.position.set(cx(z1+.5),(P0.H0+P0.Hr-.5)/2,z1+.5);tunG.add(ex)}
 // ===== Tianshan Shengli Tüneli: model tünel (kabuk + donanım), yola bendMat ile oturur =====
 var tsG=null,tsC=null,tsA=null;
@@ -4250,8 +4295,8 @@ function heroFor(){try{const e=(typeof EV!=='undefined'&&EV)?(EVS.find(x=>x.id==
 function setHero(u,f){const r=$$('res');r.classList.toggle('evfail',!!f);r.style.setProperty('--rh','url("'+u+'")');if(u===A.hero.lg)r.style.removeProperty('background');else r.style.setProperty('background','#0a0620 url("'+u+'") center 35%/cover no-repeat','important')}
 function topTot(e){try{const a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]');return a.length?(+a[0].s||0):0}catch(x){return 0}}
 const _rs=reset;reset=function(){try{setHero(A.hero.lg,0)}catch(x){}return _rs.apply(this,arguments)};
-const _ef=evFinish;evFinish=function(win){const e=EV;const h=win?A.hero.lg:heroFor();const r=_ef.apply(this,arguments);
- try{setHero(h,!win);if(e){const te=$$('rte');if(te&&te.textContent!==''){te.textContent=topTot(e)}}}catch(x){}return r};
+const _ef=evFinish;evFinish=function(win){const e=EV;const sp=!!(e&&e.ta);const h=(win&&!sp)?A.hero.lg:heroFor();const r=_ef.apply(this,arguments);
+ try{setHero(h,!win||sp);if(e){const te=$$('rte');if(te&&te.textContent!==''){te.textContent=topTot(e)}}}catch(x){}return r};
 if(typeof rrDone==='function'){const _rd=rrDone;rrDone=function(win){const h=win?A.hero.lg:heroFor();const r=_rd.apply(this,arguments);try{setHero(h,!win)}catch(x){}return r}}
 }catch(e){console.error(e)}})();
 </script>
