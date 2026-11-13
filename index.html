@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v7.0</title>
+<title>gtr_game_v7.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1067,12 +1067,12 @@ body.u2n #snv{display:flex}
 .k2h.cu .k2x{width:64px;height:72px;background:linear-gradient(180deg,#ffe066,#ffa800);color:#fff;font-size:28px}
 .k2h.cu .k2x::before{background:linear-gradient(180deg,#3a2a6a,#1b0f48)}
 .k2h b{font:800 10px/1.1 system-ui;text-transform:uppercase;letter-spacing:.2px;text-align:center}
-.k2h small{font:600 10px/1.1 system-ui;color:#ffe9a8;text-align:center;max-width:90px}
+.k2h small{font:600 10px/11px system-ui;color:#ffe9a8;text-align:center;max-width:90px;width:90px;height:22px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .k2h .crst{font-size:10px}
 .k2b{display:flex;flex-direction:column;gap:10px}
 .k2r{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:16px;border:1px solid rgba(176,107,255,.5);background:linear-gradient(180deg,rgba(40,24,100,.78),rgba(16,9,48,.86));box-shadow:0 0 14px rgba(140,70,255,.25);min-height:62px;box-sizing:border-box}
 .k2l{font-size:30px;filter:drop-shadow(0 0 8px rgba(255,190,40,.7))}
-.k2rt{flex:1;min-width:0}.k2rt b{display:block;font:italic 900 14px system-ui;color:#ffd24a}.k2rt small{display:block;font:700 14px system-ui;color:#ddd;margin-top:2px}
+.k2rt{flex:1;min-width:0}.k2rt b{display:block;font:italic 900 14px system-ui;color:#ffd24a}.k2rt small{display:flex;align-items:center;gap:6px;line-height:1;height:20px;font:700 14px/1 system-ui;color:#ddd;margin-top:2px}.k2rt small .cn{flex:0 0 auto;width:18px;height:18px;font-size:14px;line-height:18px;vertical-align:0}
 .k2r img{height:46px;width:auto;max-width:42%;object-fit:contain}
 .k2go{height:58px;border-radius:14px;border:2px solid rgba(255,255,255,.55);background:linear-gradient(180deg,#ffe066,#ffb300);color:#3a2200;font:italic 900 22px/1 system-ui;letter-spacing:.5px;transform:skewX(-8deg);box-shadow:0 0 22px rgba(255,179,0,.5),0 5px 0 #a86c00,0 10px 18px rgba(0,0,0,.4);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto}
 .k2go i{font-style:normal;font-size:26px}
@@ -2601,6 +2601,17 @@ function tunBuild(){tunG.children.forEach(o=>{if(o.geometry)o.geometry.dispose()
   const nm=new THREE.MeshBasicMaterial(Object.assign({color:0xff4fd8},pol)),nc=new THREE.MeshBasicMaterial(Object.assign({color:0x35d8ff},pol));
   const zEnd=z1+8,seg=Math.ceil((z0-zEnd)/600);
   for(let k=0;k<seg;k++){const zA=z0-k*600,len=Math.min(600,zA-zEnd);tunG.add(band(1.55,1.8,1,[zA],len,nm,0));tunG.add(band(5.0,5.2,1,[zA],len,nc,0))}
+  /* v7.1 dikey neon duvar çubukları + ıslak asfalt yansıması */
+  const zb=[];for(let z=-70;z>z1+20;z-=64)zb.push(z);
+  const bp=[],bc=[];zb.forEach(z=>[-16,-32,-48].forEach((o,k)=>(k===1?bc:bp).push(z+o)));
+  const bar=(l,m)=>{for(let q=0;q<l.length;q+=300)tunG.add(band(0.9,6.2,1,l.slice(q,q+300),0.35,m,0))};
+  bar(bp,nm);bar(bc,nc);
+  const rfT=(()=>{const c=document.createElement('canvas');c.width=64;c.height=128;const g=c.getContext('2d'),gr=g.createLinearGradient(0,0,0,128);gr.addColorStop(0,'rgba(255,255,255,0)');gr.addColorStop(.12,'rgba(255,255,255,.95)');gr.addColorStop(.5,'rgba(255,255,255,.35)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,64,128);const gh=g.createLinearGradient(0,0,64,0);gh.addColorStop(0,'rgba(0,0,0,1)');gh.addColorStop(.5,'rgba(0,0,0,0)');gh.addColorStop(1,'rgba(0,0,0,1)');g.globalCompositeOperation='destination-out';g.globalAlpha=.85;g.fillStyle=gh;g.fillRect(0,0,64,128);const t=new THREE.CanvasTexture(c);return t})();
+  const rfM=col=>new THREE.MeshBasicMaterial({map:rfT,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false,toneMapped:false,polygonOffset:true,polygonOffsetFactor:-6,polygonOffsetUnits:-6,side:THREE.DoubleSide});
+  const rfl=(l,m)=>{for(let q=0;q<l.length;q+=300){const pos=[],uv=[],idx=[];let vc=0;for(const sd of[-1,1])for(const z of l.slice(q,q+300)){const x0=cx(z),xi=sd*(P0.W-1.2),xo=sd*(P0.W-3.6),zs=z+9,ze=z-5;
+     pos.push(x0+xi,.04,zs,x0+xo,.04,zs,x0+xi,.04,ze,x0+xo,.04,ze);uv.push(0,0,1,0,0,1,1,1);idx.push(vc,vc+1,vc+2,vc+1,vc+3,vc+2);vc+=4}
+    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);const me=new THREE.Mesh(g,m);me.frustumCulled=false;me.renderOrder=3;tunG.add(me)}};
+  rfl(bp,rfM(0xff4fd8));rfl(bc,rfM(0x35d8ff));
   const am=new THREE.MeshBasicMaterial(Object.assign({map:arrowTex(),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false},pol,{polygonOffsetFactor:-4}));
   const za=[];for(let z=-70;z>z1+20;z-=64)za.push(z);for(let q=0;q<za.length;q+=300)tunG.add(band(1.0,4.0,6,za.slice(q,q+300),6.48,am,1))}
  const ex=new THREE.Mesh(new THREE.PlaneGeometry(P0.W*2+2,P0.H0+P0.Hr+1),tunEM);ex.position.set(cx(z1+.5),(P0.H0+P0.Hr-.5)/2,z1+.5);tunG.add(ex)}
@@ -3363,7 +3374,7 @@ function evHud(){if(EV&&EV.tx){txHud();return}{const h=$('evt'),p=$('tpr'),f=p&&
 function evFinish(win){if(EV&&PVE.includes(EV.id))return rrDone(win);{const w=$('txw');if(w)w.style.display='none'}document.body.classList.remove('rp');$('rp').style.display='none';$('win').style.display='none';const e=EV;const ok=win||!!(e.endless&&e.tout);let sc=Math.floor(isDR()?drTot:score);if(win&&e.ta&&!e.endless)sc+=Math.round(e.t*100);
  const dw=win&&isDR();let bonus=0;if(ok&&!dw&&!evClaimed(e.id,e.cyc)){bonus=e.reward;try{localStorage.setItem('th_evc_'+e.id,String(e.cyc))}catch(x){}}
  const b0=evBest(e.id,e.cyc),rec=(ok||dw)&&sc>b0;if(rec){try{localStorage.setItem('th_evb_'+e.id,JSON.stringify({c:e.cyc,s:sc}))}catch(x){}}
- const txT=(e.tx&&win&&TX)?(TX.tipC|0):0;if(!ok&&!dw){sc=0;raceCoins=0}const earn=dw?100:(ok?raceCoins+bonus+txT:0);coins+=earn;saveAcct();score=sc;if(ok||dw)evRecAdd(e,sc,win);
+ const txT=(e.tx&&win&&TX)?(TX.tipC|0):0;if(!ok&&!dw){sc=0;raceCoins=0}const earn=dw?100:(ok?raceCoins+bonus+txT:0);coins+=earn;saveAcct();score=sc;if(ok||dw)evRecAdd(e,sc,win);if(ok&&!dw&&sc>0)try{lbAdd(sc,+(((win?FINISH:crashDist)||0)/1000).toFixed(2))}catch(x){}
  $('rtt').innerHTML=win?'KAZANDIN!':(e.tout?(e.tmsg||'SÜRE BİTTİ!'):'MAKSİMUM<br>HASAR');$('rtt').classList.toggle('scrap',!win&&!e.tout);evCard(e,ok,txT);resFail(!ok&&!dw);$('rs').textContent=sc;{const te=$('rte');if(te)te.textContent=Math.max(b0,sc)}$('rs').classList.toggle('drp',isDR());$('rs').previousElementSibling.textContent=isDR()?'DRIFT PUANI':'KAZANILAN PUAN';
  $('rsub').textContent=(ok&&!win&&e.endless)?(rec&&sc>0?'Tebrikler! Yeni etkinlik rekorunu kırdın!':(bonus?'ETKİNLİK ÖDÜLÜ +'+bonus:'')):!ok&&!dw?(e.tx?(e.tmsg==='MÜŞTERİ<br>KAÇTI'?'Müşteriyi alamadın, müşteri gitti.':e.tmsg?'Varış noktasını geçtin, müşteriyi bırakamadın.':'Müşteriyi zamanında hedefe ulaştıramadın.'):e.tout?'Süre dolmadan hedefe ulaşamadın.':'Aracın tamamen hasar gördü.'):dw?(rec&&sc>0?'YENİ REKOR':''):(rec&&sc>0?'YENİ REKOR · ':'')+(bonus?'ETKİNLİK ÖDÜLÜ +'+bonus:win?'ÖDÜL BU DÖNEM ALINDI':'');$('rpl').textContent=win?'TEKRAR OYNA':(e.tout?'TEKRAR OYNA':'TEKRAR DENE');$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';$('nxl').style.display='none';$('rcn').innerHTML=COIN+' +'+earn;$('rbt2').style.display='flex';$('rlb').className='evrbtn';$('rlb').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M8 4h8v6a4 4 0 0 1-8 0V4z" fill="#ffe34d" stroke="#fff"/><path d="M8 6H4v1.5A3.5 3.5 0 0 0 8 11M16 6h4v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v3M8.5 20h7M10 17h4"/></svg><span>REKORLAR</span>';$('rdf').style.display='none';$('rbt2').dataset.ev=e.id;
  if(win){$('rtt').innerHTML='ETKİNLİĞİ<br>TAMAMLADIN'}$('rtt').classList.toggle('rtL',!!win);
