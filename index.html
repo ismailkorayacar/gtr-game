@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.89</title>
+<title>gtr_game_v4.90</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1246,6 +1246,23 @@ body.ls #cr #crbody{overflow-y:auto!important}
  #pm .pmt b{font-size:19px}
  #pm .pmt em{font-size:10.5px}
  #pm #pmmsg{bottom:calc(env(safe-area-inset-bottom,0px) + 162px);left:96px}
+}
+/* ===== v4.90 Garaj ===== */
+body.u2 #gal .gh{display:none!important}
+body.u2 #gal{background:none}
+body.u2 #galst{top:calc(env(safe-area-inset-top,0px) + 68px)!important;right:12px!important;border-radius:16px!important;border:1.5px solid rgba(176,107,255,.6)!important;background:linear-gradient(180deg,rgba(40,24,100,.62),rgba(16,9,48,.7))!important;box-shadow:0 0 14px rgba(140,70,255,.3)!important}
+body.u2 #galst #gsn{font:italic 900 15px system-ui!important;color:#ffc24a;background:none!important;-webkit-text-fill-color:#ffc24a}
+#galsel,#gal .galc #galsel{background:linear-gradient(180deg,#ffe066,#ffb300) padding-box,linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.4)) border-box!important;border:2px solid transparent!important;box-shadow:0 0 18px rgba(255,179,0,.45),0 4px 0 #a86c00!important;color:#3a2200!important;font:italic 900 16px/1 system-ui!important;border-radius:14px!important}
+#galsel::after{display:none!important}
+#gal .galc{border-radius:0!important;border-top:1.5px solid rgba(176,107,255,.55)!important}
+@media (orientation:landscape){
+ body.u2n #gal .galc{left:96px!important;width:calc(100% - 96px)!important}
+ body.u2n #gal #galt{left:108px!important;top:calc(env(safe-area-inset-top,0px) + 68px)!important}
+}
+@media (orientation:portrait){
+ body.u2n #gal #galp{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 90px)!important}
+ body.u2n #galst{left:auto!important;right:12px!important}
+}
 }
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
@@ -3870,8 +3887,8 @@ const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).displ
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
 const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
 [['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
-const OT=['shop','ms','lb','res','evr','evd','gal','set','galw'];
-function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const pmv=vis('pm'),on=(o||c||pmv)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+const OT=['shop','ms','lb','res','evr','evd','set','galw'];
+function sync(){try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis);const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr&&!cuOn,on=(o||c||pmv||gv)&&!oth,nvOn=on,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',pre?false:gv?i===3:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
@@ -3909,5 +3926,11 @@ try{
  document.querySelectorAll('.pmt b').forEach(x=>x.innerHTML=x.innerHTML.replace(/<br\s*\/?>/g,' '));
  document.querySelectorAll('.pmc').forEach(b=>b.style.setProperty('--img','url("'+m[b.dataset.k]+'")'));
 }catch(e){}
+})();
+/* ===== v4.90 Garaj: üst bar + menü ===== */
+(function(){
+const $$=id=>document.getElementById(id);
+const vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
+[...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=()=>{if(vis('gal')){if(i===3)return;try{closeGal(false)}catch(e){}}f&&f.apply(b,arguments)}});
 })();
 </script></body></html>
