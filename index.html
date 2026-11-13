@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v4.100</title>
+<title>gtr_game_v4.101</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1475,6 +1475,9 @@ body #res #rtt.scrap{margin-top:0;transform:none}
 }
 @media (orientation:portrait){body #res:has(>.evd) .rt{padding-top:52px}}
 #shop #sad{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
+body.u2 #setback,body.u2 #msback{padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:0}
+body.u2 #setback svg,body.u2 #msback svg{display:block;margin:0}
+@media (orientation:landscape){body.u2 #evd #evdb{grid-template-rows:auto auto!important;grid-auto-rows:min-content}body.u2 #evd .evk{align-self:start;height:auto!important;overflow:visible}}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -4060,7 +4063,7 @@ function upd(){try{
  const d=$$('evb').classList.contains('dot');$$('tbb').classList.toggle('dot',d)}catch(e){}}
 $$('tbs').onclick=()=>$$('setb').click();
 $$('tbb').onclick=()=>$$('evb').click();
-$$('bal').onclick=()=>$$('shopb').click();
+$$('bal').onclick=()=>{['set','ms'].forEach(k=>{if(vis(k))$$(k).style.display='none'});$$('shopb').click()};
 const I={
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.3"/><path d="M3.3 10.6 9.7 11.5M20.7 10.6l-6.4.9M12 14.3V21"/></svg>',
  kar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5"/><path d="M12 14v4M8.5 20h7"/></svg>',
