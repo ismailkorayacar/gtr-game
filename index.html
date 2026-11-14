@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.18</title>
+<title>gtr_game_v9.19</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1452,7 +1452,7 @@ body.u2 #ms .msr .mp u{background:linear-gradient(90deg,#b06bff,#ffd24a)}
 #res{background-color:#0a0620}
 #res::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),var(--rh) center 35%/cover no-repeat}
 #res::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.68) 30%,rgba(8,4,26,.9) 100%)}
-#res:has(>.evd)::after,#res:has(>.evd)::before{display:none}
+#res:has(>.evd)::before{background:rgba(8,4,26,.42)!important}
 #res>.st{display:none!important}
 body #res{padding:calc(env(safe-area-inset-top,0px) + 14px) 0 calc(env(safe-area-inset-bottom,0px) + 14px)!important;justify-content:flex-start!important;overflow-y:auto!important}
 body #res .rt{max-width:560px;min-height:100%;margin:0 auto;padding:0 14px;gap:10px;justify-content:flex-start}
@@ -1478,7 +1478,10 @@ body #res #rtt.scrap{margin-top:0;transform:none}
  body #res .rbg .rbn{min-height:46px;padding-top:6px;padding-bottom:6px}
  body #res #rtt{font-size:30px}
  body #res #rtt.scrap{font-size:34px!important;margin-top:0;transform:none}
- body #res:has(>.evd) #rtt{margin-top:50px}
+ body #res:has(>.evd) #rtt{margin-top:0;grid-column:2;grid-row:1;font-size:26px}
+ body #res:has(>.evd) #rsub{grid-column:2;grid-row:2}
+ body #res:has(>.evd) .card{grid-row:3}
+ body #res:has(>.evd) #nxl{grid-row:3}
 }
 @media (orientation:portrait){body #res:has(>.evd) .rt{padding-top:52px}}
 #shop #sad{background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 16px rgba(255,179,0,.45),0 4px 0 #a86c00!important;font-style:italic}
@@ -1522,7 +1525,6 @@ body #set.igs,body.ls #set.igs{overflow-y:auto!important;padding-top:calc(env(sa
 html.fbh:not(.fbu):not(.fbf) #tbpt{display:none!important}
 /* ===== v5.4 sonuç: toplam etkinlik puanı P ikonu ===== */
 #rte::before{content:'P';display:inline-block;width:1.15em;height:1.15em;border-radius:50%;background:radial-gradient(circle at 38% 32%,#c98cff,#5b1fb0);border:1.5px solid #ecd3ff;box-shadow:0 0 6px #a45cff;box-sizing:border-box;color:#fff;font:900 .7em/1.05em system-ui;font-style:normal;text-align:center;flex:none}
-#res.evfail:has(>.evd)::after,#res.evfail:has(>.evd)::before{display:block}
 #res.evfail>.evd{z-index:2}
 #res.evfail>.evd .evb,#res.evfail>.evd .evp,#res.evfail>.evd .evv,#res.evfail>.evd .evs2{display:none}
 /* ===== v5.6 araç geliştirme: BOYA/JANT/NEON altta küçük butonlar ===== */
@@ -1626,7 +1628,9 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 /* v8.4 festival sonuç ekranı + bildirim kapat ikonu */
 #rrr.fsr .evd .evp,#rrr.fsr .evd .evs2{display:none!important}
 #rrr.fsr .rrp{background:rgba(14,8,40,.86)!important}
-#rrr.fsl{background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),var(--fsh) center 35%/cover no-repeat #0a0620}
+#rrr.evl{background:linear-gradient(rgba(8,4,26,.4),rgba(8,4,26,.4)),var(--evh) center 35%/cover no-repeat #0a0620}
+#rrr.evl{padding-top:34px!important;padding-bottom:6px!important;box-sizing:border-box}
+#rrr .rrt{font:italic 900 24px/1.05 system-ui;text-align:center;color:#fff;text-shadow:0 2px 0 #3a0f7a,0 0 14px #b06bff;letter-spacing:.5px}
 #ntf #ntback{display:flex!important;align-items:center;justify-content:center;padding:0!important}
 #ntf #ntback svg{display:block!important;margin:0!important;flex:none}
 @media (orientation:landscape){#rrr.fsr{gap:8px!important}#rrr.fsr .rrp{padding:8px 10px 4px!important}#rrr.fsr h3{margin:0 0 5px!important;font-size:13px!important}#rrr.fsr .rrw{padding:4px 8px!important;margin-bottom:3px!important;gap:8px!important}#rrr.fsr .rrw .k{width:24px!important;height:24px!important;font-size:13px!important}#rrr.fsr .rrw .nm{font-size:13px!important}#rrr.fsr .rrc{margin-bottom:4px!important;transform:scale(.8);transform-origin:center top;height:auto}#rrr.fsr .rrb.rbg{grid-template-columns:repeat(4,1fr)!important;width:min(640px,100%)!important}#rrr.fsr .rrp{width:min(520px,100%)!important}#rrr.fsr .rrb .btn{height:42px!important;font-size:11px!important}}
@@ -3940,7 +3944,7 @@ function rrDone(w){if(RRX)return;const win=RRFIN>0||!!w;
  nosAct=false;pre=true;rrT=0;RRP=true;st='replay';
  try{sfx(rank===1?'win':'coin')}catch(x){}
  document.body.classList.add('rp','rrr');$('rri').style.display='none';show('ov',false);show('res',false);
- const C=['#ffd24a','#cfd6df','#d98a4a','#7d8696'];let h='<div class="rrp">'+(win&&rank===1?'<div class="rrc"><b>TEBRİKLER</b><span>1. '+esc(sel.name||'Pilot')+'</span></div>':'')+'<h3>SIRALAMA</h3>';
+ const C=['#ffd24a','#cfd6df','#d98a4a','#7d8696'];let h='<div class="rrt">'+(win?'ETKİNLİĞİ TAMAMLADIN':'MAKSİMUM HASAR')+'</div><div class="rrp">'+(win&&rank===1?'<div class="rrc"><b>TEBRİKLER</b><span>1. '+esc(sel.name||'Pilot')+'</span></div>':'')+'<h3>SIRALAMA</h3>';
  rows.forEach((r,i)=>{h+='<div class="rrw'+(r.you?' me':'')+'"><span class="k" style="background:'+C[i]+'">'+(i+1)+'</span><span class="nm">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><span class="tt">'+(r.dnf?'BİTİRMEDİ':(r.est?'~':'')+fmtRT(r.fin))+'</span><span class="cn2">'+(PR[i]&&!r.dnf?COIN+' +'+PR[i]:'-')+'</span></div>'});
  h+='</div><div class="rrb rbg"><button id="rrhm" class="btn rbn" type="button">LOBİ</button><button id="rrag" class="btn rbn p" type="button">TEKRAR OYNA</button><button id="rrrc" class="btn rbn" type="button">ETKİNLİK REKORLARI</button><button id="rrsh" class="btn rbn" type="button">MAĞAZA</button></div>';
  const el=$('rrr');el.innerHTML=h;el.style.display='flex';evDeco(el,EV,false);{const E=EV,eid=E&&E.id;[['rrhm','lobby'],['rrag','again'],['rrrc','trophy'],['rrsh','shop']].forEach(q=>$(q[0]).style.setProperty('--ic',icUrl(RIC[q[1]])));$('rrhm').onclick=()=>toMenu();$('rrag').onclick=rrAgain;$('rrrc').onclick=()=>{const i=EVS.findIndex(x=>x.id===eid);if(i>=0){evrFromRes=false;evrFromRr=true;window.__evrRes=true;evRecShow(i);$('rrr').style.display='none';show('evr',true)}else{toMenu();show('ov',false);evList();show('evs',true)}};$('rrsh').onclick=()=>{toMenu();shopFrom='ov';openShop()}}}
@@ -4438,9 +4442,8 @@ function heroFor(){try{const e=(typeof EV!=='undefined'&&EV)?(EVS.find(x=>x.id==
 function setHero(u,f){const r=$$('res');r.classList.toggle('evfail',!!f);r.style.setProperty('--rh','url("'+u+'")');if(u===A.hero.lg)r.style.removeProperty('background');else r.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+u+'") center 35%/cover no-repeat #0a0620','important')}
 function topTot(e){try{const a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]');return a.length?(+a[0].s||0):0}catch(x){return 0}}
 const _rs=reset;reset=function(){try{setHero(A.hero.lg,0)}catch(x){}return _rs.apply(this,arguments)};
-const _ef=evFinish;evFinish=function(win){const e=EV;const sp=!!(e&&e.ta);const h=(win&&!sp)?A.hero.lg:heroFor();const r=_ef.apply(this,arguments);
- try{setHero(h,!win||sp);if(e){const te=$$('rte');if(te&&te.textContent!==''){te.textContent=topTot(e)}}}catch(x){}return r};
-if(typeof rrDone==='function'){const _rd=rrDone;rrDone=function(win){const h=win?A.hero.lg:heroFor();const r=_rd.apply(this,arguments);try{setHero(h,!win)}catch(x){}return r}}
+const _ef=evFinish;evFinish=function(win){const e=EV;const h=heroFor();const r=_ef.apply(this,arguments);
+ try{setHero(h,true);if(e){const te=$$('rte');if(te&&te.textContent!==''){te.textContent=topTot(e)}}}catch(x){}return r};
 }catch(e){console.error(e)}})();
 </script>
 <script>/* ===== v5.5/5.8 garaj: referans platform görseli arka plan, araç platformun ortasında (boya ekranı oranı) ===== */
@@ -4522,8 +4525,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.18';
-const NOTES=['XP animasyonunda kazanılan XP tutarlarının yanındaki XP yazısı artık sığıyor','Yol virajlarında araç şeridi kendiliğinden takip etmiyor; yol yardımı yüzde 5, aşırı keskin virajlarda sürülebilir kalması için ek destek var','Etkinlik rekorları artık etkinlik sonuç ekranından çıkmadan, menüler olmadan gösteriliyor ve geri tuşu sonuç ekranına dönüyor'];        
+const NT_VER='v9.19';
+const NOTES=['Etkinlik sonuç ekranları: her etkinlik kendi hero görselini kullanıyor','Etkinliği tamamladın başlığı sonuç tablosunun üstüne taşındı, etkinlik adı alanıyla üst üste binmiyor','PvE sonuç ekranında başlık sıralama tablosunun üstünde'];         
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
@@ -4683,7 +4686,7 @@ const _at=applyTheme;applyTheme=function(){const r=_at.apply(this,arguments);try
 </script>
 <script>/* v8.4 festival sonuç */
 (function(){try{
-const _rd=rrDone;rrDone=function(w){const had=!!RRX;const r=_rd.apply(this,arguments);try{if(had)return r;const el=document.getElementById('rrr'),fs=!!(EV&&EV.id==='fs');el.classList.toggle('fsr',fs);const win=RRFIN>0||!!w;el.classList.toggle('fsl',fs&&!win);if(fs&&!win)el.style.setProperty('--fsh','url("'+A.hero.fs+'")');else el.style.removeProperty('--fsh')}catch(e){}return r};
+const _rd=rrDone;rrDone=function(w){const had=!!RRX;const r=_rd.apply(this,arguments);try{if(had)return r;const el=document.getElementById('rrr');el.classList.add('fsr','evl');el.style.setProperty('--evh','url("'+evHero(EVS.find(x=>x.id===EV.id)||EV)+'")')}catch(e){}return r};
 }catch(e){console.error(e)}})();
 </script>
 <script>/* ===== v8.9 XP sistemi ===== */
