@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.1</title>
+<title>gtr_game_v9.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -3280,7 +3280,7 @@ function e2Feat(){const i=evFeat,e=EVS[i],f=$('e2f');if(!f)return;if(!e){f.inner
  $('e2go').onclick=()=>evOpen(i)}
 function evOpen(i){evSel=i;const e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n);
  $('evdb').innerHTML='<div class="evh" style="background:'+e.bg+'"><small>'+e.tag+'</small><b>'+e.nm+'</b><span class="evt" data-i="'+i+'">◷ '+evFmt(c.end-Date.now())+'</span></div>'
-  +'<div class="evk"><p>'+e.ds+'</p><div class="evr"><span>Zorluk</span><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></div>'+(e.loc?'<div class="evr"><span>Konum</span><b>'+e.loc+'</b></div>':'')+'<div class="evr"><span>Harita</span><b>'+(e.hm||(e.id==='dc'?THS[c.th].n:THS[e.th].n))+'</b></div><div class="evr"><span>Ödül</span><b>'+COIN+'<em>'+e.reward+'</em>'+'</b></div>'+'<h4>KURALLAR</h4><ul>'+e.ru.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
+  +'<div class="evk"><p>'+e.ds+'</p><div class="evr"><span>Zorluk</span><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></div>'+(e.loc?'<div class="evr"><span>Konum</span><b>'+e.loc+'</b></div>':'')+'<div class="evr"><span>Harita</span><b>'+(e.hm||(e.id==='dc'?THS[c.th].n:THS[e.th].n))+'</b></div><div class="evr"><span>Ödül</span><b>'+COIN+'<em>'+e.reward+'</em>'+'</b></div>'+'<h4>KURALLAR</h4><ul>'+e.ru.map(x=>'<li>'+(/^Ödül:/.test(x)?x.replace(/(\d{3,})/g,'<span class="rcnw">'+COIN+' $1</span>'):x)+'</li>').join('')+'</ul></div>'
   +'<div class="rbg" id="evbx"><button id="evpl" class="btn rbn p" type="button">OYNA</button><button id="evrk" class="btn rbn" type="button">REKORLAR</button></div>';
  $('evpl').style.setProperty('--ic',icUrl(RIC.play));$('evrk').style.setProperty('--ic',icUrl(RIC.trophyY));
  $('evpl').onclick=()=>{const e=EVS[evSel];if(e.car){galEv=null;evStart();return}galEv=e;openGal()};$('evrk').onclick=()=>{evrFromRes=false;evRecShow(evSel);show('evd',false);show('evr',true)};show('evs',false);show('evd',true)}
@@ -4500,8 +4500,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.1';
-const NOTES=['Düzeltmeler: seviyesi yetmeyen ana araçlar garajda kilitli (geliştirmeleri sıfırlanır), Festival sonuç butonları tabloya hizalandı, dikey açılışta ses kurtarma','XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5\'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
+const NT_VER='v9.2';
+const NOTES=['Etkinlik kurallarındaki coin ödül sayılarının yanına coin ikonu eklendi','Düzeltmeler: seviyesi yetmeyen ana araçlar garajda kilitli (geliştirmeleri sıfırlanır), Festival sonuç butonları tabloya hizalandı, dikey açılışta ses kurtarma','XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5\'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
@@ -4774,6 +4774,7 @@ const css=document.createElement('style');css.textContent=`
 #tbl .xst,#pfl .xst{color:#ffd24a;font-size:.85em;margin-right:2px}
 #rrr .rrb.rbg,#rrr.fsr .rrb.rbg{display:grid!important;grid-auto-flow:column!important;grid-template-columns:none!important;grid-auto-columns:1fr!important}
 @media (orientation:landscape){#rrr.fsr .rrb.rbg{width:min(520px,100%)!important}}
+#evd .rcnw{white-space:nowrap}
 #galsel.xlkb{filter:grayscale(.8) brightness(.8);opacity:.85}
 `;document.head.appendChild(css);
 
