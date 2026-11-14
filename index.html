@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v8.1</title>
+<title>gtr_game_v8.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1588,6 +1588,36 @@ body.u2 #set.lby,body.u2 #set.igs{flex-direction:row!important;flex-wrap:wrap!im
 body.u2 #set.lby .sbx,body.u2 #set.igs .sbx,body #set.igs .sbx{width:calc((100% - 12px)/2)!important;max-width:none!important;margin:0!important;box-sizing:border-box;padding:12px!important}
 body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:42px}
 @media (orientation:landscape){body.u2 #set.lby,body #set.igs{padding-left:110px!important}body #set.igs{padding-left:110px!important}}
+/* v8.2 mağaza alt boşluk, etkinlik süre kutusu, bildirimler */
+@media (orientation:portrait){body.u2 #shop #sgrid{bottom:calc(env(safe-area-inset-bottom,0px) + 70px)!important}body.u2 #shop:has(.sbar[style*=flex]) #sgrid{bottom:calc(env(safe-area-inset-bottom,0px) + 144px)!important}}
+@media (orientation:landscape){.e2t{margin-right:240px}}
+#ntf,body.u2 #ntf{z-index:12!important}
+#ntf{justify-content:flex-start;background-color:#0a0620;background-size:cover;background-position:center 35%;background-repeat:no-repeat}
+#ntf::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,4,26,.72) 0,rgba(8,4,26,.62) 30%,rgba(8,4,26,.84) 100%)}
+#ntf>.st{display:none!important}
+#ntf>.sh{position:absolute!important;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);height:46px;box-sizing:border-box;padding:2px 14px 0!important;max-width:none!important;width:auto!important;z-index:3;justify-content:center!important}
+#ntf>.sh #ntback{position:absolute;left:14px;top:2px}
+#ntf>.sh>span{display:none}
+#ntf .logo.sm{font:italic 900 24px/1 system-ui!important;background:none!important;color:#fff!important;-webkit-text-fill-color:#fff;filter:none!important;text-shadow:0 0 18px rgba(176,107,255,.9),0 2px 0 rgba(0,0,0,.4)}
+#ntb{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 118px);bottom:calc(env(safe-area-inset-bottom,0px) + 78px);overflow-y:auto;overflow-x:hidden;touch-action:pan-y;z-index:2;padding:4px 14px 8px;box-sizing:border-box}
+.ntr{display:flex;align-items:center;gap:12px;width:100%;max-width:620px;margin:0 auto 10px;padding:12px 14px;border-radius:16px;border:1.5px solid rgba(176,107,255,.6);background:linear-gradient(180deg,rgba(40,24,100,.8),rgba(16,9,48,.9));color:#fff;text-align:left;font:inherit;cursor:pointer;box-sizing:border-box;position:relative;-webkit-tap-highlight-color:transparent}
+.ntr.new{border-color:#ffc24a;box-shadow:0 0 14px rgba(255,194,74,.35)}
+.ntr.old{opacity:.78}
+.ntr .nti{flex:0 0 40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#7a5cff,#4a2db8);box-shadow:0 0 10px rgba(122,92,255,.6)}
+.ntr .nti svg{width:22px;height:22px}
+.ntr .ntt{flex:1;min-width:0}
+.ntr .ntt b{display:block;font:italic 900 15px/1.2 system-ui}
+.ntr .ntt small{display:block;margin-top:3px;font:600 12px/1.3 system-ui;color:#d9c8ff}
+.ntr em{font:900 22px/1 system-ui;color:#ffc24a;font-style:normal}
+.ntr .ntd{position:absolute;right:12px;top:10px;width:9px;height:9px;border-radius:50%;background:#ff2d55;box-shadow:0 0 0 2px #1a0e55}
+#ntp{position:absolute;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(5,2,20,.8);padding:calc(env(safe-area-inset-top,0px) + 100px) 16px calc(env(safe-area-inset-bottom,0px) + 88px);box-sizing:border-box}
+#ntp .ntc{width:100%;max-width:460px;max-height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:16px;border-radius:20px;border:1.5px solid rgba(176,107,255,.7);background:linear-gradient(180deg,rgba(40,24,100,.96),rgba(16,9,48,.98));box-shadow:0 0 24px rgba(140,70,255,.4)}
+#ntp h3{margin:0;font:italic 900 20px/1.1 system-ui;color:#fff;text-align:center;text-shadow:0 0 14px rgba(176,107,255,.9)}
+#ntp .ntv{margin:4px 0 10px;text-align:center;font:800 11px system-ui;letter-spacing:1.5px;color:#ffc24a}
+#ntu{margin:0 0 12px;padding:0 0 0 18px;overflow-y:auto;touch-action:pan-y;flex:1;min-height:0;color:#efe6ff;font:600 13px/1.4 system-ui}
+#ntu li{margin:0 0 6px}
+#ntp .btn{width:100%;border-radius:12px;font-style:italic;background:linear-gradient(180deg,#ffe066,#ffb300)!important;color:#3a2200!important;border:2px solid rgba(255,255,255,.6)!important;box-shadow:0 0 14px rgba(255,179,0,.45),0 3px 0 #a86c00!important;flex:0 0 auto}
+@media (orientation:landscape){#ntp{padding:calc(env(safe-area-inset-top,0px) + 58px) 16px 10px 110px}#ntu{font-size:12px}#ntf>.sh{left:96px}#ntb{left:110px;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}}
 </style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
@@ -1625,6 +1655,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 <div id="lb" class="scr gd"><i class="st s1"></i><div class="sh"><button id="lback" class="ib">‹</button><div class="logo sm">PUAN TABLOSU</div><span style="width:44px"></span></div><div id="lbr" style="font-weight:900;color:#ffd2f0;margin-bottom:8px;position:relative;z-index:2"></div><div id="lbl"></div></div>
 <div id="set" class="scr gd"><i class="st s1"></i><div class="sh"><button id="setback" class="ib" aria-label="Kapat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="logo sm">AYARLAR</div><span style="width:44px"></span></div><div class="sbx"><h4>GRAFİK KALİTESİ</h4><div class="qrow"><button id="qP">Performans</button><button id="qK">Kalite</button></div><p id="qd"></p></div><div class="sbx"><h4>SES</h4><div class="qrow"><button id="sdOn">Açık</button><button id="sdOff">Kapalı</button></div></div><div class="sbx"><h4>OYUN MODU</h4><div class="qrow"><button id="omH">Yatay</button><button id="omV">Dikey</button></div></div></div>
 <div id="ms" class="scr gd"><i class="st s1"></i><div class="sh"><button id="msback" class="ib" aria-label="Kapat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="logo sm">GÜNLÜK GÖREVLER</div><div id="msbal" class="cpill"></div></div><div style="width:100%;overflow-y:auto;flex:1;position:relative;z-index:2;touch-action:pan-y"><div class="sbx"><h4>GÜNLÜK ÖDÜL · <span id="drst"></span></h4><div class="drs" id="drs"></div><button id="drbD" class="btn p">ÖDÜLÜ AL</button></div><div class="sbx"><h4>GÜNLÜK GÖREVLER</h4><div id="msl"></div></div></div></div>
+<div id="ntf" class="scr gd"><i class="st s1"></i><div class="sh"><button id="ntback" class="ib" aria-label="Kapat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="logo sm">BİLDİRİMLER</div><span style="width:44px"></span></div><div id="ntb"><div id="ntl"></div></div><div id="ntp"><div class="ntc"><h3>YENİ SÜRÜM YAYINDA</h3><div class="ntv">v8.2 · GÜNCELLEME NOTLARI</div><ul id="ntu"></ul><button id="ntx" class="btn p" type="button">KAPAT</button></div></div></div>
 <div id="gal" class="scr"><div class="sh gh"><button id="galback" class="gbk">‹</button><div class="logo sm" id="galttl">GARAJ</div><span style="width:44px"></span></div><div id="galst"><div id="gsn"></div><div class="gsr"><span class="gl"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg>HIZ</span><b id="gsv"></b></div><div class="gbar"><u id="gsb"></u></div>
 <div class="gsr"><span class="gl"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.6 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg>SINIF</span><b id="gsc"></b></div>
 <div class="gsr"><span class="gl"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9h18v6H3zM7 9v3M11 9v2M15 9v3M19 9v2"/></svg>UZUNLUK</span><b id="gsl"></b></div>
@@ -2308,7 +2339,7 @@ function aud(boost){if(!AC||!es1)return;const T=AC.currentTime,v=P.v/Math.max(cu
  if(boost&&!prevB)sfx('nos');prevB=boost}
 // ---------- v5: themed screens, shop, leaderboard, purchase drift ----------
 let buyAnim=false,shopSel=-1,lastLb=0;const thumbs={};let thBusy=false;const TBK='th_tb217_';try{if(localStorage.getItem('th_micv')!=='3'){localStorage.removeItem(TBK+'Micra');localStorage.setItem('th_micv','3')}}catch(e){}try{CARS.forEach(c=>{const v=localStorage.getItem(TBK+c[0]);if(v)thumbs[c[0]]=v})}catch(e){}
-function show(id,on){$(id).style.display=on?'flex':'none';if(id==='ov'&&on){setTimeout(galBtnUI,0);setTimeout(()=>{try{msDot()}catch(e){}},0)}document.body.classList.toggle('ui',['ov','shop','res','lb','ms','gal','evs','evd','evr','cr','pm'].some(i=>$(i).style.display==='flex'))}
+function show(id,on){$(id).style.display=on?'flex':'none';if(id==='ov'&&on){setTimeout(galBtnUI,0);setTimeout(()=>{try{msDot()}catch(e){}},0)}document.body.classList.toggle('ui',['ov','shop','res','lb','ms','ntf','gal','evs','evd','evr','cr','pm'].some(i=>$(i).style.display==='flex'))}
 const ownedList=()=>CARS.map((c,i)=>i).filter(i=>isOwned(i)&&CARS[i][0]!=='RallyCar'&&CARS[i][0]!=='Taxi').sort((a,b)=>CARS[a][3]-CARS[b][3]);
 function mark(){
  [...$('rd').children].forEach(b=>{const km=+b.dataset.km;b.classList.toggle('on',km===sel.km);b.innerHTML='<span>'+km+' KM</span>'+(km===sel.km?'<span class="ck">✓ SEÇİLİ</span>':'')});
@@ -3219,7 +3250,7 @@ function evArt(cv,e,c){try{const W=cv.width=300,H=cv.height=120,g=cv.getContext(
 var evFeat=-1;
 function evList(){window.__evsPick=false;try{evsBg(A.hero.ev)}catch(e){}const L=$('evl');L.innerHTML='';const ks=[...EVS.keys()].sort((x,y)=>evCyc(EVS[x]).end-evCyc(EVS[y]).end);if(!EVS[evFeat])evFeat=ks[0];
  const top=EVS[ks[0]],tc=evCyc(top);
- L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b"><small>SINIRLI SÜRELİ ETKİNLİK</small><small>KALAN SÜRE</small><span class="e2tc evtp" data-i="'+ks[0]+'">'+evCells(tc.end-Date.now())+'</span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
+ L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b"><small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="'+ks[0]+'">'+evCells(tc.end-Date.now())+'</span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
  const C=$('e2c');
  ks.forEach(i=>{const e=EVS[i],c=evCyc(e),d=document.createElement('button');d.type='button';d.className='e2k'+(i===evFeat?' on':'');d.dataset.i=i;
   d.innerHTML='<canvas></canvas><div class="e2ki"><b>'+e.nm+'</b><span class="evtp" data-i="'+i+'">◷ <em>'+evFmtDH(c.end-Date.now())+'</em></span></div>';
@@ -4235,10 +4266,10 @@ try{const _r=reset;reset=function(){xpDone=false;return _r.apply(this,arguments)
 function upd(){try{
  const nm=(typeof sel!=='undefined'&&sel.name)||'Pilot';$$('tbnm').textContent=nm;$$('tba').firstChild.textContent=(nm||'P').trim().charAt(0)||'P';
  let tp=0;try{tp=Math.max(0,+localStorage.getItem('th_tot')||0)}catch(e){}try{$$('tbpv').textContent=Math.round(tp).toLocaleString('tr-TR')}catch(e){}const lv=Math.floor(tp/10000);$$('tblv').textContent=lv;$$('tbxf').style.width=((tp%10000)/100).toFixed(1)+'%';
- const d=$$('evb').classList.contains('dot');$$('tbb').classList.toggle('dot',d)}catch(e){}}
-$$('tbs').onclick=()=>{if(vis('ms'))$$('ms').style.display='none';$$('setb').click()};
+ const d=$$('evb').classList.contains('dot');$$('tbb').classList.toggle('dot',d||!!(window.ntVerNew&&window.ntVerNew()))}catch(e){}}
+$$('tbs').onclick=()=>{if(vis('ms'))$$('ms').style.display='none';if(vis('ntf'))show('ntf',false);$$('setb').click()};
 $$('tbb').onclick=()=>$$('evb').click();
-$$('bal').onclick=()=>{['set','ms'].forEach(k=>{if(vis(k))$$(k).style.display='none'});if(vis('gal')){try{closeGal(false)}catch(e){}}$$('shopb').click()};
+$$('bal').onclick=()=>{['set','ms','ntf'].forEach(k=>{if(vis(k))$$(k).style.display='none'});if(vis('gal')){try{closeGal(false)}catch(e){}}$$('shopb').click()};
 const I={
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.3"/><path d="M3.3 10.6 9.7 11.5M20.7 10.6l-6.4.9M12 14.3V21"/></svg>',
  kar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5"/><path d="M12 14v4M8.5 20h7"/></svg>',
@@ -4250,7 +4281,7 @@ const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home
 const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
 [['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="ev"]');if(b)b.click()}],['gar','GARAJ',out(()=>$$('galb2').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
 const OT=['res','galw'];
-function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
+function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms','ntf'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth,nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms')||vis('ntf'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===2:vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===0:vis('evs')?i===2:c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
@@ -4312,7 +4343,7 @@ try{$$('ms').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba
 try{$$('res').style.setProperty('--rh','url("'+A.hero.lg+'")')}catch(e){}
 try{$$('shop').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.mp+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
 try{$$('evd').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+evHero(EVS[evSel])+'") center 35%/cover no-repeat #0a0620','important');$$('evr').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+evHero(EVS[evrSel])+'") center 35%/cover no-repeat #0a0620','important');$$('lb').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
-[...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=function(){if(vis('set'))show('set',false);if(vis('ms'))$$('ms').style.display='none';if(vis('shop')){if(i===4)return;$$('sback').click();if(vis('res'))return}const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
+[...$$('snv').children].forEach((b,i)=>{const f=b.onclick;b.onclick=function(){if(vis('set'))show('set',false);if(vis('ms'))$$('ms').style.display='none';if(vis('ntf'))show('ntf',false);if(vis('shop')){if(i===4)return;$$('sback').click();if(vis('res'))return}const s=['evd','evr','lb'].filter(vis);if(s.length){s.forEach(x=>show(x,false));show('ov',true)}return f&&f.apply(this,arguments)}});
 })();
 /* ===== v4.93 lobi videosu ===== */
 (function(){
@@ -4447,5 +4478,28 @@ const fit=()=>{if(!document.body.classList.contains('lgup'))return;const lg=docu
  const k=Math.max(.5,Math.min(.72*W/lw,2*half/lh,2.4));document.body.style.setProperty('--lgs',k.toFixed(3))};
 setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,200));
 }catch(e){}})();
+</script>
+<script>/* ===== v8.2 bildirimler ===== */
+(function(){try{
+const NT_VER='v8.2';
+const NOTES=['Speedrun: süre bitti / maksimum hasar ekranında gidilen mesafe (km) ve kazanılan puan tablosu','Speedrun puanları genel puana ekleniyor; etkinlik rekorlarında km ve puan birlikte gösteriliyor','Speedrun tünelleri: dikey neon duvar ışıkları, ıslak asfalt yansıması; son 10 saniyede kırmızı sayaç ve kırmızı yanıp sönen süre kapıları','Kariyer: bir sonraki bölüm için 3 yıldız şartı, yıldız kuralları zorluk butonlarının üstünde','Ayarlara direksiyon hassasiyeti eklendi; ayarlar 2×2 düzende','Garaj: boya, neon ve jant ekranlarında araç artık görünür; ana ekranda araç alt şeridin arkasında kalmıyor','Dikey mod: üst çubuk düzeni ve etkinlik detayında sabit butonlar, kaydırılabilir detay kutusu','Mağaza, etkinlik süre kutusu ve hero görselleri düzenlemeleri','Yeni: Bildirimler ekranı (günlük görevler + güncelleme notları)'];
+const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
+window.ntVerNew=()=>ls('th_vs')!==NT_VER;
+const dayInfo=()=>{try{msCheck();const un=ms.list.filter(m=>m.p>=m.n&&!m.c),tot=un.reduce((a,m)=>a+m.r,0),dr=!!drCan();return{dr,un:un.length,tot,any:dr||un.length>0}}catch(e){return{any:false}}};
+window.ntDot=()=>{try{const d=dayInfo();$('tbb').classList.toggle('dot',d.any||window.ntVerNew())}catch(e){}};
+const SV={ms:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5h6M9 11l1.8 1.8L14.5 9M9 17h6"/></svg>',up:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.7-4.1 3.9 1 5.6L12 15.7 7.1 18.4l1-5.6L4 8.9l5.6-.7z"/></svg>'};
+function render(){const L=$('ntl');L.innerHTML='';const d=dayInfo();
+ if(d.any){const r=document.createElement('button');r.type='button';r.className='ntr new';const parts=[];if(d.dr)parts.push('Günlük ödülün seni bekliyor');if(d.un)parts.push(d.un+' görev tamamlandı · '+d.tot+' coin toplanmayı bekliyor');r.innerHTML='<span class="nti">'+SV.ms+'</span><span class="ntt"><b>Günlük Görevler</b><small>'+parts.join('<br>')+'</small></span><em>›</em><i class="ntd"></i>';r.onclick=()=>{show('ntf',false);openMs()};L.appendChild(r)}
+ const nv=window.ntVerNew(),r2=document.createElement('button');r2.type='button';r2.className='ntr '+(nv?'new':'old');r2.innerHTML='<span class="nti">'+SV.up+'</span><span class="ntt"><b>Yeni sürüm yayında</b><small>'+NT_VER+' · güncelleme notlarını gör</small></span><em>›</em>'+(nv?'<i class="ntd"></i>':'');r2.onclick=()=>{const u=$('ntu');u.innerHTML=NOTES.map(t=>'<li>'+t+'</li>').join('');$('ntp').style.display='flex';ls('th_vs',NT_VER);render();ntDot();try{sync()}catch(e){}};L.appendChild(r2)}
+function open(){if(vis('ms'))$('ms').style.display='none';render();$('ntp').style.display='none';show('ntf',true);ntDot()}
+$('tbb').onclick=open;
+$('ntback').onclick=()=>{show('ntf',false);ntDot()};
+$('ntx').onclick=()=>{$('ntp').style.display='none'};
+$('ntp').onclick=e=>{if(e.target===$('ntp'))$('ntp').style.display='none'};
+try{$('ntf').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.ev+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}
+const _md=msDot;msDot=function(){const r=_md.apply(this,arguments);ntDot();return r};
+setTimeout(ntDot,300);
+}catch(e){console.error(e)}})();
 </script>
 </body></html>
