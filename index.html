@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.0</title>
+<title>gtr_game_v9.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2235,7 +2235,7 @@ $('go').onclick=()=>{sel.name=($('nm').value.trim()||'Pilot').slice(0,12);try{lo
 let coins=0,owned=new Set(),goLabel='BAŞLA',raceCoins=0,winT=0,winC=false,winEnd=false,wTh=0,wDir=-1,wcz=0,skidN=0;
 function loadAcct(){try{coins=+localStorage.getItem('th_coins2')||0;JSON.parse(localStorage.getItem('th_own2')||'[]').forEach(x=>owned.add(x))}catch(e){}}
 function saveAcct(){try{localStorage.setItem('th_coins2',coins);localStorage.setItem('th_own2',JSON.stringify([...owned]))}catch(e){}}
-const isOwned=i=>CARS[i][3]===0||owned.has(CARS[i][0])||((CARS[i][0]==='RallyCar'||CARS[i][0]==='Taxi')&&!!EV&&!!EV.car);
+const isOwned=i=>(window.XLC&&(CARS[i][0] in window.XLC))?(window.XLCOK?window.XLCOK(CARS[i][0]):owned.has(CARS[i][0])):(CARS[i][3]===0||owned.has(CARS[i][0]))||((CARS[i][0]==='RallyCar'||CARS[i][0]==='Taxi')&&!!EV&&!!EV.car);
 function buildUI(){loadAcct();try{sel.name=localStorage.getItem('th_n')||'';const c=localStorage.getItem('th_c4'),k=localStorage.getItem('th_k2');if(c!=null)sel.car=Math.min(CARS.length-1,+c||0);if(k!=null)sel.col=Math.min(COLS.length-1,+k||0)}catch(e){}
  if(!isOwned(sel.car))sel.car=0;$('nm').value=sel.name;const cars=$('cars'),cols=$('cols');
  CARS.forEach((c,i)=>{const b=document.createElement('button');b.className='ch';b.onclick=()=>{sel.car=i;mark();setCar()};cars.appendChild(b)});
@@ -4500,8 +4500,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.0';
-const NOTES=['XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
+const NT_VER='v9.1';
+const NOTES=['Düzeltmeler: seviyesi yetmeyen ana araçlar garajda kilitli (geliştirmeleri sıfırlanır), Festival sonuç butonları tabloya hizalandı, dikey açılışta ses kurtarma','XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5\'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
@@ -4676,6 +4676,7 @@ const info=x=>{const t=x<4000?Math.floor(x/1000):4+Math.floor((x-4000)/5000);ret
 window.XPI=()=>{const i=info(xpGet());return{txt:(i.star?'<span class="xst">★'+i.star+'</span> ':'')+i.lv,cur:i.cur,per:i.per,lv:i.lv,star:i.star}};
 const absLv=()=>info(xpGet()).abs;
 const crLocked=()=>absLv()<CAREER_LV;
+window.XLCOK=id=>absLv()>=XLC[id];
 window.XCRL=crLocked;
 
 /* ---- kuyruk ---- */
@@ -4689,7 +4690,7 @@ const carIdx=id=>CARS.findIndex(c=>c[0]===id);
 function levelUps(t0,t1){const L=[];
  for(let n=t0+1;n<=t1;n++){const abs=n+1,lv=n%PC+1,p=(n%PC===0),it={lv,star:Math.floor(n/PC),p,c:0,car:null,cr:0};
   if(!p&&lv%10===0)it.c=5000;
-  Object.keys(XLC).forEach(id=>{if(XLC[id]===abs&&!p){xulAdd('car:'+id);const i=carIdx(id);if(i>=0&&!isOwned(i)){owned.add(id);it.car=id}}});
+  Object.keys(XLC).forEach(id=>{if(XLC[id]===abs&&!p){xulAdd('car:'+id);const i=carIdx(id);if(i>=0){owned.add(id);it.car=id}}});
   if(abs===CAREER_LV){xulAdd('career');it.cr=1}
   if(it.c){coins+=it.c}
   L.push(it)}
@@ -4706,7 +4707,8 @@ window.XPA=award;
 function bootUnlocks(){try{
  if(!rd('th_xpb',0)){wr('th_xpb',1);const i=carIdx('Barracuda');if(i>=0&&!owned.has('Barracuda')){owned.add('Barracuda');saveAcct()}}
  const x=xpGet(),abs=info(x).abs,xul=xulGet(),L=[];
- Object.keys(XLC).forEach(id=>{const k='car:'+id;if(XLC[id]<=abs&&!xul.includes(k)){xulAdd(k);const i=carIdx(id);if(i>=0&&!isOwned(i)){owned.add(id);L.push({lv:XLC[id],c:0,car:id,u:1})}}});
+ Object.keys(XLC).forEach(id=>{if(XLC[id]>abs){owned.delete(id);try{if(CSV[id]){delete CSV[id];cuSave()}}catch(e){}}});saveAcct();
+ Object.keys(XLC).forEach(id=>{const k='car:'+id;if(XLC[id]<=abs&&!xul.includes(k)){xulAdd(k);const i=carIdx(id);if(i>=0&&!owned.has(id)){owned.add(id);L.push({lv:XLC[id],c:0,car:id,u:1})}}});
  if(abs>=CAREER_LV&&!xul.includes('career')){xulAdd('career');L.push({lv:CAREER_LV,c:0,cr:1,u:1})}
  if(L.length){saveAcct();const q=qGet();q.push({f:x,e:[],l:L,u:1});qSet(q)}
 }catch(e){console.warn(e)}}
@@ -4770,6 +4772,8 @@ const css=document.createElement('style');css.textContent=`
 .pmc.xlk .gc{font-size:0!important}
 .pmc.xlk .gc::before{content:"";display:block;width:28px;height:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") center/contain no-repeat}
 #tbl .xst,#pfl .xst{color:#ffd24a;font-size:.85em;margin-right:2px}
+#rrr .rrb.rbg,#rrr.fsr .rrb.rbg{display:grid!important;grid-auto-flow:column!important;grid-template-columns:none!important;grid-auto-columns:1fr!important}
+@media (orientation:landscape){#rrr.fsr .rrb.rbg{width:min(520px,100%)!important}}
 #galsel.xlkb{filter:grayscale(.8) brightness(.8);opacity:.85}
 `;document.head.appendChild(css);
 
@@ -4902,6 +4906,11 @@ const _gl=galLabel;galLabel=function(){_gl.apply(this,arguments);
   else{b.classList.remove('xlkb');b.textContent=galEv?'BAŞLA':galCr?'BÖLÜMÜ OYNA':'SEÇ';const cs=$$('cols');if(cs)cs.style.visibility=''}}catch(e){}};
 {const gs=$$('galsel'),og2=gs.onclick;gs.onclick=function(ev){const g=gList[Math.max(0,Math.min(gList.length-1,Math.round(gx)))];if(g&&g.lock){try{banner('SEVİYE '+g.lock+'\'DE AÇILIR')}catch(e){}return}return og2.call(gs,ev)}}
 const _cuo=cuOpen;cuOpen=function(){const g=gList[gIdx];if(g&&g.lock)return;return _cuo.apply(this,arguments)};
+/* ---- ses: dikey açılışta sessiz kalma durumuna karşı kurtarma ---- */
+(function(){const act=()=>{try{return navigator.userActivation?navigator.userActivation.hasBeenActive:true}catch(e){return true}};
+ const kick=()=>{try{if(!act())return;if(typeof initAudio==='function')initAudio();if(typeof iosAudio==='function')iosAudio();if(typeof AC!=='undefined'&&AC&&AC.state!=='running'&&!muted&&!paused)AC.resume()}catch(e){}};
+ ['resize','orientationchange','fullscreenchange','pageshow','focus'].forEach(e=>addEventListener(e,()=>setTimeout(kick,60)));
+ document.addEventListener('visibilitychange',()=>setTimeout(kick,60));setInterval(kick,900)})();
 }catch(e){console.error('xp mod',e)}})();
 </script>
 </body></html>
