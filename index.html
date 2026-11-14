@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.16</title>
+<title>gtr_game_v9.17</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -655,7 +655,9 @@ body.rp .hb,body.cin .hb,body.intro .hb,body.rp .pw,body.cin .pw,body.intro .pw,
 
 /* v3.5 */
 #rtt.tbr::before{display:none!important}
-#rtt.tbr{filter:drop-shadow(0 3px 0 #3a0f7a)}
+#rtt.tbr{filter:none}
+body #res #rtt.tbr{position:absolute!important;left:max(12px,env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 12px);margin:0!important;width:auto!important;text-align:left;padding:5px 20px 6px 14px;background:linear-gradient(90deg,rgba(8,6,28,.82),rgba(8,6,28,.5))!important;border-left:4px solid #ff7ad0;transform:skewX(-12deg)!important;box-shadow:0 4px 14px #0007;font:italic 900 20px/1.1 system-ui!important;letter-spacing:.5px;color:#fff!important;-webkit-text-fill-color:#fff!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;text-shadow:0 2px 0 #3a0f7a,0 0 12px #ff7ad088;text-transform:uppercase;z-index:3}
+body #res #rtt.tbr>span{display:inline-block;transform:skewX(12deg)}
 #rmn.ic,#rshop.ic,#pzm.ic{background:linear-gradient(165deg,#7345f5,#4a26c4) padding-box,linear-gradient(135deg,#ff7ac0,#ffb23d) border-box!important;border:2px solid transparent!important;box-shadow:0 5px 0 #231080,0 9px 16px rgba(15,12,100,.45)!important;display:flex;align-items:center;justify-content:center;padding:0!important}
 #rmn.ic svg,#rshop.ic svg,#pzm.ic svg{width:30px;height:30px;filter:drop-shadow(0 0 5px rgba(255,154,61,.7))}
 #rbt #rmn,#rbt #rshop{flex:0 0 64px!important;height:56px}#rbt #rpl{flex:1!important}
@@ -3640,7 +3642,7 @@ function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp')
    if(!old&&s.car){const i=CARS.findIndex(x=>x[0]===s.car);if(i>=0&&!isOwned(i)){owned.add(s.car);rw=crCarName(s.car)}else if(i>=0)earn+=CARS[i][3]}}
   if(g<CRST.length-1&&crOpen(g+1))crSel=g+1}
  coins+=earn;saveAcct();
- $('rtt').innerHTML=win?(s.wu?'ISINMA TURUNU<br>TAMAMLADIN':esc(String(s.n).toLocaleUpperCase('tr'))+'<br>TAMAMLANDI'):'MAKSİMUM<br>HASAR';$('rtt').classList.toggle('scrap',!win);$('rtt').classList.toggle('rtL',!!win);$('rtt').classList.toggle('tbr',!!(win&&s.wu));$('rn').textContent=sel.name;$('rs').textContent=Math.floor(score);$('rm').textContent=dist.toFixed(2)+' km';{const t=$('rtr');if(t){t.style.display=win&&!s.wu?'':'none';$('rtm').textContent=(()=>{const q=Math.floor(raceT*10)/10;return Math.floor(q/60)+':'+(q%60).toFixed(1).padStart(4,'0')})()}}
+ $('rtt').innerHTML=win?(s.wu?'<span>ISINMA TURUNU<br>TAMAMLADIN</span>':esc(String(s.n).toLocaleUpperCase('tr'))+'<br>TAMAMLANDI'):'MAKSİMUM<br>HASAR';$('rtt').classList.toggle('scrap',!win);$('rtt').classList.toggle('rtL',!!win);$('rtt').classList.toggle('tbr',!!(win&&s.wu));$('rn').textContent=sel.name;$('rs').textContent=Math.floor(score);$('rm').textContent=dist.toFixed(2)+' km';{const t=$('rtr');if(t){t.style.display=win&&!s.wu?'':'none';$('rtm').textContent=(()=>{const q=Math.floor(raceT*10)/10;return Math.floor(q/60)+':'+(q%60).toFixed(1).padStart(4,'0')})()}}
  $('rsub').innerHTML=win?(s.wu?'':s.hn+' · '+crStr(stars)):'Aracın tamamen hasar gördü.';
  const nx=win&&!s.wu&&g<CRST.length-1;$('rpl').textContent=win?(nx?'SONRAKİ BÖLÜM':'TEKRAR OYNA'):'TEKRAR DENE';$('rbt2').style.display=win?'none':'flex';$('dfp').style.display='none';$('rlb').className='btn';$('rlb').textContent='PUAN TABLOSU';$('rdf').style.display='';$('rbt2').dataset.ev='';
  const nl=$('nxl');if(rw){nl.innerHTML='<small>KARİYER ÖDÜLÜ · YENİ ARAÇ</small><span class="nn">'+rw.toUpperCase()+'</span>';nl.style.display='block'}
@@ -3648,7 +3650,7 @@ function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp')
  nl.onclick=null;nl.style.cursor='';if(nx&&win&&crOpen(g+1)){nl.style.cursor='pointer';nl.onclick=()=>{crSel=g+1;toMenu();crOpenScr();galCr=true;openGal()}}
  $('rcn').innerHTML=COIN+' +'+earn;{const w=!!s.wu;['rs','rcn'].forEach(i=>{const r=$(i).parentNode;if(r)r.style.display=w?'none':''})}
  {const shopB={t:'MAĞAZA',i:RIC.shop,f:()=>$('rshop').onclick()},lobB={t:'LOBİ',i:RIC.lobby,f:toMenu};
-  if(s.wu){const wuB={t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}};if(win)resBtns([lobB,wuB,{t:'PUAN TABLOSU',i:RIC.trophy,f:()=>{v7_lbMenu=false;showLb()}},shopB]);else resBtns([lobB,{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},wuB,shopB])}
+  if(s.wu){const wuB={t:'ISINMA TURUNA DÖN',i:RIC.wu,p:1,f:()=>{toMenu();fromPm=true;ovMode('pre');mark()}};if(win)resBtns([lobB,wuB]);else resBtns([lobB,{t:'TEKRAR OYNA',i:RIC.again,p:1,f:startRace},wuB,shopB])}
   else{const nIn=win&&g<CRST.length-1&&CRST[g+1].c===s.c&&crOpen(g+1);
    resBtns([lobB,shopB,win?{t:'KARİYER',i:RIC.career,p:1,f:()=>{crSel=nIn?g+1:g;toMenu();crOpenScr()}}:{t:'TEKRAR OYNA',i:RIC.again,p:1,f:()=>{crSel=g;startRace()}}],'rbg3')}}
  show('ov',false);show('res',true);if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
@@ -4520,8 +4522,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.16';
-const NOTES=['Drift modu: tüm sürüş mekaniği kaldırıldı, artık diğer tüm modlarla aynı direksiyon ve sürüş mekaniğini kullanıyor','Duraklatma menüsüne direksiyon hassasiyeti ayarı eklendi; ayarlardaki ile aynı değeri kullanır ve hesaba kaydolur','Bildirimler: sürüm başlığı ve notlar yalnızca son sürümü gösteriyor'];      
+const NT_VER='v9.17';
+const NOTES=['Garaj: kilitli araçlarda ARACI GELİŞTİR butonu kaldırıldı, seviye butonu tüm alana yayıldı','Isınma turu tamamlandı ekranı: mağaza ve puan tablosu butonları kaldırıldı, başlık etkinlik sonuç ekranındaki gibi koyu zeminli ve okunaklı'];       
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
@@ -4815,6 +4817,8 @@ const css=document.createElement('style');css.textContent=`
 #evd .rcnw{white-space:nowrap}
 #res>.evd .evn{display:flex!important;opacity:1!important;z-index:6;background:linear-gradient(90deg,rgba(8,6,28,.82),rgba(8,6,28,.5))!important;border-left:4px solid #ff7ad0!important;transform:skewX(-12deg)!important;box-shadow:0 4px 14px #0007!important}
 #galsel.xlkb,.galc #galsel.xlkb,#gal .galc #galsel.xlkb{filter:none;opacity:1;background:linear-gradient(165deg,#7345f5,#4a26c4) padding-box,linear-gradient(135deg,#ff7ac0,#ffb23d) border-box!important;border:2px solid transparent!important;box-shadow:0 5px 0 #231080,0 11px 20px rgba(15,12,100,.45),inset 0 2px 0 rgba(255,255,255,.25)!important;color:#fff!important}
+#gal .galc.xlk #galcu{display:none!important}
+#gal .galc.xlk #galsel{flex:1 1 100%!important;width:100%!important}
 #galsel.xlkb b{position:relative;z-index:1;font:900 16px/1.05 'Arial Black',Impact,system-ui;font-style:italic;text-transform:uppercase;letter-spacing:.4px;background:linear-gradient(180deg,#ff7ad0,#ff9a3d);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #7a1f8a)}
 #galsel.xlkb .xli{position:relative;z-index:1}
 #galsel .xli,#galpv .xli{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.17em;margin-left:.35em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ffe28a'/%3E%3Cstop offset='1' stop-color='%23ffa826'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M10.5 14V10.5a5.5 5.5 0 0 1 11 0V14' fill='none' stroke='url(%23g)' stroke-width='2.8' stroke-linecap='round'/%3E%3Crect x='6.5' y='13.5' width='19' height='14' rx='3.8' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='19.6' r='2.1' fill='%232a1470'/%3E%3Crect x='15' y='20' width='2' height='4' rx='1' fill='%232a1470'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -4976,8 +4980,8 @@ const _ge=galEnsure;galEnsure=function(i){const g=gList[i],had=g&&g.car;_ge.appl
  try{if(g&&g.lock&&!had&&g.car&&!g.dk){g.dk=1;xlkAdd(g.car,g)}}catch(e){console.warn(e)}};
 const _gt=galThumbs;galThumbs=function(){_gt.apply(this,arguments);try{[...$$('galt').children].forEach((b,k)=>{if(gList[k]&&gList[k].lock)b.classList.add('xlkt')})}catch(e){}};
 const _gl=galLabel;galLabel=function(){_gl.apply(this,arguments);
- try{const g=gList[gIdx],b=$$('galsel');if(!b)return;if(g&&g.lock){b.innerHTML='<b>SEVİYE '+g.lock+'</b><i class="xli"></i>';b.classList.add('xlkb');$$('gspr').style.display='flex';$$('galpv').innerHTML='<i class="xli"></i><span>Seviye '+g.lock+'</span>';const cs=$$('cols');if(cs)cs.style.visibility='hidden'}
-  else{b.classList.remove('xlkb');b.textContent=galEv?'BAŞLA':galCr?'BÖLÜMÜ OYNA':'SEÇ';const cs=$$('cols');if(cs)cs.style.visibility=''}}catch(e){}};
+ try{const g=gList[gIdx],b=$$('galsel');if(!b)return;if(g&&g.lock){b.innerHTML='<b>SEVİYE '+g.lock+'</b><i class="xli"></i>';b.classList.add('xlkb');b.parentNode.classList.add('xlk');$$('gspr').style.display='flex';$$('galpv').innerHTML='<i class="xli"></i><span>Seviye '+g.lock+'</span>';const cs=$$('cols');if(cs)cs.style.visibility='hidden'}
+  else{b.classList.remove('xlkb');b.parentNode.classList.remove('xlk');b.textContent=galEv?'BAŞLA':galCr?'BÖLÜMÜ OYNA':'SEÇ';const cs=$$('cols');if(cs)cs.style.visibility=''}}catch(e){}};
 {const gs=$$('galsel'),og2=gs.onclick;gs.onclick=function(ev){const g=gList[Math.max(0,Math.min(gList.length-1,Math.round(gx)))];if(g&&g.lock){try{banner('SEVİYE '+g.lock+'\'DE AÇILIR')}catch(e){}return}return og2.call(gs,ev)}}
 const _cuo=cuOpen;cuOpen=function(){const g=gList[gIdx];if(g&&g.lock)return;return _cuo.apply(this,arguments)};
 /* ---- ses: dikey açılışta sessiz kalma durumuna karşı kurtarma ---- */
