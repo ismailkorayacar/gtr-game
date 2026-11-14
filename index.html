@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.21</title>
+<title>gtr_game_v9.22</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -3284,14 +3284,13 @@ function evArt(cv,e,c){try{const W=cv.width=300,H=cv.height=120,g=cv.getContext(
  }catch(x){}}
 var evFeat=-1;
 function evList(){window.__evsPick=false;try{evsBg(A.hero.ev)}catch(e){}const L=$('evl');L.innerHTML='';const ks0=[...EVS.keys()].sort((x,y)=>evCyc(EVS[x]).end-evCyc(EVS[y]).end),nw=EVS.length-1,ks=[nw,...ks0.filter(x=>x!==nw)];
- const top=EVS[ks0[0]],tc=evCyc(top);
- L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b"><small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="'+ks0[0]+'">'+evCells(tc.end-Date.now())+'</span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
+ L.innerHTML='<div class="e2t"><b><i></i>ETKİNLİKLER</b><small>ÖZEL YARIŞLAR · SINIRLI SÜRE · EŞSİZ ÖDÜLLER</small></div><div class="e2b" style="display:none"><small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="-1"></span></div><div class="e2g"></div><div class="e2f" id="e2f"></div><div class="e2c" id="e2c"></div>';
  const C=$('e2c');
  ks.forEach(i=>{const e=EVS[i],c=evCyc(e),d=document.createElement('button');d.type='button';d.className='e2k'+(i===evFeat?' on':'');d.dataset.i=i;
   d.innerHTML=(i===nw?'<u class="e2n">YENİ</u><i class="e2sh"></i>':'')+'<canvas></canvas><div class="e2ki"><b>'+e.nm+'</b><span class="evtp" data-i="'+i+'">◷ <em>'+evFmtDH(c.end-Date.now())+'</em></span></div>';
   evArt(d.querySelector('canvas'),e,c);d.onclick=()=>{window.__evsPick=true;try{evsBg(evHero(EVS[i]))}catch(e){}evFeat=i;C.querySelectorAll('.e2k').forEach(x=>x.classList.toggle('on',+x.dataset.i===i));e2Feat()};C.appendChild(d)});
  e2Feat();$('evbal').innerHTML=COIN+' '+coins}
-function e2Feat(){const i=evFeat,e=EVS[i],f=$('e2f');if(!f)return;if(!e){f.innerHTML='';return}const c=evCyc(e),b=evBest(e.id,c.n);
+function e2Feat(){const i=evFeat,e=EVS[i],f=$('e2f');if(!f)return;const tb=document.querySelector('#evl .e2b'),tc=tb&&tb.querySelector('.e2tc');if(tb){if(e&&tc){tc.dataset.i=i;tc.innerHTML=evCells(evCyc(e).end-Date.now());tb.style.display=''}else tb.style.display='none'}if(!e){f.innerHTML='';return}const c=evCyc(e),b=evBest(e.id,c.n);
  f.innerHTML='<div class="e2fx"><u>'+e.tag+'</u><b>'+e.nm+'</b><p>'+e.ds+(b?' · En iyi: '+b:'')+'</p></div><div class="e2rw"><small>ÖDÜLLER</small><span>'+COIN+' '+e.reward+'</span></div><button class="e2go" id="e2go" type="button">GİR ››</button>';
  $('e2go').onclick=()=>evOpen(i)}
 function evOpen(i){evSel=i;const e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n);
@@ -4526,8 +4525,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.21';
-const NOTES=['Circuit etkinliği Circuit - Max 300 km/s oldu; maksimum hızı 300 km/s ve altı araçlarla oynanır'];           
+const NT_VER='v9.22';
+const NOTES=['Etkinlikler ekranı: açılışta sınırlı süreli etkinlik sayacı gizli; aşağıdan bir etkinlik seçilince o etkinliğin sayacı gösteriliyor'];            
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
