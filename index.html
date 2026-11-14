@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.3</title>
+<title>gtr_game_v9.4</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -4500,8 +4500,8 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 </script>
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
-const NT_VER='v9.3';
-const NOTES=['XP animasyonu: seviye atlarken halka parlar ve nabız gibi atar; animasyon tasarımı yenilendi','Etkinlik kurallarındaki coin ödül sayılarının yanına coin ikonu eklendi','Düzeltmeler: seviyesi yetmeyen ana araçlar garajda kilitli (geliştirmeleri sıfırlanır), Festival sonuç butonları tabloya hizalandı, dikey açılışta ses kurtarma','XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5\'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
+const NT_VER='v9.4';
+const NOTES=['Düzeltme: seviyesi yetmeyen ana araçlar artık garaja her girişte kilitli olarak listeleniyor','XP animasyonu: seviye atlarken halka parlar ve nabız gibi atar; animasyon tasarımı yenilendi','Etkinlik kurallarındaki coin ödül sayılarının yanına coin ikonu eklendi','Düzeltmeler: seviyesi yetmeyen ana araçlar garajda kilitli (geliştirmeleri sıfırlanır), Festival sonuç butonları tabloya hizalandı, dikey açılışta ses kurtarma','XP sistemi: Sv.2-5 için seviye başına 1.000 XP, Sv.5\'ten sonra 5.000 XP; seviye atlama animasyonu, her 10. seviyede 5.000 coin, 200. seviyede prestij yıldızı','Yarış sonu: olumlu bitişte Lobi\'ye basınca XP hesaplama animasyonu; Mağaza butonu kaldırıldı','Seviyeyle açılan araçlar: Cobalt R (Sv.5), Velvet Roadster (Sv.10), Blade Air GT (Sv.20), Dragon Car (Sv.30); Kariyer Sv.2\'de açılır','Ana araç isimleri: Cheetah GT, Velvet Roadster, Cobalt R','Festival Yarışı: yol kenarındaki seyirciler fotoğraf yerine gerçek 3D insan figürleriyle (ışıksız) yapıldı','Etkinlikler: ilk girişte seçili etkinlik yok; karta dokununca seçilir, "GİR" ile detay açılır','Oyna ekranı hero %50 karartıldı, Kariyer başlığı "KARİYER"','Etkinlik listesi: en yeni etkinlik başta, "YENİ" etiketi ve ışıltı','Festival Yarışı: daha virajlı pist, trafiksiz, yeni sonuç ekranı','Bildirimler ve ayarlar düzenlemeleri'];     
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
@@ -4913,6 +4913,7 @@ setInterval(()=>{try{const b=document.querySelector('.pmc[data-k=cr]');if(!b)ret
 const _og=openGal;openGal=function(){const r=_og.apply(this,arguments);
  try{if(!galEv&&!galCr){const have=new Set(gList.map(g=>g.idx));Object.keys(XLC).sort((a,b)=>XLC[a]-XLC[b]).forEach(id=>{const i=carIdx(id);if(i>=0&&!have.has(i)&&!isOwned(i))gList.push({idx:i,car:null,sh:null,col:-2,lock:XLC[id]})});galThumbs();gIdx=-1}}catch(e){console.warn(e)}
  return r};
+{const b2=$$('galb2');if(b2)b2.onclick=()=>openGal()}
 const _ge=galEnsure;galEnsure=function(i){const g=gList[i],had=g&&g.car;_ge.apply(this,arguments);
  try{if(g&&g.lock&&!had&&g.car&&!g.dk){g.dk=1;g.car.mesh.traverse(o=>{if(o.material){const f=m=>{const c=m.clone();if(c.color)c.color.multiplyScalar(.12);if(c.emissive)c.emissive.setHex(0);c.metalness=0;c.roughness=.9;if(c.map)c.map=null;return c};o.material=Array.isArray(o.material)?o.material.map(f):f(o.material)}})}}catch(e){}};
 const _gl=galLabel;galLabel=function(){_gl.apply(this,arguments);
