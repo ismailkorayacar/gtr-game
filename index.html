@@ -4609,7 +4609,7 @@ const mkLaser=()=>{const g=new THREE.Group(),cols=[0xb04dff,0x2ee6ff,0xff3df0];
 for(let k=0;k<8;k++)addBig(mkLaser(),-10-k*157,(k%2?1:-1)*(22+rnd()*18),0);
 /* sürekli güncelleme */
 let t=0,chase=-1;
-function step(dt){
+function fsF(dt){
  const on=!!(TH&&TH.fs);G.visible=on;if(!on)return;
  t+=dt;const pz=P.z;
  for(const o of inst){for(let i=0;i<o.n;i++)o.im.setMatrixAt(i,o.fn(i,pz));o.im.instanceMatrix.needsUpdate=true;if(o.im.instanceColor)o.im.instanceColor.needsUpdate=true}
@@ -4618,8 +4618,8 @@ function step(dt){
  for(const L of lasers){L.children.forEach(b=>{const p=b.userData.p,i=b.userData.i;b.rotation.z=Math.sin(t*.55+p)*.42+(i-1)*.28;b.rotation.x=Math.cos(t*.4+p)*.32})}
  const k=Math.floor(t*3);if(k!==chase){chase=k;for(const a of arches)a.userData.mats.forEach((m,i)=>m.color.setHex(PAL[(i+k)%5]))}
 }
-window.fsStep=step;
-const _ws=weatherStep;weatherStep=function(dt){const r=_ws.apply(this,arguments);try{step(dt)}catch(e){}return r};
+window.fsStep=fsF;
+const _ws=weatherStep;weatherStep=function(dt){const r=_ws.apply(this,arguments);try{fsF(dt)}catch(e){}return r};
 const _at=applyTheme;applyTheme=function(){const r=_at.apply(this,arguments);try{G.visible=!!(TH&&TH.fs);if(TH&&TH.fs)treeS.forEach(g=>{g.im.visible=false})}catch(e){}return r};
 }catch(e){console.error('festival',e)}})();
 </script>
