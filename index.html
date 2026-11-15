@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.28</title>
+<title>gtr_game_v9.29</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -4050,7 +4050,8 @@ setInterval(()=>{const g=nfx;g.clearRect(0,0,150,150);if(!(nos>=NOSMAX&&!nosAct&
 let last=performance.now(),sdt=1/60,fa=0,fc=0,pr=Math.min(devicePixelRatio,1.5);
 (function loop(n){requestAnimationFrame(loop);const raw=Math.min(.05,(n-last)/1000);last=n;sdt+=(raw-sdt)*.2;const dt=Math.min(.033,sdt);const ns=Math.min(3,Math.max(1,Math.ceil(P.v*dt/2.2)));if(!paused)for(let i=0;i<ns;i++)step(dt/ns);if(galOn){galStep(dt);ren.toneMappingExposure=.95;{const ce=document.getElementById('c');if(ce)ce.style.visibility=''}if(window.__galDraw)window.__galDraw();else ren.render(gScene,gCam)}else{if(!paused&&Math.abs(gPit)>1e-4&&st!=='menu'){const px=P.x+cx(P.z),c=Math.cos(gPit),sn=Math.sin(gPit),dy=cam.position.y,dz=cam.position.z-P.z;cam.position.set(cam.position.x,dy*c-dz*sn,P.z+dy*sn+dz*c);cam.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),gPit))}{const hd=st==='menu',ce=document.getElementById('c');if(ce)ce.style.visibility=hd?'hidden':'';if(!hd)ren.render(scene,cam)}}
  fa+=raw;fc++;if(fc>=40){const av=fa/fc;fa=0;fc=0;const mx=Math.min(devicePixelRatio,1.5);const lo=Q?Math.min(1,mx):.8;if(pr<lo){pr=lo;ren.setPixelRatio(pr);resize()}else if(av>.026&&pr>lo){pr=Math.max(lo,pr-.15);ren.setPixelRatio(pr);resize()}else if(av<.0185&&pr<mx){pr=Math.min(mx,pr+.1);ren.setPixelRatio(pr);resize()}}})(last);
-requestAnimationFrame(()=>requestAnimationFrame(()=>{const b=document.getElementById('boot');if(b){b.style.opacity=0;setTimeout(()=>b.remove(),500)}}));
+/* giriş durumu (login/lobi) belli olana kadar yükleme ekranı kalır; en geç 8 sn */
+{const t0=Date.now(),hide=()=>{const b=document.getElementById('boot');if(b){b.style.opacity=0;setTimeout(()=>b.remove(),500)}},ready=()=>!window.fbHost||window.fbReady||document.documentElement.classList.contains('fbf')||Date.now()-t0>8000,w=()=>{if(ready())hide();else setTimeout(w,60)};requestAnimationFrame(()=>requestAnimationFrame(w))}
 
 (function(){try{
  const d=document.createElement('div');d.id='nhud';d.className='hud';
@@ -4531,6 +4532,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.29',n:['Giriş ekranı: oyun açılırken lobinin yarım saniyelik görünüp ardından giriş (login) sayfasına geçmesi giderildi; giriş durumu belli olana kadar yükleme ekranı kalıyor']},
 {v:'v9.28',n:['Yeni sürüm kontrolü: oyun açılırken sunucudaki güncel sürüm denetlenir; telefondaki kopya eskiyse sayfa otomatik olarak yenilenir ve güncel sürümün bildirimi gösterilir']},
 {v:'v9.27',n:['Telefonu yatay çevirme ekranı kaldırıldı (yayına alırken yeniden açılacak)','İleri giderken direksiyon yumuşatıldı: yüksek hızda burun artık aniden kırılmıyor','Duvara çarpınca araç duvar boyunca hizalanıyor; iki duvar arasında sekme sorunu giderildi','Geri vites mekaniği olduğu gibi korundu']},
 {v:'v9.26',n:['Direksiyon hassasiyeti artırıldı: ileri giderken sağa/sola kırınca araç artık hızlı ve net yön değiştiriyor','Yön açısı sınırı kaldırıldı: sürekli sola veya sağa kırıp gaza basınca araç tam tur (U dönüşü dahil) yapabiliyor']},
