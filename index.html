@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.34</title>
+<title>gtr_game_v9.35</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2134,7 +2134,7 @@ function aud(boost){if(!AC||!eo)return;const T=AC.currentTime,v=P.v/(1+lvl*.158)
  if(boost&&!prevB)sfx('nos');prevB=boost}
 // ---------- game ----------
 let revT=0,revD=0,revOn=false,nosTap=false,nosAct=false,rec=[],rt=0,tImp=0,rc=0,rpT0=0,RPS=1.65,pre=true,hit=new Set(),imp={x:0,z:0},lvl=0,st='menu',cdT=0,raceT=0,steer=0,nosOn=false,nos=0,shake=0,keys={},score=0,crashT=0,fov=62,passes=0;
-let swv=0,swWh=null,swFw=null;window.__sens=100;function SG(){return 1.2*Math.pow((window.__sens||100)*1.2128/100,-.4)}function SR(){return 1.1*(window.__sens||100)*1.2128/100}
+let swv=0,swWh=null,swFw=null;window.__sens=100;function SG(){return 1.1109*(window.__sens||100)/100}function SR(){return 1.1*(window.__sens||100)*1.2128/100}
 function bodyTilt(dt){if(!(dt>0))return;dt=Math.min(dt,.05);const al=(P.v-(P._pv==null?P.v:P._pv))/dt;P._pv=P.v;P._al=(P._al||0)+(Math.max(-30,Math.min(30,al))-(P._al||0))*Math.min(1,dt*10);const tp=Math.max(-.06,Math.min(.06,P._al*.0042)),tr=Math.max(-.09,Math.min(.09,P.vx*.006));P.pv2=(P.pv2||0)+((tp-(P.pt||0))*70-(P.pv2||0)*11)*dt;P.pt=(P.pt||0)+P.pv2*dt;P.rv2=(P.rv2||0)+((tr-(P.rl||0))*70-(P.rv2||0)*11)*dt;P.rl=(P.rl||0)+P.rv2*dt}
 function carSteerVis(dt){if(tmK>.01||!P.wheels||!P.wheels.length)return;if(swWh!==P.wheels){swWh=P.wheels;swWh.forEach(w=>{w.rotation.order='YXZ';w.rotation.y=0;w.userData.by=w.position.y;w.userData.sv=0;w.userData.so=0});swFw=P.wheels.slice().sort((a,b)=>a.position.z-b.position.z).slice(0,2)}const a=-swv*.5/(1+P.v/70);swFw.forEach(w=>w.rotation.y=a);if(dt>0){const d=Math.min(dt,.05),lo=Math.max(-1,Math.min(1,(P._al||0)/10)),la=Math.max(-1,Math.min(1,P.vx/12));swWh.forEach(w=>{const u=w.userData,fr=swFw.indexOf(w)>=0,tg=Math.max(-1,Math.min(1,(fr?lo:-lo)*.5+(w.position.x>0?la:-la)*.5))*.05;u.sv+=((tg-u.so)*90-u.sv*12)*d;u.so=Math.max(-.05,Math.min(.05,u.so+u.sv*d));w.position.y=u.by+u.so})}}
 let dfPend=-1,shopFrom='ov';let dif=1;try{const q=+localStorage.getItem('th_df');if(q===0||q===2)dif=q}catch(e){}const DFT=[.675,1,1.1],DFO=[.45,1,1.02];
@@ -2205,7 +2205,7 @@ function step(dt){
 const fw=P.v>=0,dm=.8*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7)),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?7:10));
 if(live){if(fw){/* ileri: şerit mantığı — kısa dokunuş ≈ araç yarım genişliği, ~0.5 sn ≈ 1 şerit, uzun basış ≈ 3 şerit; bırakınca araç düzelir. Düşük hızda (<~8 m/s) bisiklet modeli (U dönüşü) */
  P.hd=Math.abs(s)>.05?Math.min(1,(P.hd||0)+dt/2):Math.max(0,(P.hd||0)-dt*6);{const sd=Math.abs(s)>.05?Math.sign(s):0;P.ht=sd&&sd===P.hs?(P.ht||0)+dt:0;P.hs=sd}
- const hi=Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*(1+.5*Math.max(0,Math.min(1,((P.ht||0)-.35)/.1)))*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
+ const hi=Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*(1+.6*Math.max(0,Math.min(1,((P.ht||0)-.35)/.1)))*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
  P.psi+=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT-P.psi)*Math.min(1,dt*10)}else P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;
  if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
 P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*Math.cos(P.psi||0)*dt}
@@ -4537,6 +4537,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.35',n:['Yön tuşuna 0,35 saniyeden uzun basınca şerit değiştirme hızı yaklaşık %60\'a çıkarıldı (önceki %50)','Direksiyon hassasiyeti ayarı düzeltildi: %150 artık gerçekten daha keskin, %50 daha yumuşak dönüyor (önceden yüksek değer yanlışlıkla direksiyonu azaltıyordu); pause menüsünden değiştirince yarışta anında etki eder','Telefon bildirimi artık altında yeni sürümün numarasını gösteriyor']},
 {v:'v9.34',n:['Sağ/sol yön tuşuna 0,35 saniyeden uzun basınca araç yaklaşık %50 daha hızlı şerit değiştirir; diğer direksiyon mekanikleri aynı','Dokunma alanı hatası düzeltildi: artık yalnızca dokunduğun butonun yönü çalışır; iki butonun arası biraz açıldı']},
 {v:'v9.33',n:['İleri giderken direksiyon şerit mantığıyla yeniden ayarlandı: kısa dokunuş araç genişliğinin yarısı kadar, yaklaşık yarım saniye bir şerit, uzun basış yaklaşık 3 şerit kaydırır; tuşu bırakınca araç düzelir','Duvara çarpınca aksi yöne aşırı sekme azaltıldı','Yarış öncesi giriş animasyonunda yalnızca müzik çalar; araç start çizgisine gelip kamera sürüş moduna geçince motor sesleri başlar']},
 {v:'v9.32',n:['İleri giderken direksiyon çok daha hızlı tepki veriyor: tuşa basınca yaklaşık yarım saniyede bir şerit geçilir','Duvara çarpınca araç artık birden düzelmiyor: fizik kurallarına göre duvardan sekip hız kaybediyor, direksiyon açısı korunuyor']},
