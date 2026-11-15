@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.30</title>
+<title>gtr_game_v9.31</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -4532,6 +4532,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.31',n:['Ayarlar ekranına "Telefon bildirimleri" bölümü eklendi: istediğin zaman açıp kapatabilirsin','Telefon bildirimini hiç açmamış oyuncular bildirim ekranında en altta "Telefon bildirimleri" satırını görür; dokununca ayarlara gider. Bir kez açıp kapatanlara gösterilmez']},
 {v:'v9.30',n:['Telefon bildirimi altyapısı eklendi: Bildirimler ekranından "Telefon bildirimleri" satırına dokunup izin verirsen, yeni sürüm çıkınca telefonuna bildirim gelir']},
 {v:'v9.29',n:['Giriş ekranı: oyun açılırken lobinin yarım saniyelik görünüp ardından giriş (login) sayfasına geçmesi giderildi; giriş durumu belli olana kadar yükleme ekranı kalıyor']},
 {v:'v9.28',n:['Yeni sürüm kontrolü: oyun açılırken sunucudaki güncel sürüm denetlenir; telefondaki kopya eskiyse sayfa otomatik olarak yenilenir ve güncel sürümün bildirimi gösterilir']},
@@ -4558,8 +4559,18 @@ async function pushEnable(silent){
   const app=A.getApp(),reg=await navigator.serviceWorker.register('firebase-messaging-sw.js');await navigator.serviceWorker.ready;
   const tok=await M.getToken(M.getMessaging(app),{serviceWorkerRegistration:reg});if(!tok)throw new Error('token yok');
   await F.setDoc(F.doc(F.getFirestore(app),'pt',tok),{t:Date.now(),u:window.fbUser.uid});
-  ls('th_push','1');if(!silent){toast('Telefon bildirimleri açıldı ✓',1,2000);render()}
+  ls('th_push','1');ls('th_ptok',tok);try{pnUI()}catch(e){}if(!silent){toast('Telefon bildirimleri açıldı ✓',1,2000);render()}
  }catch(e){console.warn('push',e);if(!silent)toast('Bildirim açılamadı',0,2500)}}
+async function pushDisable(){
+ try{const B='https://www.gstatic.com/firebasejs/10.12.2/',tok=ls('th_ptok');const [A,M,F]=await Promise.all([import(B+'firebase-app.js'),import(B+'firebase-messaging.js'),import(B+'firebase-firestore.js')]);const app=A.getApp();
+  if(tok&&window.fbUser)await F.setDoc(F.doc(F.getFirestore(app),'pt',tok),{t:Date.now(),u:window.fbUser.uid,off:1});
+  try{await M.deleteToken(M.getMessaging(app))}catch(e){}}catch(e){console.warn('push off',e)}
+ ls('th_push','0');ls('th_ptok',null);pnUI();toast('Telefon bildirimleri kapatıldı',1,1800)}
+function pnUI(){const on=ls('th_push')==='1'&&PUSH_OK()&&Notification.permission==='granted';const a=$('pnOn'),b=$('pnOff');if(a)a.classList.toggle('on',on);if(b)b.classList.toggle('on',!on);const d=$('pnd');if(d)d.textContent=!PUSH_OK()?'Bu tarayıcıda telefon bildirimi desteklenmiyor. Oyunu ana ekrana ekleyip uygulama olarak aç.':Notification.permission==='denied'?'Bildirim izni engellenmiş. Tarayıcı/telefon ayarlarından izin vermelisin.':'Açıkken yeni sürüm çıkınca telefonuna bildirim gelir.'}
+try{const pb=document.createElement('div');pb.className='sbx';pb.id='pnbx';pb.innerHTML='<h4>TELEFON BİLDİRİMLERİ</h4><div class="qrow"><button id="pnOn" type="button">Açık</button><button id="pnOff" type="button">Kapalı</button></div><p id="pnd" style="margin:8px 2px 0;font:600 12px/1.35 system-ui;color:rgba(255,255,255,.6)"></p>';$('set').appendChild(pb);{const st=document.createElement('style');st.textContent='@media (orientation:portrait){body.u2 #set.lby #pnbx,body.u2 #set.igs #pnbx,body #set.igs #pnbx{width:100%!important}}';document.head.appendChild(st)}
+ $('pnOn').onclick=()=>{if(!PUSH_OK()){toast('Bu tarayıcıda desteklenmiyor',0,2200);return}pushEnable(false).then(pnUI)};
+ $('pnOff').onclick=()=>{if(ls('th_push')==='1')pushDisable();else{ls('th_push','0');pnUI()}};
+ pnUI();setInterval(pnUI,1500)}catch(e){console.warn(e)}
 try{if(PUSH_OK()){let n=0;const iv=setInterval(()=>{if(++n>30)return clearInterval(iv);if(window.fbUser){clearInterval(iv);if(Notification.permission==='granted'&&ls('th_push')==='1')pushEnable(true)}},1000)}}catch(e){}
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
 const dayInfo=()=>{try{msCheck();const un=ms.list.filter(m=>m.p>=m.n&&!m.c),tot=un.reduce((a,m)=>a+m.r,0),dr=!!drCan();return{dr,un:un.length,tot,any:dr||un.length>0}}catch(e){return{any:false}}};
@@ -4567,8 +4578,8 @@ window.ntDot=()=>{try{const d=dayInfo();$('tbb').classList.toggle('dot',d.any||w
 const SV={ms:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5h6M9 11l1.8 1.8L14.5 9M9 17h6"/></svg>',up:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.7-4.1 3.9 1 5.6L12 15.7 7.1 18.4l1-5.6L4 8.9l5.6-.7z"/></svg>'};
 function render(){const L=$('ntl');L.innerHTML='';const d=dayInfo();
  if(d.any){const r=document.createElement('button');r.type='button';r.className='ntr new';const parts=[];if(d.dr)parts.push('Günlük ödülün seni bekliyor');if(d.un)parts.push(d.un+' görev tamamlandı · '+d.tot+' coin toplanmayı bekliyor');r.innerHTML='<span class="nti">'+SV.ms+'</span><span class="ntt"><b>Günlük Görevler</b><small>'+parts.join('<br>')+'</small></span><em>›</em><i class="ntd"></i>';r.onclick=()=>{show('ntf',false);openMs()};L.appendChild(r)}
- try{if(PUSH_OK()&&Notification.permission!=='denied'&&!(Notification.permission==='granted'&&ls('th_push')==='1')){const r3=document.createElement('button');r3.type='button';r3.className='ntr new';r3.innerHTML='<span class="nti">'+SV.up+'</span><span class="ntt"><b>Telefon bildirimleri</b><small>Yeni sürüm çıkınca telefonuna bildirim gelsin</small></span><em>›</em>';r3.onclick=()=>pushEnable(false);L.appendChild(r3)}}catch(e){}
- HIST.slice(0,1).forEach((h,k)=>{const nv=k===0&&window.ntVerNew(),r2=document.createElement('button');r2.type='button';r2.className='ntr '+(nv?'new':'old');r2.innerHTML='<span class="nti">'+SV.up+'</span><span class="ntt"><b>'+(k===0?'Yeni sürüm yayında':'Sürüm '+h.v)+'</b><small>'+h.v+' · güncelleme notlarını gör</small></span><em>›</em>'+(nv?'<i class="ntd"></i>':'');r2.onclick=()=>{try{document.querySelector('#ntp .ntv').textContent=h.v+' · GÜNCELLEME NOTLARI'}catch(e){}$('ntu').innerHTML=h.n.map(t=>'<li>'+t+'</li>').join('');$('ntp').style.display='flex';if(k===0)ls('th_vs',NT_VER);render();ntDot();try{sync()}catch(e){}};L.appendChild(r2)})}
+ HIST.slice(0,1).forEach((h,k)=>{const nv=k===0&&window.ntVerNew(),r2=document.createElement('button');r2.type='button';r2.className='ntr '+(nv?'new':'old');r2.innerHTML='<span class="nti">'+SV.up+'</span><span class="ntt"><b>'+(k===0?'Yeni sürüm yayında':'Sürüm '+h.v)+'</b><small>'+h.v+' · güncelleme notlarını gör</small></span><em>›</em>'+(nv?'<i class="ntd"></i>':'');r2.onclick=()=>{try{document.querySelector('#ntp .ntv').textContent=h.v+' · GÜNCELLEME NOTLARI'}catch(e){}$('ntu').innerHTML=h.n.map(t=>'<li>'+t+'</li>').join('');$('ntp').style.display='flex';if(k===0)ls('th_vs',NT_VER);render();ntDot();try{sync()}catch(e){}};L.appendChild(r2)});
+ try{if(PUSH_OK()&&ls('th_push')===null){const r3=document.createElement('button');r3.type='button';r3.className='ntr new';r3.innerHTML='<span class="nti">'+SV.up+'</span><span class="ntt"><b>Telefon bildirimleri</b><small>Yeni sürüm çıkınca telefonuna bildirim gelsin · Ayarlardan aç</small></span><em>›</em><i class="ntd"></i>';r3.onclick=()=>{$('tbs').click()};L.appendChild(r3)}}catch(e){}}
 function open(){if(vis('ms'))$('ms').style.display='none';render();$('ntp').style.display='none';show('ntf',true);ntDot()}
 $('tbb').onclick=open;
 $('ntback').onclick=()=>{show('ntf',false);ntDot()};
