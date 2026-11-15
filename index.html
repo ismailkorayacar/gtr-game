@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.54</title>
+<title>gtr_game_v9.55</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.54</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.55</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3517,7 +3517,7 @@ function evRecAdd(e,sc,win){if(sc<=0)return 0;let a=[];try{a=JSON.parse(localSto
 function evRecShow(i){evrSel=i;const e=EVS[i];$('evrn').textContent=e.nm.toUpperCase();$('evrt').style.display='none';
  let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const L=$('evrl');L.innerHTML='';
  const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+'<i class="pki">P</i>'+r.s+(e.drift?' DP':'')+'</b>';L.appendChild(d)})};
- if(a.length)rows(a);else L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';
+ if(a.length){const b1=a.filter(r=>r.n===sel.name).sort((x,y)=>y.s-x.s)[0]||a[0];rows([b1])}else L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';
  try{if(window.fbEvTop)window.fbEvTop(e.id).then(rm=>{if(!rm||!rm.length||evrSel!==i)return;const mn=(window.fbUser&&window.fbUser.uid),mine=a.filter(r=>r.n===sel.name).sort((x,y)=>y.s-x.s)[0],m=rm.slice();
    if(mine){const j=m.findIndex(r=>r.me);if(j<0)m.push({n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id});else if(mine.s>m[j].s)m[j]={n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id}}
    m.sort((x,y)=>y.s-x.s);rows(m)}).catch(()=>{})}catch(x){}}
@@ -4589,6 +4589,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.55',n:['Etkinlik Rekorları: açılışta artık sadece senin en yüksek rekorun görünüyor (birden fazla kaydın görünüp kaybolması düzeltildi); diğer oyuncuların rekorları çevrimiçi yüklenince listeye eklenir']},
 {v:'v9.54',n:['Etkinlik Rekorları: artık diğer oyuncuların bu etkinlikteki en iyi rekorları da görünüyor (çevrimiçi sıralama, oyuncu başına en iyi skor)']},
 {v:'v9.53',n:['Kariyer tamamlanma: "Kariyer İlerlemesi" butonu kariyer ana ekranına döner','Yön tuşları: dokunma alanı genişletildi ve kenarlara/aralarına basılınca da algılanıyor (arada basılmama sorunu giderildi)','Yön tuşları tüm oyunda %5 büyütüldü, aralarındaki boşluk korundu']},
 {v:'v9.52',n:['Isınma Turu · Güneşli haritası: gerçek arazi dağları artık görünüyor (ışık/sis hatası düzeltildi)','Tamamlanma ekranları: bölüm adı başlığı ısınma turundaki gibi dokulu, solu pembe tasarımda (tüm başarılı ekranlarda)','Kariyer tamamlanma: "Sıradaki Bölümü Oyna" butonu bir sonraki bölümü doğrudan başlatır; Lobi ve Puan Tablosu üstüne "Kariyer İlerlemesi" butonu eklendi','Tamamlanma ekranları artık kendi modunun hero görselini gösteriyor (kariyer, ısınma turu, etkinlik)','Küçük yatay ekranlarda (iPhone 14 gibi) sol yön tuşları mıknatıs butonunun üstüne binmeyecek şekilde aşağı alındı']},
