@@ -12,7 +12,16 @@ for (let i = 0; i < 72 && !live; i++) {
 }
 if (!live) console.log('Uyarı: canlı sitede ' + ver.v + ' henüz görünmüyor, yine de gönderiliyor.');
 let cred;
-try { cred = admin.credential.cert(JSON.parse(sa)); }
+try {
+  // Telefondan yapıştırmada private_key içindeki satır sonları bozulabiliyor: PEM gövdesini onarıp JSON'a uygun yaz
+  let raw = sa.trim();
+  const m = raw.match(/-----BEGIN PRIVATE KEY-----([\s\S]*?)-----END PRIVATE KEY-----(?:\\n|\s)*/);
+  if (m) {
+    const body = m[1].replace(/\\n|\s/g, '');
+    raw = raw.replace(m[0], '-----BEGIN PRIVATE KEY-----\\n' + body.match(/.{1,64}/g).join('\\n') + '\\n-----END PRIVATE KEY-----\\n');
+  }
+  cred = admin.credential.cert(JSON.parse(raw));
+}
 catch (e) { console.error('HATA [SECRET]: FIREBASE_SERVICE_ACCOUNT geçerli bir servis hesabı JSON\'u değil. İndirdiğin JSON dosyasının TAMAMINI ({ ile başlayıp } ile biten) yapıştırdığından emin ol. Ayrıntı: ' + e.message); process.exit(1); }
 admin.initializeApp({ credential: cred });
 let snap;
