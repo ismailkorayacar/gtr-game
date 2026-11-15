@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.47</title>
+<title>gtr_game_v9.48</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.47</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.48</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2627,7 +2627,7 @@ function v7_lvMark(){wuMark()}
 // ---------- v8: seviye temaları ----------
 const DAYSK=[[0,'#1a55b0'],[.3,'#4a93e0'],[.48,'#a4cdf2'],[.56,'#e6f0f9'],[1,'#a3b3a2']];
 const THS=[null,
- {n:'Gündüz',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xbcd6ee,150,560],sc:0xfff1d8,si:2.4,so:[30,45,19],hm:[0xbcd8ff,0x5a6a40,.6],exp:.95,cu:[28,6,.0042,.009,1],ch:[]},
+ {n:'Gündüz',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xcfe0ee,110,640],sc:0xffeed0,si:2.5,so:[30,45,19],hm:[0xc4dcff,0x5a6a40,.62],exp:.95,cu:[28,6,.0042,.009,1],ch:[]},
  {n:'Gündüz · virajlı yol',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xbcd6ee,150,560],sc:0xfff1d8,si:2.4,so:[30,45,19],hm:[0xbcd8ff,0x5a6a40,.6],exp:.95,cu:[34,14,.0045,.011,1],ch:['Yol daha virajlı']},
  {n:'Yağmur',key:'rain',sk:[[0,'#4b525c'],[.4,'#69727d'],[.56,'#9aa3ac'],[1,'#5f655f']],cn:90,cc:'70,76,84',fog:[0x8a949e,60,380],sc:0xc4d0dc,si:.9,so:[30,45,19],hm:[0x9fb0c4,0x3a4438,.9],exp:1,gc:0x8a978a,hc:0x909a90,tc:0x9aa89a,rc:0x8d96a0,wet:1,w:'rain',cu:[30,16,.0055,.0125,1],ch:['Yağmur ve gök gürültüsü, gökyüzünde şimşekler','Yol ıslak ve kaygan görünüyor','Görüş mesafesi azaldı']},
  {n:'Sisli gece',key:'fnight',sk:[[0,'#04060f'],[.3,'#0a1024'],[.5,'#1a2440'],[.56,'#2a3556'],[1,'#10141f']],stars:350,cn:30,cc:'70,80,110',sun:[470,300,60,'#e8f0ff'],fog:[0x3a4668,5,140],sc:0x8aa4ff,si:.55,so:[-10,40,-30],hm:[0x2c3e6e,0x0c1018,.5],exp:1.35,gc:0x4a5468,hc:0x2a3248,tc:0x3c4858,rc:0x39446a,lamp:1,hl:4.5,cu:[40,10,.0038,.0105,1],ch:['Sisli gece','Görüş mesafesi yarıya düştü','Farlar ve yol lambaları aydınlatır']},
@@ -2752,7 +2752,7 @@ function applyTheme(L){L=Math.max(1,Math.min(17,L||1));if(curTh===L)return;curTh
  scene.fog.color.set(T.fog[0]);scene.fog.near=T.fog[1]*(T.key==='desert'?.8:1);scene.fog.far=T.fog[2]*(T.key==='desert'?.8:1);
  HEMI.color.set(T.hm[0]);HEMI.groundColor.set(T.hm[1]);HEMI.intensity=T.hm[2];sun.color.set(T.sc);sun.intensity=T.si;SO=T.so;
  const gm=ground.material;if(T.gm){gm.map=null}else gm.map=T.wn?snowGT:(T.key==='forest'&&rgGT)||grassT;gm.color.set(T.gc||0xffffff);gm.needsUpdate=true;
- if(window.treeMat){treeMat.color.set(T.tc||0xffffff);if(treeMat.userData.snowU)treeMat.userData.snowU.value=(T.key==='snow'||T.wn)?1:0}if(window.hillMat)hillMat.color.set(T.hc||0xffffff);(window.ridgeM||[]).forEach(m=>m.material.color.set(T.rc||0xffffff));rgRidgeSwap(T.wn?'w':true);
+ if(window.treeMat){treeMat.color.set(T.tc||0xffffff);if(treeMat.userData.snowU)treeMat.userData.snowU.value=(T.key==='snow'||T.wn)?1:0}if(window.hillMat)hillMat.color.set(T.hc||0xffffff);(window.ridgeM||[]).forEach(m=>m.material.color.set(T.rc||0xffffff));rgRidgeSwap(T.wn?'w':(L===1?'s':true));
  asphaltMat.roughness=T.wet?.16:.93;asphaltMat.envMapIntensity=T.wet?2.2:1;v8_pudM.color.set(T.hl?0x5a6c92:0xc8d6e6);asphaltMat.color.set(T.wet?0x6c7178:0xffffff);{const GL={day:[.55,1.5,0xffffff],dawn:[.55,1.5,0xffffff],dusk:[.55,1.5,0xffffff],night:[.3,1.9,0x8c929c],fnight:[.3,1.9,0x8c929c],fog:[.5,1.3,0xffffff]}[T.key];if(!T.wet&&GL){asphaltMat.roughness=GL[0];asphaltMat.envMapIntensity=GL[1];asphaltMat.color.set(GL[2])}}
  lampGlow.forEach(s=>s.visible=!!T.lamp);lamps.forEach(l=>{l.children[1].material.emissiveIntensity=T.lamp?3:1.2});
  {const fo=T.key==='forest',des=T.key==='desert',sn=T.key==='snow',nm=des?dirtRoadT:sn?snowRoadT:asT;if(asphaltMat.map!==nm){asphaltMat.map=asphaltMat.bumpMap=nm;asphaltMat.needsUpdate=true}
@@ -2932,12 +2932,26 @@ function mkRidge2(W,H,seed,P){let s=seed;const rs=()=>{s=(s*1664525+1013904223)>
  g.globalCompositeOperation='source-atop';for(let k=0;k<(P.clean?0:W*.8);k++){const x=rs()*W,y=rs()*H,l=6+rs()*(H*.12),dk=rs()<.5;g.strokeStyle=dk?'rgba(10,14,24,'+(.05+rs()*.07)+')':'rgba(255,255,255,'+(.04+rs()*.06)+')';g.lineWidth=1;g.beginPath();g.moveTo(x,y);g.lineTo(x+(rs()-.5)*5,y+l);g.stroke()}
  const gd=g.createLinearGradient(0,H*(1-P.peak),0,H);gd.addColorStop(0,'rgba(0,0,0,0)');gd.addColorStop(1,P.hz);g.fillStyle=gd;g.fillRect(0,0,W,H);g.globalCompositeOperation='source-over';
  const tx=new THREE.CanvasTexture(c);tx.wrapS=THREE.RepeatWrapping;tx.encoding=THREE.sRGBEncoding;tx.minFilter=THREE.LinearFilter;tx.generateMipmaps=false;tx.anisotropy=4;return tx}
+function mkRidge3(W,H,seed,layers){let s=seed;const rs=()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296},sm=u=>u*u*(3-2*u),c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+ const lat=[3,7,14,29,59,120,245,500],amp=[1,.55,.3,.17,.09,.05,.025,.012];
+ layers.forEach(L=>{const tb=lat.map(n=>Array.from({length:n},rs)),h=new Float32Array(W);let mn=9,mx=-9;
+  for(let i=0;i<W;i++){let v=0;lat.forEach((n,o)=>{const u=i/W*n,k=Math.floor(u),f=sm(u-k),a=tb[o][k%n],b=tb[o][(k+1)%n],q=a*(1-f)+b*f,r=1-Math.abs(2*q-1);v+=amp[o]*(o<2?q:q*(1-L.rough)+r*L.rough)});h[i]=v;if(v<mn)mn=v;if(v>mx)mx=v}
+  const top=new Float32Array(W);for(let i=0;i<W;i++){const f=Math.pow(Math.max(0,Math.min(1,(h[i]-mn)/(mx-mn))),L.pw||1.25);top[i]=H-(L.low+f*(L.peak-L.low))*H}
+  const sh=new Float32Array(W);for(let pass=0;pass<2;pass++)for(let i=0;i<W;i++){let a=0;for(let k=-10;k<=10;k++)a+=top[(i+k+W)%W];sh[i]=a/21}
+  const hi=Math.min(...top),gd=g.createLinearGradient(0,hi,0,H);gd.addColorStop(0,'rgb('+L.c0+')');gd.addColorStop(1,'rgb('+L.c1+')');
+  g.fillStyle=gd;g.beginPath();g.moveTo(0,H);for(let i=0;i<W;i++)g.lineTo(i,top[i]);g.lineTo(W,H);g.closePath();g.fill();
+  g.save();g.clip();
+  for(let i=0;i<W;i+=2){const sl=(sh[(i+28)%W]-sh[(i-28+W)%W])/56,l=Math.max(-1,Math.min(1,sl*1.2)),t=top[i];if(Math.abs(l)<.04)continue;const x=g.createLinearGradient(0,t,0,t+H*.22);const col=l>0?'255,244,222':'18,26,52';x.addColorStop(0,'rgba('+col+','+Math.min(.14,Math.abs(l)*.14)+')');x.addColorStop(1,'rgba('+col+',0)');g.fillStyle=x;g.fillRect(i,t,2,H*.22)}
+  const hz=g.createLinearGradient(0,hi,0,H);hz.addColorStop(0,'rgba('+L.hz+',0)');hz.addColorStop(1,'rgba('+L.hz+','+(L.ha||.8)+')');g.fillStyle=hz;g.fillRect(0,hi,W,H-hi);g.restore()});
+ const tx=new THREE.CanvasTexture(c);tx.wrapS=THREE.RepeatWrapping;tx.encoding=THREE.sRGBEncoding;tx.minFilter=THREE.LinearFilter;tx.generateMipmaps=false;tx.anisotropy=4;return tx}
+var rgSM=null;
 var rgRM=null;
 var rgWM=null;
 function rgRidgeSwap(fo){const rm=window.ridgeM||[];if(rm.length<3)return;if(!rm[0].userData.m0)rm.forEach(m=>m.userData.m0=m.material.map);
- if(fo&&!rgRM)rgRM=[mkRidge2(2048,320,1234567,{clean:1,c0:[120,100,86],c1:[168,146,126],low:.08,peak:.8,snow:0,hz:'rgba(214,224,228,.9)'}),mkRidge2(2048,256,7654321,{clean:1,c0:[96,78,62],c1:[146,122,98],low:.06,peak:.72,snow:0,hz:'rgba(206,216,218,.8)'}),mkRidge2(2048,176,424242,{clean:1,c0:[74,58,44],c1:[116,94,70],low:.25,peak:.8,snow:0,hz:'rgba(196,208,208,.6)'})];
+ if(fo==='s'&&!rgSM){const HZ='206,223,238';rgSM=[mkRidge3(4096,384,1234567,[{c0:[150,170,200],c1:[205,218,235],low:.3,peak:.88,rough:.75,hz:HZ,ha:.7},{c0:[112,136,170],c1:[185,201,222],low:.15,peak:.7,rough:.8,hz:HZ,ha:.75}]),mkRidge3(4096,288,7654321,[{c0:[84,110,128],c1:[154,176,180],low:.14,peak:.85,rough:.6,hz:HZ,ha:.7},{c0:[58,90,86],c1:[120,148,130],low:.06,peak:.62,rough:.5,hz:HZ,ha:.75}]),mkRidge3(4096,176,424242,[{c0:[42,74,52],c1:[96,132,86],low:.25,peak:.88,rough:.3,pw:1.1,hz:HZ,ha:.55}])]}
+ if(fo===true&&!rgRM)rgRM=[mkRidge2(2048,320,1234567,{clean:1,c0:[120,100,86],c1:[168,146,126],low:.08,peak:.8,snow:0,hz:'rgba(214,224,228,.9)'}),mkRidge2(2048,256,7654321,{clean:1,c0:[96,78,62],c1:[146,122,98],low:.06,peak:.72,snow:0,hz:'rgba(206,216,218,.8)'}),mkRidge2(2048,176,424242,{clean:1,c0:[74,58,44],c1:[116,94,70],low:.25,peak:.8,snow:0,hz:'rgba(196,208,208,.6)'})];
  if(fo==='w'&&!rgWM)rgWM=[mkRidge2(2048,320,1234567,{c0:[150,166,188],c1:[226,233,243],low:.1,peak:.82,snow:.6,hz:'rgba(228,236,244,.9)'}),mkRidge2(2048,256,7654321,{c0:[128,144,168],c1:[214,223,236],low:.08,peak:.74,snow:.55,hz:'rgba(224,233,242,.85)'}),mkRidge2(2048,176,424242,{c0:[104,120,142],c1:[196,208,224],low:.25,peak:.8,snow:.5,hz:'rgba(220,230,240,.7)'})];
- rm.forEach((m,i)=>{m.material.map=fo==='w'?rgWM[i]:fo?rgRM[i]:m.userData.m0;m.material.needsUpdate=true})}
+ rm.forEach((m,i)=>{m.material.map=fo==='w'?rgWM[i]:fo==='s'?rgSM[i]:fo?rgRM[i]:m.userData.m0;m.material.needsUpdate=true})}
 (function(){const rm=window.ridgeM||[];if(rm.length<2)return;
  rm[0].material.map=mkRidge2(4096,384,1234567,{c0:[52,66,98],c1:[150,168,204],low:.1,peak:.88,snow:.3,hz:'rgba(205,220,238,.85)'});rm[0].material.needsUpdate=true;rm[0].renderOrder=-3;
  rm[1].material.map=mkRidge2(4096,288,7654321,{c0:[34,58,42],c1:[96,134,88],low:.06,peak:.82,snow:0,hz:'rgba(190,210,200,.7)'});rm[1].material.needsUpdate=true;rm[1].renderOrder=-2;
@@ -4567,6 +4581,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.48',n:['Isınma Turu · Güneşli haritası: dağlar yeniden yapıldı (katmanlı, mavi-gri havalı perspektifli, çizgisiz yumuşak gölgeli silüetler)','Atmosfer: daha uzun, sıcak-mavi ufuk siste uzaktaki dağ ve ağaçlar yumuşakça eriyor; güneş ışığı biraz daha sıcak']},
 {v:'v9.47',n:['Boya, Jant ve Neon ekranlarında garaj arka planının üst/alt kenar çizgileri kapatıldı','Jant detayından geri dönünce kenar kapatmalar artık 1 saniye sonra değil, geçiş sırasında hemen görünüyor']},
 {v:'v9.46',n:['Aracı Geliştir ana ekranında garaj arka planı artık garaj ekranıyla aynı: sağ ve sol kenarlar aynı şekilde kapatıldı']},
 {v:'v9.45',n:['Dikey modda Aracı Geliştir butonundaki sarı ok kaldırıldı','Garaj arka planının sağ ve sol kenarları ile üst/alt kenarları tüm garaj ekranlarında (Aracı Geliştir, Boya, Jant, Neon dahil) şık geçişle kapatıldı']},
