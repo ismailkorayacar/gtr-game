@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.49</title>
+<title>gtr_game_v9.50</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.49</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.50</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3706,7 +3706,7 @@ $('pmback').onclick=()=>{show('pm',false);ovMode('home');show('ov',true);mark()}
 let btnSndT=0;{const _s=sfx;sfx=function(k){if(k==='coin')btnSndT=performance.now();return _s.apply(this,arguments)}}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;try{initAudio();if(AC&&AC.state==='suspended')acResume()}catch(x){}if(performance.now()-btnSndT>60)sfx('tap')},false);
 
-function skwSkid(){try{const c=Math.cos(P.yaw),s=Math.sin(P.yaw);P.wheels.forEach(w=>{if(w.position.z<=0)return;const lx=w.position.x,lz=w.position.z,wx=lx*c+lz*s,wz=-lx*s+lz*c;skD.position.set(P.x+wx+cx(P.z+wz),.05,P.z+wz);skD.rotation.set(0,P.yaw+Math.atan(cd(P.z+wz)),0);skD.updateMatrix();skPut(P.z+wz);if(TH.key!=='forest'&&TH.key!=='rain'&&TH.key!=='storm'){if(R()<.5)puff(P.x+wx,.25,P.z+wz,0xf2f6fa,R()<.4?2:1,2,1,1.4)}});skid.count=Math.min(skidN,SKN);skid.instanceMatrix.needsUpdate=true}catch(e){}}
+function skwSkid(){try{const c=Math.cos(P.yaw),s=Math.sin(P.yaw);P.wheels.forEach(w=>{if(w.position.z<=0)return;const lx=w.position.x,lz=w.position.z,wx=lx*c+lz*s,wz=-lx*s+lz*c;skD.position.set(P.x+wx+cx(P.z+wz),.05,P.z+wz);skD.rotation.set(0,P.yaw+Math.atan(cd(P.z+wz)),0);skD.updateMatrix();skPut(P.z+wz);if(TH.key!=='forest'&&TH.key!=='rain'&&TH.key!=='storm'){if(R()<.25)puff(P.x+wx,.25,P.z+wz,0x1c1c1e,R()<.4?2:1,2,1,1.4)}});skid.count=Math.min(skidN,SKN);skid.instanceMatrix.needsUpdate=true}catch(e){}}
 
 
 const tunIc=[],tunIcM=new THREE.SpriteMaterial({map:(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');g.lineCap='round';g.fillStyle='rgba(42,10,90,.8)';g.beginPath();g.arc(64,72,46,0,7);g.fill();g.strokeStyle='#2a0a5a';g.lineWidth=18;g.beginPath();g.arc(64,72,46,0,7);g.stroke();g.fillStyle='#2a0a5a';g.fillRect(50,6,28,16);g.fillRect(58,16,12,12);g.strokeStyle='#ffd21a';g.lineWidth=9;g.beginPath();g.arc(64,72,46,0,7);g.stroke();g.fillStyle='#ffd21a';g.fillRect(53,9,22,10);g.fillRect(60,16,8,10);g.lineWidth=8;g.beginPath();g.moveTo(64,72);g.lineTo(64,44);g.moveTo(64,72);g.lineTo(84,84);g.stroke();g.beginPath();g.arc(64,72,6,0,7);g.fill();return new THREE.CanvasTexture(c)})(),transparent:true,depthWrite:false,fog:false});
@@ -4258,7 +4258,7 @@ var pdG=false,pdB=false,pdH=false;
    const hb=live&&pdH&&P.v>3&&!isDR();hbA+=((hb?(-steer*.3+Math.sin(raceT*7)*.03):0)-hbA)*Math.min(1,dt*5);
    if(P.mesh&&Math.abs(hbA)>.002)P.mesh.rotation.y+=hbA;
    if(hb){P.wheels.forEach(w=>{if(w.position.z>0)w.rotation.x+=P.v*dt/P.wr});try{skwSkid()}catch(x){}
-    if(R()<.2){const sz=P.z+P.hl*.75,yy=.3+(TH.key==='forest'?HYf(sz)-HYf(P.z):0);puff(P.x+(R()<.5?-1:1)*P.hw*.8,yy,sz,0xd9d9de,1,1.2,.42,.9)}}
+    if(R()<.1){const sz=P.z+P.hl*.75,yy=.3+(TH.key==='forest'?HYf(sz)-HYf(P.z):0);puff(P.x+(R()<.5?-1:1)*P.hw*.8,yy,sz,0x1c1c1e,1,1.2,.42,.9)}}
    const br=live&&(pdB||pdH)&&P.v>.3,tc=tails();if(br)tc.forEach(m=>m.emissiveIntensity=9);tlS.forEach(s=>s.visible=br);
    const dm=Math.round(Math.max(dmgP||0,100-(P.hp==null?100:P.hp)));if(dm<dmL)dmL=dm;else if(live&&dm>dmL){const d=dm-dmL;dmL=dm;const e=$('dmt');e.innerHTML='<b>HASAR %'+dm+'</b>';e.classList.remove('on');void e.offsetWidth;e.classList.add('on');dmT=1.8}
    if(dmT>0){dmT-=dt;if(dmT<=0)$('dmt').classList.remove('on')}
@@ -4581,6 +4581,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.50',n:['Isınma Turu · Güneşli haritası: ağaç sayısı %100 arttırıldı','El frenine basınca lastiklerden çıkan duman %50 azaltıldı ve siyaha yakın koyu renge çevrildi (tüm araçlar, tüm haritalar)']},
 {v:'v9.49',n:['Isınma Turu · Güneşli haritası: eski ağaçlar kaldırıldı, yerine gönderdiğin gerçek yüksek detaylı ağaç modelleri eklendi (3 farklı varyant, hafifletilmiş)']},
 {v:'v9.48',n:['Isınma Turu · Güneşli haritası: dağlar yeniden yapıldı (katmanlı, mavi-gri havalı perspektifli, çizgisiz yumuşak gölgeli silüetler)','Atmosfer: daha uzun, sıcak-mavi ufuk siste uzaktaki dağ ve ağaçlar yumuşakça eriyor; güneş ışığı biraz daha sıcak']},
 {v:'v9.47',n:['Boya, Jant ve Neon ekranlarında garaj arka planının üst/alt kenar çizgileri kapatıldı','Jant detayından geri dönünce kenar kapatmalar artık 1 saniye sonra değil, geçiş sırasında hemen görünüyor']},
@@ -5159,7 +5160,7 @@ function mkG(o){const l=rd(o),P=new Float32Array(tr.P.length+l.P.length),U=new F
 const mkT=src=>{const im=new Image(),t=new THREE.Texture(im);t.encoding=THREE.sRGBEncoding;t.anisotropy=4;im.onload=()=>{t.needsUpdate=true};im.src=src;return t};
 const mT=new THREE.MeshLambertMaterial({map:mkT(D.tt),color:0xe6e6e6}),mL=new THREE.MeshLambertMaterial({map:mkT(D.lt),alphaTest:.5,side:THREE.DoubleSide,color:0xcfd6c8});
 let sd=90210;const rn=()=>{sd=(sd*1664525+1013904223)>>>0;return sd/4294967296};
-const hd=[],NV=3,PER=18,RNG=650;
+const hd=[],NV=3,PER=36,RNG=650;
 D.lv.forEach(o=>{const im=new THREE.InstancedMesh(mkG(o),[mT,mL],PER);im.frustumCulled=false;im.visible=false;scene.add(im);const it=[];
  for(let i=0;i<PER;i++){const side=rn()<.5?-1:1,near=rn()<.68,r=near?[13,26]:[26,62];it.push({z:-rn()*520+40,bx:side*(r[0]+rn()*(r[1]-r[0])),rot:rn()*6.28,s:9+rn()*5.5})}hd.push({im,it})});
 const _M=new THREE.Matrix4(),_Q=new THREE.Quaternion(),_V=new THREE.Vector3(),_S=new THREE.Vector3(),_E=new THREE.Euler();
