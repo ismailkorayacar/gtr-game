@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.36</title>
+<title>gtr_game_v9.37</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1638,7 +1638,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .e2k .e2n{position:absolute;right:8px;top:7px;text-decoration:none;padding:2px 8px;border-radius:999px;background:rgba(10,5,60,.75);border:1.5px solid #ffe34d;font:900 9.5px system-ui;letter-spacing:1px;color:#ffe34d;z-index:4}
 .e2k .e2sh{position:absolute;top:0;bottom:0;left:-60%;width:50%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);transform:skewX(-14deg);animation:evsw 5.5s ease-in-out infinite;pointer-events:none;z-index:3}
 #e2f:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div class="bl"><i></i></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span><em id="bootv" style="position:absolute;right:0;bottom:-15px;font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)"></em></div><div class="bl"><i></i></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3102,7 +3102,7 @@ function galStep(dt){if(!gM)gt+=dt;const W=innerWidth,H=innerHeight,n=gList.leng
  if(!gDrag){if(gGoT!==null){gx+=(gGoT-gx)*Math.min(1,dt*7);if(Math.abs(gGoT-gx)<.01){gx=gGoT;gGoT=null}}else{gx+=gV*dt;gV*=Math.exp(-5*dt);const tg=Math.max(0,Math.min(n-1,Math.round(gx+gV*.25)));gx+=(tg-gx)*Math.min(1,dt*8)}}
  gx=Math.max(-.45,Math.min(n-.55,gx));
  const r=Math.round(Math.max(0,Math.min(n-1,gx)));for(let k=r-1;k<=r+1;k++)galEnsure(k);
- gList.forEach((g,i)=>{if(g.car){const d=i-gx,x=SX-d*GSP;g.car.mesh.visible=g.sh.visible=cuOn?Math.abs(d)<.5:Math.abs(d)<1.9;g.car.mesh.position.set(x,0,SZ);g.sh.position.set(x,.03,SZ);g.car.mesh.rotation.y=(gM&&i===gIdx)?gHold:gt*.45+i*.8}});
+ gList.forEach((g,i)=>{if(g.car){const d=i-gx,x=SX-d*GSP;g.car.mesh.visible=g.sh.visible=cuOn?Math.abs(d)<.5:Math.abs(d)<.98;g.car.mesh.position.set(x,0,SZ);g.sh.position.set(x,.03,SZ);g.car.mesh.rotation.y=(gM&&i===gIdx)?gHold:gt*.45+i*.8}});
  if(gM>0){let d=(gM===2?Math.PI/2:.8)-gHold;d=Math.atan2(Math.sin(d),Math.cos(d));gHold+=d*Math.min(1,dt*4.5)}
  gZ+=((gM===2&&gWh?1:0)-gZ)*Math.min(1,dt*4.5);{const e=gZ*gZ*(3-2*gZ);gOff+=((cuOn&&!gLs(W,H)?(gFB!==null&&cuS&&(cuS.pg==='p'||cuS.pg==='n')?gFB:(gSh-gGp*(1-e))/2):(!cuOn&&!gLs(W,H)&&gFM!==null?gFM:0))-gOff)*Math.min(1,dt*6);gOffX+=((window.__galOffX?window.__galOffX(W,H,cuOn&&cuS&&cuS.pg!=='m'):(cuOn&&gLs(W,H)?Math.round(Math.min(W*.44,380)/2):0))-gOffX)*Math.min(1,dt*6);
   if(gSpin>0){gSpin=Math.max(0,gSpin-dt*1.5);const gc=gList[gIdx];if(gc&&gc.car){const a=gSpin*gSpin*7;gc.car.wheels.forEach(w=>{w.rotation.x=a})}}
@@ -4493,7 +4493,20 @@ window.__galLayout=function(W,H,live){const a=window.__galAnchor(W,H);let s=a.g.
   if(isFinite(v3.x)&&isFinite(v3.y)&&dep>.1){const ppmA=(H/2)/Math.tan(gCam.fov*Math.PI/360)/dep,ppmB=(H/2)/a.th/a.z;ax=(v3.x+1)/2*W;ay=(1-v3.y)/2*H;s=a.g.s*ppmA/ppmB}}catch(e){}}
  ay+=34*s;const iw=IW*s,ih=IH*s;let cx=ax+(IW/2-PX)*s,cy=ay+(IH/2-PY)*s;if(!a.g.ls&&(ih>=H||window.__galTrk))cy=Math.min(cy,ih/2);else if(!a.g.ls)cy=H/2;return{cx,cy,iw,ih,ax,ay,s,d:a.g.d}};
 window.__galDraw=function(){const W=innerWidth,H=innerHeight,L=window.__galLayout(W,H,true);quad.scale.set(L.iw,L.ih,1);quad.position.set(L.cx-W/2,H/2-L.cy,0);fade.scale.copy(quad.scale);fade.position.copy(quad.position);bgCam.left=-W/2;bgCam.right=W/2;bgCam.top=H/2;bgCam.bottom=-H/2;bgCam.updateProjectionMatrix();
- const cc=new THREE.Color(),ca=ren.getClearAlpha();ren.getClearColor(cc);ren.setClearColor(0x15121d,1);ren.autoClear=false;ren.clear();ren.render(bgScene,bgCam);ren.render(gScene,gCam);ren.autoClear=true;ren.setClearColor(cc,ca)};
+ const cc=new THREE.Color(),ca=ren.getClearAlpha();ren.getClearColor(cc);ren.setClearColor(0x15121d,1);ren.autoClear=false;ren.clear();ren.render(bgScene,bgCam);let sc=false;try{if(!cuOn&&!gM&&!(gZ>.002)){const x0=Math.max(0,L.cx-L.iw/2),x1=Math.min(W,L.cx+L.iw/2);if(x1>x0+10){ren.setScissorTest(true);ren.setScissor(x0,0,x1-x0,H);sc=true}}}catch(e){}ren.render(gScene,gCam);if(sc)ren.setScissorTest(false);ren.autoClear=true;ren.setClearColor(cc,ca);try{galFrame(W,H,L)}catch(e){}};
+const GFR={on:false};
+function galFrame(W,H,L){if(!GFR.on){GFR.on=true;const g=document.getElementById('gal'),st=document.createElement('style');st.textContent='.gfs{position:absolute;z-index:-1;pointer-events:none;background:#15121d}.gfs.l{background:linear-gradient(90deg,#15121d 0,#15121d 28%,rgba(21,18,29,.85) 55%,rgba(21,18,29,0) 100%)}.gfs.r{background:linear-gradient(270deg,#15121d 0,#15121d 28%,rgba(21,18,29,.85) 55%,rgba(21,18,29,0) 100%)}.gfa{position:absolute;z-index:3;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(176,107,255,.75);background:rgba(18,9,52,.72);box-shadow:0 0 14px rgba(176,107,255,.55),inset 0 0 10px rgba(176,107,255,.25);display:none;align-items:center;justify-content:center;padding:0;margin:0;cursor:pointer;touch-action:manipulation;transition:opacity .2s}.gfa svg{width:24px;height:24px;filter:drop-shadow(0 0 5px #ff7ad0) drop-shadow(0 0 10px #b06bff)}.gfa:active{transform:scale(.92)}.gfa.off{opacity:.25;pointer-events:none}';document.head.appendChild(st);
+ const mk=(c,dir)=>{const e=document.createElement(c==='a'?'button':'div');if(c==='a'){e.type='button';e.className='gfa';e.setAttribute('aria-label',dir<0?'Önceki araç':'Sonraki araç');e.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="url(#gfg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gfg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb3ec"/><stop offset="1" stop-color="#b06bff"/></linearGradient></defs><path d="'+(dir<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'"/></svg>';e.onclick=()=>{const n=gList.length;if(!n||cuOn||gM)return;const c=Math.round(gx),t=Math.max(0,Math.min(n-1,c+dir));gDrag=null;gV=0;gGoT=t}}else e.className='gfs '+c;g.appendChild(e);return e};
+ GFR.al=mk('a',-1);GFR.ar=mk('a',1);GFR.sl=mk('l');GFR.sr=mk('r');GFR.so=mk('r');GFR.sl2=mk('l')}
+ const g=document.getElementById('gal'),vis=g&&g.style.display!=='none'&&galOn;const hide=()=>{[GFR.al,GFR.ar,GFR.sl,GFR.sr,GFR.so,GFR.sl2].forEach(e=>e.style.display='none')};
+ if(!vis||cuOn||gM||gZ>.002){hide();return}
+ const n=gList.length,ci=Math.round(gx),pl=L.cx-L.iw/2,pr=L.cx+L.iw/2,ls=W>H&&H<560;let tl=0;if(ls){try{const t=document.getElementById('galt').getBoundingClientRect();if(t.width>0)tl=t.right}catch(e){}}
+ const top=Math.max(0,L.cy-L.ih/2),bot=Math.min(H,L.cy+L.ih/2),y=Math.max(0,L.ay-.05*H)-23,SW=70;
+ const sh=(e,x,w)=>{e.style.display='block';e.style.left=x+'px';e.style.width=w+'px';e.style.top=top+'px';e.style.height=(bot-top)+'px'};
+ let lx;if(pl>tl+2){sh(GFR.sl,pl-1,SW);lx=pl+SW*.38-23}else{GFR.sl.style.display='none';lx=Math.max(tl,0)+12}
+ let rx;if(pr<W-2){sh(GFR.sr,pr-SW+1,SW);sh(GFR.so,pr-1,W-pr+1);GFR.so.style.background='#15121d';rx=pr-SW*.38-23}else{GFR.sr.style.display='none';GFR.so.style.display='none';rx=W-46-12}
+ GFR.sl2.style.display='none';
+ const pos=(e,x,off)=>{e.style.display='flex';e.style.left=x+'px';e.style.top=y+'px';e.classList.toggle('off',off)};pos(GFR.al,lx,ci<=0);pos(GFR.ar,rx,ci>=n-1)}
 }catch(e){console.error(e)}})();
 
 /* ===== v6.0 günlük görev kancaları ===== */
@@ -4537,6 +4550,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.37',n:['Garajda önceki/sonraki araç artık yan tarafta görünmüyor; fotoğrafın kenarları şık bir çerçeveyle kapatıldı ve iki yanına neon önceki/sonraki ok butonları eklendi (sürükleme eskisi gibi çalışıyor)','Ayarlardaki telefon bildirimi Açık/Kapalı butonlarına basınca kayıt bitene kadar yükleniyor göstergesi çıkıyor','Açılış (loading) ekranında logonun sağ altında küçük sürüm numarası gösteriliyor']},
 {v:'v9.36',n:['Profil ekranındaki ÇIKIŞ butonunun yazısı oyunun mor tasarım diline uygun açık mor renge çevrildi']},
 {v:'v9.35',n:['Yön tuşuna 0,35 saniyeden uzun basınca şerit değiştirme hızı yaklaşık %60\'a çıkarıldı (önceki %50)','Direksiyon hassasiyeti ayarı düzeltildi: %150 artık gerçekten daha keskin, %50 daha yumuşak dönüyor (önceden yüksek değer yanlışlıkla direksiyonu azaltıyordu); pause menüsünden değiştirince yarışta anında etki eder','Telefon bildirimi artık altında yeni sürümün numarasını gösteriyor']},
 {v:'v9.34',n:['Sağ/sol yön tuşuna 0,35 saniyeden uzun basınca araç yaklaşık %50 daha hızlı şerit değiştirir; diğer direksiyon mekanikleri aynı','Dokunma alanı hatası düzeltildi: artık yalnızca dokunduğun butonun yönü çalışır; iki butonun arası biraz açıldı']},
@@ -4552,7 +4566,7 @@ const HIST=[
 {v:'v9.24',n:['Yol tutma/viraj yardımı tamamen kaldırıldı: araç düz giderken kendi kendine sağa veya sola çekmiyor','Araç dururken sağ/sol tuşları aracı yanlara kaydırmıyor; direksiyon artık sadece araç hareket ederken çalışıyor (geri viteste de)','Bildirimler ekranı her güncellemede yalnızca en son sürümün notlarını gösteriyor']},
 {v:'v9.23',n:['Direksiyon hassasiyeti çubuğu: %50 solda, %100 ortada, %150 sağda','Geri vites direksiyon yönü düzeltildi']},
 {v:'v9.22',n:['Etkinlikler ekranı: açılışta sınırlı süreli etkinlik sayacı gizli; aşağıdan bir etkinlik seçilince o etkinliğin sayacı gösteriliyor']}];
-const NT_VER=HIST[0].v;
+const NT_VER=HIST[0].v;try{const bv=document.getElementById('bootv');if(bv)bv.textContent=NT_VER}catch(e){}
 const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
 const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'};
 /* canlı sürüm kontrolü: sunucudaki version.json daha yeniyse sayfa önbelleği atlanarak bir kez yenilenir */
@@ -4578,8 +4592,9 @@ async function pushDisable(){
  ls('th_push','0');ls('th_ptok',null);pnUI();toast('Telefon bildirimleri kapatıldı',1,1800)}
 function pnUI(){const on=ls('th_push')==='1'&&PUSH_OK()&&Notification.permission==='granted';const a=$('pnOn'),b=$('pnOff');if(a)a.classList.toggle('on',on);if(b)b.classList.toggle('on',!on);const d=$('pnd');if(d)d.textContent=!PUSH_OK()?'Bu tarayıcıda telefon bildirimi desteklenmiyor. Oyunu ana ekrana ekleyip uygulama olarak aç.':Notification.permission==='denied'?'Bildirim izni engellenmiş. Tarayıcı/telefon ayarlarından izin vermelisin.':'Açıkken yeni sürüm çıkınca telefonuna bildirim gelir.'}
 try{const pb=document.createElement('div');pb.className='sbx';pb.id='pnbx';pb.innerHTML='<h4>TELEFON BİLDİRİMLERİ</h4><div class="qrow"><button id="pnOn" type="button">Açık</button><button id="pnOff" type="button">Kapalı</button></div><p id="pnd" style="margin:8px 2px 0;font:600 12px/1.35 system-ui;color:rgba(255,255,255,.6)"></p>';$('set').appendChild(pb);{const st=document.createElement('style');st.textContent='@media (orientation:portrait){body.u2 #set.lby #pnbx,body.u2 #set.igs #pnbx,body #set.igs #pnbx{width:100%!important}}';document.head.appendChild(st)}
- $('pnOn').onclick=()=>{if(!PUSH_OK()){toast('Bu tarayıcıda desteklenmiyor',0,2200);return}pushEnable(false).then(pnUI)};
- $('pnOff').onclick=()=>{if(ls('th_push')==='1')pushDisable();else{ls('th_push','0');pnUI()}};
+ const pnLd=on=>{let e=document.getElementById('pnLd');if(!e){const st=document.createElement('style');st.textContent='#pnLd{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(8,4,24,.55);touch-action:none}#pnLd i{width:46px;height:46px;border-radius:50%;border:4px solid rgba(176,107,255,.28);border-top-color:#ff7ad0;animation:pnsp .8s linear infinite;box-shadow:0 0 18px rgba(176,107,255,.5)}@keyframes pnsp{to{transform:rotate(360deg)}}';document.head.appendChild(st);e=document.createElement('div');e.id='pnLd';e.innerHTML='<i></i>';e.addEventListener('pointerdown',x=>{x.preventDefault();x.stopPropagation()});document.body.appendChild(e)}e.style.display=on?'flex':'none'};
+ $('pnOn').onclick=()=>{if(!PUSH_OK()){toast('Bu tarayıcıda desteklenmiyor',0,2200);return}pnLd(1);pushEnable(false).then(pnUI).catch(()=>{}).finally(()=>pnLd(0))};
+ $('pnOff').onclick=()=>{if(ls('th_push')==='1'){pnLd(1);pushDisable().catch(()=>{}).finally(()=>pnLd(0))}else{ls('th_push','0');pnUI()}};
  pnUI();setInterval(pnUI,1500)}catch(e){console.warn(e)}
 try{if(PUSH_OK()){let n=0;const iv=setInterval(()=>{if(++n>30)return clearInterval(iv);if(window.fbUser){clearInterval(iv);if(Notification.permission==='granted'&&ls('th_push')==='1')pushEnable(true)}},1000)}}catch(e){}
 window.ntVerNew=()=>ls('th_vs')!==NT_VER;
