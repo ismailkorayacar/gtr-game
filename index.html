@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.53</title>
+<title>gtr_game_v9.54</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.53</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.54</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3513,11 +3513,14 @@ function evFinish(win){if(EV&&PVE.includes(EV.id))return rrDone(win);{const w=$(
  show('ov',false);show('res',true);evDeco($('res'),e,true);if(ok&&e.endless&&!win&&rec&&sc>0)resConf();if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
 
 let evrSel=0,evrLast=0,evrFromRes=false,evrFromRr=false;function evRecHtml(e){let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}let h='<h4>ETKİNLİK REKORLARI</h4>';if(!a.length)return h+'<div class="evr"><span>Henüz kayıt yok</span><b>-</b></div>';a.slice(0,5).forEach((r,k)=>{h+='<div class="evr"><span>'+(k+1)+'. '+esc(r.n)+'</span><b>'+(e.ta&&r.k!=null?(+r.k).toFixed(2)+' km · ':'')+r.s+(e.drift?' DP':'')+'</b></div>'});return h}
-function evRecAdd(e,sc,win){if(sc<=0)return 0;let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const r={id:Date.now(),n:sel.name,s:sc,k:+(((win?FINISH:crashDist)||0)/1000).toFixed(2),c:CARS[sel.car][1],w:win?1:0};a.push(r);a.sort((x,y)=>y.s-x.s);a=a.slice(0,30);try{localStorage.setItem('th_evl_'+e.id,JSON.stringify(a))}catch(x){}evrLast=r.id;return r.id}
+function evRecAdd(e,sc,win){if(sc<=0)return 0;let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const r={id:Date.now(),n:sel.name,s:sc,k:+(((win?FINISH:crashDist)||0)/1000).toFixed(2),c:CARS[sel.car][1],w:win?1:0};a.push(r);a.sort((x,y)=>y.s-x.s);a=a.slice(0,30);try{localStorage.setItem('th_evl_'+e.id,JSON.stringify(a))}catch(x){}evrLast=r.id;try{setTimeout(()=>window.fbPushNow&&window.fbPushNow(),600)}catch(x){}return r.id}
 function evRecShow(i){evrSel=i;const e=EVS[i];$('evrn').textContent=e.nm.toUpperCase();$('evrt').style.display='none';
  let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const L=$('evrl');L.innerHTML='';
- if(!a.length){L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';return}
- a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+(r.id===evrLast?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+'<i class="pki">P</i>'+r.s+(e.drift?' DP':'')+'</b>';L.appendChild(d)})}
+ const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+'<i class="pki">P</i>'+r.s+(e.drift?' DP':'')+'</b>';L.appendChild(d)})};
+ if(a.length)rows(a);else L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';
+ try{if(window.fbEvTop)window.fbEvTop(e.id).then(rm=>{if(!rm||!rm.length||evrSel!==i)return;const mn=(window.fbUser&&window.fbUser.uid),mine=a.filter(r=>r.n===sel.name).sort((x,y)=>y.s-x.s)[0],m=rm.slice();
+   if(mine){const j=m.findIndex(r=>r.me);if(j<0)m.push({n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id});else if(mine.s>m[j].s)m[j]={n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id}}
+   m.sort((x,y)=>y.s-x.s);rows(m)}).catch(()=>{})}catch(x){}}
 $('evrback').onclick=()=>{window.__evrRes=false;show('evr',false);if(evrFromRes){evrFromRes=false;show('res',true)}else if(evrFromRr){evrFromRr=false;$('rrr').style.display='flex'}else show('evd',true)};
 function evSide(){const e=EV;if(!e)return;hudG._ev=1;document.body.classList.toggle('lapm',!!e.laps);$('pcw').style.display=e.laps?'none':'';lapUI();const w=$('pcw').children[0],v=$('pcv');let lb,val;
  if(e.ta){const tot=Math.floor((FINISH-101)/1000);lb='Kontrol';val=Math.min(tot,Math.max(0,e.nextCp/1000-1))+'/'+tot}
@@ -3813,11 +3816,16 @@ function padStep(dt,live){const on=!!EV&&(EV.id==='dc'||EV.tx)&&st!=='menu'&&st!
  const setName=v=>{v=cleanName(v)||'Pilot';ls('th_n',v);ls('pf_cur',v);try{sel.name=v}catch(e){}const i=$$('nm');if(i)i.value=v;return v};
  const myName=()=>cleanName(ls('th_n'))||'Pilot';
  const tot=()=>+ls('th_tot')||0;
+ const evKey=id=>String(id).replace(/[^A-Za-z0-9_]/g,'_');
+ const evSnap=()=>{const o={},n=myName();let any=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||k.indexOf('th_evl_')!==0)continue;let a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}a=a.filter(r=>r&&r.n===n&&+r.s>0);if(!a.length)continue;a.sort((x,y)=>y.s-x.s);const r=a[0];o[evKey(k.slice(7))]={s:+r.s,k:+r.k||0,c:String(r.c||'').slice(0,40)};any=1}}catch(e){}return any?o:null};
+ window.fbEvTop=async function(id){if(!fb||!user)return null;try{const ek=evKey(id),q=await fb.F.getDocs(fb.F.query(fb.F.collection(fb.db,'lb'),fb.F.orderBy('ev.'+ek+'.s','desc'),fb.F.limit(30))),a=[];q.forEach(d=>{const x=d.data(),v=x.ev&&x.ev[ek];if(v&&+v.s>0)a.push({u:d.id,n:x.n||'?',s:+v.s,k:+v.k||0,c:v.c||'',me:d.id===user.uid})});return a}catch(e){console.warn('fb evTop',e);return null}};
+ window.fbPushNow=()=>{try{push(true)}catch(e){}};
  async function push(force){
-  if(!fb||!user||busy)return;const d=snap(),n=myName(),key=n+'|'+tot()+'|'+d;if(!force&&key===lastKey)return;
+  if(!fb||!user||busy)return;const d=snap(),n=myName(),key=n+'|'+tot()+'|'+JSON.stringify(evSnap()||0)+'|'+d;if(!force&&key===lastKey)return;
   busy=true;try{const t=Date.now();
    await fb.F.setDoc(fb.F.doc(fb.db,'users',user.uid),{n,d,t,tot:tot(),g:user.isAnonymous?0:1});
-   await fb.F.setDoc(fb.F.doc(fb.db,'lb',user.uid),{n,t:tot(),u:t});
+   await fb.F.setDoc(fb.F.doc(fb.db,'lb',user.uid),{n,t:tot(),u:t},{merge:true});
+   try{const ev=evSnap();if(ev)await fb.F.setDoc(fb.F.doc(fb.db,'lb',user.uid),{ev},{merge:true})}catch(e){console.warn('fb ev',e)}
    ls('fb_t',String(t));lastKey=key}catch(e){console.warn('fb push',e)}busy=false}
  function ui(){
   const lg=$$('fbl'),rw=$$('fbr'),nw=$$('nmw'),on=!!user;
@@ -4581,6 +4589,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.54',n:['Etkinlik Rekorları: artık diğer oyuncuların bu etkinlikteki en iyi rekorları da görünüyor (çevrimiçi sıralama, oyuncu başına en iyi skor)']},
 {v:'v9.53',n:['Kariyer tamamlanma: "Kariyer İlerlemesi" butonu kariyer ana ekranına döner','Yön tuşları: dokunma alanı genişletildi ve kenarlara/aralarına basılınca da algılanıyor (arada basılmama sorunu giderildi)','Yön tuşları tüm oyunda %5 büyütüldü, aralarındaki boşluk korundu']},
 {v:'v9.52',n:['Isınma Turu · Güneşli haritası: gerçek arazi dağları artık görünüyor (ışık/sis hatası düzeltildi)','Tamamlanma ekranları: bölüm adı başlığı ısınma turundaki gibi dokulu, solu pembe tasarımda (tüm başarılı ekranlarda)','Kariyer tamamlanma: "Sıradaki Bölümü Oyna" butonu bir sonraki bölümü doğrudan başlatır; Lobi ve Puan Tablosu üstüne "Kariyer İlerlemesi" butonu eklendi','Tamamlanma ekranları artık kendi modunun hero görselini gösteriyor (kariyer, ısınma turu, etkinlik)','Küçük yatay ekranlarda (iPhone 14 gibi) sol yön tuşları mıknatıs butonunun üstüne binmeyecek şekilde aşağı alındı']},
 {v:'v9.51',n:['Isınma Turu · Güneşli haritası: ufuktaki dağlar gönderdiğin gerçek arazi modeliyle değiştirildi (3D dağ silsilesi, doku ve normal haritalı, uzakta sisle yumuşayan)']},
