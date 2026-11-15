@@ -38,7 +38,7 @@ let ok = 0, bad = [];
 for (let i = 0; i < tokens.length; i += 500) {
   const chunk = tokens.slice(i, i + 500);
   let res;
-  try { res = await admin.messaging().sendEachForMulticast({ tokens: chunk, data: { title: 'Grand Traffic Racing · Yeni sürüm', body }, webpush: { headers: { Urgency: 'high', TTL: '86400' } } }); }
+  try { res = await admin.messaging().sendEachForMulticast({ tokens: chunk, data: { title: 'Grand Traffic Racing · Yeni sürüm yayında' }, webpush: { headers: { Urgency: 'high', TTL: '86400' } } }); }
   catch (e) { console.error('HATA [FCM gönderim]: ' + (e.code || '') + ' ' + e.message + '\nOlası sebep: Firebase Cloud Messaging API (V1) kapalı veya servis hesabının yetkisi yok.'); process.exit(1); }
   res.responses.forEach((r, k) => { if (r.success) ok++; else { console.log('Token hatası:', r.error?.code, r.error?.message); if (/not-registered|invalid-argument|invalid-registration/.test(r.error?.code || '')) bad.push(chunk[k]); } });
 }
