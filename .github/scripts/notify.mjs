@@ -13,7 +13,7 @@ for (let i = 0; i < 72 && !live; i++) {
 if (!live) console.log('Uyarı: canlı sitede ' + ver.v + ' henüz görünmüyor, yine de gönderiliyor.');
 admin.initializeApp({ credential: admin.credential.cert(JSON.parse(sa)) });
 const snap = await admin.firestore().collection('pt').get();
-const tokens = snap.docs.map(d => d.id);
+const tokens = snap.docs.filter(d => !d.data().off).map(d => d.id);
 console.log('Kayıtlı cihaz:', tokens.length);
 if (!tokens.length) process.exit(0);
 const body = ver.v + ' yayında' + (ver.n && ver.n[0] ? ' · ' + ver.n[0] : '');
