@@ -18,6 +18,7 @@ try {
   const m = raw.match(/-----BEGIN PRIVATE KEY-----([\s\S]*?)-----END PRIVATE KEY-----(?:\\n|\s)*/);
   if (m) {
     const body = m[1].replace(/\\n|\s/g, '');
+    console.log('private_key gövde uzunluğu: ' + body.length + ' karakter (2048-bit Google anahtarı için yaklaşık 1624 olmalı)');
     raw = raw.replace(m[0], '-----BEGIN PRIVATE KEY-----\\n' + body.match(/.{1,64}/g).join('\\n') + '\\n-----END PRIVATE KEY-----\\n');
   }
   cred = admin.credential.cert(JSON.parse(raw));
