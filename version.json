@@ -1,1 +1,1 @@
-{"v": "v9.31", "n": ["Ayarlar ekranına \"Telefon bildirimleri\" bölümü eklendi: istediğin zaman açıp kapatabilirsin", "Telefon bildirimini hiç açmamış oyuncular bildirim ekranında en altta \"Telefon bildirimleri\" satırını görür; dokununca ayarlara gider. Bir kez açıp kapatanlara gösterilmez"]}
+{"v": "v9.32", "n": ["İleri giderken direksiyon çok daha hızlı tepki veriyor: tuşa basınca yaklaşık yarım saniyede bir şerit geçilir", "Duvara çarpınca araç artık birden düzelmiyor: fizik kurallarına göre duvardan sekip hız kaybediyor, direksiyon açısı korunuyor"]}
