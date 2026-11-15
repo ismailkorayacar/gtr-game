@@ -21,7 +21,9 @@ try {
     console.log('private_key gövde uzunluğu: ' + body.length + ' karakter (2048-bit Google anahtarı için yaklaşık 1624 olmalı)');
     raw = raw.replace(m[0], '-----BEGIN PRIVATE KEY-----\\n' + body.match(/.{1,64}/g).join('\\n') + '\\n-----END PRIVATE KEY-----\\n');
   }
-  cred = admin.credential.cert(JSON.parse(raw));
+  const sj = JSON.parse(raw);
+  console.log('Servis hesabı: ' + sj.client_email + ' · proje: ' + sj.project_id);
+  cred = admin.credential.cert(sj);
 }
 catch (e) { console.error('HATA [SECRET]: FIREBASE_SERVICE_ACCOUNT geçerli bir servis hesabı JSON\'u değil. İndirdiğin JSON dosyasının TAMAMINI ({ ile başlayıp } ile biten) yapıştırdığından emin ol. Ayrıntı: ' + e.message); process.exit(1); }
 admin.initializeApp({ credential: cred });
