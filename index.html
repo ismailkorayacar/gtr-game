@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.32</title>
+<title>gtr_game_v9.33</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2202,10 +2202,14 @@ function step(dt){
  if(skwT>0){skwT-=dt;if(live&&st==='race')skwSkid()}if(live&&st==='race'&&(TH.key==='snow'||TH.key==='forest'||(dif===2&&(TH.key==='rain'||TH.key==='storm')))){if(Math.abs(s)>.2){if(!skwA||Math.sign(s)!==skwD){skwA=1;skwD=Math.sign(s);skwX=P.x;skwF=0}else if(!skwF&&Math.abs(P.x-skwX)>(TH.key==='forest'?3.2:5.25)){skwF=1;skwT=1.2;skwK=TH.key==='forest'?.3:TH.key==='snow'?1:.25}}else skwA=0}
  if(st==='win')winStep(dt);else if(st!=='replay'){if(lnSw.t>0){lnSw.t-=dt;P.psi=0;P.dl=0;P.vx=(lnSw.to-P.x)*7}else{const av=Math.abs(P.v),sl=pdH&&av>4&&live;if(P.psi==null)P.psi=0;if(P.dl==null)P.dl=0;
 /* v9.25 kinematic bicycle: yawRate=(v/L)*tan(delta); yön=burun; duran araçta sadece teker görseli döner */
-const fw=P.v>=0,dm=(fw?1.1:.8)*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7))/(fw?1+Math.pow(av/70,2):1),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?(fw?13:7):10));
-if(live){P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
+const fw=P.v>=0,dm=.8*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7)),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?7:10));
+if(live){if(fw){/* ileri: şerit mantığı — kısa dokunuş ≈ araç yarım genişliği, ~0.5 sn ≈ 1 şerit, uzun basış ≈ 3 şerit; bırakınca araç düzelir. Düşük hızda (<~8 m/s) bisiklet modeli (U dönüşü) */
+ P.hd=Math.abs(s)>.05?Math.min(1,(P.hd||0)+dt/2):Math.max(0,(P.hd||0)-dt*6);
+ const hi=Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
+ P.psi+=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT-P.psi)*Math.min(1,dt*10)}else P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;
+ if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
 P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*Math.cos(P.psi||0)*dt}
- if(Math.abs(P.x)>LIM){const sg=Math.sign(P.x);if(Math.abs(P.vx)>3){if(padT<=0)P.hp=Math.max(0,P.hp-Math.abs(P.vx)*.3);shake=Math.max(shake,.3);puff(sg*(LIM+1.3),.8,P.z,0xffc040,8,8,.07,.4)}P.x=sg*LIM;if(P.v>=0){const ps=P.psi||0;if(sg*ps>0){P.v*=1-.35*Math.abs(Math.sin(ps));P.psi=-ps*.3}P.vx=P.v*Math.sin(P.psi||0)}else{P.vx=-P.vx*.3;P.psi=-(P.psi||0)*.3}}
+ if(Math.abs(P.x)>LIM){const sg=Math.sign(P.x);if(Math.abs(P.vx)>3){if(padT<=0)P.hp=Math.max(0,P.hp-Math.abs(P.vx)*.3);shake=Math.max(shake,.3);puff(sg*(LIM+1.3),.8,P.z,0xffc040,8,8,.07,.4)}P.x=sg*LIM;if(P.v>=0){const ps=P.psi||0;if(sg*ps>0){if(Math.abs(P.vx)>2.5){P.v*=1-.35*Math.abs(Math.sin(ps));P.psi=-ps*.15}else{P.psi=0;P.v*=1-.15*dt}}P.vx=P.v*Math.sin(P.psi||0)}else{P.vx=-P.vx*.3;P.psi=-(P.psi||0)*.3}}
  if(st==='crash'){P.yaw+=P.yr*dt;P.yr*=Math.pow(.4,dt)}else if(st!=='replay'&&st!=='win')P.yaw=-(P.psi||0)+(v7_oilT>0?Math.sin(raceT*8+1.5)*.105*Math.min(1,v7_oilT):0)+(TH.key==='forest'?.5:1)*((skwT>0?Math.sin(raceT*9+1.5)*.105*Math.min(1,skwT)*skwK:0)+(cvS>0?Math.sin(raceT*9+1.5)*.105*.35*cvS:0));if(isDR()&&st==='race')P.yaw+=drA;
  if(live&&st==='race'&&TH.key!=='forest')for(const s of v7_segs){if(P.z<s.z0+15&&P.z>s.z0-s.len-P.hl){const lc=LANES[s.l],d=P.x-lc,mn=1.75+P.hw+.1;if(Math.abs(d)<mn){const sg=Math.abs(d)>.9?Math.sign(d):(lc<0?1:lc>0?-1:(d>=0?1:-1));P.x+=(lc+sg*mn-P.x)*Math.min(1,dt*10);if(P.vx*sg<0)P.vx=0}}}
  if(live&&st==='race')for(const s of v7_segs){if(P.z<s.z0+1.5&&P.z>s.z0-(TH.key==='forest'?3:s.len)&&Math.abs(P.x-LANES[s.l])<1.9){imp.x=P.x;imp.z=P.z-P.hl;impactFX(P.x,P.z-P.hl);if(TH.key==='forest'){if(dmgP+5>=100&&invT<=0&&!shieldOn)crash(100);else crash(5)}else crash();break}}
@@ -2526,7 +2530,7 @@ function initAudio(){if(AC)return;try{AC=new(window.AudioContext||window.webkitA
  const s3=AC.createBufferSource();s3.buffer=nbf;s3.loop=true;ebp=AC.createBiquadFilter();ebp.type='bandpass';ebp.frequency.value=1500;ebp.Q.value=.8;erum2=AC.createGain();erum2.gain.value=0;s3.connect(ebp);ebp.connect(erum2);erum2.connect(comp);s3.start();
  const s2=AC.createBufferSource();s2.buffer=nbf;s2.loop=true;const bp2=AC.createBiquadFilter();bp2.type='bandpass';bp2.frequency.value=2200;bp2.Q.value=.7;ng=AC.createGain();ng.gain.value=0;s2.connect(bp2);bp2.connect(ng);ng.connect(comp);s2.start();
  tb=AC.createOscillator();tb.type='sine';tb.frequency.value=2500;tbg=AC.createGain();tbg.gain.value=0;tb.connect(tbg);tbg.connect(comp);tb.start()}catch(e){AC=null}}
-function aud(boost){if(!AC||!es1)return;const T=AC.currentTime,v=P.v/Math.max(curV,1)*61,on=st==='race'||st==='count'||(st==='win'&&!winEnd);
+function aud(boost){if(!AC||!es1)return;const T=AC.currentTime,v=P.v/Math.max(curV,1)*61,on=st==='race'||(st==='count'&&!(introT>0))||(st==='win'&&!winEnd);
  let g=0;for(let i=0;i<GS.length;i++)if(v>=GS[i])g=i;
  if(g!==gear){if(g>gear&&st==='race')sfx('shift');gT=.22;gear=g}
  const lo=GS[g],hi=GS[g+1]||76;let fr=Math.min(1,Math.max(0,(v-lo)/(hi-lo)));
@@ -4532,6 +4536,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.33',n:['İleri giderken direksiyon şerit mantığıyla yeniden ayarlandı: kısa dokunuş araç genişliğinin yarısı kadar, yaklaşık yarım saniye bir şerit, uzun basış yaklaşık 3 şerit kaydırır; tuşu bırakınca araç düzelir','Duvara çarpınca aksi yöne aşırı sekme azaltıldı','Yarış öncesi giriş animasyonunda yalnızca müzik çalar; araç start çizgisine gelip kamera sürüş moduna geçince motor sesleri başlar']},
 {v:'v9.32',n:['İleri giderken direksiyon çok daha hızlı tepki veriyor: tuşa basınca yaklaşık yarım saniyede bir şerit geçilir','Duvara çarpınca araç artık birden düzelmiyor: fizik kurallarına göre duvardan sekip hız kaybediyor, direksiyon açısı korunuyor']},
 {v:'v9.31',n:['Ayarlar ekranına "Telefon bildirimleri" bölümü eklendi: istediğin zaman açıp kapatabilirsin','Telefon bildirimini hiç açmamış oyuncular bildirim ekranında en altta "Telefon bildirimleri" satırını görür; dokununca ayarlara gider. Bir kez açıp kapatanlara gösterilmez']},
 {v:'v9.30',n:['Telefon bildirimi altyapısı eklendi: Bildirimler ekranından "Telefon bildirimleri" satırına dokunup izin verirsen, yeni sürüm çıkınca telefonuna bildirim gelir']},
@@ -5044,7 +5049,7 @@ const _cuo=cuOpen;cuOpen=function(){const g=gList[gIdx];if(g&&g.lock)return;retu
   if(!ev){ev={g:AC.createGain(),f:AC.createBiquadFilter(),o:[],og:[]};ev.g.gain.value=0;ev.f.type='lowpass';ev.f.frequency.value=1400;ev.f.Q.value=.5;
    [['sine',.6],['triangle',.16],['sine',.035]].forEach(a=>{const o=AC.createOscillator(),g=AC.createGain();o.type=a[0];o.frequency.value=200;g.gain.value=a[1];o.connect(g);g.connect(ev.f);o.start();ev.o.push(o);ev.og.push(g)});
    ev.f.connect(ev.g);ev.g.connect(AC.destination)}
-  const T=AC.currentTime,on=st==='race'||st==='count'||(st==='win'&&!winEnd);
+  const T=AC.currentTime,on=st==='race'||(st==='count'&&!(introT>0))||(st==='win'&&!winEnd);
   if(isEV){eg.gain.setTargetAtTime(on?.026*(introT>0?.6:1):0,T,.08);if(typeof tbg!=='undefined')tbg.gain.setTargetAtTime(boost?.01:0,T,.05);
    const fr=Math.max(0,Math.min(1,P.v/Math.max(curV,1))),f=st==='count'?80+Math.min(.7,.1+(3-cdT)*.3)*120:70+fr*430+(boost?60:0);
    ev.o[0].frequency.setTargetAtTime(f,T,.07);ev.o[1].frequency.setTargetAtTime(f*2.003,T,.09);ev.o[2].frequency.setTargetAtTime(f*5.02,T,.09);
