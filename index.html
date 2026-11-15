@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.25</title>
+<title>gtr_game_v9.26</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2202,9 +2202,9 @@ function step(dt){
  if(skwT>0){skwT-=dt;if(live&&st==='race')skwSkid()}if(live&&st==='race'&&(TH.key==='snow'||TH.key==='forest'||(dif===2&&(TH.key==='rain'||TH.key==='storm')))){if(Math.abs(s)>.2){if(!skwA||Math.sign(s)!==skwD){skwA=1;skwD=Math.sign(s);skwX=P.x;skwF=0}else if(!skwF&&Math.abs(P.x-skwX)>(TH.key==='forest'?3.2:5.25)){skwF=1;skwT=1.2;skwK=TH.key==='forest'?.3:TH.key==='snow'?1:.25}}else skwA=0}
  if(st==='win')winStep(dt);else if(st!=='replay'){if(lnSw.t>0){lnSw.t-=dt;P.psi=0;P.dl=0;P.vx=(lnSw.to-P.x)*7}else{const av=Math.abs(P.v),sl=pdH&&av>4&&live;if(P.psi==null)P.psi=0;if(P.dl==null)P.dl=0;
 /* v9.25 kinematic bicycle: yawRate=(v/L)*tan(delta); yön=burun; duran araçta sadece teker görseli döner */
-const dm=.5*SG()*(sl?1.5:1)/(1+Math.pow(av/10,1.8)),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?7:10));
-if(live){P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;P.psi=Math.max(-.22,Math.min(.22,P.psi))}
-P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*dt}
+const dm=.8*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7)),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?7:10));
+if(live){P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
+P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*Math.cos(P.psi||0)*dt}
  if(Math.abs(P.x)>LIM){const sg=Math.sign(P.x);if(Math.abs(P.vx)>3){if(padT<=0)P.hp=Math.max(0,P.hp-Math.abs(P.vx)*.3);shake=Math.max(shake,.3);puff(sg*(LIM+1.3),.8,P.z,0xffc040,8,8,.07,.4)}P.x=sg*LIM;P.vx=-P.vx*.3;P.psi=-(P.psi||0)*.3}
  if(st==='crash'){P.yaw+=P.yr*dt;P.yr*=Math.pow(.4,dt)}else if(st!=='replay'&&st!=='win')P.yaw=-(P.psi||0)+(v7_oilT>0?Math.sin(raceT*8+1.5)*.105*Math.min(1,v7_oilT):0)+(TH.key==='forest'?.5:1)*((skwT>0?Math.sin(raceT*9+1.5)*.105*Math.min(1,skwT)*skwK:0)+(cvS>0?Math.sin(raceT*9+1.5)*.105*.35*cvS:0));if(isDR()&&st==='race')P.yaw+=drA;
  if(live&&st==='race'&&TH.key!=='forest')for(const s of v7_segs){if(P.z<s.z0+15&&P.z>s.z0-s.len-P.hl){const lc=LANES[s.l],d=P.x-lc,mn=1.75+P.hw+.1;if(Math.abs(d)<mn){const sg=Math.abs(d)>.9?Math.sign(d):(lc<0?1:lc>0?-1:(d>=0?1:-1));P.x+=(lc+sg*mn-P.x)*Math.min(1,dt*10);if(P.vx*sg<0)P.vx=0}}}
@@ -4530,6 +4530,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.26',n:['Direksiyon hassasiyeti artırıldı: ileri giderken sağa/sola kırınca araç artık hızlı ve net yön değiştiriyor','Yön açısı sınırı kaldırıldı: sürekli sola veya sağa kırıp gaza basınca araç tam tur (U dönüşü dahil) yapabiliyor']},
 {v:'v9.25',n:['Sürüş mekaniği baştan yazıldı: kinematik bisiklet modeli (yönelme hızı = hız / aks mesafesi × tan(direksiyon açısı))','Araç her zaman burnunun baktığı yöne gider; düz giderken kendiliğinden çekme yok','Araç dururken sağ/sol tuşları sadece ön tekerlekleri çevirir, aracı kaydırmaz','Geri viteste yönelme ve hareket tutarlı: sağa kırınca arka sağa gider, burun sola döner']},
 {v:'v9.24',n:['Yol tutma/viraj yardımı tamamen kaldırıldı: araç düz giderken kendi kendine sağa veya sola çekmiyor','Araç dururken sağ/sol tuşları aracı yanlara kaydırmıyor; direksiyon artık sadece araç hareket ederken çalışıyor (geri viteste de)','Bildirimler ekranı her güncellemede yalnızca en son sürümün notlarını gösteriyor']},
 {v:'v9.23',n:['Direksiyon hassasiyeti çubuğu: %50 solda, %100 ortada, %150 sağda','Geri vites direksiyon yönü düzeltildi']},
