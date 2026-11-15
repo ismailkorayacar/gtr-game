@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.35</title>
+<title>gtr_game_v9.36</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1196,7 +1196,7 @@ html.fbr.fbu #ov #nmw{display:none!important}
 #pfp .pfl{font:800 12px system-ui;color:#d8c6ff;letter-spacing:.6px}
 #pfp .pfk{font:800 10.5px system-ui;letter-spacing:1px;color:#ffc24a;text-transform:uppercase}
 #pfp .pfx{position:absolute;right:10px;top:10px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font:700 18px/1 system-ui;cursor:pointer}
-#pfp .pfo{margin-top:8px;width:100%;height:46px;border-radius:14px;border:2px solid #ff7ad0;background:linear-gradient(180deg,#8456ff,#4d28cc);box-shadow:0 3px 0 #231080;color:#fff;font:italic 900 15px system-ui;letter-spacing:.5px;text-transform:uppercase;cursor:pointer}
+#pfp .pfo span{color:#e0c8ff}#pfp .pfo{margin-top:8px;width:100%;height:46px;border-radius:14px;border:2px solid #ff7ad0;background:linear-gradient(180deg,#8456ff,#4d28cc);box-shadow:0 3px 0 #231080;color:#fff;font:italic 900 15px system-ui;letter-spacing:.5px;text-transform:uppercase;cursor:pointer}
 /* etkinlik: süre kutusu */
 .e2b .e2tc{display:flex;gap:5px;margin:2px 0 0;padding:0;background:none;border:0;box-shadow:none}
 .e2tc u{text-decoration:none;display:flex;flex-direction:column;align-items:center;min-width:40px;padding:3px 4px;border-radius:9px;background:rgba(10,5,60,.7);border:1px solid rgba(255,190,80,.6)}
@@ -4537,6 +4537,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.36',n:['Profil ekranındaki ÇIKIŞ butonunun yazısı oyunun mor tasarım diline uygun açık mor renge çevrildi']},
 {v:'v9.35',n:['Yön tuşuna 0,35 saniyeden uzun basınca şerit değiştirme hızı yaklaşık %60\'a çıkarıldı (önceki %50)','Direksiyon hassasiyeti ayarı düzeltildi: %150 artık gerçekten daha keskin, %50 daha yumuşak dönüyor (önceden yüksek değer yanlışlıkla direksiyonu azaltıyordu); pause menüsünden değiştirince yarışta anında etki eder','Telefon bildirimi artık altında yeni sürümün numarasını gösteriyor']},
 {v:'v9.34',n:['Sağ/sol yön tuşuna 0,35 saniyeden uzun basınca araç yaklaşık %50 daha hızlı şerit değiştirir; diğer direksiyon mekanikleri aynı','Dokunma alanı hatası düzeltildi: artık yalnızca dokunduğun butonun yönü çalışır; iki butonun arası biraz açıldı']},
 {v:'v9.33',n:['İleri giderken direksiyon şerit mantığıyla yeniden ayarlandı: kısa dokunuş araç genişliğinin yarısı kadar, yaklaşık yarım saniye bir şerit, uzun basış yaklaşık 3 şerit kaydırır; tuşu bırakınca araç düzelir','Duvara çarpınca aksi yöne aşırı sekme azaltıldı','Yarış öncesi giriş animasyonunda yalnızca müzik çalar; araç start çizgisine gelip kamera sürüş moduna geçince motor sesleri başlar']},
