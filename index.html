@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.61</title>
+<title>gtr_game_v9.61.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1687,17 +1687,14 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 }
 #cr::before,#evs::before,body.u2 #set.lby::before{background:rgba(0,0,0,.3)!important}
 
-#evd .ghw{margin:0 0 8px}#evd .ghc{display:flex;gap:6px;margin:0 0 2px}
-#evd .ghc button{flex:1;min-width:0;padding:8px 4px;border-radius:12px;border:1.5px solid rgba(160,120,255,.45);background:rgba(30,16,70,.6);color:#cfc2ff;font:800 12px system-ui;letter-spacing:.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#evd .ghc button.on{background:linear-gradient(180deg,#7a4cff,#4a2bc0);color:#fff;border-color:#c9b4ff;box-shadow:0 0 12px rgba(140,90,255,.5)}
-#evd .ghi{display:block;margin:3px 2px 0;font:600 11.5px system-ui;color:#cfc2ff;opacity:.8}
-#evr .ghch{margin-left:8px;padding:3px 8px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
+
+#evr .ghcol{display:inline-flex;flex-direction:column;align-items:flex-end;vertical-align:middle}#evr .ghch{display:inline-block;width:auto;margin:5px 10px 0 0;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
 #gdl{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 128px);z-index:7;display:none;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:14px;background:rgba(14,8,40,.62);border:1.5px solid rgba(160,200,255,.55);font:800 13px system-ui;color:#fff;pointer-events:none;white-space:nowrap}
 #gdl i{font-style:normal;font-size:14px}#gdl span{opacity:.85;max-width:90px;overflow:hidden;text-overflow:ellipsis}
 #gdl b{font:900 15px system-ui;font-variant-numeric:tabular-nums}
 #gdl.ah b{color:#5dff9a}#gdl.bh b{color:#ff6b6b}
 #ghtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:60;display:none;padding:10px 16px;border-radius:14px;background:rgba(20,10,60,.95);border:1.5px solid rgba(160,120,255,.6);color:#fff;font:700 13px system-ui;max-width:86vw;text-align:center}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4659,6 +4656,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.61.1',n:['Hayalet seçici (Kapalı / Rekorum / Dünya 1.) Etkinlik Rekorları ekranına sekme olarak taşındı','MEYDAN OKU butonu süre bilgisinin altına alındı, yazı boyutunda']},
 {v:'v9.61',n:['HAYALET SİSTEMİ: Sprint, Ralli, Kış Rallisi, Circuit ve Speedrun’da rekor koşun kaydedilir, yarışta yarı saydam hayalet araç olarak oynatılır','Yarış sırasında hayalet ile süre farkı göstergesi (yeşil: önde, kırmızı: geride)','Etkinlik detayında HAYALET seçici: Kapalı / Rekorum / Dünya 1.; Rekorlar listesinde MEYDAN OKU ile bir oyuncunun hayaletini seç','Speedrun’da dünya birincisinin hayaleti, etkinliği en az bir kez tamamlayınca açılır; Speedrun Rekor Denemesi’nde hayalet yok']},
 {v:'v9.60.8',n:['Kariyer ana ekranı: yıldız kuralı kutusu inceltildi, sarı yıldızlar yazı boyutunda; yatay modda butonlar ve KARİYERE DEVAM ET yazısı tek satır/hizalı','Lobi, Kariyer ve Etkinlik ekranlarındaki hero görsel %30 karartıldı']},
 {v:'v9.60.7',n:['Kariyer bölüm sonu: LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜM (3 yıldızdan azsa BÖLÜMÜ TEKRAR OYNA) butonları düzeltildi','Kariyer bölüm sonu tablosunda toplam puan yerine TOPLANAN BÖLÜM YILDIZLARI satırı','Kariyerde ödül araç kaldırıldı (gösterim ve verme)','Kariyer ekranı: yıldızlar altıgenlerin üstünde yay şeklinde; yıldız kuralı ödül kutusu gibi bir kutuda']},
@@ -5441,15 +5439,14 @@ function save(e){if(R.Z.length<10)return;const key=gk(e),tm=+(+raceT).toFixed(2)
 const _ef=evFinish;evFinish=function(win){const e=(typeof EV!=='undefined')?EV:null,ok=!!(e&&GHID.includes(e.id)&&win&&G.on&&G.ph!==''&&R.Z.length>=10);const r=_ef.apply(this,arguments);try{if(ok)save(e)}catch(x){console.warn('ghost save',x)}return r};
 /* ---- etkinlik detayında hayalet seçici ---- */
 function toast(t){let b=$g('ghtoast');if(!b){b=document.createElement('div');b.id='ghtoast';document.body.appendChild(b)}b.textContent=t;b.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>{b.style.display='none'},2600)}
-function ui(e){if(!GHID.includes(e.id))return;const k=$g('evbx');if(!k)return;
- k.insertAdjacentHTML('beforebegin','<div class="ghw"><div class="ghc" id="ghc"></div><small class="ghi" id="ghi"></small></div>');
+function recUI(e){const t=$g('evrt');if(!t)return;if(!GHID.includes(e.id)){return}
  const draw=()=>{const sv=getSel(e.id)||'auto',a=[['off','KAPALI'],['me','REKORUM'],['world','DÜNYA 1.']];if(sv.indexOf('u:')===0)a.push([sv,sv.split(':').slice(2).join(':').toUpperCase().slice(0,12)]);
-  const act=sv==='auto'?(jget('gh_'+gk(e))?'me':'world'):sv;
-  const c=$g('ghc');if(!c)return;c.innerHTML='';a.forEach(x=>{const b=document.createElement('button');b.type='button';b.className=x[0]===act?'on':'';b.textContent=x[1];b.onclick=()=>{setSel(e.id,x[0]);draw()};c.appendChild(b)});info()};
- const info=()=>{const i=$g('ghi');if(!i)return;const sv=getSel(e.id);if(sv==='off'){i.textContent='Hayalet kapalı.';return}i.textContent='Hayalet aranıyor…';const tk=(info.n=(info.n||0)+1);
-  load(e).then(r=>{if(info.n!==tk||!$g('ghi'))return;const mine=jget('gh_'+gk(e));$g('ghi').textContent=r?('Hazır: '+String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):(e.id==='tss'&&!mine&&sv!=='me'?'Dünya birincisinin hayaleti, bu etkinliği bir kez tamamlayınca açılır.':(sv==='me'?'Henüz kendi rekorun yok.':'Bu harita için hayalet bulunamadı.'))}).catch(()=>{})};
+  const act=sv==='auto'?(jget('gh_'+gk(e))?'me':'world'):sv;t.innerHTML='';t.style.display='';
+  a.forEach(x=>{const b=document.createElement('button');b.type='button';b.className=x[0]===act?'on':'';b.textContent=x[1];b.onclick=()=>{if(x[0]===act)return;setSel(e.id,x[0]);draw();say()};t.appendChild(b)})};
+ const say=()=>{const sv=getSel(e.id);if(sv==='off'){toast('Hayalet kapalı');return}const tk=(say.n=(say.n||0)+1);
+  load(e).then(r=>{if(say.n!==tk)return;const mine=jget('gh_'+gk(e));toast(r?('Hayalet hazır: '+String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):(e.id==='tss'&&!mine&&sv!=='me'?'Dünya birincisinin hayaleti, bu etkinliği bir kez tamamlayınca açılır':(sv==='me'?'Henüz kendi rekorun yok':'Bu harita için hayalet bulunamadı')))}).catch(()=>{})};
  draw()}
-const _eo=evOpen;evOpen=function(i){const r=_eo.apply(this,arguments);try{ui(EVS[i])}catch(x){console.warn(x)}return r};
+const _rs=evRecShow;evRecShow=function(i){const r=_rs.apply(this,arguments);try{recUI(EVS[i])}catch(x){console.warn(x)}return r};
 /* ---- rekor satırlarında MEYDAN OKU ---- */
 window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r||!r.u||r.me)return;const b=document.createElement('button');b.type='button';b.className='ghch';b.textContent='MEYDAN OKU';
  b.onclick=async ev=>{ev.stopPropagation();b.disabled=true;b.textContent='…';const key=gk(e.th!=null?e:{id:e.id,th:e.id==='dc'?dcTh():undefined});let rec=null;try{rec=window.fbGhGet?await window.fbGhGet(key,r.u):null}catch(x){}
@@ -5457,7 +5454,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r||!r.u||r.me)return;cons
   if(e.id==='tss'&&!jget('gh_'+key)){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
   setSel(e.id,'u:'+r.u+':'+String(r.n||'?').replace(/[:]/g,''));toast('Hayalet seçildi: '+String(r.n||'?').slice(0,12));
   try{const i=EVS.findIndex(x=>x.id===e.id);window.__evrRes=false;evrFromRes=false;show('evr',false);if(i>=0)evOpen(i)}catch(x){}};
- const nm=d.querySelector('.ln');(nm||d).appendChild(b)};
+ const pt=d.querySelector('.evpt'),t0=pt&&pt.firstElementChild;if(t0&&t0.tagName==='SPAN'){const w=document.createElement('span');w.className='ghcol';pt.insertBefore(w,t0);w.appendChild(t0);w.appendChild(b)}else{(d.querySelector('.ln')||d).appendChild(b)}};
 }catch(e){console.warn('ghost init',e)}})();
 </script>
 </body></html>
