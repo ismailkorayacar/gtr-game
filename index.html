@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.58</title>
+<title>gtr_game_v9.59</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.58</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.59</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4063,14 +4063,16 @@ const ORI_L='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.
 const ORI_P='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M12 19h.01" stroke-width="2.4"/><path d="M3 18l2 2M21 6l-2-2" stroke="#ffb23d"/></svg>';
 const ROT_PROMPT=false;/* yayına alınırken true yapılırsa 'telefonu yan çevir' ekranı geri gelir */
 function oriApply(){const land=innerWidth>innerHeight,b=document.body.classList;b.toggle('ls',ORI==='h'&&land);const w=ROT_PROMPT&&ORI==='h'&&!land;if(w!==b.contains('lsw')){b.toggle('lsw',w);if(w){try{setPause(true)}catch(e){}}}
- const o=$('orb');if(o){const h=ORI==='h';const k=h?'p':'l';if(o.dataset.k!==k){o.dataset.k=k;o.innerHTML=h?ORI_P:ORI_L}o.setAttribute('aria-label',h?'Dikey moda geç':'Yatay moda geç')}
+ const o=$('orb');if(o){const h=land;const k=h?'p':'l';if(o.dataset.k!==k){o.dataset.k=k;o.innerHTML=h?ORI_P:ORI_L}o.setAttribute('aria-label',h?'Dikey moda geç':'Yatay moda geç')}
  const a=$('omH'),c=$('omV');if(a){const hh=ORI==='h'&&land;a.classList.toggle('on',hh);c.classList.toggle('on',!hh)}}
 function setOri(v){ORI=v==='h'?'h':'v';try{localStorage.setItem('th_ori',ORI)}catch(e){}oriApply();
- try{const d=document.documentElement,so=screen.orientation;if(ORI==='h'){const p=(d.requestFullscreen&&!document.fullscreenElement)?d.requestFullscreen():Promise.resolve();Promise.resolve(p).then(()=>so&&so.lock&&so.lock('landscape')).catch(()=>{})}else{try{so&&so.unlock&&so.unlock()}catch(e){}if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{})}}catch(e){}
- setTimeout(()=>{try{resize()}catch(e){}oriApply()},350)}
+ try{const d=document.documentElement,so=screen.orientation,rq=d.requestFullscreen||d.webkitRequestFullscreen;
+  if(ORI==='h'){const p=(rq&&!document.fullscreenElement&&!document.webkitFullscreenElement)?rq.call(d):Promise.resolve();Promise.resolve(p).then(()=>so&&so.lock&&so.lock('landscape')).catch(()=>{})}
+  else{Promise.resolve(so&&so.lock?so.lock('portrait'):0).then(()=>{try{so.unlock()}catch(e){}}).catch(()=>{});const ex=document.exitFullscreen||document.webkitExitFullscreen;if((document.fullscreenElement||document.webkitFullscreenElement)&&ex)Promise.resolve(ex.call(document)).catch(()=>{})}}catch(e){}
+ setTimeout(()=>{try{resize()}catch(e){}oriApply();try{const land=innerWidth>innerHeight;if((ORI==='h')!==land)toast(ORI==='h'?'Bu cihaz yatay modu otomatik açamadı: telefonu yan çevir':'Telefonu dik tut')}catch(e){}},700)}
 {const fb=$('fsb');try{document.body.appendChild($('iosh'))}catch(e){}if(fb){const sa=(navigator.standalone===true)||(matchMedia&&matchMedia('(display-mode: standalone)').matches);if(sa)fb.style.display='none';fb.addEventListener('click',()=>{const d=document.documentElement,rq=d.requestFullscreen||d.webkitRequestFullscreen,ex=document.exitFullscreen||document.webkitExitFullscreen;if(document.fullscreenElement||document.webkitFullscreenElement){try{ex.call(document)}catch(e){}return}
  if(rq){try{Promise.resolve(rq.call(d)).catch(()=>{$('iosh').style.display='flex'})}catch(e){$('iosh').style.display='flex'}}else $('iosh').style.display='flex'});const x=$('ioshx');if(x)x.onclick=()=>{$('iosh').style.display='none'}}}
-{const q=(id,fn)=>{const b=$(id);if(b)b.addEventListener('click',fn)};q('omH',()=>setOri('h'));q('omV',()=>setOri('v'));q('orb',()=>setOri(ORI==='h'?'v':'h'));q('rotv',()=>setOri('v'))}
+{const q=(id,fn)=>{const b=$(id);if(b)b.addEventListener('click',fn)};q('omH',()=>setOri('h'));q('omV',()=>setOri('v'));q('orb',()=>setOri(innerWidth>innerHeight?'v':'h'));q('rotv',()=>setOri('v'))}
 addEventListener('resize',oriApply);addEventListener('orientationchange',()=>setTimeout(oriApply,200));oriApply();
 
 const nfx=$('nosfx').getContext('2d');
@@ -4592,6 +4594,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.59',n:['Yatay/dikey butonu artık gerçek ekran yönünü gösteriyor ve ona göre çalışıyor (dikeydeyken yatay ikonu, yatayken dikey ikonu); cihaz otomatik döndürmeyi desteklemiyorsa uyarı gösteriyor']},
 {v:'v9.58',n:['PvE tamamlanma ekranında LOBİ, ETKİNLİKLER ve ETKİNLİK REKORLARI butonları artık yan yana tek satırda']},
 {v:'v9.57',n:['Seviye animasyonunda halka artık gerçek XP ilerlemesinden başlıyor ve "Sv." yerine "Seviye" yazıyor; PvE sıralama tablosunda süre ikonu eklendi; PvE etkinlik rekorlarında süre de görünüyor; olumlu etkinlik sonu ekranlarına ETKİNLİKLER butonu eklendi']},
 {v:'v9.56',n:['Güneşli haritadaki gerçek ağaç modelleri ve arazi dağ manzarası artık tüm haritalarda (Speedrun/tünel, Ralli ve Festival hariç); her haritanın kendi hava, ışık ve sis ayarı korunur']},
