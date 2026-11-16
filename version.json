@@ -1,1 +1,1 @@
-{"v": "v9.61.1", "n": ["Hayalet seçici (Kapalı / Rekorum / Dünya 1.) Etkinlik Rekorları ekranına sekme olarak taşındı", "MEYDAN OKU butonu süre bilgisinin altına alındı, yazı boyutunda"]}
+{"v": "v9.61.2", "n": ["Hayalet mantığı düzeltildi: hayalet varsayılan KAPALI; etkinlik detayında OYNA/REKORLAR üstünde REKORTMENLE YARIŞ anahtarı (aç/kapa)", "Rekorlar tablosundan sekmeler kaldırıldı; MEYDAN OKU sadece gerçekten hayaleti olan oyuncularda görünür, kendi satırında KENDİNLE YARIŞ", "Dünya hayaleti = en iyi rekor sahibi (süreli modlarda en hızlı, Speedrun’da en yüksek puan)"]}
