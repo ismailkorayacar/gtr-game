@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.4</title>
+<title>gtr_game_v9.60.5</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -469,7 +469,7 @@ body.rp .hb,body.cin .hb,body.intro .hb,body.rp .pw,body.cin .pw,body.intro .pw,
 #pzc{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;font-style:italic;display:flex;align-items:center;justify-content:center}
 #pzc .bi{position:absolute;right:-14px;top:50%;width:92px;height:92px;transform:translateY(-50%);opacity:.3;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}
 #galcu,.galc #galsel{isolation:isolate}
-#bfd{position:fixed;inset:0;z-index:9;background:#000;opacity:0;pointer-events:none;display:none}#bfd.run{display:block;animation:bfdA 3.2s both}@keyframes bfdA{0%,72%{opacity:0}100%{opacity:1}}
+#bfd{position:fixed;inset:0;z-index:9;background:#000;opacity:0;pointer-events:none;display:none}#bfd.run6{display:block;animation:bfdA 6s both}#intro.run6 .b1{animation:inB1 6s both}#intro.run6 .b2{animation:inB2 6s both}#intro.run6 #inl{animation:inS3 6s .05s both}#intro.run6 #inc{animation:inS3 6s .15s both}#intro.run6 #inp{animation:inS3 6s .25s both}#bfd.run{display:block;animation:bfdA 3.2s both}@keyframes bfdA{0%,72%{opacity:0}100%{opacity:1}}
 #intro.run3 .b1{animation:inB1 3.2s both}#intro.run3 .b2{animation:inB2 3.2s both}
 #intro.run3 #inl{animation:inS3 3.2s .05s both}#intro.run3 #inc{animation:inS3 3.2s .15s both}#intro.run3 #inp{animation:inS3 3.2s .25s both}
 @keyframes inS3{0%{transform:translateX(-110%);opacity:0}16%{transform:translateX(0);opacity:1}62%{transform:translateX(0);opacity:1}78%,100%{transform:translateX(24px);opacity:0}}
@@ -1642,7 +1642,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
 @media (orientation:landscape){body.u2:not(.u2n) #gal #galst{top:calc(env(safe-area-inset-top,0px) + 68px)!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.4</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.5</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4601,6 +4601,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.60.5',n:['Kariyer bölüm sonu ekranında LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜMÜ OYNA butonları; sonuç tablolarında TOPLAM PUAN en alta alındı; kariyer bölüm sonu araç sinematiği 6 saniye']},
 {v:'v9.60.4',n:['Süre gösterilen tablolarda (etkinlik sonu, kariyer sonu) süre ikonu eklendi; kariyerde araç seçim ekranında (yatay mod) neon oklar araç bilgi kutusunun üstüne binmiyor']},
 {v:'v9.60.3',n:['Kariyerde bölüm bitince mağazadaki araç sinematiği oynuyor (araç bilgisi yok, sol altta bölüm adı); ısınma turu bitişinde "KAZANDIN!" yerine "TEBRİKLER!"']},
 {v:'v9.60.2',n:['Süreli etkinlikleri hiç çarpmadan bitirince +1000 coin bonus; bitiş ekranında km bilgisi kaldırıldı; bonus 0 ise "+0 BONUS" satırı artık gösterilmiyor']},
@@ -5258,13 +5259,13 @@ body #res:has(#rtt.evT){padding-top:calc(env(safe-area-inset-top,0px) + 42px)!im
 const okT=t=>/TAMAMLA|KAZANDIN|TEBRİK/i.test(t.textContent||'')&&!t.classList.contains('scrap');
 function titleFx(){try{const t=$$('rtt');if(!t||!okT(t))return;if(EV){t.classList.remove('tbr');t.classList.add('evT');return}t.classList.remove('evT');if(!t.querySelector(':scope>span'))t.innerHTML='<span>'+t.innerHTML+'</span>';t.classList.add('tbr')}catch(e){}}
 function setHeroU(u){const r=$$('res');r.style.setProperty('--rh','url("'+u+'")');r.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+u+'") center 35%/cover no-repeat #0a0620','important')}
-const _f=finish;finish=function(win){try{const n=$$('nxl');if(n)n.classList.remove('nxb')}catch(e){}const r=_f.apply(this,arguments);try{if(win)titleFx()}catch(e){}return r};
+const _f=finish;finish=function(win){try{const n=$$('nxl');if(n)n.classList.remove('nxb')}catch(e){}const r=_f.apply(this,arguments);try{if(win)titleFx()}catch(e){}try{const c=document.querySelector('#res .card'),rr=$$('rs')&&$$('rs').parentNode;if(c&&rr&&!c.dataset.ev&&rr.parentNode===c&&/TOPLAM PUAN/.test(rr.textContent||''))c.appendChild(rr)}catch(e){}return r};
 const _e=evFinish;evFinish=function(win){const r=_e.apply(this,arguments);try{titleFx()}catch(e){}return r};
 const _c=crFinish;crFinish=function(win){const s=CR,g=s&&s.g,wu=!!(s&&s.wu);const r=_c.apply(this,arguments);
  try{titleFx();setHeroU(wu?A.hero.sp:A.hero.kr);
   if(win&&!wu){const nx=g<CRST.length-1,can=nx&&crOpen(g+1),nl=$$('nxl'),sm=nl&&nl.querySelector('small');
    if(can&&sm&&sm.textContent==='SIRADAKİ BÖLÜM'){sm.textContent='SIRADAKİ BÖLÜMÜ OYNA';nl.classList.add('nxb');nl.onclick=()=>{plMode='cr';crSel=g+1;startRace()}}else if(nl)nl.classList.remove('nxb');
-   const x=$$('rbx');if(x){const b=document.createElement('button');b.type='button';b.className='btn rbn p';b.textContent='KARİYER İLERLEMESİ';b.style.setProperty('--ic',icUrl(RIC.career));b.onclick=()=>{crSel=(can&&CRST[g+1].c===s.c)?g+1:g;toMenu();fromPm=true;crOpenScr()};x.insertBefore(b,x.firstChild);x.className='rbg rbcr'}}
+   {const lob={t:'LOBİ',i:RIC.lobby,f:xpLobby},kar={t:'KARİYERE DÖN',i:RIC.career,f:()=>XPPLAY(()=>{crSel=(can&&CRST[g+1].c===s.c)?g+1:g;toMenu();fromPm=true;crOpenScr()})},nxt=can?{t:'SONRAKİ BÖLÜMÜ OYNA',i:RIC.next||RIC.play||RIC.again,p:1,f:()=>XPPLAY(()=>{plMode='cr';crSel=g+1;startRace()})}:null;resBtns(nxt?[lob,kar,nxt]:[lob,kar],nxt?'rbg3':'')}}
   else{const nl=$$('nxl');if(nl)nl.classList.remove('nxb')}
  }catch(e){console.warn(e)}return r};
 }catch(e){console.error('res v952',e)}})();
@@ -5292,12 +5293,12 @@ document.addEventListener('pointerdown',e=>{try{
    winT=0;wDir=-1;P.x=-1.9;P.v=30;P.yaw=0;
    const nm=String(CR.n==null?'':CR.n).toLocaleUpperCase('tr');
    const I=g('intro');g('inl').textContent='BÖLÜM TAMAMLANDI';g('inc').textContent=nm;g('inc').style.fontSize=Math.max(24,Math.min(44,Math.floor(520/Math.max(1,nm.length))))+'px';g('inp').textContent='';
-   I.style.display='block';I.classList.remove('run','run3');void I.offsetWidth;I.classList.add('run3');const f=g('bfd');f.classList.remove('run');void f.offsetWidth;f.classList.add('run')
+   I.style.display='block';I.classList.remove('run','run3','run6');void I.offsetWidth;I.classList.add('run6');const f=g('bfd');f.classList.remove('run','run6');void f.offsetWidth;f.classList.add('run6')
   }catch(e){console.warn(e);window.__crCin=0;buyAnim=false}};
- const _bs=buyStep;buyStep=function(dt){_bs.call(this,dt);if(window.__crCin)P.z+=window.__crZ};
+ const _bs=buyStep;buyStep=function(dt){if(!window.__crCin)return _bs.call(this,dt);winT+=dt;const D=6,t=Math.min(winT/D*3.2,3.2);P.z=BZ0-(30*t-2*t*t)+window.__crZ;P.v=Math.max(8,30-4*t);P.x=-1.9;P.yaw=0;if(winT>=D)endBuy()};
  const _bc=buyCam;buyCam=function(){if(!window.__crCin)return _bc();const z=window.__crZ;cam.fov=innerWidth<innerHeight?58:44;cam.updateProjectionMatrix();cam.position.set(cx(z)-1.9+5.8,.95,z);cam.lookAt(cx(z+30)-1.2,.8,z+30)};
  const _eb=endBuy;endBuy=function(){if(!window.__crCin)return _eb.apply(this,arguments);
-  window.__crCin=0;buyAnim=false;document.body.classList.remove('cin','intro');g('intro').style.display='none';g('intro').classList.remove('run3');g('bfd').classList.remove('run');
+  window.__crCin=0;buyAnim=false;document.body.classList.remove('cin','intro');g('intro').style.display='none';g('intro').classList.remove('run3','run6');g('bfd').classList.remove('run','run6');
   try{cam.fov=window.__crF||cam.fov;cam.updateProjectionMatrix()}catch(e){}
   winEnd=true;finish(true)};
 }catch(e){console.warn(e)}})();
