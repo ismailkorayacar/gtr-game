@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.8</title>
+<title>gtr_game_v9.61</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1686,7 +1686,18 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
  .k2go i{font-size:18px!important;line-height:1}
 }
 #cr::before,#evs::before,body.u2 #set.lby::before{background:rgba(0,0,0,.3)!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.8</em></div></div>
+
+#evd .ghw{margin:0 0 8px}#evd .ghc{display:flex;gap:6px;margin:0 0 2px}
+#evd .ghc button{flex:1;min-width:0;padding:8px 4px;border-radius:12px;border:1.5px solid rgba(160,120,255,.45);background:rgba(30,16,70,.6);color:#cfc2ff;font:800 12px system-ui;letter-spacing:.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#evd .ghc button.on{background:linear-gradient(180deg,#7a4cff,#4a2bc0);color:#fff;border-color:#c9b4ff;box-shadow:0 0 12px rgba(140,90,255,.5)}
+#evd .ghi{display:block;margin:3px 2px 0;font:600 11.5px system-ui;color:#cfc2ff;opacity:.8}
+#evr .ghch{margin-left:8px;padding:3px 8px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
+#gdl{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 128px);z-index:7;display:none;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:14px;background:rgba(14,8,40,.62);border:1.5px solid rgba(160,200,255,.55);font:800 13px system-ui;color:#fff;pointer-events:none;white-space:nowrap}
+#gdl i{font-style:normal;font-size:14px}#gdl span{opacity:.85;max-width:90px;overflow:hidden;text-overflow:ellipsis}
+#gdl b{font:900 15px system-ui;font-variant-numeric:tabular-nums}
+#gdl.ah b{color:#5dff9a}#gdl.bh b{color:#ff6b6b}
+#ghtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:60;display:none;padding:10px 16px;border-radius:14px;background:rgba(20,10,60,.95);border:1.5px solid rgba(160,120,255,.6);color:#fff;font:700 13px system-ui;max-width:86vw;text-align:center}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3567,7 +3578,7 @@ function evRecAdd(e,sc,win,tm){if(sc<=0)return 0;if(isTE(e)&&!(win&&tm>0))return
 function evRecShow(i){evrSel=i;const e=EVS[i];$('evrn').textContent=e.nm.toUpperCase();$('evrt').style.display='none';
  let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const L=$('evrl');L.innerHTML='';
  const TE=isTE(e);const best=a=>TE?(a.filter(r=>r.t>0).sort((x,y)=>x.t-y.t)[0]):(a.sort((x,y)=>y.s-x.s)[0]);
- const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+(PVE.includes(e.id)&&r.t>0?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+TMI+fmtRT(r.t)+'</span>':'')+(TE?'<span style="font:900 15px system-ui;margin-right:10px">'+TMI+fmtRT(r.t)+'</span><small style="opacity:.7;font:700 11px system-ui"><i class="pki">P</i>'+r.s+'</small>':'<i class="pki">P</i>'+r.s+(e.drift?' DP':''))+'</b>';L.appendChild(d)})};
+ const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+(PVE.includes(e.id)&&r.t>0?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+TMI+fmtRT(r.t)+'</span>':'')+(TE?'<span style="font:900 15px system-ui;margin-right:10px">'+TMI+fmtRT(r.t)+'</span><small style="opacity:.7;font:700 11px system-ui"><i class="pki">P</i>'+r.s+'</small>':'<i class="pki">P</i>'+r.s+(e.drift?' DP':''))+'</b>';L.appendChild(d);try{window.ghRow&&window.ghRow(d,r,e)}catch(x){}})};
  const a0=TE?a.filter(r=>r.t>0):a;if(a0.length){const b1=best(a0.filter(r=>r.n===sel.name))||best(a0.slice());rows([b1])}else L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';a=a0;
  try{if(window.fbEvTop)window.fbEvTop(e.id).then(rm=>{if(!rm||!rm.length||evrSel!==i)return;const mn=(window.fbUser&&window.fbUser.uid),mine=best(a.filter(r=>r.n===sel.name)),m=rm.slice();
    if(mine){const j=m.findIndex(r=>r.me),mm={n:mine.n,s:mine.s,k:mine.k,t:mine.t,c:mine.c,me:1,id:mine.id};if(j<0)m.push(mm);else if(TE?mine.t<m[j].t:mine.s>m[j].s)m[j]=mm}
@@ -3870,6 +3881,8 @@ function padStep(dt,live){const on=!!EV&&(EV.id==='dc'||EV.tx)&&st!=='menu'&&st!
  const tot=()=>+ls('th_tot')||0;
  const evKey=id=>String(id).replace(/[^A-Za-z0-9_]/g,'_');
  const evSnap=()=>{const o={},n=myName();let any=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||k.indexOf('th_evl_')!==0)continue;let a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}const te=TMEV.includes(k.slice(7));a=a.filter(r=>r&&r.n===n&&+r.s>0&&(!te||+r.t>0));if(!a.length)continue;if(te)a.sort((x,y)=>x.t-y.t);else a.sort((x,y)=>y.s-x.s);const r=a[0];o[evKey(k.slice(7))]={s:+r.s,k:+r.k||0,c:String(r.c||'').slice(0,40),t:+r.t||0};any=1}}catch(e){}return any?o:null};
+ window.fbGhPut=async function(key,rec){if(!fb||!user)return false;try{await fb.F.setDoc(fb.F.doc(fb.db,'ghosts',evKey(key)+'__'+user.uid),Object.assign({u:user.uid},rec));return true}catch(e){console.warn('fb ghPut',e);return false}};
+ window.fbGhGet=async function(key,uid){if(!fb||!user)return null;try{const d=await fb.F.getDoc(fb.F.doc(fb.db,'ghosts',evKey(key)+'__'+String(uid).replace(/[^A-Za-z0-9_-]/g,'')));return d.exists()?d.data():null}catch(e){console.warn('fb ghGet',e);return null}};
  window.fbEvTop=async function(id){if(!fb||!user)return null;try{const ek=evKey(id),q=await fb.F.getDocs(fb.F.query(fb.F.collection(fb.db,'lb'),(TMEV.includes(id)?fb.F.orderBy('ev.'+ek+'.t','asc'):fb.F.orderBy('ev.'+ek+'.s','desc')),fb.F.limit(30))),a=[];q.forEach(d=>{const x=d.data(),v=x.ev&&x.ev[ek];if(v&&+v.s>0&&(!TMEV.includes(id)||+v.t>0))a.push({u:d.id,n:x.n||'?',s:+v.s,k:+v.k||0,t:+v.t||0,c:v.c||'',me:d.id===user.uid})});return a}catch(e){console.warn('fb evTop',e);return null}};
  window.fbPushNow=()=>{try{push(true)}catch(e){}};
  async function push(force){
@@ -4646,6 +4659,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.61',n:['HAYALET SİSTEMİ: Sprint, Ralli, Kış Rallisi, Circuit ve Speedrun’da rekor koşun kaydedilir, yarışta yarı saydam hayalet araç olarak oynatılır','Yarış sırasında hayalet ile süre farkı göstergesi (yeşil: önde, kırmızı: geride)','Etkinlik detayında HAYALET seçici: Kapalı / Rekorum / Dünya 1.; Rekorlar listesinde MEYDAN OKU ile bir oyuncunun hayaletini seç','Speedrun’da dünya birincisinin hayaleti, etkinliği en az bir kez tamamlayınca açılır; Speedrun Rekor Denemesi’nde hayalet yok']},
 {v:'v9.60.8',n:['Kariyer ana ekranı: yıldız kuralı kutusu inceltildi, sarı yıldızlar yazı boyutunda; yatay modda butonlar ve KARİYERE DEVAM ET yazısı tek satır/hizalı','Lobi, Kariyer ve Etkinlik ekranlarındaki hero görsel %30 karartıldı']},
 {v:'v9.60.7',n:['Kariyer bölüm sonu: LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜM (3 yıldızdan azsa BÖLÜMÜ TEKRAR OYNA) butonları düzeltildi','Kariyer bölüm sonu tablosunda toplam puan yerine TOPLANAN BÖLÜM YILDIZLARI satırı','Kariyerde ödül araç kaldırıldı (gösterim ve verme)','Kariyer ekranı: yıldızlar altıgenlerin üstünde yay şeklinde; yıldız kuralı ödül kutusu gibi bir kutuda']},
 {v:'v9.60.6',n:['Kariyer bölüm sonu ekranında "SIRADAKİ BÖLÜM" alanı her durumda sadece bilgi (buton değil); sonraki bölüm sağ alttaki butonla başlatılıyor','Kariyer araç seçim ekranı: dikey modda araç küçük resimleri geri geldi; yatay modda Aracı Geliştir ekranlarında garaj arka planının kenarları kapatıldı']},
@@ -5354,5 +5368,96 @@ document.addEventListener('pointerdown',e=>{try{
   try{cam.fov=window.__crF||cam.fov;cam.updateProjectionMatrix()}catch(e){}
   winEnd=true;finish(true)};
 }catch(e){console.warn(e)}})();
+</script>
+<script>/* ===== v9.61 HAYALET SİSTEMİ (Sprint, Ralli, Kış Rallisi, Circuit, Speedrun) ===== */
+(function(){try{
+const GHID=['dc','rg','wr','ct','tss'];
+const $g=id=>document.getElementById(id);
+const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(x){return null}};
+const jget=k=>{try{const o=JSON.parse(ls(k)||'null');return o&&typeof o.d==='string'?o:null}catch(x){return null}};
+const dcTh=()=>{try{return evCyc(EVS.find(x=>x.id==='dc')).th}catch(x){return 0}};
+const gk=e=>e.id==='dc'?'dc_'+(e.th!=null?e.th:dcTh()):e.id;
+const getSel=id=>ls('gh_sel_'+id)||'';
+const setSel=(id,v)=>ls('gh_sel_'+id,v||null);
+const myNm=()=>{try{return String(sel.name||'Pilot')}catch(x){return 'Pilot'}};
+/* ---- kodlama: z (dm, ilk değer mutlak sonra fark), x (cm), yaw (mrad) ---- */
+const enc=R=>{const o=[];let pz=0;for(let i=0;i<R.Z.length;i++){o.push(R.Z[i]-pz,R.X[i],R.Y[i]);pz=R.Z[i]}return o.join(',')};
+const dec=d=>{if(typeof d!=='string'||d.length>400000||!/^[-\d,]+$/.test(d))return null;const a=d.split(',').map(Number),n=Math.floor(a.length/3);if(n<5)return null;const Z=new Float32Array(n),X=new Float32Array(n),Y=new Float32Array(n);let z=0;for(let i=0;i<n;i++){z+=a[i*3];Z[i]=z/10;X[i]=a[i*3+1]/100;Y[i]=a[i*3+2]/1000}return{Z,X,Y,n}};
+const valid=r=>r&&typeof r.d==='string'&&+r.t>0&&dec(r.d);
+const G={on:false,ph:'',n:0,key:'',rec:null,dat:null,mesh:null,car:null,hud:null,last:0},R={Z:[],X:[],Y:[]};window.__GH=G;
+/* ---- hayalet araç ---- */
+function lab(txt){const c=document.createElement('canvas');c.width=256;c.height=64;const g=c.getContext('2d');g.font='700 30px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillStyle='rgba(20,10,50,.65)';const w=Math.min(250,g.measureText(txt).width+26);g.beginPath();g.roundRect?g.roundRect(128-w/2,8,w,48,14):g.rect(128-w/2,8,w,48);g.fill();g.fillStyle='#bfe9ff';g.fillText(txt,128,33);const t=new THREE.CanvasTexture(c);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthWrite:false,depthTest:false}));s.scale.set(3.2,.8,1);s.renderOrder=20;return s}
+function clearG(){if(G.mesh){try{scene.remove(G.mesh)}catch(x){}}G.mesh=null;G.car=null;G.dat=null;G.rec=null}
+function setG(rec){clearG();const d=valid(rec)?dec(rec.d):null;if(!d)return;G.rec=rec;G.dat=d;d.dur=(d.n-1)*.1;
+ try{const idx=Math.max(0,CARS.findIndex(c=>c[0]===rec.cn)),c=makeCarC(CARS[idx][0],colFor(idx),cuGet(CARS[idx][0]));
+  c.mesh.traverse(o=>{if(o.isMesh&&o.material){const f=m=>{const n=m.clone();n.transparent=true;n.opacity=.38;n.depthWrite=false;if(n.emissive){n.emissive.setHex(0x2a4cc0);n.emissiveIntensity=.45}return n};o.material=Array.isArray(o.material)?o.material.map(f):f(o.material);o.castShadow=false}if(o.isSprite)o.visible=false});
+  const sp=lab(String(rec.n||'?').slice(0,12));sp.position.set(0,(c.hh||1.4)+.9,0);c.mesh.add(sp);c.mesh.visible=false;scene.add(c.mesh);G.mesh=c.mesh;G.car=c}catch(x){console.warn('ghost car',x);G.mesh=null}}
+/* ---- yükleme ---- */
+const cache={};
+async function world(e,key,hasMine){if(e.id==='tss'&&!hasMine)return null;const c=cache[key];if(c&&Date.now()-c.t<3e5)return c.r;
+ let r=null;try{const L=window.fbEvTop?await window.fbEvTop(e.id):null;if(L&&window.fbGhGet){const c8=L.filter(x=>!x.me).slice(0,8),D=await Promise.all(c8.map(x=>window.fbGhGet(key,x.u)));const ok=D.filter(valid);if(ok.length)r=e.id==='tss'?ok.sort((a,b)=>(+b.s||0)-(+a.s||0))[0]:ok.sort((a,b)=>a.t-b.t)[0]}}catch(x){}
+ cache[key]={t:Date.now(),r};return r}
+async function load(e){const key=gk(e),sv=getSel(e.id);if(sv==='off')return null;const mine=jget('gh_'+key);
+ if(mine&&ls('gh_up_'+key)!=='1')up(key,mine);
+ if(sv.indexOf('u:')===0){const p=sv.split(':'),uid=p[1];if(!window.fbGhGet)return null;const r=await window.fbGhGet(key,uid);return valid(r)?r:null}
+ if(sv==='world')return await world(e,key,!!mine);
+ if(sv==='me')return mine&&valid(mine)?mine:null;
+ return mine&&valid(mine)?mine:await world(e,key,!!mine)}
+async function up(key,rec){try{if(!window.fbGhPut)return;const ok=await window.fbGhPut(key,rec);if(ok)ls('gh_up_'+key,'1')}catch(x){}}
+/* ---- kayıt / oynatma ---- */
+function init(e){clearG();G.on=true;G.key=gk(e);G.n=0;R.Z=[];R.X=[];R.Y=[];const k=G.key;
+ load(e).then(r=>{if(G.on&&G.key===k&&r)setG(r)}).catch(()=>{})}
+function off(){G.on=false;G.ph='';if(G.mesh)G.mesh.visible=false;hudH()}
+function hudH(){const h=$g('gdl');if(h&&h.style.display!=='none')h.style.display='none'}
+function hud(txt,cls){let h=$g('gdl');if(!h){h=document.createElement('div');h.id='gdl';document.body.appendChild(h)}if(h.style.display!=='flex')h.style.display='flex';if(h._t!==txt||h._c!==cls){h.innerHTML=txt;h.className=cls;h._t=txt;h._c=cls}}
+function stepG(){
+ const e=(typeof EV!=='undefined')?EV:null;
+ if(!e||!GHID.includes(e.id)||st==='menu'){if(G.on||G.ph)off();return}
+ if(st==='count'&&G.ph!=='c'){init(e);G.ph='c'}
+ else if(st==='race'&&G.ph==='c')G.ph='r';
+ else if((st==='win'||st==='done')&&G.ph!=='e')G.ph='e';
+ if(!G.on)return;
+ if(st==='race'&&G.ph==='r'){while(raceT>=G.n*.1&&G.n<40000){R.Z.push(Math.round(P.z*10));R.X.push(Math.round(P.x*100));R.Y.push(Math.round((P.yaw||0)*1000));G.n++}}
+ const d=G.dat,m=G.mesh;if(!d||!m)return;
+ const vis=(st==='count'||st==='race'||st==='crash')&&raceT<d.dur+2.5;m.visible=vis;if(!vis){hudH();return}
+ const t=Math.max(0,Math.min(raceT,d.dur)),i=Math.min(d.n-2,Math.floor(t/.1)),f=Math.min(1,(t-i*.1)/.1),L=(a,b)=>a+(b-a)*f,z=L(d.Z[i],d.Z[i+1]),x=L(d.X[i],d.X[i+1]),yw=L(d.Y[i],d.Y[i+1]);
+ m.position.set(x+cx(z),0,z);m.rotation.y=yw+Math.atan(cd(z));
+ try{if(uHs.value){m.position.y=HYf(z)-HYf(P.z);m.rotation.x=Math.atan((HYf(z-2)-HYf(z+2))/4)}else m.rotation.x=0}catch(q){}
+ try{const v=Math.abs(d.Z[i+1]-d.Z[i])/.1,dtt=1/60;G.car.wheels.forEach(w=>w.rotation.x-=v*dtt/(G.car.wr||.35))}catch(q){}
+ const now=performance.now();if(now-G.last<90)return;G.last=now;
+ if(st!=='race'||raceT<1.2){hudH();return}
+ /* fark: oyuncunun şu anki z'sine hayaletin ulaştığı an */
+ let lo=0,hi=d.n-1;while(lo<hi){const mid=(lo+hi)>>1;if(d.Z[mid]<=P.z)hi=mid;else lo=mid+1}
+ let tg;if(lo<=0)tg=0;else{const a=d.Z[lo-1],b=d.Z[lo],k=a===b?0:(a-P.z)/(a-b);tg=((lo-1)+Math.max(0,Math.min(1,k)))*.1}
+ const dl=raceT-tg,ab=Math.abs(dl);
+ hud('<i>👻</i><span>'+String(G.rec.n||'?').slice(0,10).replace(/[<>&]/g,'')+'</span><b>'+(dl>0?'+':'−')+ab.toFixed(2)+'</b>',dl>0?'bh':'ah');
+}
+const _stp=step;step=function(dt){_stp(dt);try{stepG()}catch(x){if(!stepG.e){stepG.e=1;console.warn('ghost',x)}}};
+/* ---- kaydet ---- */
+function save(e){if(R.Z.length<10)return;const key=gk(e),tm=+(+raceT).toFixed(2),sc=Math.floor(+score||0),old=jget('gh_'+key);
+ const better=!old||(e.id==='tss'?sc>(+old.s||0):tm<(+old.t||1e9));if(!better)return;
+ const rec={v:1,k:key,n:myNm().slice(0,12),t:tm,s:sc,cn:CARS[sel.car][0],d:enc(R),ts:Date.now()};
+ if(ls('gh_'+key,JSON.stringify(rec))===null&&!jget('gh_'+key))return;ls('gh_up_'+key,'0');up(key,rec)}
+const _ef=evFinish;evFinish=function(win){const e=(typeof EV!=='undefined')?EV:null,ok=!!(e&&GHID.includes(e.id)&&win&&G.on&&G.ph!==''&&R.Z.length>=10);const r=_ef.apply(this,arguments);try{if(ok)save(e)}catch(x){console.warn('ghost save',x)}return r};
+/* ---- etkinlik detayında hayalet seçici ---- */
+function toast(t){let b=$g('ghtoast');if(!b){b=document.createElement('div');b.id='ghtoast';document.body.appendChild(b)}b.textContent=t;b.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>{b.style.display='none'},2600)}
+function ui(e){if(!GHID.includes(e.id))return;const k=$g('evbx');if(!k)return;
+ k.insertAdjacentHTML('beforebegin','<div class="ghw"><div class="ghc" id="ghc"></div><small class="ghi" id="ghi"></small></div>');
+ const draw=()=>{const sv=getSel(e.id)||'auto',a=[['off','KAPALI'],['me','REKORUM'],['world','DÜNYA 1.']];if(sv.indexOf('u:')===0)a.push([sv,sv.split(':').slice(2).join(':').toUpperCase().slice(0,12)]);
+  const act=sv==='auto'?(jget('gh_'+gk(e))?'me':'world'):sv;
+  const c=$g('ghc');if(!c)return;c.innerHTML='';a.forEach(x=>{const b=document.createElement('button');b.type='button';b.className=x[0]===act?'on':'';b.textContent=x[1];b.onclick=()=>{setSel(e.id,x[0]);draw()};c.appendChild(b)});info()};
+ const info=()=>{const i=$g('ghi');if(!i)return;const sv=getSel(e.id);if(sv==='off'){i.textContent='Hayalet kapalı.';return}i.textContent='Hayalet aranıyor…';const tk=(info.n=(info.n||0)+1);
+  load(e).then(r=>{if(info.n!==tk||!$g('ghi'))return;const mine=jget('gh_'+gk(e));$g('ghi').textContent=r?('Hazır: '+String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):(e.id==='tss'&&!mine&&sv!=='me'?'Dünya birincisinin hayaleti, bu etkinliği bir kez tamamlayınca açılır.':(sv==='me'?'Henüz kendi rekorun yok.':'Bu harita için hayalet bulunamadı.'))}).catch(()=>{})};
+ draw()}
+const _eo=evOpen;evOpen=function(i){const r=_eo.apply(this,arguments);try{ui(EVS[i])}catch(x){console.warn(x)}return r};
+/* ---- rekor satırlarında MEYDAN OKU ---- */
+window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r||!r.u||r.me)return;const b=document.createElement('button');b.type='button';b.className='ghch';b.textContent='MEYDAN OKU';
+ b.onclick=async ev=>{ev.stopPropagation();b.disabled=true;b.textContent='…';const key=gk(e.th!=null?e:{id:e.id,th:e.id==='dc'?dcTh():undefined});let rec=null;try{rec=window.fbGhGet?await window.fbGhGet(key,r.u):null}catch(x){}
+  b.disabled=false;b.textContent='MEYDAN OKU';if(!valid(rec)){toast('Bu oyuncunun bu etkinlik için hayaleti yok');return}
+  if(e.id==='tss'&&!jget('gh_'+key)){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
+  setSel(e.id,'u:'+r.u+':'+String(r.n||'?').replace(/[:]/g,''));toast('Hayalet seçildi: '+String(r.n||'?').slice(0,12));
+  try{const i=EVS.findIndex(x=>x.id===e.id);window.__evrRes=false;evrFromRes=false;show('evr',false);if(i>=0)evOpen(i)}catch(x){}};
+ const nm=d.querySelector('.ln');(nm||d).appendChild(b)};
+}catch(e){console.warn('ghost init',e)}})();
 </script>
 </body></html>
