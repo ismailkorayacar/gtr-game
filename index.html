@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.6</title>
+<title>gtr_game_v9.60.7</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1643,7 +1643,39 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 #cusm:empty{display:none!important}
 @media (orientation:landscape){body.u2:not(.u2n) #gal #galst{top:calc(env(safe-area-inset-top,0px) + 68px)!important}}
 @media (orientation:portrait){body.u2:not(.u2n) #gal #galt{top:auto!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.6</em></div></div>
+
+#res .rr .rcl{display:flex;flex-direction:column;gap:3px;min-width:0}
+#res .rcn{font:600 10.5px/1.25 system-ui;font-style:normal;letter-spacing:.2px;color:#e6d6ff;opacity:.85}
+#res .rcst{gap:3px!important}
+#res .rcst i{font-style:normal;font-size:22px;line-height:1;color:transparent;-webkit-text-stroke:1.6px #ffd24a}
+#res .rcst i.on{color:#ffd24a;text-shadow:0 0 8px rgba(255,200,0,.7)}
+.k2a{position:absolute;left:50%;top:-15px;width:58px;height:16px;transform:translateX(-50%);pointer-events:none}
+.k2a s{position:absolute;text-decoration:none;font-size:12px;line-height:1;color:rgba(255,255,255,.28)}
+.k2a s.on{color:#ffd24a;text-shadow:0 0 6px rgba(255,200,0,.8)}
+.k2a s:nth-child(1){left:3px;top:5px;transform:rotate(-24deg)}
+.k2a s:nth-child(2){left:50%;top:0;margin-left:-6px}
+.k2a s:nth-child(3){right:3px;top:5px;transform:rotate(24deg)}
+.k2h.cu .k2a{top:-17px;width:66px}
+.k2n{padding-top:22px!important}
+.k2u{align-items:center}.k2u .k2l{font-size:22px;color:#ffd24a}
+.k2u .k2rl{display:block;flex:1;min-width:0;font:700 10.5px/1.35 system-ui;font-style:normal;color:#ffe9a8;text-align:left}
+@media (orientation:landscape){
+ .k2n{padding-top:18px!important}
+ .k2b{display:grid!important;grid-template-columns:minmax(0,1fr) 26% 32%;grid-template-rows:auto auto;gap:6px 8px}
+ .k2b .k2r{grid-column:1;grid-row:1;min-height:44px;padding:6px 12px}
+ .k2b .k2u{grid-column:1;grid-row:2;padding:5px 12px;min-height:0}
+ .k2b .k2d{grid-column:2;grid-row:1/3;flex:none}
+ .k2b .k2go{grid-column:3;grid-row:1/3;flex:none}
+ .k2u .k2rl{font-size:9.5px;line-height:1.25}.k2u .k2l{font-size:16px}
+ .k2b{gap:5px 8px!important}
+ .k2b .k2r{min-height:0!important;padding:4px 10px!important;gap:8px}
+ .k2b .k2r .k2l{font-size:22px}
+ .k2b .k2r .k2rt b{font-size:12px}.k2b .k2r .k2rt small{height:16px;font-size:13px;margin-top:1px}
+ .k2b .k2u{padding:3px 10px!important;gap:8px}
+ .k2go{font-size:19px!important}
+}
+.k2u{order:2}.k2d{order:3!important}.k2go{order:4!important}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.7</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3490,7 +3522,7 @@ function txHud(){const h=$('txh'),c=$('evc'),f=$('txf'),e=$('evt');if(e&&e.style
 const RES_STD=(document.querySelector('#res .card')||{}).innerHTML;
 function resConf(){const r=$('res');if(!r)return;const o=r.querySelector('.rcf');if(o)o.remove();const d=document.createElement('div');d.className='rcf';const C=['#ff7ad0','#ffd24a','#7fe3ff','#b06bff','#8dff9a','#ff8a5a'];for(let k=0;k<44;k++){const i=document.createElement('i');i.style.left=(Math.random()*100)+'%';i.style.background=C[k%C.length];i.style.animationDelay=(Math.random()*1.4)+'s';i.style.animationDuration=(2.2+Math.random()*1.6)+'s';i.style.width=(5+Math.random()*4)+'px';d.appendChild(i)}r.appendChild(d);setTimeout(()=>{try{d.remove()}catch(e){}},5200)}
 function resFail(f){const c=document.querySelector('#res .card');if(c)c.style.display=f?'none':''}
-function resCardStd(){{const c=document.querySelector('#res .card');if(c)c.style.display=''}['rs','rcn'].forEach(i=>{const e=$(i),r=e&&e.parentNode;if(r)r.style.display=''});{const t=$('rtr');if(t)t.style.display='none'}{const o=document.querySelector('#res>.evd');if(o)o.remove()}const c=document.querySelector('#res .card');if(c&&c.dataset.ev){c.dataset.ev='';c.innerHTML=RES_STD}}
+function resCardStd(){{const q=$('rcs');if(q)q.remove()}{const c=document.querySelector('#res .card');if(c)c.style.display=''}['rs','rcn'].forEach(i=>{const e=$(i),r=e&&e.parentNode;if(r)r.style.display=''});{const t=$('rtr');if(t)t.style.display='none'}{const o=document.querySelector('#res>.evd');if(o)o.remove()}const c=document.querySelector('#res .card');if(c&&c.dataset.ev){c.dataset.ev='';c.innerHTML=RES_STD}}
 function evDeco(host,e,full){try{const o=host.querySelector(':scope>.evd');if(o)o.remove();if(!e)return;const ee=EVS.find(x=>x.id===e.id)||e,d=document.createElement('div');d.className='evd'+(full?'':' nb');
  d.innerHTML=(full?'<canvas class="evb" width="300" height="120"></canvas>':'')+'<canvas class="evp"></canvas><i class="evv"></i><i class="evs2"></i><div class="evn"><small>ETKİNLİK</small><b></b></div>';d.querySelector('b').textContent=ee.nm;
  const p=d.querySelector('.evp');try{evArt(p,ee,evCyc(ee));if(full)d.querySelector('.evb').getContext('2d').drawImage(p,0,0)}catch(x){}
@@ -3659,14 +3691,15 @@ const CRI={t:'<svg class="cri" viewBox="0 0 24 24" fill="none" stroke="currentCo
 const CRM={1:['Gündüz'],2:['Gündüz',0,'Virajlı yol'],3:[0,'Yağmur'],4:['Gece','Sisli'],5:['Gece'],6:['Sabah','Sisli'],7:[0,0,'Çöl yolu'],8:[0,'Kar'],9:[0,'Yoğun sis'],10:['Gece','Yağmurlu'],11:[0,0,'Tünel'],12:[0,0,'Virajlı dağ yolu']};
 function crInfo(th){const m=CRM[th];if(!m)return THS[th].n;const a=[];if(m[0])a.push(CRI.t+' '+m[0]);if(m[1])a.push(CRI.w+' '+m[1]);if(m[2])a.push(m[2]);return a.join(' · ')}
 const crStr=n=>'<span class="crst">'+[0,1,2].map(i=>'<s'+(i<n?' class="on"':'')+'>★</s>').join('')+'</span>';
+const crArc=n=>'<span class="k2a">'+[0,1,2].map(i=>'<s'+(i<n?' class="on"':'')+'>★</s>').join('')+'</span>';
 function crRender(){const B=$('crbody'),c=CRC[crTab],L=CRST.filter(s=>s.c===crTab);
  if(!L.some(s=>s.g===crSel))crSel=(L.find(s=>crOpen(s.g)&&crP[s.g]<3)||L[0]).g;
- const S=CRST[crSel],rw=S.car?crCarName(S.car):COIN+' +'+S.coin,th=S.car&&thumbs[S.car]?'<img alt="" src="'+thumbs[S.car]+'">':'';
+ const S=CRST[crSel],rw=COIN+' +'+S.coin,th='';
  let h='<div class="k2t"><span class="k2f"></span><b>KARİYER</b></div><div class="k2s">YARIŞ<i>•</i>KAZAN<i>•</i>YÜKSEL</div><div class="k2g"></div>';
  h+='<div class="k2c">'+CRC.map((x,i)=>{const lk=!crOpen(i*5);return '<button class="k2ct'+(i===crTab?' on':'')+(lk?' lk':'')+'" data-c="'+i+'"><canvas data-f="'+i+'" width="44" height="30"></canvas><span><b>'+x.nm+'</b><small>'+(lk?'🔒 KİLİTLİ':'★ '+crSum(i)+'/15')+'</small></span></button>'}).join('')+'</div>';
  h+='<div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
-  return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+'<small>'+(cu?s.n:'')+'</small>'+(dn?crStr(crP[s.g]):'')+'</button>'}).join('')+'</div>';
- h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="crdf k2d"><em class="k2rl" id="crrule"></em><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
+  return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+'<small>'+(cu?s.n:'')+'</small>'+(dn?crArc(crP[s.g]):'')+'</button>'}).join('')+'</div>';
+ h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="k2r k2u"><span class="k2l">★</span><em class="k2rl" id="crrule"></em></div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
  h+='<p class="crhint">'+crInfo(S.th)+' · '+S.km+' km · Bölümü 3 yıldızla bitirince sıradaki açılır. Bir ülkenin tüm bölümlerini 3 yıldızla bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
  B.innerHTML=h;
  B.querySelectorAll('canvas[data-f]').forEach(cv=>crFlag(cv.getContext('2d'),+cv.dataset.f,2,2,cv.width-4,cv.height-4));
@@ -3679,7 +3712,7 @@ function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp')
  if(win&&!s.wu)lbAdd(Math.floor(score),dist);resFail(!win||!!s.wu);
  if(win&&!s.wu){stars=dmgP<=0&&(dif<2||nosCnt>=3)?3:(dif===0?dmgP<85:dif===1?dmgP<50:dmgP<=0)?2:1;const old=crP[g];if(stars===3)mAdd('star3',1);
   if(stars>old){earn+=(old?0:s.coin)+100*(stars-old);crP[g]=stars;crSave();
-   if(!old&&s.car){const i=CARS.findIndex(x=>x[0]===s.car);if(i>=0&&!isOwned(i)){owned.add(s.car);rw=crCarName(s.car)}else if(i>=0)earn+=CARS[i][3]}}
+}
   if(g<CRST.length-1&&crOpen(g+1))crSel=g+1}
  coins+=earn;saveAcct();
  $('rtt').innerHTML=win?(s.wu?'<span>ISINMA TURUNU<br>TAMAMLADIN</span>':esc(String(s.n).toLocaleUpperCase('tr'))+'<br>TAMAMLANDI'):'MAKSİMUM<br>HASAR';$('rtt').classList.toggle('scrap',!win);$('rtt').classList.toggle('rtL',!!win);$('rtt').classList.toggle('tbr',!!(win&&s.wu));$('rn').textContent=sel.name;$('rs').textContent=Math.floor(score);$('rm').textContent=dist.toFixed(2)+' km';{const t=$('rtr');if(t){t.style.display=win&&!s.wu?'':'none';$('rtm').innerHTML=TMIb+(()=>{const q=Math.floor(raceT*10)/10;return Math.floor(q/60)+':'+(q%60).toFixed(1).padStart(4,'0')})()}}
@@ -4602,6 +4635,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.60.7',n:['Kariyer bölüm sonu: LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜM (3 yıldızdan azsa BÖLÜMÜ TEKRAR OYNA) butonları düzeltildi','Kariyer bölüm sonu tablosunda toplam puan yerine TOPLANAN BÖLÜM YILDIZLARI satırı','Kariyerde ödül araç kaldırıldı (gösterim ve verme)','Kariyer ekranı: yıldızlar altıgenlerin üstünde yay şeklinde; yıldız kuralı ödül kutusu gibi bir kutuda']},
 {v:'v9.60.6',n:['Kariyer bölüm sonu ekranında "SIRADAKİ BÖLÜM" alanı her durumda sadece bilgi (buton değil); sonraki bölüm sağ alttaki butonla başlatılıyor','Kariyer araç seçim ekranı: dikey modda araç küçük resimleri geri geldi; yatay modda Aracı Geliştir ekranlarında garaj arka planının kenarları kapatıldı']},
 {v:'v9.60.5',n:['Kariyer bölüm sonu ekranında LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜMÜ OYNA butonları; sonuç tablolarında TOPLAM PUAN en alta alındı; kariyer bölüm sonu araç sinematiği 6 saniye']},
 {v:'v9.60.4',n:['Süre gösterilen tablolarda (etkinlik sonu, kariyer sonu) süre ikonu eklendi; kariyerde araç seçim ekranında (yatay mod) neon oklar araç bilgi kutusunun üstüne binmiyor']},
@@ -5267,9 +5301,13 @@ const _c=crFinish;crFinish=function(win){const s=CR,g=s&&s.g,wu=!!(s&&s.wu);cons
  try{titleFx();setHeroU(wu?A.hero.sp:A.hero.kr);
   if(win&&!wu){const nx=g<CRST.length-1,can=nx&&crOpen(g+1),nl=$$('nxl'),sm=nl&&nl.querySelector('small');
    if(nl){nl.classList.remove('nxb');nl.onclick=null;nl.style.cursor=''}
-   {const lob={t:'LOBİ',i:RIC.lobby,f:xpLobby},kar={t:'KARİYERE DÖN',i:RIC.career,f:()=>XPPLAY(()=>{crSel=(can&&CRST[g+1].c===s.c)?g+1:g;toMenu();fromPm=true;crOpenScr()})},nxt=can?{t:'SONRAKİ BÖLÜMÜ OYNA',i:RIC.next||RIC.play||RIC.again,p:1,f:()=>XPPLAY(()=>{plMode='cr';crSel=g+1;startRace()})}:null;resBtns(nxt?[lob,kar,nxt]:[lob,kar],nxt?'rbg3':'')}}
+   {const lob={t:'LOBİ',i:RIC.lobby,f:window.XPLOBBY},kar={t:'KARİYERE DÖN',i:RIC.career,f:()=>XPPLAY(()=>{crSel=(can&&CRST[g+1].c===s.c)?g+1:g;toMenu();fromPm=true;crOpenScr()})},nxt=can?{t:'SONRAKİ BÖLÜM',i:RIC.next||RIC.play||RIC.again,p:1,f:()=>XPPLAY(()=>{plMode='cr';crSel=g+1;startRace()})}:{t:'BÖLÜMÜ TEKRAR OYNA',i:RIC.again,p:1,f:()=>XPPLAY(()=>{plMode='cr';crSel=g;startRace()})};resBtns([lob,kar,nxt],'rbg3')}}
   else{const nl=$$('nxl');if(nl)nl.classList.remove('nxb')}
+  if(!wu)crStarRow(g);
  }catch(e){console.warn(e)}return r};
+function crStarRow(g){const c=document.querySelector('#res .card'),rs=$$('rs'),q=$$('rcs');if(q)q.remove();if(!c)return;if(rs&&rs.parentNode)rs.parentNode.style.display='none';
+ const n=crP[g]||0,r=document.createElement('div');r.className='rr';r.id='rcs';
+ r.innerHTML='<div class="rcl"><span>TOPLANAN BÖLÜM YILDIZLARI</span>'+(n<3?'<em class="rcn">Bir sonraki bölümü oynamak için 3 yıldıza ulaş</em>':'')+'</div><b class="rcst">'+[0,1,2].map(i=>'<i class="'+(i<n?'on':'')+'">★</i>').join('')+'</b>';c.appendChild(r)}
 }catch(e){console.error('res v952',e)}})();
 </script>
 <script>/* v9.53 yön tuşları: geniş dokunma alanı + yedek yakalama */
