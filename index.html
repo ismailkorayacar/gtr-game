@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.7</title>
+<title>gtr_game_v9.60.8</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1675,7 +1675,18 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
  .k2go{font-size:19px!important}
 }
 .k2u{order:2}.k2d{order:3!important}.k2go{order:4!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.7</em></div></div>
+
+.k2u{padding:7px 12px!important;min-height:0!important;justify-content:center}
+.k2u .k2rl{flex:none!important;text-align:center!important;white-space:nowrap;font:700 clamp(10px,3.4vw,13px)/1.3 system-ui!important}
+.k2u .k2rl .ys{font-style:normal;color:#ffd24a;text-shadow:0 0 6px rgba(255,200,0,.75)}
+@media (orientation:landscape){
+ .k2b .k2u{padding:4px 10px!important}
+ .k2u .k2rl{font-size:min(11px,1.12vw)!important}
+ .k2go{font-size:15px!important;white-space:nowrap;gap:6px!important;padding:0 8px!important;line-height:1.1}
+ .k2go i{font-size:18px!important;line-height:1}
+}
+#cr::before,#evs::before,body.u2 #set.lby::before{background:rgba(0,0,0,.3)!important}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.8</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2643,7 +2654,7 @@ function v7_buildLevel(){v7_lvG.clear();v7_ico.length=0;v7_segs=[];v7_oils=[];v7
  for(let i=0;i<no;i++){for(let tr=0;tr<10;tr++){const z=-(300+R()*(FINISH-500)),l=Math.floor(R()*5);if(v7_closedAt(l,z,30))continue;v7_oils.push({l,z,x:LANES[l]+(R()-.5)*1.2});break}}
  v7_oils.forEach(o=>{const m=new THREE.Mesh(v7_oilG,v7_oilM);m.position.set(o.x+cx(o.z),.045,o.z);m.rotation.y=Math.atan(cd(o.z))+(R()-.5)*.5;m.scale.set(.8+R()*.5,1,.8+R()*.5);v7_lvG.add(m);const sp=new THREE.Sprite(v7_icoM);sp.scale.set(1.7,1.7,1);sp.position.set(o.x+cx(o.z),1.5,o.z);v7_lvG.add(sp);v7_ico.push(sp)})}
 function v7_closeAvoid(t){const li=LANES.indexOf(t.home);if(li<0)return;for(const s of v7_segs){if(s.l===li&&t.z<s.z0+90&&t.z>s.z0-s.len-10){const c=[li-1,li+1].filter(k=>k>=(t.hv?1:0)&&k<LANES.length&&!v7_closedAt(k,t.z,0));if(c.length){t.sg=0;t.home=LANES[c[R()*c.length|0]]}break}}}
-function crRule(){const e=document.getElementById('crrule');if(e)e.textContent=['bitir = ★ · hasar %85’in altı = ★★ · hasarsız = ★★★','bitir = ★ · hasar %50’nin altı = ★★ · hasarsız = ★★★','bitir = ★ · hasarsız = ★★ · hasarsız + 3 NOS = ★★★'][dif]}
+function crRule(){const e=document.getElementById('crrule');if(e)e.innerHTML=['bitir = ★ · hasar %85’in altı = ★★ · hasarsız = ★★★','bitir = ★ · hasar %50’nin altı = ★★ · hasarsız = ★★★','bitir = ★ · hasarsız = ★★ · hasarsız + 3 NOS = ★★★'][dif].replace(/★+/g,m=>'<i class="ys">'+m+'</i>')}
 function dfMark(){crRule();document.querySelectorAll('.dfb').forEach(b=>b.classList.toggle('on',+b.dataset.d===dif))}
 function dfSave(){try{localStorage.setItem('th_df',String(dif));localStorage.setItem('th_ul',JSON.stringify(v7_ul))}catch(e){}}
 function dfPick(d,fromRes){if(EV||d===dif)return;dif=d;dfSave();dfMark();if(fromRes)$('dfp').style.display='none'}
@@ -3699,7 +3710,7 @@ function crRender(){const B=$('crbody'),c=CRC[crTab],L=CRST.filter(s=>s.c===crTa
  h+='<div class="k2c">'+CRC.map((x,i)=>{const lk=!crOpen(i*5);return '<button class="k2ct'+(i===crTab?' on':'')+(lk?' lk':'')+'" data-c="'+i+'"><canvas data-f="'+i+'" width="44" height="30"></canvas><span><b>'+x.nm+'</b><small>'+(lk?'🔒 KİLİTLİ':'★ '+crSum(i)+'/15')+'</small></span></button>'}).join('')+'</div>';
  h+='<div class="k2n">'+L.map(s=>{const lk=!crOpen(s.g),dn=crP[s.g]>0,cu=s.g===crSel;
   return '<button class="k2h'+(lk?' lk':'')+(dn?' dn':'')+(cu?' cu':'')+'" data-g="'+s.g+'"><span class="k2x">'+(cu?'🏆':lk?'🔒':dn?'✓':s.i+1)+'</span><b>BÖLÜM '+(s.i+1)+'</b>'+'<small>'+(cu?s.n:'')+'</small>'+(dn?crArc(crP[s.g]):'')+'</button>'}).join('')+'</div>';
- h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="k2r k2u"><span class="k2l">★</span><em class="k2rl" id="crrule"></em></div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
+ h+='<div class="k2b"><div class="k2r"><span class="k2l">🏆</span><div class="k2rt"><b>BÖLÜM '+(S.i+1)+' ÖDÜLÜ</b><small>'+rw+'</small></div>'+th+'</div><div class="k2r k2u"><em class="k2rl" id="crrule"></em></div><div class="crdf k2d"><small>ZORLUK</small><div class="dfrow" id="dfr2"><button class="dfb" data-d="0"><span>KOLAY</span></button><button class="dfb" data-d="1"><span>NORMAL</span></button><button class="dfb" data-d="2"><span>ZOR</span></button></div></div><button class="k2go" id="k2go" type="button">KARİYERE DEVAM ET <i>››</i></button></div>';
  h+='<p class="crhint">'+crInfo(S.th)+' · '+S.km+' km · Bölümü 3 yıldızla bitirince sıradaki açılır. Bir ülkenin tüm bölümlerini 3 yıldızla bitirince sonraki ülke açılır.</p><div id="crmsg"></div>';
  B.innerHTML=h;
  B.querySelectorAll('canvas[data-f]').forEach(cv=>crFlag(cv.getContext('2d'),+cv.dataset.f,2,2,cv.width-4,cv.height-4));
@@ -4635,6 +4646,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.60.8',n:['Kariyer ana ekranı: yıldız kuralı kutusu inceltildi, sarı yıldızlar yazı boyutunda; yatay modda butonlar ve KARİYERE DEVAM ET yazısı tek satır/hizalı','Lobi, Kariyer ve Etkinlik ekranlarındaki hero görsel %30 karartıldı']},
 {v:'v9.60.7',n:['Kariyer bölüm sonu: LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜM (3 yıldızdan azsa BÖLÜMÜ TEKRAR OYNA) butonları düzeltildi','Kariyer bölüm sonu tablosunda toplam puan yerine TOPLANAN BÖLÜM YILDIZLARI satırı','Kariyerde ödül araç kaldırıldı (gösterim ve verme)','Kariyer ekranı: yıldızlar altıgenlerin üstünde yay şeklinde; yıldız kuralı ödül kutusu gibi bir kutuda']},
 {v:'v9.60.6',n:['Kariyer bölüm sonu ekranında "SIRADAKİ BÖLÜM" alanı her durumda sadece bilgi (buton değil); sonraki bölüm sağ alttaki butonla başlatılıyor','Kariyer araç seçim ekranı: dikey modda araç küçük resimleri geri geldi; yatay modda Aracı Geliştir ekranlarında garaj arka planının kenarları kapatıldı']},
 {v:'v9.60.5',n:['Kariyer bölüm sonu ekranında LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜMÜ OYNA butonları; sonuç tablolarında TOPLAM PUAN en alta alındı; kariyer bölüm sonu araç sinematiği 6 saniye']},
