@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.61.1</title>
+<title>gtr_game_v9.61.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1688,13 +1688,24 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 #cr::before,#evs::before,body.u2 #set.lby::before{background:rgba(0,0,0,.3)!important}
 
 
-#evr .ghcol{display:inline-flex;flex-direction:column;align-items:flex-end;vertical-align:middle}#evr .ghch{display:inline-block;width:auto;margin:5px 10px 0 0;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
+#evr .ghcol{display:inline-flex;flex-direction:column;align-items:flex-end;vertical-align:middle}#evr .ghch.on{background:rgba(60,200,120,.35);border-color:#7dffb0;color:#eafff2}#evr .ghch{display:inline-block;width:auto;margin:5px 10px 0 0;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
 #gdl{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 128px);z-index:7;display:none;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:14px;background:rgba(14,8,40,.62);border:1.5px solid rgba(160,200,255,.55);font:800 13px system-ui;color:#fff;pointer-events:none;white-space:nowrap}
 #gdl i{font-style:normal;font-size:14px}#gdl span{opacity:.85;max-width:90px;overflow:hidden;text-overflow:ellipsis}
 #gdl b{font:900 15px system-ui;font-variant-numeric:tabular-nums}
 #gdl.ah b{color:#5dff9a}#gdl.bh b{color:#ff6b6b}
 #ghtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:60;display:none;padding:10px 16px;border-radius:14px;background:rgba(20,10,60,.95);border:1.5px solid rgba(160,120,255,.6);color:#fff;font:700 13px system-ui;max-width:86vw;text-align:center}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.1</em></div></div>
+
+#evd #evbx .ghs{grid-column:1/-1;justify-content:space-between;text-align:left;font-style:normal;text-transform:none;min-height:46px;padding:6px 14px!important;gap:10px}
+#evd #evbx .rbn:last-child:nth-child(odd){grid-column:auto}
+#evd .ghs .ghl{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+#evd .ghs .ghl b{font:900 13px/1.1 system-ui;font-style:italic;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#evd .ghs .ghl small{font:600 10.5px/1.2 system-ui;font-style:normal;opacity:.78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#evd .ghs .gsw{flex:none;width:46px;height:26px;border-radius:13px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.45);position:relative;transition:background .2s}
+#evd .ghs .gsw::before{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.4);transition:transform .2s}
+#evd .ghs.on .gsw{background:linear-gradient(180deg,#46e08a,#1fae5f);border-color:#b8ffd6}
+#evd .ghs.on .gsw::before{transform:translateX(20px)}
+@media (orientation:landscape){#evd #evbx .ghs{min-height:0!important;height:42px!important}#evd .ghs .ghl small{font-size:9.5px}}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.2</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4656,6 +4667,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.61.2',n:['Hayalet mantığı düzeltildi: hayalet varsayılan KAPALI; etkinlik detayında OYNA/REKORLAR üstünde REKORTMENLE YARIŞ anahtarı (aç/kapa)','Rekorlar tablosundan sekmeler kaldırıldı; MEYDAN OKU sadece gerçekten hayaleti olan oyuncularda görünür, kendi satırında KENDİNLE YARIŞ','Dünya hayaleti = en iyi rekor sahibi (süreli modlarda en hızlı, Speedrun’da en yüksek puan)']},
 {v:'v9.61.1',n:['Hayalet seçici (Kapalı / Rekorum / Dünya 1.) Etkinlik Rekorları ekranına sekme olarak taşındı','MEYDAN OKU butonu süre bilgisinin altına alındı, yazı boyutunda']},
 {v:'v9.61',n:['HAYALET SİSTEMİ: Sprint, Ralli, Kış Rallisi, Circuit ve Speedrun’da rekor koşun kaydedilir, yarışta yarı saydam hayalet araç olarak oynatılır','Yarış sırasında hayalet ile süre farkı göstergesi (yeşil: önde, kırmızı: geride)','Etkinlik detayında HAYALET seçici: Kapalı / Rekorum / Dünya 1.; Rekorlar listesinde MEYDAN OKU ile bir oyuncunun hayaletini seç','Speedrun’da dünya birincisinin hayaleti, etkinliği en az bir kez tamamlayınca açılır; Speedrun Rekor Denemesi’nde hayalet yok']},
 {v:'v9.60.8',n:['Kariyer ana ekranı: yıldız kuralı kutusu inceltildi, sarı yıldızlar yazı boyutunda; yatay modda butonlar ve KARİYERE DEVAM ET yazısı tek satır/hizalı','Lobi, Kariyer ve Etkinlik ekranlarındaki hero görsel %30 karartıldı']},
@@ -5375,7 +5387,7 @@ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null
 const jget=k=>{try{const o=JSON.parse(ls(k)||'null');return o&&typeof o.d==='string'?o:null}catch(x){return null}};
 const dcTh=()=>{try{return evCyc(EVS.find(x=>x.id==='dc')).th}catch(x){return 0}};
 const gk=e=>e.id==='dc'?'dc_'+(e.th!=null?e.th:dcTh()):e.id;
-const getSel=id=>ls('gh_sel_'+id)||'';
+const getSel=id=>{const v=ls('gh_sel_'+id)||'';return v==='off'||v==='auto'?'':v};
 const setSel=(id,v)=>ls('gh_sel_'+id,v||null);
 const myNm=()=>{try{return String(sel.name||'Pilot')}catch(x){return 'Pilot'}};
 /* ---- kodlama: z (dm, ilk değer mutlak sonra fark), x (cm), yaw (mrad) ---- */
@@ -5391,16 +5403,21 @@ function setG(rec){clearG();const d=valid(rec)?dec(rec.d):null;if(!d)return;G.re
   c.mesh.traverse(o=>{if(o.isMesh&&o.material){const f=m=>{const n=m.clone();n.transparent=true;n.opacity=.38;n.depthWrite=false;if(n.emissive){n.emissive.setHex(0x2a4cc0);n.emissiveIntensity=.45}return n};o.material=Array.isArray(o.material)?o.material.map(f):f(o.material);o.castShadow=false}if(o.isSprite)o.visible=false});
   const sp=lab(String(rec.n||'?').slice(0,12));sp.position.set(0,(c.hh||1.4)+.9,0);c.mesh.add(sp);c.mesh.visible=false;scene.add(c.mesh);G.mesh=c.mesh;G.car=c}catch(x){console.warn('ghost car',x);G.mesh=null}}
 /* ---- yükleme ---- */
-const cache={};
-async function world(e,key,hasMine){if(e.id==='tss'&&!hasMine)return null;const c=cache[key];if(c&&Date.now()-c.t<3e5)return c.r;
- let r=null;try{const L=window.fbEvTop?await window.fbEvTop(e.id):null;if(L&&window.fbGhGet){const c8=L.filter(x=>!x.me).slice(0,8),D=await Promise.all(c8.map(x=>window.fbGhGet(key,x.u)));const ok=D.filter(valid);if(ok.length)r=e.id==='tss'?ok.sort((a,b)=>(+b.s||0)-(+a.s||0))[0]:ok.sort((a,b)=>a.t-b.t)[0]}}catch(x){}
- cache[key]={t:Date.now(),r};return r}
-async function load(e){const key=gk(e),sv=getSel(e.id);if(sv==='off')return null;const mine=jget('gh_'+key);
+const gc={};
+async function ghGet(key,uid){const k=key+'|'+uid,c=gc[k];if(c&&Date.now()-c.t<3e5)return c.r;let r=null;try{r=window.fbGhGet?await window.fbGhGet(key,uid):null}catch(x){}r=valid(r)?r:null;gc[k]={t:Date.now(),r};return r}
+const wc={};
+/* dünya = en iyi rekor sahibi (kendim dahil): süreli modlarda en düşük süre, Speedrun'da en yüksek puan */
+async function world(e,key,hasMine){if(e.id==='tss'&&!hasMine)return null;const c=wc[key];if(c&&Date.now()-c.t<3e5)return c.r;
+ let r=null;try{const L=window.fbEvTop?await window.fbEvTop(e.id):null,ok=[];const mine=jget('gh_'+key);if(mine&&valid(mine))ok.push(mine);
+  if(L){const c8=L.filter(x=>!x.me).slice(0,8),D=await Promise.all(c8.map(x=>ghGet(key,x.u)));D.forEach(x=>{if(x)ok.push(x)})}
+  if(ok.length)r=e.id==='tss'?ok.sort((a,b)=>(+b.s||0)-(+a.s||0))[0]:ok.sort((a,b)=>a.t-b.t)[0]}catch(x){}
+ wc[key]={t:Date.now(),r};return r}
+async function load(e){const key=gk(e),sv=getSel(e.id);if(!sv)return null;const mine=jget('gh_'+key);
  if(mine&&ls('gh_up_'+key)!=='1')up(key,mine);
- if(sv.indexOf('u:')===0){const p=sv.split(':'),uid=p[1];if(!window.fbGhGet)return null;const r=await window.fbGhGet(key,uid);return valid(r)?r:null}
+ if(sv.indexOf('u:')===0){const uid=sv.split(':')[1];return await ghGet(key,uid)}
  if(sv==='world')return await world(e,key,!!mine);
  if(sv==='me')return mine&&valid(mine)?mine:null;
- return mine&&valid(mine)?mine:await world(e,key,!!mine)}
+ return null}
 async function up(key,rec){try{if(!window.fbGhPut)return;const ok=await window.fbGhPut(key,rec);if(ok)ls('gh_up_'+key,'1')}catch(x){}}
 /* ---- kayıt / oynatma ---- */
 function init(e){clearG();G.on=true;G.key=gk(e);G.n=0;R.Z=[];R.X=[];R.Y=[];const k=G.key;
@@ -5439,22 +5456,31 @@ function save(e){if(R.Z.length<10)return;const key=gk(e),tm=+(+raceT).toFixed(2)
 const _ef=evFinish;evFinish=function(win){const e=(typeof EV!=='undefined')?EV:null,ok=!!(e&&GHID.includes(e.id)&&win&&G.on&&G.ph!==''&&R.Z.length>=10);const r=_ef.apply(this,arguments);try{if(ok)save(e)}catch(x){console.warn('ghost save',x)}return r};
 /* ---- etkinlik detayında hayalet seçici ---- */
 function toast(t){let b=$g('ghtoast');if(!b){b=document.createElement('div');b.id='ghtoast';document.body.appendChild(b)}b.textContent=t;b.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>{b.style.display='none'},2600)}
-function recUI(e){const t=$g('evrt');if(!t)return;if(!GHID.includes(e.id)){return}
- const draw=()=>{const sv=getSel(e.id)||'auto',a=[['off','KAPALI'],['me','REKORUM'],['world','DÜNYA 1.']];if(sv.indexOf('u:')===0)a.push([sv,sv.split(':').slice(2).join(':').toUpperCase().slice(0,12)]);
-  const act=sv==='auto'?(jget('gh_'+gk(e))?'me':'world'):sv;t.innerHTML='';t.style.display='';
-  a.forEach(x=>{const b=document.createElement('button');b.type='button';b.className=x[0]===act?'on':'';b.textContent=x[1];b.onclick=()=>{if(x[0]===act)return;setSel(e.id,x[0]);draw();say()};t.appendChild(b)})};
- const say=()=>{const sv=getSel(e.id);if(sv==='off'){toast('Hayalet kapalı');return}const tk=(say.n=(say.n||0)+1);
-  load(e).then(r=>{if(say.n!==tk)return;const mine=jget('gh_'+gk(e));toast(r?('Hayalet hazır: '+String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):(e.id==='tss'&&!mine&&sv!=='me'?'Dünya birincisinin hayaleti, bu etkinliği bir kez tamamlayınca açılır':(sv==='me'?'Henüz kendi rekorun yok':'Bu harita için hayalet bulunamadı')))}).catch(()=>{})};
+const GHI='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V11a7 7 0 0 1 14 0v10l-2.5-2-2 2-2.5-2-2.5 2-2-2z"/><circle cx="9.5" cy="11" r="1"/><circle cx="14.5" cy="11" r="1"/></svg>';
+function ui(e){if(!GHID.includes(e.id))return;const bx=$g('evbx');if(!bx)return;
+ bx.insertAdjacentHTML('afterbegin','<button type="button" id="ghsw" class="btn rbn ghs" role="switch" aria-checked="false"><span class="ghl"><b id="ght"></b><small id="ghsub"></small></span><i class="gsw"></i></button>');
+ const sw=$g('ghsw');try{sw.style.setProperty('--ic','url("data:image/svg+xml,'+encodeURIComponent(GHI)+'")')}catch(x){}
+ const tm=e.id==='tss'?'en yüksek puanlı':'en hızlı',tk=()=>({n:0});let n=0;
+ const draw=()=>{const sv=getSel(e.id),on=!!sv;sw.classList.toggle('on',on);sw.setAttribute('aria-checked',on?'true':'false');
+  $g('ght').textContent=sv.indexOf('u:')===0?'MEYDAN OKUNAN: '+sv.split(':').slice(2).join(':').toUpperCase().slice(0,12):(sv==='me'?'KENDİ REKORUMLA YARIŞ':'REKORTMENLE YARIŞ');
+  const sb=$g('ghsub');if(!on){sb.textContent='Açık olursa '+tm+' oyuncunun hayaletiyle yarışırsın';return}
+  sb.textContent='Hayalet aranıyor…';const k=++n;load(e).then(r=>{if(k!==n||!$g('ghsub'))return;$g('ghsub').textContent=r?(String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):'Bu harita için hayalet bulunamadı'}).catch(()=>{})};
+ sw.onclick=()=>{const sv=getSel(e.id);if(sv){setSel(e.id,'');draw();return}
+  if(e.id==='tss'&&!jget('gh_'+gk(e))){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
+  setSel(e.id,'world');draw()};
  draw()}
-const _rs=evRecShow;evRecShow=function(i){const r=_rs.apply(this,arguments);try{recUI(EVS[i])}catch(x){console.warn(x)}return r};
+const _eo=evOpen;evOpen=function(i){const r=_eo.apply(this,arguments);try{ui(EVS[i])}catch(x){console.warn(x)}return r};
 /* ---- rekor satırlarında MEYDAN OKU ---- */
-window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r||!r.u||r.me)return;const b=document.createElement('button');b.type='button';b.className='ghch';b.textContent='MEYDAN OKU';
- b.onclick=async ev=>{ev.stopPropagation();b.disabled=true;b.textContent='…';const key=gk(e.th!=null?e:{id:e.id,th:e.id==='dc'?dcTh():undefined});let rec=null;try{rec=window.fbGhGet?await window.fbGhGet(key,r.u):null}catch(x){}
-  b.disabled=false;b.textContent='MEYDAN OKU';if(!valid(rec)){toast('Bu oyuncunun bu etkinlik için hayaleti yok');return}
-  if(e.id==='tss'&&!jget('gh_'+key)){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
-  setSel(e.id,'u:'+r.u+':'+String(r.n||'?').replace(/[:]/g,''));toast('Hayalet seçildi: '+String(r.n||'?').slice(0,12));
-  try{const i=EVS.findIndex(x=>x.id===e.id);window.__evrRes=false;evrFromRes=false;show('evr',false);if(i>=0)evOpen(i)}catch(x){}};
- const pt=d.querySelector('.evpt'),t0=pt&&pt.firstElementChild;if(t0&&t0.tagName==='SPAN'){const w=document.createElement('span');w.className='ghcol';pt.insertBefore(w,t0);w.appendChild(t0);w.appendChild(b)}else{(d.querySelector('.ln')||d).appendChild(b)}};
+window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
+ const place=(label,val)=>{if(!d.isConnected||d.querySelector('.ghch'))return;const b=document.createElement('button');b.type='button';b.className='ghch';
+  const paint=()=>{const on=getSel(e.id)===val;b.textContent=on?'SEÇİLİ ✓':label;b.classList.toggle('on',on)};paint();
+  b.onclick=ev=>{ev.stopPropagation();if(getSel(e.id)===val){setSel(e.id,'');paint();return}
+   setSel(e.id,val);paint();toast(val==='me'?'Kendi rekorunla yarışacaksın':'Hayalet seçildi: '+String(r.n||'?').slice(0,12));
+   try{const i=EVS.findIndex(x=>x.id===e.id);window.__evrRes=false;evrFromRes=false;show('evr',false);if(i>=0)evOpen(i)}catch(x){}};
+  const pt=d.querySelector('.evpt'),t0=pt&&pt.firstElementChild;if(t0&&t0.tagName==='SPAN'){const w=document.createElement('span');w.className='ghcol';pt.insertBefore(w,t0);w.appendChild(t0);w.appendChild(b)}else{(d.querySelector('.ln')||d).appendChild(b)}};
+ if(r.me){const own=jget('gh_'+key);if(own&&valid(own))place('KENDİNLE YARIŞ','me');return}
+ if(!r.u)return;if(e.id==='tss'&&!jget('gh_'+key))return;
+ ghGet(key,r.u).then(rec=>{if(rec)place('MEYDAN OKU','u:'+r.u+':'+String(r.n||'?').replace(/[:]/g,''))}).catch(()=>{})};
 }catch(e){console.warn('ghost init',e)}})();
 </script>
 </body></html>
