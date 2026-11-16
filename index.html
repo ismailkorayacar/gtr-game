@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.57</title>
+<title>gtr_game_v9.58</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.57</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.58</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3982,7 +3982,7 @@ function rrDone(w){if(RRX)return;const win=RRFIN>0||!!w;
  document.body.classList.add('rp','rrr');$('rri').style.display='none';show('ov',false);show('res',false);
  const C=['#ffd24a','#cfd6df','#d98a4a','#7d8696'];let h='<div class="rrt">'+(win?'ETKİNLİĞİ TAMAMLADIN':'MAKSİMUM HASAR')+'</div><div class="rrp">'+(win&&rank===1?'<div class="rrc"><b>TEBRİKLER</b><span>1. '+esc(sel.name||'Pilot')+'</span></div>':'')+'<h3>SIRALAMA</h3>';
  rows.forEach((r,i)=>{h+='<div class="rrw'+(r.you?' me':'')+'"><span class="k" style="background:'+C[i]+'">'+(i+1)+'</span><span class="nm">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><span class="tt">'+(r.dnf?'BİTİRMEDİ':TMI+(r.est?'~':'')+fmtRT(r.fin))+'</span><span class="cn2">'+(PR[i]&&!r.dnf?COIN+'<b class="pa">+'+PR[i]+'</b>':'-')+'</span></div>'});
- h+='</div><div class="rrb rbg"><button id="rrev" class="btn rbn" type="button" style="grid-column:1/-1">ETKİNLİKLER</button><button id="rrhm" class="btn rbn" type="button">LOBİ</button><button id="rrag" class="btn rbn p" type="button">TEKRAR OYNA</button><button id="rrrc" class="btn rbn" type="button">ETKİNLİK REKORLARI</button><button id="rrsh" class="btn rbn" type="button">MAĞAZA</button></div>';
+ h+='</div><div class="rrb rbg"><button id="rrhm" class="btn rbn" type="button">LOBİ</button><button id="rrev" class="btn rbn" type="button">ETKİNLİKLER</button><button id="rrag" class="btn rbn p" type="button">TEKRAR OYNA</button><button id="rrrc" class="btn rbn" type="button">ETKİNLİK REKORLARI</button><button id="rrsh" class="btn rbn" type="button">MAĞAZA</button></div>';
  const el=$('rrr');el.innerHTML=h;el.style.display='flex';evDeco(el,EV,false);{const E=EV,eid=E&&E.id;[['rrev','ev'],['rrhm','lobby'],['rrag','again'],['rrrc','trophy'],['rrsh','shop']].forEach(q=>$(q[0]).style.setProperty('--ic',icUrl(q[1]==='ev'?RICEV:RIC[q[1]])));$('rrhm').onclick=()=>toMenu();$('rrev').onclick=()=>{toMenu();show('ov',false);evList();show('evs',true)};$('rrag').onclick=rrAgain;$('rrrc').onclick=()=>{const i=EVS.findIndex(x=>x.id===eid);if(i>=0){evrFromRes=false;evrFromRr=true;window.__evrRes=true;evRecShow(i);$('rrr').style.display='none';show('evr',true)}else{toMenu();show('ov',false);evList();show('evs',true)}};$('rrsh').onclick=()=>{toMenu();shopFrom='ov';openShop()}}}
 function rrAgain(){document.body.classList.remove('rp','rrr');$('rri').style.display='none';$('rrr').style.display='none';startRace()}
 function rrGo(){toMenu();show('ov',false);fromPm=false;evList();show('evs',true)}
@@ -4592,6 +4592,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.58',n:['PvE tamamlanma ekranında LOBİ, ETKİNLİKLER ve ETKİNLİK REKORLARI butonları artık yan yana tek satırda']},
 {v:'v9.57',n:['Seviye animasyonunda halka artık gerçek XP ilerlemesinden başlıyor ve "Sv." yerine "Seviye" yazıyor; PvE sıralama tablosunda süre ikonu eklendi; PvE etkinlik rekorlarında süre de görünüyor; olumlu etkinlik sonu ekranlarına ETKİNLİKLER butonu eklendi']},
 {v:'v9.56',n:['Güneşli haritadaki gerçek ağaç modelleri ve arazi dağ manzarası artık tüm haritalarda (Speedrun/tünel, Ralli ve Festival hariç); her haritanın kendi hava, ışık ve sis ayarı korunur']},
 {v:'v9.55',n:['Etkinlik Rekorları: açılışta artık sadece senin en yüksek rekorun görünüyor (birden fazla kaydın görünüp kaybolması düzeltildi); diğer oyuncuların rekorları çevrimiçi yüklenince listeye eklenir']},
@@ -5067,7 +5068,7 @@ const _cf=crFinish;crFinish=function(win){const s=CR,g=s&&s.g,wu=!!(s&&s.wu),old
 
 const _rd=rrDone;rrDone=function(w){const had=!!RRX,e=EV,d0=XPDM();let r;r=_rd.apply(this,arguments);
  try{if(!had&&RRX){const win=RRFIN>0||!!w,rank=RRX.findIndex(q=>q.you)+1;
-  const sh=$$('rrsh');if(sh)sh.remove();const ag=$$('rrag'),hm=$$('rrhm');
+  const sh=$$('rrsh');if(sh)sh.remove();const ag=$$('rrag'),hm=$$('rrhm');if(!win){const ev=$$('rrev');if(ev)ev.remove()}
   if(win){if(ag)ag.remove();if(hm)hm.onclick=xpLobby}else if(ag)ag.textContent='TEKRAR DENE';
   if(win){const evs=[['Yarış tamamlandı',100]],b=[1000,600,300,0][rank-1]||0;if(b)evs.push([rank+'. sırada tamamladın',b]);if(d0<=0)evs.push(['Hasarsız bitirme',250]);
    const key='th_xpev_'+(e&&e.id);if(e&&rd(key,'')!==String(e.cyc)){wr(key,e.cyc);evs.push(['Etkinliği ilk kez tamamladın',500])}award(evs)}}}catch(x){console.warn(x)}
