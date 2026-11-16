@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.61.2</title>
+<title>gtr_game_v9.61.3</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -266,7 +266,7 @@ body.ui #tl,body.ui #sc,body.ui #tr,body.ui #mm,body.ui #nos{display:none!import
 @keyframes inB2{0%{transform:translateY(100%)}10%,88%{transform:none}100%{transform:translateY(100%)}}
 @keyframes inS{0%{transform:translateX(-110%);opacity:0}16%{transform:translateX(0);opacity:1}84%{transform:translateX(0);opacity:1}100%{transform:translateX(24px);opacity:0}}
 body.intro .hud,body.intro #nos,body.intro #cvb,body.intro #pzb,body.intro #mm{opacity:0!important}
-#scl .pi{display:inline-flex;width:17px;height:17px;border-radius:50%;align-items:center;justify-content:center;font:900 11px/1 system-ui;font-style:normal;letter-spacing:0;color:#fff;background:radial-gradient(circle at 38% 32%,#c98cff,#5b1fb0);border:1.5px solid #ecd3ff;box-shadow:0 0 6px #a45cff}
+#scl .pi,.fl .pi{display:inline-flex;width:17px;height:17px;border-radius:50%;align-items:center;justify-content:center;font:900 11px/1 system-ui;font-style:normal;letter-spacing:0;color:#fff;background:radial-gradient(circle at 38% 32%,#c98cff,#5b1fb0);border:1.5px solid #ecd3ff;box-shadow:0 0 6px #a45cff}
 #nbt{position:fixed;right:34px;bottom:calc(env(safe-area-inset-bottom,0px) + 137px);width:62px;height:62px;border-radius:50%;border:3px solid #3cf;background:radial-gradient(circle at 50% 40%,#0d4272,#04142e 75%);color:#3cf;font:900 15px/1 system-ui;letter-spacing:.5px;text-shadow:0 0 6px #3cf;box-shadow:0 0 0 3px rgba(8,6,30,.85),0 0 12px #3cf8;padding:0;opacity:.75;-webkit-tap-highlight-color:transparent;touch-action:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;outline:0}
 #nbt svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#nbt{display:block;overflow:hidden}
 #nbt.on{opacity:1;background:radial-gradient(circle at 50% 40%,#1b7fc0,#06304f 75%)}
@@ -705,6 +705,7 @@ body.rrr #nbt,body.rrr #cvb,body.rrr #nosfx,body.rrr #rrg,body.rrr #mm,body.rrr 
 body.evcnt #bn{top:max(22%,calc(env(safe-area-inset-top,0px) + 205px))}
 
 .fl{position:fixed;z-index:9;pointer-events:none;font:900 26px/1 'Arial Black',Impact,system-ui;font-style:italic;white-space:nowrap}
+.fl.pp{font-size:13px;-webkit-text-stroke:1px #2a0a5a;text-shadow:0 0 6px #a45cff}.fl.pp .pi{width:9px;height:9px;font-size:6px;border-width:1px;box-shadow:0 0 3px #a45cff;vertical-align:-1px}
 .fl.n2o{color:#7fe8ff;-webkit-text-stroke:2px #03112b;paint-order:stroke fill;text-shadow:0 0 12px #3cf}
 .fl.pt{color:#c98cff;-webkit-text-stroke:2px #2a0a5a;paint-order:stroke fill;text-shadow:0 0 12px #a45cff}
 .fl.lap{color:#fff;text-shadow:0 3px 0 #7a1f8a,0 0 14px rgba(255,79,163,.8)}
@@ -1705,7 +1706,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 #evd .ghs.on .gsw{background:linear-gradient(180deg,#46e08a,#1fae5f);border-color:#b8ffd6}
 #evd .ghs.on .gsw::before{transform:translateX(20px)}
 @media (orientation:landscape){#evd #evbx .ghs{min-height:0!important;height:42px!important}#evd .ghs .ghl small{font-size:9.5px}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.2</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.3</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3786,7 +3787,7 @@ function skwSkid(){try{const c=Math.cos(P.yaw),s=Math.sin(P.yaw);P.wheels.forEac
 const tunIc=[],tunIcM=new THREE.SpriteMaterial({map:(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');g.lineCap='round';g.fillStyle='rgba(42,10,90,.8)';g.beginPath();g.arc(64,72,46,0,7);g.fill();g.strokeStyle='#2a0a5a';g.lineWidth=18;g.beginPath();g.arc(64,72,46,0,7);g.stroke();g.fillStyle='#2a0a5a';g.fillRect(50,6,28,16);g.fillRect(58,16,12,12);g.strokeStyle='#ffd21a';g.lineWidth=9;g.beginPath();g.arc(64,72,46,0,7);g.stroke();g.fillStyle='#ffd21a';g.fillRect(53,9,22,10);g.fillRect(60,16,8,10);g.lineWidth=8;g.beginPath();g.moveTo(64,72);g.lineTo(64,44);g.moveTo(64,72);g.lineTo(84,84);g.stroke();g.beginPath();g.arc(64,72,6,0,7);g.fill();return new THREE.CanvasTexture(c)})(),transparent:true,depthWrite:false,fog:false});
 function evCnt(c,t,nc){document.body.classList.toggle('evcnt',!nc&&t<=10&&t>0);tunIc.forEach(o=>o.position.y=4.6+Math.abs(Math.sin(performance.now()/260))*.6);if(!nc&&t<=10&&t>0){const n=Math.ceil(t);if(c.dataset.n!=n){c.dataset.n=n;c.textContent=n;c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop')}c.style.color=n>=8?'#ff9a1f':'#ff2d2d';c.style.display='block'}else{c.style.display='none';c.dataset.n=''}const low=!!nc&&t<10&&t>0,k=.5+.5*Math.sin(performance.now()/(low?75:110));tunGM.color.setHSL(.13,1,.4+.3*k);tunGH.opacity=.12+.5*k;
  if(nc){const g=window.__tgM;if(g&&g.length===4){if(low){g[0].color.setRGB(1,.1+.15*k,.1+.15*k);g[1].color.setRGB(1,.1+.15*k,.1+.15*k);g[2].color.setRGB(1,0,0);g[3].color.setRGB(1,0,0);g[2].opacity=g[3].opacity=.15+.6*k;tunIcM.color.setRGB(1,.35,.35);window.__tgR=1}else if(window.__tgR){g[0].color.setHex(0x35d8ff);g[1].color.setHex(0xff4fd8);g[2].color.setHex(0x1aa0ff);g[3].color.setHex(0xff1fc0);g[2].opacity=g[3].opacity=.3;tunIcM.color.setRGB(1,1,1);window.__tgR=0}}}}
-function fly(txt,cls,dly,cb){const tg=cls==='n2o'?($('pdN')||$('nbt')):cls==='pt'?($('tsc')||$('hRs')||$('sc')):cls==='lap'?($('tpr')||$('hLv2')||$('lpb')):$('evt');let r=tg.getBoundingClientRect();if(!r.width&&cls==='ev'){const od=tg.style.display,ov=tg.style.visibility;tg.style.visibility='hidden';tg.style.display='block';r=tg.getBoundingClientRect();tg.style.display=od;tg.style.visibility=ov}if(!r.width)r=cls==='ev'?{left:innerWidth/2-20,top:84,width:40,height:34}:r;const e=document.createElement('div');e.className='fl '+cls;e.textContent=txt;document.body.appendChild(e);e.style.left='0';e.style.top='0';const w=e.offsetWidth,h=e.offsetHeight,cx=r.left+r.width/2-w/2,ty=r.top+r.height/2-h/2,dn=cls==='n2o'?-1:1,y0=ty+dn*(cls==='n2o'?95:70);
+function fly(txt,cls,dly,cb){const tg=cls==='n2o'?($('pdN')||$('nbt')):cls==='pt'?($('tsc')||$('hRs')||$('sc')):cls==='lap'?($('tpr')||$('hLv2')||$('lpb')):$('evt');let r=tg.getBoundingClientRect();if(!r.width&&cls==='ev'){const od=tg.style.display,ov=tg.style.visibility;tg.style.visibility='hidden';tg.style.display='block';r=tg.getBoundingClientRect();tg.style.display=od;tg.style.visibility=ov}if(!r.width)r=cls==='ev'?{left:innerWidth/2-20,top:84,width:40,height:34}:r;const e=document.createElement('div');e.className='fl '+cls;if(cls==='pt'&&/ P$/.test(txt)){e.className+=' pp';e.innerHTML=esc(txt.slice(0,-2))+' <i class="pi">P</i>'}else e.textContent=txt;document.body.appendChild(e);e.style.left='0';e.style.top='0';const w=e.offsetWidth,h=e.offsetHeight,cx=r.left+r.width/2-w/2,ty=r.top+r.height/2-h/2,dn=cls==='n2o'?-1:1,y0=ty+dn*(cls==='n2o'?95:70);
 const a=e.animate([{transform:`translate(${cx}px,${y0}px) scale(.6)`,opacity:0},{transform:`translate(${cx}px,${y0+dn*10}px) scale(1.15)`,opacity:1,offset:.25},{transform:`translate(${cx}px,${y0}px) scale(1)`,opacity:1,offset:.5},{transform:`translate(${cx}px,${ty}px) scale(.45)`,opacity:0}],{duration:cls==='ev'||cls==='lap'?1300:1100,delay:dly||0,easing:'ease-in-out',fill:'both'});a.onfinish=()=>{e.remove();if(cb)cb()}}
 function n2o(){fly('+ N2O','n2o')}
 function evPlus(){fly('+15','ev',120)}
@@ -4667,6 +4668,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.61.3',n:['Rekorlar tablosunda kendi satırı seçilince KENDİ HAYALETİNLE YARIŞ yazar','REKORTMENLE YARIŞ altındaki yazı güncellendi; açıkken rekortmenin tam adı ve süresi (kronometre ikonuyla) görünür','Hayalet süre farkı HUD\'u üstteki puan HUD\'unun altına taşındı','+N P bildirimleri %50 küçüldü ve P harfi yerine puan ikonu kullanıyor']},
 {v:'v9.61.2',n:['Hayalet mantığı düzeltildi: hayalet varsayılan KAPALI; etkinlik detayında OYNA/REKORLAR üstünde REKORTMENLE YARIŞ anahtarı (aç/kapa)','Rekorlar tablosundan sekmeler kaldırıldı; MEYDAN OKU sadece gerçekten hayaleti olan oyuncularda görünür, kendi satırında KENDİNLE YARIŞ','Dünya hayaleti = en iyi rekor sahibi (süreli modlarda en hızlı, Speedrun’da en yüksek puan)']},
 {v:'v9.61.1',n:['Hayalet seçici (Kapalı / Rekorum / Dünya 1.) Etkinlik Rekorları ekranına sekme olarak taşındı','MEYDAN OKU butonu süre bilgisinin altına alındı, yazı boyutunda']},
 {v:'v9.61',n:['HAYALET SİSTEMİ: Sprint, Ralli, Kış Rallisi, Circuit ve Speedrun’da rekor koşun kaydedilir, yarışta yarı saydam hayalet araç olarak oynatılır','Yarış sırasında hayalet ile süre farkı göstergesi (yeşil: önde, kırmızı: geride)','Etkinlik detayında HAYALET seçici: Kapalı / Rekorum / Dünya 1.; Rekorlar listesinde MEYDAN OKU ile bir oyuncunun hayaletini seç','Speedrun’da dünya birincisinin hayaleti, etkinliği en az bir kez tamamlayınca açılır; Speedrun Rekor Denemesi’nde hayalet yok']},
@@ -5424,7 +5426,7 @@ function init(e){clearG();G.on=true;G.key=gk(e);G.n=0;R.Z=[];R.X=[];R.Y=[];const
  load(e).then(r=>{if(G.on&&G.key===k&&r)setG(r)}).catch(()=>{})}
 function off(){G.on=false;G.ph='';if(G.mesh)G.mesh.visible=false;hudH()}
 function hudH(){const h=$g('gdl');if(h&&h.style.display!=='none')h.style.display='none'}
-function hud(txt,cls){let h=$g('gdl');if(!h){h=document.createElement('div');h.id='gdl';document.body.appendChild(h)}if(h.style.display!=='flex')h.style.display='flex';if(h._t!==txt||h._c!==cls){h.innerHTML=txt;h.className=cls;h._t=txt;h._c=cls}}
+function hud(txt,cls){let h=$g('gdl');if(!h){h=document.createElement('div');h.id='gdl';document.body.appendChild(h)}if(h.style.display!=='flex')h.style.display='flex';{for(const q of ['tsc','hRs','sc']){const s=$g(q);if(!s)continue;const r=s.getBoundingClientRect();if(r.width>0&&r.bottom>0){h.style.top=Math.round(r.bottom+4)+'px';break}}}if(h._t!==txt||h._c!==cls){h.innerHTML=txt;h.className=cls;h._t=txt;h._c=cls}}
 function ghTick(){
  const e=(typeof EV!=='undefined')?EV:null;
  if(!e||!GHID.includes(e.id)||st==='menu'){if(G.on||G.ph)off();return}
@@ -5463,8 +5465,8 @@ function ui(e){if(!GHID.includes(e.id))return;const bx=$g('evbx');if(!bx)return;
  const tm=e.id==='tss'?'en yüksek puanlı':'en hızlı',tk=()=>({n:0});let n=0;
  const draw=()=>{const sv=getSel(e.id),on=!!sv;sw.classList.toggle('on',on);sw.setAttribute('aria-checked',on?'true':'false');
   $g('ght').textContent=sv.indexOf('u:')===0?'MEYDAN OKUNAN: '+sv.split(':').slice(2).join(':').toUpperCase().slice(0,12):(sv==='me'?'KENDİ REKORUMLA YARIŞ':'REKORTMENLE YARIŞ');
-  const sb=$g('ghsub');if(!on){sb.textContent='Açık olursa '+tm+' oyuncunun hayaletiyle yarışırsın';return}
-  sb.textContent='Hayalet aranıyor…';const k=++n;load(e).then(r=>{if(k!==n||!$g('ghsub'))return;$g('ghsub').textContent=r?(String(r.n||'?').slice(0,12)+' · '+fmtRT(+r.t)):'Bu harita için hayalet bulunamadı'}).catch(()=>{})};
+  const sb=$g('ghsub');if(!on){sb.textContent=(e.id==='tss'?'En yüksek puanlı':'En hızlı')+' oyuncunun hayaleti ile yarış';return}
+  sb.textContent='Hayalet aranıyor…';const k=++n;load(e).then(r=>{if(k!==n||!$g('ghsub'))return;if(r)$g('ghsub').innerHTML=esc(String(r.n||'?'))+' '+(e.id==='tss'?esc(String(r.t)):TMI+fmtRT(+r.t));else $g('ghsub').textContent='Bu harita için hayalet bulunamadı'}).catch(()=>{})};
  sw.onclick=()=>{const sv=getSel(e.id);if(sv){setSel(e.id,'');draw();return}
   if(e.id==='tss'&&!jget('gh_'+gk(e))){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
   setSel(e.id,'world');draw()};
@@ -5473,7 +5475,7 @@ const _eo=evOpen;evOpen=function(i){const r=_eo.apply(this,arguments);try{ui(EVS
 /* ---- rekor satırlarında MEYDAN OKU ---- */
 window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
  const place=(label,val)=>{if(!d.isConnected||d.querySelector('.ghch'))return;const b=document.createElement('button');b.type='button';b.className='ghch';
-  const paint=()=>{const on=getSel(e.id)===val;b.textContent=on?'SEÇİLİ ✓':label;b.classList.toggle('on',on)};paint();
+  const paint=()=>{const on=getSel(e.id)===val;b.textContent=on?(val==='me'?'KENDİ HAYALETİNLE YARIŞ':'SEÇİLİ ✓'):label;b.classList.toggle('on',on)};paint();
   b.onclick=ev=>{ev.stopPropagation();if(getSel(e.id)===val){setSel(e.id,'');paint();return}
    setSel(e.id,val);paint();toast(val==='me'?'Kendi rekorunla yarışacaksın':'Hayalet seçildi: '+String(r.n||'?').slice(0,12));
    try{const i=EVS.findIndex(x=>x.id===e.id);window.__evrRes=false;evrFromRes=false;show('evr',false);if(i>=0)evOpen(i)}catch(x){}};
