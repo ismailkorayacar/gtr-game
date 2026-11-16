@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.5</title>
+<title>gtr_game_v9.60.6</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1642,7 +1642,8 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
 @media (orientation:landscape){body.u2:not(.u2n) #gal #galst{top:calc(env(safe-area-inset-top,0px) + 68px)!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.5</em></div></div>
+@media (orientation:portrait){body.u2:not(.u2n) #gal #galt{top:auto!important}}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.6</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4546,12 +4547,12 @@ function galFrame(W,H,L){if(!GFR.on){GFR.on=true;const g=document.getElementById
  const g=document.getElementById('gal'),vis=g&&g.style.display!=='none'&&galOn;const strips=[GFR.sl,GFR.sr,GFR.so,GFR.sl2,GFR.st,GFR.sb,GFR.tf,GFR.bf],hide=()=>{[GFR.al,GFR.ar].concat(strips).forEach(e=>e.style.display='none')};
  if(!vis){hide();return}
  const n=gList.length,ci=Math.round(gx),pl=L.cx-L.iw/2,pr=L.cx+L.iw/2,ls=W>H&&H<560;let tl=0;if(ls){try{const t=document.getElementById('galt').getBoundingClientRect();if(t.width>0)tl=t.right}catch(e){}}
- const top=Math.max(0,L.cy-L.ih/2),bot=Math.min(H,L.cy+L.ih/2),y=Math.max(0,L.ay-.05*H)-42,SW=130,SV=70;
+ const NA=!document.body.classList.contains('u2n'),top=Math.max(0,L.cy-L.ih/2),bot=Math.min(H,L.cy+L.ih/2),y=Math.max(0,L.ay-.05*H)-42,SW=130,SV=NA?130:70;
  const sh=(e,x,w,t,h)=>{e.style.display='block';e.style.left=x+'px';e.style.width=w+'px';e.style.top=(t==null?top:t)+'px';e.style.height=(h==null?bot-top:h)+'px'};
  strips.forEach(e=>e.style.display='none');
- if(!gM||(cuOn&&cuS&&cuS.pg==='m')){
-  if(pl>2){sh(GFR.sl,pl-1,SW);sh(GFR.sl2,0,pl);GFR.sl2.style.background='#15121d'}
-  if(pr<W-2){sh(GFR.sr,pr-SW+1,SW);sh(GFR.so,pr-1,W-pr+1);GFR.so.style.background='#15121d'}}
+ if(!gM||(cuOn&&cuS&&cuS.pg==='m')||NA){
+  if(pl>2){sh(GFR.sl,pl-1,SW);sh(GFR.sl2,0,pl,NA?0:null,NA?H:null);GFR.sl2.style.background='#15121d'}
+  if(pr<W-2){sh(GFR.sr,pr-SW+1,SW);sh(GFR.so,pr-1,W-pr+1,NA?0:null,NA?H:null);GFR.so.style.background='#15121d'}}
  {const x0=Math.max(0,pl),x1=Math.min(W,pr);if(x1>x0+10){if(top>2||top<=2&&false){}
   if(L.cy-L.ih/2>-2){sh(GFR.st,x0,x1-x0,top,SV);if(top>2){const fh=Math.min(top,60);sh(GFR.tf,x0,x1-x0,top-fh,fh)}}
   if(L.cy+L.ih/2<H+2){sh(GFR.sb,x0,x1-x0,bot-SV,SV);if(bot<H-2){const fh=Math.min(H-bot,60);sh(GFR.bf,x0,x1-x0,bot,fh)}}}}
@@ -4601,6 +4602,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.60.6',n:['Kariyer bölüm sonu ekranında "SIRADAKİ BÖLÜM" alanı her durumda sadece bilgi (buton değil); sonraki bölüm sağ alttaki butonla başlatılıyor','Kariyer araç seçim ekranı: dikey modda araç küçük resimleri geri geldi; yatay modda Aracı Geliştir ekranlarında garaj arka planının kenarları kapatıldı']},
 {v:'v9.60.5',n:['Kariyer bölüm sonu ekranında LOBİ / KARİYERE DÖN / SONRAKİ BÖLÜMÜ OYNA butonları; sonuç tablolarında TOPLAM PUAN en alta alındı; kariyer bölüm sonu araç sinematiği 6 saniye']},
 {v:'v9.60.4',n:['Süre gösterilen tablolarda (etkinlik sonu, kariyer sonu) süre ikonu eklendi; kariyerde araç seçim ekranında (yatay mod) neon oklar araç bilgi kutusunun üstüne binmiyor']},
 {v:'v9.60.3',n:['Kariyerde bölüm bitince mağazadaki araç sinematiği oynuyor (araç bilgisi yok, sol altta bölüm adı); ısınma turu bitişinde "KAZANDIN!" yerine "TEBRİKLER!"']},
@@ -5264,7 +5266,7 @@ const _e=evFinish;evFinish=function(win){const r=_e.apply(this,arguments);try{ti
 const _c=crFinish;crFinish=function(win){const s=CR,g=s&&s.g,wu=!!(s&&s.wu);const r=_c.apply(this,arguments);
  try{titleFx();setHeroU(wu?A.hero.sp:A.hero.kr);
   if(win&&!wu){const nx=g<CRST.length-1,can=nx&&crOpen(g+1),nl=$$('nxl'),sm=nl&&nl.querySelector('small');
-   if(can&&sm&&sm.textContent==='SIRADAKİ BÖLÜM'){sm.textContent='SIRADAKİ BÖLÜMÜ OYNA';nl.classList.add('nxb');nl.onclick=()=>{plMode='cr';crSel=g+1;startRace()}}else if(nl)nl.classList.remove('nxb');
+   if(nl){nl.classList.remove('nxb');nl.onclick=null;nl.style.cursor=''}
    {const lob={t:'LOBİ',i:RIC.lobby,f:xpLobby},kar={t:'KARİYERE DÖN',i:RIC.career,f:()=>XPPLAY(()=>{crSel=(can&&CRST[g+1].c===s.c)?g+1:g;toMenu();fromPm=true;crOpenScr()})},nxt=can?{t:'SONRAKİ BÖLÜMÜ OYNA',i:RIC.next||RIC.play||RIC.again,p:1,f:()=>XPPLAY(()=>{plMode='cr';crSel=g+1;startRace()})}:null;resBtns(nxt?[lob,kar,nxt]:[lob,kar],nxt?'rbg3':'')}}
   else{const nl=$$('nxl');if(nl)nl.classList.remove('nxb')}
  }catch(e){console.warn(e)}return r};
