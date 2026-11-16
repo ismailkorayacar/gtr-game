@@ -1,1 +1,1 @@
-{"v": "v9.60.1", "n": ["Süreli etkinlik bitişinde \"KAZANDIN!\" yerine \"TEBRİKLER!\"; \"Hiç kaza yapmadan\" yazısı artık sadece gerçekten hiç çarpmadıysan görünüyor (hasarsız bonus dahil); etkinlik sonu ekranı: başlık üstte ortada ve tablonun üstüne binmiyor, ETKİNLİKLER/LOBİ/REKORLAR aynı boyutta, süre satırında puan yerine süre gösteriliyor"]}
+{"v": "v9.60.2", "n": ["Süreli etkinlikleri hiç çarpmadan bitirince +1000 coin bonus; bitiş ekranında km bilgisi kaldırıldı; bonus 0 ise \"+0 BONUS\" satırı artık gösterilmiyor"]}
