@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.56</title>
+<title>gtr_game_v9.57</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.56</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.57</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3514,10 +3514,10 @@ function evFinish(win){if(EV&&PVE.includes(EV.id))return rrDone(win);{const w=$(
  show('ov',false);show('res',true);evDeco($('res'),e,true);if(ok&&e.endless&&!win&&rec&&sc>0)resConf();if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}}
 
 let evrSel=0,evrLast=0,evrFromRes=false,evrFromRr=false;function evRecHtml(e){let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}let h='<h4>ETKİNLİK REKORLARI</h4>';if(!a.length)return h+'<div class="evr"><span>Henüz kayıt yok</span><b>-</b></div>';a.slice(0,5).forEach((r,k)=>{h+='<div class="evr"><span>'+(k+1)+'. '+esc(r.n)+'</span><b>'+(e.ta&&r.k!=null?(+r.k).toFixed(2)+' km · ':'')+r.s+(e.drift?' DP':'')+'</b></div>'});return h}
-function evRecAdd(e,sc,win){if(sc<=0)return 0;let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const r={id:Date.now(),n:sel.name,s:sc,k:+(((win?FINISH:crashDist)||0)/1000).toFixed(2),c:CARS[sel.car][1],w:win?1:0};a.push(r);a.sort((x,y)=>y.s-x.s);a=a.slice(0,30);try{localStorage.setItem('th_evl_'+e.id,JSON.stringify(a))}catch(x){}evrLast=r.id;try{setTimeout(()=>window.fbPushNow&&window.fbPushNow(),600)}catch(x){}return r.id}
+function evRecAdd(e,sc,win,tm){if(sc<=0)return 0;let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const r={id:Date.now(),n:sel.name,s:sc,k:+(((win?FINISH:crashDist)||0)/1000).toFixed(2),c:CARS[sel.car][1],w:win?1:0};if(tm>0)r.t=+(+tm).toFixed(2);a.push(r);a.sort((x,y)=>y.s-x.s);a=a.slice(0,30);try{localStorage.setItem('th_evl_'+e.id,JSON.stringify(a))}catch(x){}evrLast=r.id;try{setTimeout(()=>window.fbPushNow&&window.fbPushNow(),600)}catch(x){}return r.id}
 function evRecShow(i){evrSel=i;const e=EVS[i];$('evrn').textContent=e.nm.toUpperCase();$('evrt').style.display='none';
  let a=[];try{a=JSON.parse(localStorage.getItem('th_evl_'+e.id)||'[]')}catch(x){}const L=$('evrl');L.innerHTML='';
- const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+'<i class="pki">P</i>'+r.s+(e.drift?' DP':'')+'</b>';L.appendChild(d)})};
+ const rows=(a,mine)=>{L.innerHTML='';a.slice(0,15).forEach((r,k)=>{const d=document.createElement('div');d.className='lr'+((r.id===evrLast||r.me)?' me':'');d.innerHTML='<span class="rk">'+(k+1)+'</span><span class="ln">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><b class="evpt">'+(e.ta&&r.k!=null?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+(+r.k).toFixed(2)+' km</span>':'')+(PVE.includes(e.id)&&r.t>0?'<span style="font:800 13px system-ui;opacity:.85;margin-right:10px">'+TMI+fmtRT(r.t)+'</span>':'')+'<i class="pki">P</i>'+r.s+(e.drift?' DP':'')+'</b>';L.appendChild(d)})};
  if(a.length){const b1=a.filter(r=>r.n===sel.name).sort((x,y)=>y.s-x.s)[0]||a[0];rows([b1])}else L.innerHTML='<div class="evemp">Bu etkinlik için henüz kayıt yok.<br>İlk rekoru sen koy!</div>';
  try{if(window.fbEvTop)window.fbEvTop(e.id).then(rm=>{if(!rm||!rm.length||evrSel!==i)return;const mn=(window.fbUser&&window.fbUser.uid),mine=a.filter(r=>r.n===sel.name).sort((x,y)=>y.s-x.s)[0],m=rm.slice();
    if(mine){const j=m.findIndex(r=>r.me);if(j<0)m.push({n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id});else if(mine.s>m[j].s)m[j]={n:mine.n,s:mine.s,k:mine.k,c:mine.c,me:1,id:mine.id}}
@@ -3818,8 +3818,8 @@ function padStep(dt,live){const on=!!EV&&(EV.id==='dc'||EV.tx)&&st!=='menu'&&st!
  const myName=()=>cleanName(ls('th_n'))||'Pilot';
  const tot=()=>+ls('th_tot')||0;
  const evKey=id=>String(id).replace(/[^A-Za-z0-9_]/g,'_');
- const evSnap=()=>{const o={},n=myName();let any=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||k.indexOf('th_evl_')!==0)continue;let a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}a=a.filter(r=>r&&r.n===n&&+r.s>0);if(!a.length)continue;a.sort((x,y)=>y.s-x.s);const r=a[0];o[evKey(k.slice(7))]={s:+r.s,k:+r.k||0,c:String(r.c||'').slice(0,40)};any=1}}catch(e){}return any?o:null};
- window.fbEvTop=async function(id){if(!fb||!user)return null;try{const ek=evKey(id),q=await fb.F.getDocs(fb.F.query(fb.F.collection(fb.db,'lb'),fb.F.orderBy('ev.'+ek+'.s','desc'),fb.F.limit(30))),a=[];q.forEach(d=>{const x=d.data(),v=x.ev&&x.ev[ek];if(v&&+v.s>0)a.push({u:d.id,n:x.n||'?',s:+v.s,k:+v.k||0,c:v.c||'',me:d.id===user.uid})});return a}catch(e){console.warn('fb evTop',e);return null}};
+ const evSnap=()=>{const o={},n=myName();let any=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||k.indexOf('th_evl_')!==0)continue;let a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}a=a.filter(r=>r&&r.n===n&&+r.s>0);if(!a.length)continue;a.sort((x,y)=>y.s-x.s);const r=a[0];o[evKey(k.slice(7))]={s:+r.s,k:+r.k||0,c:String(r.c||'').slice(0,40),t:+r.t||0};any=1}}catch(e){}return any?o:null};
+ window.fbEvTop=async function(id){if(!fb||!user)return null;try{const ek=evKey(id),q=await fb.F.getDocs(fb.F.query(fb.F.collection(fb.db,'lb'),fb.F.orderBy('ev.'+ek+'.s','desc'),fb.F.limit(30))),a=[];q.forEach(d=>{const x=d.data(),v=x.ev&&x.ev[ek];if(v&&+v.s>0)a.push({u:d.id,n:x.n||'?',s:+v.s,k:+v.k||0,t:+v.t||0,c:v.c||'',me:d.id===user.uid})});return a}catch(e){console.warn('fb evTop',e);return null}};
  window.fbPushNow=()=>{try{push(true)}catch(e){}};
  async function push(force){
   if(!fb||!user||busy)return;const d=snap(),n=myName(),key=n+'|'+tot()+'|'+JSON.stringify(evSnap()||0)+'|'+d;if(!force&&key===lastKey)return;
@@ -3965,6 +3965,8 @@ function rrPlay(dt){if(rec.length<2)return;rrT+=dt;const t0=rec[0][0],t1=rec[rec
  traffic.forEach((t,k)=>{const o=5+k*5;t.on=a[o]>0;t.mesh.visible=t.on;if(!t.on)return;const ok=b[o]>0&&Math.abs(b[o+2]-a[o+2])<30;t.x=ok?L(a[o+1],b[o+1]):a[o+1];t.z=ok?L(a[o+2],b[o+2]):a[o+2];t.yaw=ok?L(a[o+3],b[o+3]):a[o+3];t.v=a[o+4];t.vx=0;t.yr=0});
  for(const o of rrAll){if(TH.key!=='forest'||o.on===false||o.v<5||Math.abs(o.z-P.z)>110)continue;const rz=o.z+o.hl*.8;for(const sx of[-.9,.9])if(R()<.171)rgDust(o.x+sx,.3+HYf(rz)-HYf(P.z),rz,1,1.8,.756,1.0,-o.v*.85,0x2c1d16,.4)}}
 function rrCam(){const a=rrT*.12;cam.position.set(P.x*.7+cx(P.z+13)+Math.sin(a)*3.5,3.4+Math.sin(a*.7)*.6,P.z+13);cam.lookAt(P.x*.6+cx(P.z-8),1.1,P.z-8)}
+const RICEV='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="1.8" stroke-linejoin="round"><path d="M11 3l2.4 6.6L20 12l-6.6 2.4L11 21l-2.4-6.6L2 12l6.6-2.4z"/><path d="M19 2.5l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/></svg>';
+const TMI='<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg>';
 function fmtRT(s){s=Math.max(0,s);const m=Math.floor(s/60);return m+':'+(s-m*60).toFixed(2).padStart(5,'0')}
 function rrDone(w){if(RRX)return;const win=RRFIN>0||!!w;
  document.body.classList.remove('rp');$('rp').style.display='none';$('win').style.display='none';
@@ -3974,14 +3976,14 @@ function rrDone(w){if(RRX)return;const win=RRFIN>0||!!w;
  rows.sort((a,b)=>{if(!!a.dnf!==!!b.dnf)return a.dnf?1:-1;if(!!a.est!==!!b.est)return a.est?1:-1;if(!a.est&&!b.est)return a.fin-b.fin;return a.z-b.z});
  RRX=rows;const rank=rows.findIndex(r=>r.you)+1,PR=[2000,1000,500,0],prize=win?PR[rank-1]:0;
  coins+=prize;saveAcct();
- if(win){const cyc=EV.cyc,sc=(5-rank)*1000+Math.max(0,Math.round(300-RRFIN));evRecAdd(EV,sc,true);const b0=evBest(EV.id,cyc);if(sc>b0){try{localStorage.setItem('th_evb_'+EV.id,JSON.stringify({c:cyc,s:sc}))}catch(x){}}}
+ if(win){const cyc=EV.cyc,sc=(5-rank)*1000+Math.max(0,Math.round(300-RRFIN));evRecAdd(EV,sc,true,RRFIN);const b0=evBest(EV.id,cyc);if(sc>b0){try{localStorage.setItem('th_evb_'+EV.id,JSON.stringify({c:cyc,s:sc}))}catch(x){}}}
  nosAct=false;pre=true;rrT=0;RRP=true;st='replay';
  try{sfx(rank===1?'win':'coin')}catch(x){}
  document.body.classList.add('rp','rrr');$('rri').style.display='none';show('ov',false);show('res',false);
  const C=['#ffd24a','#cfd6df','#d98a4a','#7d8696'];let h='<div class="rrt">'+(win?'ETKİNLİĞİ TAMAMLADIN':'MAKSİMUM HASAR')+'</div><div class="rrp">'+(win&&rank===1?'<div class="rrc"><b>TEBRİKLER</b><span>1. '+esc(sel.name||'Pilot')+'</span></div>':'')+'<h3>SIRALAMA</h3>';
- rows.forEach((r,i)=>{h+='<div class="rrw'+(r.you?' me':'')+'"><span class="k" style="background:'+C[i]+'">'+(i+1)+'</span><span class="nm">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><span class="tt">'+(r.dnf?'BİTİRMEDİ':(r.est?'~':'')+fmtRT(r.fin))+'</span><span class="cn2">'+(PR[i]&&!r.dnf?COIN+'<b class="pa">+'+PR[i]+'</b>':'-')+'</span></div>'});
- h+='</div><div class="rrb rbg"><button id="rrhm" class="btn rbn" type="button">LOBİ</button><button id="rrag" class="btn rbn p" type="button">TEKRAR OYNA</button><button id="rrrc" class="btn rbn" type="button">ETKİNLİK REKORLARI</button><button id="rrsh" class="btn rbn" type="button">MAĞAZA</button></div>';
- const el=$('rrr');el.innerHTML=h;el.style.display='flex';evDeco(el,EV,false);{const E=EV,eid=E&&E.id;[['rrhm','lobby'],['rrag','again'],['rrrc','trophy'],['rrsh','shop']].forEach(q=>$(q[0]).style.setProperty('--ic',icUrl(RIC[q[1]])));$('rrhm').onclick=()=>toMenu();$('rrag').onclick=rrAgain;$('rrrc').onclick=()=>{const i=EVS.findIndex(x=>x.id===eid);if(i>=0){evrFromRes=false;evrFromRr=true;window.__evrRes=true;evRecShow(i);$('rrr').style.display='none';show('evr',true)}else{toMenu();show('ov',false);evList();show('evs',true)}};$('rrsh').onclick=()=>{toMenu();shopFrom='ov';openShop()}}}
+ rows.forEach((r,i)=>{h+='<div class="rrw'+(r.you?' me':'')+'"><span class="k" style="background:'+C[i]+'">'+(i+1)+'</span><span class="nm">'+esc(r.n)+'<small>'+esc(r.c)+'</small></span><span class="tt">'+(r.dnf?'BİTİRMEDİ':TMI+(r.est?'~':'')+fmtRT(r.fin))+'</span><span class="cn2">'+(PR[i]&&!r.dnf?COIN+'<b class="pa">+'+PR[i]+'</b>':'-')+'</span></div>'});
+ h+='</div><div class="rrb rbg"><button id="rrev" class="btn rbn" type="button" style="grid-column:1/-1">ETKİNLİKLER</button><button id="rrhm" class="btn rbn" type="button">LOBİ</button><button id="rrag" class="btn rbn p" type="button">TEKRAR OYNA</button><button id="rrrc" class="btn rbn" type="button">ETKİNLİK REKORLARI</button><button id="rrsh" class="btn rbn" type="button">MAĞAZA</button></div>';
+ const el=$('rrr');el.innerHTML=h;el.style.display='flex';evDeco(el,EV,false);{const E=EV,eid=E&&E.id;[['rrev','ev'],['rrhm','lobby'],['rrag','again'],['rrrc','trophy'],['rrsh','shop']].forEach(q=>$(q[0]).style.setProperty('--ic',icUrl(q[1]==='ev'?RICEV:RIC[q[1]])));$('rrhm').onclick=()=>toMenu();$('rrev').onclick=()=>{toMenu();show('ov',false);evList();show('evs',true)};$('rrag').onclick=rrAgain;$('rrrc').onclick=()=>{const i=EVS.findIndex(x=>x.id===eid);if(i>=0){evrFromRes=false;evrFromRr=true;window.__evrRes=true;evRecShow(i);$('rrr').style.display='none';show('evr',true)}else{toMenu();show('ov',false);evList();show('evs',true)}};$('rrsh').onclick=()=>{toMenu();shopFrom='ov';openShop()}}}
 function rrAgain(){document.body.classList.remove('rp','rrr');$('rri').style.display='none';$('rrr').style.display='none';startRace()}
 function rrGo(){toMenu();show('ov',false);fromPm=false;evList();show('evs',true)}
 function rallyBuild(){rgPts=[];rgI=0;rgSand=[];rgFall=[];rgCl=[];
@@ -4590,6 +4592,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.57',n:['Seviye animasyonunda halka artık gerçek XP ilerlemesinden başlıyor ve "Sv." yerine "Seviye" yazıyor; PvE sıralama tablosunda süre ikonu eklendi; PvE etkinlik rekorlarında süre de görünüyor; olumlu etkinlik sonu ekranlarına ETKİNLİKLER butonu eklendi']},
 {v:'v9.56',n:['Güneşli haritadaki gerçek ağaç modelleri ve arazi dağ manzarası artık tüm haritalarda (Speedrun/tünel, Ralli ve Festival hariç); her haritanın kendi hava, ışık ve sis ayarı korunur']},
 {v:'v9.55',n:['Etkinlik Rekorları: açılışta artık sadece senin en yüksek rekorun görünüyor (birden fazla kaydın görünüp kaybolması düzeltildi); diğer oyuncuların rekorları çevrimiçi yüklenince listeye eklenir']},
 {v:'v9.54',n:['Etkinlik Rekorları: artık diğer oyuncuların bu etkinlikteki en iyi rekorları da görünüyor (çevrimiçi sıralama, oyuncu başına en iyi skor)']},
@@ -4983,7 +4986,7 @@ async function ringFlash(){const rw=q$('.rw');rw.classList.add('fl');const r=doc
 async function lvlScene(it){
  lvl.innerHTML='<div class="rays"></div>';lvl.classList.add('on');
  const k=document.createElement('div');k.className='k';k.textContent=it.p?'PRESTİJ!':'SEVİYE ATLADIN';
- const n=document.createElement('div');n.className='n';n.innerHTML=(it.p?'★'+it.star:'Sv. '+it.lv);
+ const n=document.createElement('div');n.className='n';n.innerHTML=(it.p?'★'+it.star:'Seviye '+it.lv);
  if(!it.u){lvl.appendChild(k);lvl.appendChild(n);sfxs('win');sparkle(n,16);
   if(it.c){const c=document.createElement('div');c.className='cn';c.innerHTML=COIN+' +'+tr(it.c);lvl.appendChild(c);setTimeout(()=>sfxs('coin'),600)}
   await wait(it.c?2600:1900)}
@@ -5004,13 +5007,13 @@ async function playAll(){
  const cnt=Q=>Q.reduce((a,s)=>a+Math.max(1,s.e.length)+s.l.filter(l=>l.u).length,0);
  let done=0,total=cnt(qGet());
  O.style.display='flex';requestAnimationFrame(()=>O.classList.add('on'));fast=false;nt.innerHTML='';pbi.style.width='0';
- let Qc;
- while((Qc=qGet()).length){const S=Qc[0];total=Math.max(total,done+cnt(Qc));let x=S.f,lq=S.l.filter(l=>!l.u),uq=S.l.filter(l=>l.u);
+ let Qc;let xb=null;
+ while((Qc=qGet()).length){const S=Qc[0];total=Math.max(total,done+cnt(Qc));if(xb===null){const sm=Qc.reduce((a,s)=>a+s.e.reduce((b,e)=>b+(e[1]||0),0),0);xb=Math.max(0,xpGet()-sm)}let x=xb;xb+=S.e.reduce((b,e)=>b+(e[1]||0),0);let lq=S.l.filter(l=>!l.u),uq=S.l.filter(l=>l.u);
   nt.innerHTML='';
   let i0=info(x);setLvTxt(i0);setRing(i0.cur);pbS.textContent=S.e.length?'XP HESAPLANIYOR':'KİLİTLER AÇILIYOR';q$('.ttl').textContent=S.e.length?'XP HESAPLANIYOR':'YENİ ÖDÜLLER';await wait(450);
   for(const ev of S.e){toast(ev[0],ev[1]);sfxs('pick');let rem=ev[1];await wait(380);
    while(rem>0){const i=info(x),room=i.per-i.cur,step=Math.min(room,rem);await tween(i.cur,i.cur+step,Math.max(450,Math.min(1400,step*1.1)));x+=step;rem-=step;
-    if(i.cur+step>=i.per){const it=lq.shift();await ringFlash();if(it)await lvlScene(it);const ni=info(x);setLvTxt(ni);setRing(0)}}
+    if(i.cur+step>=i.per){let it=lq.shift();if(!it){const tt=i.t+1;it={lv:tt%PC+1,star:Math.floor(tt/PC),p:tt%PC===0,c:0,car:null,cr:0}}await ringFlash();if(it)await lvlScene(it);const ni=info(x);setLvTxt(ni);setRing(0)}}
    done++;pbi.style.width=Math.round(done/total*100)+'%';await wait(420)}
   while(lq.length){await lvlScene(lq.shift())}
   for(const u of uq){await lvlScene(u);done++;pbi.style.width=Math.round(done/total*100)+'%'}
@@ -5049,6 +5052,7 @@ const _ef=evFinish;evFinish=function(win){const e=EV;if(!e||PVE.includes(e.id))r
  const ok=!!(win||(e.endless&&e.tout)),spd=!!(e.ta&&e.endless);let b0=0;try{b0=evBest(e.id,e.cyc)}catch(x){}
  const dist=((win?FINISH:crashDist)||0)/1000,d0=XPDM();
  XPM={pos:ok,wu:0};let r;try{r=_ef.apply(this,arguments)}finally{XPM=null}
+ try{if(ok){const x=$$('rbx');if(x){const b=document.createElement('button');b.type='button';b.className='btn rbn';b.textContent='ETKİNLİKLER';b.style.setProperty('--ic',icUrl(RICEV));b.onclick=()=>{toMenu();show('ov',false);evList();show('evs',true)};x.insertBefore(b,x.firstChild);x.className='rbg rbcr'}}}catch(x){console.warn(x)}
  try{if(ok){const evs=[];
   if(spd){const km=dist;if(km>0)evs.push(['Gidilen mesafe · '+km.toFixed(2)+' km',Math.round(km*100)]);let nb=0;try{nb=evBest(e.id,e.cyc)}catch(x){}if(nb>b0)evs.push(['Yeni rekor',500])}
   else if(win){evs.push(['Yarış tamamlandı',100]);if(d0<=0)evs.push(['Hasarsız bitirme',250]);
