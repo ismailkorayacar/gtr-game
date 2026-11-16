@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.55</title>
+<title>gtr_game_v9.56</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.55</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.56</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt">KAZANDIN!</div><div class="ws"><span id="wk">10</span> KM · HİÇ KAZA YAPMADAN</div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2626,6 +2626,7 @@ function v7_lvMark(){wuMark()}
 
 // ---------- v8: seviye temaları ----------
 const DAYSK=[[0,'#1a55b0'],[.3,'#4a93e0'],[.48,'#a4cdf2'],[.56,'#e6f0f9'],[1,'#a3b3a2']];
+const HDX=[11,13,14,16,17],HDK=L=>HDX.indexOf(L)<0; /* v9.56: gerçek ağaç + arazi dağları; tünel(11,16), ralli(13,14), festival(17) hariç */
 const THS=[null,
  {n:'Gündüz',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xcfe0ee,110,640],sc:0xffeed0,si:2.5,so:[30,45,19],hm:[0xc4dcff,0x5a6a40,.62],exp:.95,cu:[28,6,.0042,.009,1],ch:[]},
  {n:'Gündüz · virajlı yol',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xbcd6ee,150,560],sc:0xfff1d8,si:2.4,so:[30,45,19],hm:[0xbcd8ff,0x5a6a40,.6],exp:.95,cu:[34,14,.0045,.011,1],ch:['Yol daha virajlı']},
@@ -2752,7 +2753,7 @@ function applyTheme(L){L=Math.max(1,Math.min(17,L||1));if(curTh===L)return;curTh
  scene.fog.color.set(T.fog[0]);scene.fog.near=T.fog[1]*(T.key==='desert'?.8:1);scene.fog.far=T.fog[2]*(T.key==='desert'?.8:1);
  HEMI.color.set(T.hm[0]);HEMI.groundColor.set(T.hm[1]);HEMI.intensity=T.hm[2];sun.color.set(T.sc);sun.intensity=T.si;SO=T.so;
  const gm=ground.material;if(T.gm){gm.map=null}else gm.map=T.wn?snowGT:(T.key==='forest'&&rgGT)||grassT;gm.color.set(T.gc||0xffffff);gm.needsUpdate=true;
- if(window.treeMat){treeMat.color.set(T.tc||0xffffff);if(treeMat.userData.snowU)treeMat.userData.snowU.value=(T.key==='snow'||T.wn)?1:0}if(window.hillMat)hillMat.color.set(T.hc||0xffffff);(window.ridgeM||[]).forEach(m=>m.material.color.set(T.rc||0xffffff));rgRidgeSwap(T.wn?'w':(L===1?'s':true));
+ if(window.treeMat){treeMat.color.set(T.tc||0xffffff);if(treeMat.userData.snowU)treeMat.userData.snowU.value=(T.key==='snow'||T.wn)?1:0}if(window.hillMat)hillMat.color.set(T.hc||0xffffff);(window.ridgeM||[]).forEach(m=>m.material.color.set(T.rc||0xffffff));rgRidgeSwap(HDK(L)?'n':(T.wn?'w':true));
  asphaltMat.roughness=T.wet?.16:.93;asphaltMat.envMapIntensity=T.wet?2.2:1;v8_pudM.color.set(T.hl?0x5a6c92:0xc8d6e6);asphaltMat.color.set(T.wet?0x6c7178:0xffffff);{const GL={day:[.55,1.5,0xffffff],dawn:[.55,1.5,0xffffff],dusk:[.55,1.5,0xffffff],night:[.3,1.9,0x8c929c],fnight:[.3,1.9,0x8c929c],fog:[.5,1.3,0xffffff]}[T.key];if(!T.wet&&GL){asphaltMat.roughness=GL[0];asphaltMat.envMapIntensity=GL[1];asphaltMat.color.set(GL[2])}}
  lampGlow.forEach(s=>s.visible=!!T.lamp);lamps.forEach(l=>{l.children[1].material.emissiveIntensity=T.lamp?3:1.2});
  {const fo=T.key==='forest',des=T.key==='desert',sn=T.key==='snow',nm=des?dirtRoadT:sn?snowRoadT:asT;if(asphaltMat.map!==nm){asphaltMat.map=asphaltMat.bumpMap=nm;asphaltMat.needsUpdate=true}
@@ -2947,7 +2948,7 @@ function mkRidge3(W,H,seed,layers){let s=seed;const rs=()=>{s=(s*1664525+1013904
 var rgSM=null;
 var rgRM=null;
 var rgWM=null;
-function rgRidgeSwap(fo){const rm=window.ridgeM||[];if(rm.length<3)return;if(!rm[0].userData.m0)rm.forEach(m=>m.userData.m0=m.material.map);
+function rgRidgeSwap(fo){if(fo==='n')return;const rm=window.ridgeM||[];if(rm.length<3)return;if(!rm[0].userData.m0)rm.forEach(m=>m.userData.m0=m.material.map);
  if(fo==='s'&&!rgSM){const HZ='206,223,238';rgSM=[mkRidge3(4096,384,1234567,[{c0:[150,170,200],c1:[205,218,235],low:.3,peak:.88,rough:.75,hz:HZ,ha:.7},{c0:[112,136,170],c1:[185,201,222],low:.15,peak:.7,rough:.8,hz:HZ,ha:.75}]),mkRidge3(4096,288,7654321,[{c0:[84,110,128],c1:[154,176,180],low:.14,peak:.85,rough:.6,hz:HZ,ha:.7},{c0:[58,90,86],c1:[120,148,130],low:.06,peak:.62,rough:.5,hz:HZ,ha:.75}]),mkRidge3(4096,176,424242,[{c0:[42,74,52],c1:[96,132,86],low:.25,peak:.88,rough:.3,pw:1.1,hz:HZ,ha:.55}])]}
  if(fo===true&&!rgRM)rgRM=[mkRidge2(2048,320,1234567,{clean:1,c0:[120,100,86],c1:[168,146,126],low:.08,peak:.8,snow:0,hz:'rgba(214,224,228,.9)'}),mkRidge2(2048,256,7654321,{clean:1,c0:[96,78,62],c1:[146,122,98],low:.06,peak:.72,snow:0,hz:'rgba(206,216,218,.8)'}),mkRidge2(2048,176,424242,{clean:1,c0:[74,58,44],c1:[116,94,70],low:.25,peak:.8,snow:0,hz:'rgba(196,208,208,.6)'})];
  if(fo==='w'&&!rgWM)rgWM=[mkRidge2(2048,320,1234567,{c0:[150,166,188],c1:[226,233,243],low:.1,peak:.82,snow:.6,hz:'rgba(228,236,244,.9)'}),mkRidge2(2048,256,7654321,{c0:[128,144,168],c1:[214,223,236],low:.08,peak:.74,snow:.55,hz:'rgba(224,233,242,.85)'}),mkRidge2(2048,176,424242,{c0:[104,120,142],c1:[196,208,224],low:.25,peak:.8,snow:.5,hz:'rgba(220,230,240,.7)'})];
@@ -4589,6 +4590,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.56',n:['Güneşli haritadaki gerçek ağaç modelleri ve arazi dağ manzarası artık tüm haritalarda (Speedrun/tünel, Ralli ve Festival hariç); her haritanın kendi hava, ışık ve sis ayarı korunur']},
 {v:'v9.55',n:['Etkinlik Rekorları: açılışta artık sadece senin en yüksek rekorun görünüyor (birden fazla kaydın görünüp kaybolması düzeltildi); diğer oyuncuların rekorları çevrimiçi yüklenince listeye eklenir']},
 {v:'v9.54',n:['Etkinlik Rekorları: artık diğer oyuncuların bu etkinlikteki en iyi rekorları da görünüyor (çevrimiçi sıralama, oyuncu başına en iyi skor)']},
 {v:'v9.53',n:['Kariyer tamamlanma: "Kariyer İlerlemesi" butonu kariyer ana ekranına döner','Yön tuşları: dokunma alanı genişletildi ve kenarlara/aralarına basılınca da algılanıyor (arada basılmama sorunu giderildi)','Yön tuşları tüm oyunda %5 büyütüldü, aralarındaki boşluk korundu']},
@@ -5179,9 +5181,10 @@ D.lv.forEach(o=>{const im=new THREE.InstancedMesh(mkG(o),[mT,mL],PER);im.frustum
 const _M=new THREE.Matrix4(),_Q=new THREE.Quaternion(),_V=new THREE.Vector3(),_S=new THREE.Vector3(),_E=new THREE.Euler();
 function hdStep(pz){hd.forEach(g=>{for(let i=0;i<PER;i++){const o=g.it[i];let d=(pz+130-o.z)%RNG;if(d<0)d+=RNG;o.z=pz+130-d;_Q.setFromEuler(_E.set(0,o.rot,0));g.im.setMatrixAt(i,_M.compose(_V.set(o.bx+cx(o.z),(uHs.value?HYf(o.z)-HYf(P.z):0),o.z),_Q,_S.set(o.s,o.s*(.94+(i%4)*.03),o.s)))}g.im.instanceMatrix.needsUpdate=true})}
 let hid=false;
-function sync(){const s=curTh===1;hd.forEach(g=>g.im.visible=s);if(s){treeS.forEach(g=>g.im.visible=false);hid=true}else if(hid){treeS.forEach(g=>g.im.visible=!(TH&&TH.fs));hid=false}}
+const LC={snow:0xeef4f8,desert:0xdad0a2};
+function sync(){const s=HDK(curTh);hd.forEach(g=>g.im.visible=s);if(s)mL.color.setHex(LC[TH&&TH.key]||0xcfd6c8);if(s){treeS.forEach(g=>g.im.visible=false);hid=true}else if(hid){treeS.forEach(g=>g.im.visible=!(TH&&TH.fs));hid=false}}
 const _a3=applyTheme;applyTheme=function(){const r=_a3.apply(this,arguments);try{sync()}catch(e){}return r};
-const _ts=treeStep;treeStep=function(pz){if(curTh===1){hdStep(pz);return}return _ts.apply(this,arguments)};
+const _ts=treeStep;treeStep=function(pz){if(HDK(curTh)){hdStep(pz);return}return _ts.apply(this,arguments)};
 sync();
 }catch(e){console.error('hd trees',e)}})();
 </script>
@@ -5204,14 +5207,14 @@ for(let d=0;d<ND;d++){const th=d*Math.PI/2,co=Math.cos(th),si=Math.sin(th);
   tk++}}
 const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(PA,3));g.setAttribute('normal',new THREE.BufferAttribute(NA,3));g.setAttribute('uv',new THREE.BufferAttribute(UA,2));g.setIndex(new THREE.BufferAttribute(IA,1));
 let ready=0;const mkT=(src,srgb)=>{const im=new Image(),t=new THREE.Texture(im);if(srgb)t.encoding=THREE.sRGBEncoding;t.anisotropy=4;im.onload=()=>{t.needsUpdate=true;if(++ready===2)sync()};im.src=src;return t};
-const mat=new THREE.MeshStandardMaterial({map:mkT(D.a,1),normalMap:mkT(D.nm,0),roughness:1,metalness:0,envMapIntensity:.35});mat.color.setRGB(.42,.42,.42);
-mat.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <fog_fragment>','#ifdef USE_FOG\nfloat ff=min(1.,smoothstep(fogNear,fogFar,fogDepth)*.5+smoothstep(600.,880.,fogDepth));gl_FragColor.rgb=mix(gl_FragColor.rgb,fogColor,ff);\n#endif')};
+const UK={value:.5};const mat=new THREE.MeshStandardMaterial({map:mkT(D.a,1),normalMap:mkT(D.nm,0),roughness:1,metalness:0,envMapIntensity:.35});mat.color.setRGB(.42,.42,.42);
+mat.onBeforeCompile=sh=>{sh.uniforms.uFk=UK;sh.fragmentShader='uniform float uFk;\n'+sh.fragmentShader.replace('#include <fog_fragment>','#ifdef USE_FOG\nfloat ff=min(1.,smoothstep(fogNear,fogFar,fogDepth)*uFk+smoothstep(600.,880.,fogDepth));gl_FragColor.rgb=mix(gl_FragColor.rgb,fogColor,ff);\n#endif')};
 const tm=new THREE.Mesh(g,mat);tm.frustumCulled=false;tm.visible=false;tm.renderOrder=-10;tm.matrixAutoUpdate=false;
 tm.onBeforeRender=()=>{const e=tm.matrixWorld.elements;tm.matrixWorld.identity();e[12]=cam.position.x;e[14]=cam.position.z};
 tm.onAfterRender=r=>{try{r.clearDepth()}catch(x){}};
 scene.add(tm);
 let hid=false;
-function sync(){const on=curTh===1&&ready>=2;tm.visible=on;const rm=window.ridgeM||[];if(on){rm.forEach(m=>m.visible=false);hid=true}else if(hid){rm.forEach(m=>m.visible=true);hid=false}}
+function sync(){const on=HDK(curTh)&&ready>=2;tm.visible=on;if(on){try{UK.value=(scene.fog&&scene.fog.far<500)?1:.5;const sn=TH&&(TH.key==='snow'||TH.wn);mat.color.setRGB(sn?.62:.42,sn?.66:.42,sn?.74:.42)}catch(e){}}const rm=window.ridgeM||[];if(on){rm.forEach(m=>m.visible=false);hid=true}else if(hid){rm.forEach(m=>m.visible=true);hid=false}}
 const _a4=applyTheme;applyTheme=function(){const r=_a4.apply(this,arguments);try{sync()}catch(e){}return r};
 sync();
 }catch(e){console.error('terrain',e)}})();
