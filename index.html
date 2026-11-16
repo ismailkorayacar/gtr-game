@@ -5410,7 +5410,7 @@ function init(e){clearG();G.on=true;G.key=gk(e);G.n=0;R.Z=[];R.X=[];R.Y=[];const
 function off(){G.on=false;G.ph='';if(G.mesh)G.mesh.visible=false;hudH()}
 function hudH(){const h=$g('gdl');if(h&&h.style.display!=='none')h.style.display='none'}
 function hud(txt,cls){let h=$g('gdl');if(!h){h=document.createElement('div');h.id='gdl';document.body.appendChild(h)}if(h.style.display!=='flex')h.style.display='flex';if(h._t!==txt||h._c!==cls){h.innerHTML=txt;h.className=cls;h._t=txt;h._c=cls}}
-function stepG(){
+function ghTick(){
  const e=(typeof EV!=='undefined')?EV:null;
  if(!e||!GHID.includes(e.id)||st==='menu'){if(G.on||G.ph)off();return}
  if(st==='count'&&G.ph!=='c'){init(e);G.ph='c'}
@@ -5432,7 +5432,7 @@ function stepG(){
  const dl=raceT-tg,ab=Math.abs(dl);
  hud('<i>👻</i><span>'+String(G.rec.n||'?').slice(0,10).replace(/[<>&]/g,'')+'</span><b>'+(dl>0?'+':'−')+ab.toFixed(2)+'</b>',dl>0?'bh':'ah');
 }
-const _stp=step;step=function(dt){_stp(dt);try{stepG()}catch(x){if(!stepG.e){stepG.e=1;console.warn('ghost',x)}}};
+const _stp=step;step=function(dt){_stp(dt);try{ghTick()}catch(x){if(!ghTick.e){ghTick.e=1;console.warn('ghost',x)}}};
 /* ---- kaydet ---- */
 function save(e){if(R.Z.length<10)return;const key=gk(e),tm=+(+raceT).toFixed(2),sc=Math.floor(+score||0),old=jget('gh_'+key);
  const better=!old||(e.id==='tss'?sc>(+old.s||0):tm<(+old.t||1e9));if(!better)return;
