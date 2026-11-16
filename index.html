@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.60.2</title>
+<title>gtr_game_v9.60.3</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1641,7 +1641,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .rcnw{display:inline-flex!important;align-items:center;gap:4px;vertical-align:middle;white-space:nowrap}.rcnw .cn{width:1.15em!important;height:1.15em!important;font-size:.85em!important;line-height:1.15em!important;vertical-align:0!important;flex:none;margin:0!important}
 .rrw .cn2{display:flex!important;align-items:center;justify-content:flex-end;gap:5px;min-width:104px!important;white-space:nowrap}.rrw .cn2 .cn{width:22px!important;height:22px!important;font-size:14px!important;line-height:22px!important;vertical-align:0!important;flex:none}.rrw .cn2 .pa{display:inline-block;min-width:5.6ch;text-align:left;font-weight:inherit;line-height:22px}
 #cusm:empty{display:none!important}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.2</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.60.3</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2339,7 +2339,7 @@ function finish(win){document.body.classList.remove('rp');$('rp').style.display=
  $('op').innerHTML='<b>'+esc(sel.name)+'</b><br>Toplam puan: <b style="color:#ffd24a;font-size:30px">'+Math.floor(score)+'</b><br>Mesafe: '+((win?FINISH:crashDist)/1000).toFixed(2)+' / '+sel.km+' km<br>Araç hasarı: %'+Math.round(100-P.hp)+'<br>'+COIN+' Kazanılan: +'+earn+(win?' (bitirme ödülü +'+bonus+')':'')+'<br>Toplam bakiye: '+COIN+' '+coins;
  $('ov').style.display='flex';goLabel='TEKRAR OYNA';
  if(win){winEnd=true;st='win'}else{reset();setCar();st='menu'}mark()}
-function startWin(){mAdd('win',1);mSave();document.body.classList.add('wn');st='win';winT=0;winC=false;winEnd=false;nosAct=false;wDir=P.x>=0?-1:1;traffic.forEach(t=>{t.on=false;t.mesh.visible=false});sfx('win');$('wk').textContent=sel.km;try{const tm=!!(EV&&!PVE.includes(EV.id)&&(isTE(EV)||EV.ta));$('wtt').textContent=tm?'TEBRİKLER!':'KAZANDIN!';const dm=window.XPDMX?window.XPDMX():((+dmgP||0)>.4||window.__hitC?1:0);$('wnc').style.display=dm>0?'none':''}catch(e){}$('wbl').textContent=EV&&(EV.id==='rg'||EV.id==='wr')?'COİN':'BONUS';$('wb').textContent=EV?((EV.id==='rg'||EV.id==='wr')?raceCoins+evBonus():evBonus()):Math.round((sel.km*200)*v7_coinM());{const d=isDR();$('wbl').style.display=d?'none':'';$('wbp').style.display=d?'none':'';if(d)$('wb').textContent=100}{const w=!!(CR&&CR.wu),ws=document.querySelector('#win .ws');if(ws)ws.style.display=w?'none':'';document.querySelector('#win .wc').style.display=w?'none':'';if(!w){const nb=ncBonus();if(nb>0)$('wb').textContent=(+$('wb').textContent||0)+nb;if(!(+$('wb').textContent>0))document.querySelector('#win .wc').style.display='none'}}$('win').style.display='block';conf.width=innerWidth;conf.height=innerHeight;cp=[];for(let i=0;i<170;i++)cp.push(newC(true))}
+function startWin(){mAdd('win',1);mSave();document.body.classList.add('wn');st='win';winT=0;winC=false;winEnd=false;nosAct=false;wDir=P.x>=0?-1:1;traffic.forEach(t=>{t.on=false;t.mesh.visible=false});sfx('win');$('wk').textContent=sel.km;try{const tm=!!((EV&&!PVE.includes(EV.id)&&(isTE(EV)||EV.ta))||(CR&&CR.wu));$('wtt').textContent=tm?'TEBRİKLER!':'KAZANDIN!';const dm=window.XPDMX?window.XPDMX():((+dmgP||0)>.4||window.__hitC?1:0);$('wnc').style.display=dm>0?'none':''}catch(e){}$('wbl').textContent=EV&&(EV.id==='rg'||EV.id==='wr')?'COİN':'BONUS';$('wb').textContent=EV?((EV.id==='rg'||EV.id==='wr')?raceCoins+evBonus():evBonus()):Math.round((sel.km*200)*v7_coinM());{const d=isDR();$('wbl').style.display=d?'none':'';$('wbp').style.display=d?'none':'';if(d)$('wb').textContent=100}{const w=!!(CR&&CR.wu),ws=document.querySelector('#win .ws');if(ws)ws.style.display=w?'none':'';document.querySelector('#win .wc').style.display=w?'none':'';if(!w){const nb=ncBonus();if(nb>0)$('wb').textContent=(+$('wb').textContent||0)+nb;if(!(+$('wb').textContent>0))document.querySelector('#win .wc').style.display='none'}}$('win').style.display='block';conf.width=innerWidth;conf.height=innerHeight;cp=[];for(let i=0;i<170;i++)cp.push(newC(true))}
 function winStep(dt){if(buyAnim){buyStep(dt);return}winT+=dt;if(TX&&EV&&EV.tx&&TX.wt!=null){txWin(dt);return}skid.material.opacity=.1134;const Rr=5.2,om=2.75;
  if(!winC){P.v+=(15-P.v)*Math.min(1,dt*8);P.z-=P.v*dt;P.x+=((wDir<0?Rr:-Rr)-P.x)*Math.min(1,dt*6);P.yaw=0;if(winT>.35){winC=true;wcz=P.z;wTh=wDir<0?0:Math.PI}}
  else{wTh+=wDir*om*dt;const vx=-Rr*Math.sin(wTh)*wDir*om,vz=Rr*Math.cos(wTh)*wDir*om,base=Math.atan2(-vx,-vz),slip=Math.min(1,(winT-.35)*3)*.55;
@@ -4599,6 +4599,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.60.3',n:['Kariyerde bölüm bitince mağazadaki araç sinematiği oynuyor (araç bilgisi yok, sol altta bölüm adı); ısınma turu bitişinde "KAZANDIN!" yerine "TEBRİKLER!"']},
 {v:'v9.60.2',n:['Süreli etkinlikleri hiç çarpmadan bitirince +1000 coin bonus; bitiş ekranında km bilgisi kaldırıldı; bonus 0 ise "+0 BONUS" satırı artık gösterilmiyor']},
 {v:'v9.60.1',n:['Süreli etkinlik bitişinde "KAZANDIN!" yerine "TEBRİKLER!"; "Hiç kaza yapmadan" yazısı artık sadece gerçekten hiç çarpmadıysan görünüyor (hasarsız bonus dahil); etkinlik sonu ekranı: başlık üstte ortada ve tablonun üstüne binmiyor, ETKİNLİKLER/LOBİ/REKORLAR aynı boyutta, süre satırında puan yerine süre gösteriliyor']},
 {v:'v9.60',n:['Sprint, Ralli, Circuit ve Kış Rallisi etkinliklerinde sıralama artık süreye göre (en kısa süre üstte); skor ayrı bir değer olarak gösterilmeye devam ediyor; rekor tablosunda ve sonuç ekranında süre görünüyor']},
@@ -5276,5 +5277,26 @@ document.addEventListener('pointerdown',e=>{try{
  for(const[el,dd]of[[L,-1],[R,1]]){const r=el.getBoundingClientRect();if(x>=r.left-m&&x<=r.right+m&&y>=r.top-m&&y<=r.bottom+m){d=dd;p=el;break}}
  if(!d)return;e.preventDefault();try{p.setPointerCapture(e.pointerId)}catch(x){}ptrs.set(e.pointerId,d);upd()}catch(x){}},true);
 }catch(e){console.error('pad v953',e)}})();
+</script>
+<script>
+/* v9.60.3: kariyer bölüm sonu sinematiği (mağaza araç animasyonu, araç bilgisiz) */
+(function(){const g=id=>document.getElementById(id);try{
+ const _sw=startWin;startWin=function(){_sw.apply(this,arguments);
+  try{if(!(CR&&!CR.wu))return;
+   g('win').style.display='none';
+   window.__crCin=1;window.__crF=cam.fov;window.__crZ=P.z-BZ0;
+   buyAnim=true;document.body.classList.add('cin','intro');
+   winT=0;wDir=-1;P.x=-1.9;P.v=30;P.yaw=0;
+   const nm=String(CR.n==null?'':CR.n).toLocaleUpperCase('tr');
+   const I=g('intro');g('inl').textContent='BÖLÜM TAMAMLANDI';g('inc').textContent=nm;g('inc').style.fontSize=Math.max(24,Math.min(44,Math.floor(520/Math.max(1,nm.length))))+'px';g('inp').textContent='';
+   I.style.display='block';I.classList.remove('run','run3');void I.offsetWidth;I.classList.add('run3');const f=g('bfd');f.classList.remove('run');void f.offsetWidth;f.classList.add('run')
+  }catch(e){console.warn(e);window.__crCin=0;buyAnim=false}};
+ const _bs=buyStep;buyStep=function(dt){_bs.call(this,dt);if(window.__crCin)P.z+=window.__crZ};
+ const _bc=buyCam;buyCam=function(){if(!window.__crCin)return _bc();const z=window.__crZ;cam.fov=innerWidth<innerHeight?58:44;cam.updateProjectionMatrix();cam.position.set(cx(z)-1.9+5.8,.95,z);cam.lookAt(cx(z+30)-1.2,.8,z+30)};
+ const _eb=endBuy;endBuy=function(){if(!window.__crCin)return _eb.apply(this,arguments);
+  window.__crCin=0;buyAnim=false;document.body.classList.remove('cin','intro');g('intro').style.display='none';g('intro').classList.remove('run3');g('bfd').classList.remove('run');
+  try{cam.fov=window.__crF||cam.fov;cam.updateProjectionMatrix()}catch(e){}
+  winEnd=true;finish(true)};
+}catch(e){console.warn(e)}})();
 </script>
 </body></html>
