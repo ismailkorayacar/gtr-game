@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.66.12</title>
+<title>gtr_game_v9.66.13</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1730,8 +1730,8 @@ body.ls #pdN{right:calc(max(24px,env(safe-area-inset-right,0px)) + 7.5px);bottom
 body.ls #pdN svg{width:38px;height:23px}
 #hbt #gop{display:none!important}
 #pm #pmmsg{display:none!important;pointer-events:none}
-#mptip{position:fixed;z-index:80;display:none;transform:translate(-50%,-100%);max-width:78vw;white-space:normal;text-align:center;background:rgba(20,10,52,.97);border:1.5px solid #ffc24a;color:#ffd24a;font:800 12px/1.25 system-ui;padding:7px 12px;border-radius:10px;box-shadow:0 4px 14px #000a;pointer-events:none}
-#mptip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;width:10px;height:10px;background:rgba(20,10,52,.97);border-right:1.5px solid #ffc24a;border-bottom:1.5px solid #ffc24a;transform:translateX(-50%) rotate(45deg)}
+#mptip{position:fixed;z-index:80;display:none;transform:translate(-50%,-100%);max-width:78vw;white-space:normal;text-align:center;background:linear-gradient(180deg,rgba(46,28,112,.97),rgba(16,9,48,.98));border:1.5px solid rgba(176,107,255,.85);color:#fff;font:800 12px/1.3 system-ui;letter-spacing:.2px;padding:8px 14px;border-radius:12px;box-shadow:0 0 16px rgba(176,107,255,.5),0 4px 14px #000a;text-shadow:0 0 8px rgba(176,107,255,.8);pointer-events:none}
+#mptip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;width:10px;height:10px;background:rgba(16,9,48,.98);border-right:1.5px solid rgba(176,107,255,.85);border-bottom:1.5px solid rgba(176,107,255,.85);transform:translateX(-50%) rotate(45deg)}
 @media (orientation:landscape){#cr .k2t .e2bk{width:22px;height:22px;font-size:18px;margin:0 8px 0 0;padding:0 0 2px}#cr .k2s{display:block!important;font-size:9px;line-height:1;margin-top:-3px}#cr .k2t{padding:3px 62px 4px 16px;margin:0 0 0 4px;font-size:24px}#cr #crbody{gap:4px;justify-content:flex-start!important}}
 
 /* v9.66.5: ortak mod başlığı — ısınma turundaki kare geri butonu (aynı konum/tasarım) + solda pembe çizgili başlık */
@@ -1867,7 +1867,49 @@ body:not(.ls) #dv #pdG{width:calc(58px*var(--pk));height:calc(88px*var(--pk));ri
 body:not(.ls) #dv #pdB{width:calc(54px*var(--pk));height:calc(74px*var(--pk));right:calc(var(--r0) + 58px*var(--pk) + 7px);bottom:var(--b0)}
 body:not(.ls) #dv #pdH{width:calc(54px*var(--pk));height:calc(54px*var(--pk));right:calc(var(--r0) + 32.5px*var(--pk) + 3.5px);bottom:calc(env(safe-area-inset-bottom,0px) + 2px)}
 body:not(.ls) #dv #pdN{right:calc(var(--r0) + 3px*var(--pk));bottom:calc(var(--b0) + 88px*var(--pk) + 8px)}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.12</em></div></div>
+
+/* ===== v9.66.13 alt mod detay: başlıksız, geri butonu sol altta, küçük kare harita sağ üstte ===== */
+body #evd>.sh{position:static!important;height:0!important;min-height:0!important;padding:0!important;overflow:visible!important}
+body #evd>.sh .logo,body #evd>.sh>span{display:none!important}
+body #evd #evdback{position:fixed!important;left:14px!important;top:auto!important;right:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 104px)!important;margin:0!important;z-index:9}
+#evd #evdb.d2.d2.d2{top:calc(env(safe-area-inset-top,0px) + 74px)!important}
+#evd .d2t{display:flex;gap:10px;align-items:flex-start;min-width:0}
+#evd .d2h{position:static!important;flex:1 1 auto;min-width:0;border-radius:14px!important;background:linear-gradient(90deg,rgba(14,8,44,.9),rgba(14,8,44,.7))!important}
+#evd .d2m{order:0!important;flex:none;width:124px!important;height:124px!important;min-height:0}
+#evd .d2mi{flex-direction:column;align-items:flex-start;gap:3px;padding:5px 8px}
+#evd .d2mi b{font-size:11px;max-width:100%}
+#evd .d2mi span{font-size:10px;padding:1px 8px}
+#evd .d2i{overflow:visible!important;padding:8px 0 10px!important;border-radius:14px}
+#evd .d2t2{margin:2px 0 0;font:900 11px system-ui;letter-spacing:1.5px;color:#f0c8ff}
+#evd .d2b{padding-left:64px!important}
+@media (orientation:landscape){
+ body #evd #evdback{left:calc(96px + 8px)!important;bottom:calc(env(safe-area-inset-bottom,0px) + 16px)!important}
+ #evd #evdb.d2.d2.d2{top:calc(env(safe-area-inset-top,0px) + 84px)!important;display:grid!important;grid-template-columns:minmax(0,1fr) var(--ms)!important;grid-template-rows:auto minmax(0,1fr) auto!important;gap:0 12px;--ms:min(150px,40vh);padding:0 12px 4px 4px!important}
+ #evd .d2t{display:contents}
+ #evd .d2h{grid-column:1;grid-row:1;border-radius:14px 14px 0 0!important;padding:5px 12px 6px}
+ #evd .d2i{grid-column:1!important;grid-row:2!important;border-radius:0 0 14px 14px;overflow-y:auto!important;min-height:0;padding:8px 0 8px!important;background:linear-gradient(180deg,rgba(10,5,34,.7),rgba(10,5,34,.6))}
+ #evd .d2m{grid-column:2!important;grid-row:1/span 2!important;align-self:start;justify-self:end;width:var(--ms)!important;height:var(--ms)!important}
+ #evd .d2b{display:contents}
+ #evd .d2c{grid-column:1;grid-row:3;margin-top:8px;padding-left:54px!important}
+ #evd #evbx{grid-column:2;grid-row:3;margin-top:8px;flex-direction:row!important;width:auto!important;max-width:none!important;flex:none}
+ #evd #evbx .btn{flex:1 1 0;min-width:0;height:42px!important;font-size:12px!important;padding:0 4px!important}
+ #evd #evbx .btn.p{height:42px!important;font-size:14px!important}
+ #evd .d2k{flex-basis:84px;height:70px}
+}
+
+/* ===== v9.66.13 pedal renkleri HUD ile aynı (mor neon) ===== */
+#dv #pdG,#dv #pdB,#dv #pdH{border:2px solid #b06bff;background:linear-gradient(180deg,rgba(14,8,44,.78),rgba(8,6,28,.82));box-shadow:inset 0 0 0 1px rgba(176,107,255,.25),inset 0 -12px 20px rgba(0,0,0,.35),0 0 10px rgba(176,107,255,.35),0 5px 14px rgba(0,0,0,.5)}
+#dv #pdG.on,#dv #pdB.on,#dv #pdH.on{border-color:#c99bff;background:linear-gradient(180deg,rgba(120,70,220,.6),rgba(40,20,100,.75));box-shadow:0 0 18px rgba(176,107,255,.8),inset 0 0 0 1px rgba(201,155,255,.4)}
+#dv #pdH.rdy{border-color:#ff7ad0}#dv #pdH.dron{border-color:#ffb3e6}
+#dv #pdN{background:conic-gradient(#b06bff var(--nf),rgba(176,107,255,.22) 0)!important;box-shadow:0 0 10px rgba(176,107,255,.35),0 4px 12px rgba(0,0,0,.5)}
+#dv #pdN::before{background:radial-gradient(circle at 50% 30%,rgba(34,20,84,.96),rgba(8,6,28,.96))}
+body.nact #dv #pdN{background:conic-gradient(#e0c4ff 100%,#e0c4ff 0)!important}
+@media (orientation:portrait){
+ #evd #evdb.d2.d2.d2{display:flex!important;flex-direction:column}
+ #evd .d2b{margin-top:auto!important}
+ body #evd #evdback{bottom:calc(env(safe-area-inset-bottom,0px) + 80px + 12px)!important}
+}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.13</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3502,11 +3544,11 @@ function evCarFill(e){const C=$('d2c');if(!C)return;const L=e.car?[CARS.findInde
 function evOpen(i){evSel=i;evGrp=evGOf(EVS[i].id);const e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n);
  const mapN=e.hm||(e.id==='dc'?THS[c.th].n:THS[e.th].n),lenT=e.endless?'SINIRSIZ':(+(e.laps?e.lk:e.km)).toFixed(1)+' KM'+(e.laps?' · '+e.laps+' TUR':'');
  const db=$('evdb');db.className='d2';
- db.innerHTML='<div class="d2i"><div class="d2h"><small>'+e.tag+'</small><b>'+e.nm+'</b>'+(evGrp?'':'<span class="evt" data-i="'+i+'">◷ '+evFmt(c.end-Date.now())+'</span>')+'</div>'
-  +'<p class="d2p">'+e.ds+'</p>'
+ db.innerHTML='<div class="d2t"><div class="d2h"><small>'+e.tag+'</small><b>'+e.nm+'</b>'+(evGrp?'':'<span class="evt" data-i="'+i+'">◷ '+evFmt(c.end-Date.now())+'</span>')+'</div>'
+  +'<div class="d2m"><canvas></canvas><div class="d2mi"><b>'+mapN+'</b><span>'+lenT+'</span></div></div></div>'
+  +'<div class="d2i"><p class="d2p">'+e.ds+'</p>'
   +'<div class="d2g"><div><small>ZORLUK</small><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></div>'+(e.loc?'<div><small>KONUM</small><b>'+e.loc+'</b></div>':'')+'<div><small>ÖDÜL</small><b>'+COIN+'<em>'+e.reward+'</em></b></div></div>'
-  +'<h4 class="d2t">KURALLAR</h4><ul class="d2u">'+e.ru.map(x=>'<li>'+(/^Ödül:/.test(x)?x.replace(/(\d{3,})/g,'<span class="rcnw">'+COIN+' $1</span>'):x)+'</li>').join('')+'</ul></div>'
-  +'<div class="d2m"><canvas></canvas><div class="d2mi"><b>'+mapN+'</b><span>'+lenT+'</span></div></div>'
+  +'<h4 class="d2t2">KURALLAR</h4><ul class="d2u">'+e.ru.map(x=>'<li>'+(/^Ödül:/.test(x)?x.replace(/(\d{3,})/g,'<span class="rcnw">'+COIN+' $1</span>'):x)+'</li>').join('')+'</ul></div>'
   +'<div class="d2b"><div class="d2c" id="d2c"></div><div class="rbg" id="evbx"><button id="evpl" class="btn rbn p" type="button">OYNA</button><button id="evrk" class="btn rbn" type="button">REKORLAR</button></div></div>';
  $('evpl').style.setProperty('--ic',icUrl(RIC.play));$('evrk').style.setProperty('--ic',icUrl(RIC.trophyY));
  $('evpl').onclick=()=>{galEv=null;evStart()};$('evrk').onclick=()=>{evrFromRes=false;evRecShow(evSel);show('evd',false);show('evr',true)};
@@ -4763,6 +4805,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.66.13',n:['Sürüş pedalları (gaz, fren, el freni, nitro) renkleri ve kenarlıkları HUD’un mor neon rengine uyduruldu','Araca çarpma sesi %100 artırıldı (kazanç 2 → 4)','Alt mod detay ekranı: üstteki başlık kaldırıldı, geri butonu sol alta alındı, harita küçük kare olup sağ üste taşındı, bilgi alanı genişledi ve başlıkla iç içe girmesi düzeltildi','Çok oyunculu mod bilgi balonunun renkleri oyunun mor neon tasarımına uyduruldu']},
 {v:'v9.66.12',n:['Rekor tablosu satırları artık koyu renkle başlayıp sonradan değişmiyor; diğer oyuncuların kayıtları önceden yüklenerek anında görünür','Ana mod ekranları kendi hero görsellerini kullanıyor','Alt modlar sürüklenebilir slaytta, görselin altında neon isimle','Alt mod detay ekranı yenilendi: haritanın kuş bakışı silüeti, uzunluk ve isim, altta araç seçimi','Nitro alevi ve sürüş pedalları yeni tasarıma geçti']},
 {v:'v9.66.11',n:['Ayarlar ekranındaki ses kaynağı yazısı kaldırıldı, ekran eski tasarımına döndü']},
 {v:'v9.66.10',n:['Motor sesindeki ortam gürültüsü giderildi (sadece motor tonu kalır), araç dururken motor sesi belirgin şekilde kısıldı','Dikey modda mod ekranı başlıklarındaki sloganlar kaldırıldı, geri butonu ile başlık arası açıldı; yatayda slogan başlığın ilk harfi hizasında','Alt mod görselleri eski boyutlarına döndü']},
@@ -5629,7 +5672,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       crash_car: ['crash_car.wav', 'crash_car.mp3'], hit_barrier: ['hit_barrier.wav', 'hit_barrier.mp3'],
       scrape_wall: ['scrape_wall.wav', 'scrape_wall.mp3'], traffic_horn: ['traffic_horn.wav', 'traffic_horn.mp3']
     },
-    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 1.6, shift_1: 1.1, shift_2: 1.1, shift_3: 1.1, crash_car: 2, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
+    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 1.6, shift_1: 1.1, shift_2: 1.1, shift_3: 1.1, crash_car: 4, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
     B: {}, V: {}, failed: {}
   };
   const LOOPS = { tire_screech: 1, tire_drift: 1, wheel_spin: 1, scrape_wall: 1 };
