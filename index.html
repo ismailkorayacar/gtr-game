@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.61.3</title>
+<title>gtr_game_v9.61.4</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1691,7 +1691,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 
 #evr .ghcol{display:inline-flex;flex-direction:column;align-items:flex-end;vertical-align:middle}#evr .ghch.on{background:rgba(60,200,120,.35);border-color:#7dffb0;color:#eafff2}#evr .ghch{display:inline-block;width:auto;margin:5px 10px 0 0;padding:3px 9px;border-radius:9px;border:1.5px solid rgba(120,220,255,.7);background:rgba(20,40,90,.55);color:#bfe9ff;font:800 10px system-ui;letter-spacing:.5px;vertical-align:middle}
 #gdl{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 128px);z-index:7;display:none;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:14px;background:rgba(14,8,40,.62);border:1.5px solid rgba(160,200,255,.55);font:800 13px system-ui;color:#fff;pointer-events:none;white-space:nowrap}
-#gdl i{font-style:normal;font-size:14px}#gdl span{opacity:.85;max-width:90px;overflow:hidden;text-overflow:ellipsis}
+#gdl i{font-style:normal;font-size:14px}#gdl span{opacity:.85}
 #gdl b{font:900 15px system-ui;font-variant-numeric:tabular-nums}
 #gdl.ah b{color:#5dff9a}#gdl.bh b{color:#ff6b6b}
 #ghtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:60;display:none;padding:10px 16px;border-radius:14px;background:rgba(20,10,60,.95);border:1.5px solid rgba(160,120,255,.6);color:#fff;font:700 13px system-ui;max-width:86vw;text-align:center}
@@ -1706,7 +1706,7 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 #evd .ghs.on .gsw{background:linear-gradient(180deg,#46e08a,#1fae5f);border-color:#b8ffd6}
 #evd .ghs.on .gsw::before{transform:translateX(20px)}
 @media (orientation:landscape){#evd #evbx .ghs{min-height:0!important;height:42px!important}#evd .ghs .ghl small{font-size:9.5px}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.3</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.61.4</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3077,7 +3077,7 @@ function cmbUI(){const on=cmbT>0&&st==='race'&&!(TX&&EV&&EV.tx);const c=$('cmb')
 // --- power-ups ---
 const bub=new THREE.Mesh(new THREE.SphereGeometry(1,20,14),new THREE.MeshBasicMaterial({color:0x4cc9ff,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));bub.visible=false;bub.renderOrder=5;
 let pwS='';
-function pwUI(){const k=[pu.sh,shieldOn||invT>0,pu.mg,magT>0,Math.ceil(magT)].join();if(k===pwS)return;pwS=k;
+function pwUI(){const npw=!!(EV&&(EV.id==='dc'||EV.tx));const k=[npw,pu.sh,shieldOn||invT>0,pu.mg,magT>0,Math.ceil(magT)].join();if(k===pwS)return;pwS=k;$('pw1').style.display=$('pw2').style.display=npw?'none':'';
  for(const[id,n]of[['pw1',pu.sh],['pw2',pu.mg]]){const b=$(id);let c=b.querySelector('.pwn');if(!c){c=document.createElement('b');c.className='pwn';b.appendChild(c)}c.textContent=n}
  $('pw1').classList.toggle('off',!(pu.sh>0||shieldOn));$('pw1').classList.toggle('on',shieldOn);
  $('pw2').classList.toggle('off',!(pu.mg>0||magT>0));$('pw2').classList.toggle('on',magT>0);$('pw2').querySelector('.tm').textContent=magT>0?Math.ceil(magT)+'s':''}
@@ -4668,6 +4668,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.61.4',n:['Hayalet HUD\'unda hayalet ikonu kaldırıldı; hayalet sahibinin tam adı gösteriliyor','Güçlendirici olmayan etkinliklerde sol taraftaki Kalkan ve Mıknatıs butonları gizlendi']},
 {v:'v9.61.3',n:['Rekorlar tablosunda kendi satırı seçilince KENDİ HAYALETİNLE YARIŞ yazar','REKORTMENLE YARIŞ altındaki yazı güncellendi; açıkken rekortmenin tam adı ve süresi (kronometre ikonuyla) görünür','Hayalet süre farkı HUD\'u üstteki puan HUD\'unun altına taşındı','+N P bildirimleri %50 küçüldü ve P harfi yerine puan ikonu kullanıyor']},
 {v:'v9.61.2',n:['Hayalet mantığı düzeltildi: hayalet varsayılan KAPALI; etkinlik detayında OYNA/REKORLAR üstünde REKORTMENLE YARIŞ anahtarı (aç/kapa)','Rekorlar tablosundan sekmeler kaldırıldı; MEYDAN OKU sadece gerçekten hayaleti olan oyuncularda görünür, kendi satırında KENDİNLE YARIŞ','Dünya hayaleti = en iyi rekor sahibi (süreli modlarda en hızlı, Speedrun’da en yüksek puan)']},
 {v:'v9.61.1',n:['Hayalet seçici (Kapalı / Rekorum / Dünya 1.) Etkinlik Rekorları ekranına sekme olarak taşındı','MEYDAN OKU butonu süre bilgisinin altına alındı, yazı boyutunda']},
@@ -5447,7 +5448,7 @@ function ghTick(){
  let lo=0,hi=d.n-1;while(lo<hi){const mid=(lo+hi)>>1;if(d.Z[mid]<=P.z)hi=mid;else lo=mid+1}
  let tg;if(lo<=0)tg=0;else{const a=d.Z[lo-1],b=d.Z[lo],k=a===b?0:(a-P.z)/(a-b);tg=((lo-1)+Math.max(0,Math.min(1,k)))*.1}
  const dl=raceT-tg,ab=Math.abs(dl);
- hud('<i>👻</i><span>'+String(G.rec.n||'?').slice(0,10).replace(/[<>&]/g,'')+'</span><b>'+(dl>0?'+':'−')+ab.toFixed(2)+'</b>',dl>0?'bh':'ah');
+ hud('<span>'+String(G.rec.n||'?').replace(/[<>&]/g,'')+'</span><b>'+(dl>0?'+':'−')+ab.toFixed(2)+'</b>',dl>0?'bh':'ah');
 }
 const _stp=step;step=function(dt){_stp(dt);try{ghTick()}catch(x){if(!ghTick.e){ghTick.e=1;console.warn('ghost',x)}}};
 /* ---- kaydet ---- */
