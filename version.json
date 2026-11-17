@@ -1,1 +1,1 @@
-{"v": "v9.64", "n": ["Araç/motor sesleri tamamen kaldırıldı: eski sentetik motor, örnek tabanlı motor, v9.63 döngüleri, lastik/drift/el freni kayma sesi, vites sesi, E-Roadster sesi ve nitro hıssı silindi", "Ses altyapısı (efektler, yağmur, gök gürültüsü, kazanma sesi, menü sesleri) korundu; araç sesi için yeni sistem bağlanmaya hazır boş bir aud() kancası bırakıldı"]}
+{"v": "v9.64.1", "n": ["Çarpışma (crash), cam kırılma ve yağ lekesi sesleri de kaldırıldı; ses altyapısında araç/çarpışma/kayma sesi kalmadı"]}

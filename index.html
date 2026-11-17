@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.64</title>
+<title>gtr_game_v9.64.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1733,7 +1733,7 @@ body.ls #pdN svg{width:38px;height:23px}
 #mptip{position:fixed;z-index:80;display:none;transform:translate(-50%,-100%);max-width:78vw;white-space:normal;text-align:center;background:rgba(20,10,52,.97);border:1.5px solid #ffc24a;color:#ffd24a;font:800 12px/1.25 system-ui;padding:7px 12px;border-radius:10px;box-shadow:0 4px 14px #000a;pointer-events:none}
 #mptip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;width:10px;height:10px;background:rgba(20,10,52,.97);border-right:1.5px solid #ffc24a;border-bottom:1.5px solid #ffc24a;transform:translateX(-50%) rotate(45deg)}
 @media (orientation:landscape){#cr .k2t .e2bk{width:22px;height:22px;font-size:18px;margin:0 8px 0 0;padding:0 0 2px}#cr .k2s{display:block!important;font-size:9px;line-height:1;margin-top:-3px}#cr .k2t{padding:3px 62px 4px 16px;margin:0 0 0 4px;font-size:24px}#cr #crbody{gap:4px;justify-content:flex-start!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.64</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.64.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2179,10 +2179,8 @@ function initAudio(){if(AC)return;try{AC=new(window.AudioContext||window.webkitA
  const n=AC.createBuffer(1,AC.sampleRate,AC.sampleRate),d=n.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=R()*2-1;nbf=n}catch(e){AC=null}}
 function noise(f,t,g,type){const s=AC.createBufferSource();s.buffer=nbf;const fl=AC.createBiquadFilter();fl.type=type||'lowpass';fl.frequency.setValueAtTime(f,AC.currentTime);fl.frequency.exponentialRampToValueAtTime(80,AC.currentTime+t);const gn=AC.createGain();gn.gain.setValueAtTime(g,AC.currentTime);gn.gain.exponentialRampToValueAtTime(.001,AC.currentTime+t);s.connect(fl);fl.connect(gn);gn.connect(AC.destination);s.start()}
 function tone(f,t0,d,g,type){const o=AC.createOscillator(),gn=AC.createGain(),T=AC.currentTime+t0;o.type=type||'sine';o.frequency.setValueAtTime(f,T);gn.gain.setValueAtTime(g,T);gn.gain.exponentialRampToValueAtTime(.001,T+d);o.connect(gn);gn.connect(AC.destination);o.start(T);o.stop(T+d)}
-function sfx(k){if(!AC)return;if(k==='crash'){noise(3500,1.4,1.3);tone(90,0,.7,.9);tone(55,0,1,.8,'triangle')}
- else if(k==='pick')[660,880,1320].forEach((f,i)=>tone(f,i*.07,.28,.3,'triangle'));
+function sfx(k){if(!AC)return;if(k==='pick')[660,880,1320].forEach((f,i)=>tone(f,i*.07,.28,.3,'triangle'));
  else if(k==='coin'){tone(1400,0,.12,.18,'triangle');tone(1900,.08,.18,.18,'triangle')}else if(k==='tap'){tone(1100,0,.03,.06,'sine');tone(620,0,.025,.05,'triangle')}
- else if(k==='glass'){noise(9000,.35,.6,'highpass');for(let i=0;i<9;i++)tone(2200+R()*5500,i*.035+R()*.02,.14,.07,'triangle')}
  else if(k==='empty'){[0,150,330,560].forEach((ms,i)=>setTimeout(()=>{if(AC)noise(6500-i*1000,.18+i*.06,.42-i*.1,'bandpass')},ms))}
  else if(k==='win')[523,659,784,1047,1319].forEach((f,i)=>tone(f,i*.12,.4,.22,'square'))}
 function aud(boost){/* araç/motor sesi: yeni sistem buraya bağlanacak */}
@@ -2199,10 +2197,10 @@ function reset(){window.__hitC=0;lnSw.t=0;P.psi=0;P.dl=0;P.hd=0;P.gp=7;P._pv=nul
  [P,...traffic].forEach(o=>{o.hp=100;o.bodies.forEach(b=>{const p=b.geometry.attributes.position;p.array.set(b.userData.o);p.needsUpdate=true;b.geometry.computeVertexNormals()})});
  v7_buildLevel();{const W0=(TH.key==='forest'||TH.fs||isDR())?0:Math.round(15.84*v7_diffM()*.72*(RR?.5:1)),H0=Math.min(6,Math.round(W0*v7_hvSh()));traffic.forEach((t,i)=>{if(t.hv?t.hi<H0:i<Math.min(NC,W0-H0))place(t,-70-(t.hv?t.hi+NC:i)*30%400,30);else{t.on=false;t.mesh.visible=false}});}pks.forEach((k,i)=>placePk(k,-60-i*80));pps.forEach((k,i)=>placePk(k,-110-i*160));rrReset()}
 function crash(fx){if(invT>0)return;
- if(shieldOn){shieldOn=false;shG=true;invT=3;cleanZ0=P.z;shake=.5;sfx('glass');banner('KALKAN KORUDU');pwUI();return}
+ if(shieldOn){shieldOn=false;shG=true;invT=3;cleanZ0=P.z;shake=.5;banner('KALKAN KORUDU');pwUI();return}
  {const f=Math.max(0,Math.min(1,P.v/Math.max(curV,1))),add=fx||Math.round((nosAct?75+15*f:50+10*f)*.8);dmgP=Math.min(100,dmgP+add);dmgN+=dmgP<50?.05:dmgP<=80?.06:.1;dmgUI();
-  if(dmgP<100){invT=3;shG=false;cleanZ0=P.z;cmb=0;cmbT=0;P.hp=Math.min(P.hp,100-dmgP);shake=fx?.7:1;sfx('crash');if(!fx)sfx('glass');if(!fx)flashRed();pwUI();return}}
- banner('MAKSİMUM HASAR');cmb=0;cmbT=0;mSave();crashDist=-P.z;st='crash';crashT=0;tImp=rt;sfx('crash');sfx('glass');shake=1.3;P.hp=Math.max(0,P.hp-30);P.yr=(R()-.5)*4;flashRed();drawCrack()}
+  if(dmgP<100){invT=3;shG=false;cleanZ0=P.z;cmb=0;cmbT=0;P.hp=Math.min(P.hp,100-dmgP);shake=fx?.7:1;if(!fx)flashRed();pwUI();return}}
+ banner('MAKSİMUM HASAR');cmb=0;cmbT=0;mSave();crashDist=-P.z;st='crash';crashT=0;tImp=rt;shake=1.3;P.hp=Math.max(0,P.hp-30);P.yr=(R()-.5)*4;flashRed();drawCrack()}
 function collide(a,b){const dx=b.x-a.x,dz=b.z-a.z,ox=a.hw+b.hw-Math.abs(dx),oz=a.hl+b.hl-Math.abs(dz);if(ox<=0||oz<=0)return;
  let d;const mx=(a.x+b.x)/2,mz=(a.z+b.z)/2;
  if((a===P||b===P)&&st==='race'&&(shieldOn||padT>0||(shG&&invT>0))){const o=a===P?b:a,s=o.x>=P.x?1:-1;
@@ -2230,7 +2228,7 @@ function rpStart(){st='replay';rc=0;pre=true;rpT0=Math.max(rec[0][0],tImp-1.2);R
 function rpApply(dt){if(RRP)return rrPlay(dt);rc+=dt;const T=rpT0+Math.min(rc,3)/3*RPS;let i=0;while(i<rec.length-2&&rec[i+1][0]<T)i++;const a=rec[i],b=rec[i+1]||a,f=b[0]>a[0]?Math.min(1,Math.max(0,(T-a[0])/(b[0]-a[0]))):0,L=(x,y)=>x+(y-x)*f;
  P.x=L(a[1],b[1]);P.z=L(a[2],b[2]);P.yaw=L(a[3],b[3]);P.v=a[4];P.vx=0;tmRp=isTM?L(a[a.length-1],b[b.length-1]):0;
  traffic.forEach((t,k)=>{const o=5+k*5;t.on=a[o]>0;t.mesh.visible=t.on;if(!t.on)return;const ok=b[o]>0&&Math.abs(b[o+2]-a[o+2])<30;t.x=ok?L(a[o+1],b[o+1]):a[o+1];t.z=ok?L(a[o+2],b[o+2]):a[o+2];t.yaw=ok?L(a[o+3],b[o+3]):a[o+3];t.v=a[o+4];t.vx=0;t.yr=0});
- if(pre&&T>=tImp){pre=false;hit.forEach(o=>{o.bodies.forEach(b2=>{const p=b2.geometry.attributes.position;p.array.set(b2.userData.dp);p.needsUpdate=true;b2.geometry.computeVertexNormals()});o.hp=o.hp0});impactFX(imp.x,imp.z);sfx('crash');flashRed();shake=1.2}
+ if(pre&&T>=tImp){pre=false;hit.forEach(o=>{o.bodies.forEach(b2=>{const p=b2.geometry.attributes.position;p.array.set(b2.userData.dp);p.needsUpdate=true;b2.geometry.computeVertexNormals()});o.hp=o.hp0});impactFX(imp.x,imp.z);flashRed();shake=1.2}
  if(rc>=3.05)finish(false)}
 function rpCam(){if(RRP)return rrCam();const px=P.x+cx(P.z),a=1.1+rc*.2;let r=7.5+P.hl*.6;if(TH.key==='tunnel'){r=4.2+P.hl*.5;const c0=cx(P.z),sg=P.x>0?-1:1,bx=Math.max(c0-8.6,Math.min(c0+8.6,px+sg*Math.abs(Math.sin(a))*r*1.1));cam.position.set(bx,2.2,P.z+Math.cos(a)*r*.8-3);cam.lookAt(px,.8,P.z-1);return}cam.position.set(px+Math.sin(a)*r*1.1,2.4,P.z+Math.cos(a)*r*.8-3);cam.lookAt(px,.8,P.z-1)}
 function banner(t){const b=$('bn');b.textContent=t;b.style.opacity=1;clearTimeout(banner.t);banner.t=setTimeout(()=>b.style.opacity=0,1300)}
@@ -2249,7 +2247,7 @@ function step(dt){
  {const rv=live&&st==='race'&&pdB&&!pdG&&!pdH&&P.v<=.3&&!(typeof TX!=='undefined'&&TX&&TX.cin);if(rv)revT+=dt;else{revT=0;revD=0}revOn=rv&&revT>=.5}
  if(!live)P.v+=((st==='menu'?7:0)-P.v)*Math.min(1,dt*1.3);else if(padT>0){const tg=padT>.7?padVt:Vb+(padVt-Vb)*(padT/.7);P.v+=(tg-P.v)*Math.min(1,dt*7)}else if(boost)P.v+=(Vb*1.1-P.v)*Math.min(1,dt*2.2);else if(revOn){if(revD<35){P.v=Math.max(-6,P.v-8*dt);revD+=-P.v*dt}else P.v=0}else if(pdB||pdH||!pdG)P.v=Math.max(0,P.v-(pdB?16:pdH?(P.v>4?3.5:10):3.5)*dt);else if(P.v<Vb*.985){const kk=-Math.log(Math.max(.05,1-27.78/Vb))/2.5;P.v=Math.min(Vb,P.v+(Vb-P.v)*kk*dt)}else P.v+=(Vb-P.v)*Math.min(1,dt*1.3);
  if(v7_ico.length)v7_icoStep();
- if(live&&v7_oils.length)for(const o of v7_oils){if(Math.abs(P.z-o.z)<1.8&&Math.abs(P.x-o.x)<1.25){if(v7_oilT<=.2){banner('YAĞ!');shake=Math.max(shake,.35);oilSfx()}v7_oilT=1.8;break}}
+ if(live&&v7_oils.length)for(const o of v7_oils){if(Math.abs(P.z-o.z)<1.8&&Math.abs(P.x-o.x)<1.25){if(v7_oilT<=.2){banner('YAĞ!');shake=Math.max(shake,.35)}v7_oilT=1.8;break}}
  if(live&&v7_wp.length){for(const o of v7_wp){if(Math.abs(P.z-o.z)<o.len/2+.6&&Math.abs(P.x-o.x)<o.w/2+.9&&P.v>8)spEmit(P,3,Math.max(P.v,30),true);for(const tr of traffic){if(tr.on!==false&&Math.abs(tr.z-o.z)<o.len/2&&Math.abs(tr.x-o.x)<o.w/2+.6&&R()<.4)spEmit(tr,2,Math.max(tr.v||0,30),true)}}}
  if(v7_oilT>0){v7_oilT-=dt;if(R()<.5)puff(P.x,.3,P.z+P.hl*.6,0xcfcfcf,1,1.2,.5,.5)}
  const sRaw=live?(steer||((keys.ArrowRight||keys.KeyD?1:0)-(keys.ArrowLeft||keys.KeyA?1:0))):0;if(sRaw){const r=((swv!==0&&Math.sign(sRaw)!==Math.sign(swv))?5.4:2.04)*SR();swv+=Math.max(-r*dt,Math.min(r*dt,sRaw-swv))}else{const r=3.5*dt;swv=Math.abs(swv)<=r?0:swv-Math.sign(swv)*r}const s=swv;if(isDR())drStep(dt,Math.abs(sRaw)>.3?Math.sign(sRaw):0,live);
@@ -2803,8 +2801,6 @@ function introCam(){const p=1-Math.max(0,introT)/8,e=p*p*(3-2*p),pz=P.z,cdz=Math
 setTimeout(()=>{try{ensureThumbs()}catch(e){}},900);
 
 function thunder(){if(!AC||st==='menu')return;const n=AC.sampleRate*3,b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);let y=0;for(let i=0;i<n;i++){const q=i/AC.sampleRate;y+=(R()*2-1-y)*.08;d[i]=y*Math.exp(-q*1.3)*(1+.6*Math.sin(q*9))}const s=AC.createBufferSource();s.buffer=b;const f=AC.createBiquadFilter();f.type='lowpass';f.frequency.value=380;const g=AC.createGain();g.gain.value=1.6;s.connect(f);f.connect(g);g.connect(AC.destination);s.start()}
-function oilSfx(){if(!AC)return;const T=AC.currentTime,n=Math.floor(AC.sampleRate*.5),b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++){const q=i/AC.sampleRate;d[i]=(R()*2-1)*Math.exp(-q*9)}const s=AC.createBufferSource();s.buffer=b;const f=AC.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(900,T);f.frequency.exponentialRampToValueAtTime(260,T+.4);f.Q.value=1.2;const g=AC.createGain();g.gain.value=.55;s.connect(f);f.connect(g);g.connect(AC.destination);s.start(T);
- const o=AC.createOscillator(),og=AC.createGain();o.type='sine';o.frequency.setValueAtTime(220,T);o.frequency.exponentialRampToValueAtTime(70,T+.3);og.gain.setValueAtTime(.2,T);og.gain.exponentialRampToValueAtTime(.001,T+.35);o.connect(og);og.connect(AC.destination);o.start(T);o.stop(T+.4)}
 function dialBuild(dm){const g=$('sdt');let h='';const P2=a=>[42+Math.cos((a-90)*Math.PI/180),42+Math.sin((a-90)*Math.PI/180)];
  for(let i=0;i<=16;i++){const a=-135+i*16.875,c=P2(a),big=i%2===0;h+='<line x1="'+(42+(c[0]-42)*(big?35.5:37))+'" y1="'+(42+(c[1]-42)*(big?35.5:37))+'" x2="'+(42+(c[0]-42)*40)+'" y2="'+(42+(c[1]-42)*40)+'" stroke="'+(i>=13?'#ff5a4a':'#fff')+'" stroke-width="'+(big?1.4:.8)+'" stroke-linecap="round"/>'}
  for(let i=0;i<=8;i++){const a=-135+i*33.75,c=P2(a);h+='<text x="'+(42+(c[0]-42)*29)+'" y="'+(42+(c[1]-42)*29+2.2)+'" font-size="6.4" font-weight="800" fill="#fff" text-anchor="middle">'+Math.round(i*dm/8)+'</text>'}
@@ -4563,6 +4559,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.64.1',n:['Çarpışma (crash), cam kırılma ve yağ lekesi sesleri de kaldırıldı; ses altyapısında araç/çarpışma/kayma sesi kalmadı']},
 {v:'v9.64',n:['Araç/motor sesleri tamamen kaldırıldı: eski sentetik motor, örnek tabanlı motor, v9.63 döngüleri, lastik/drift/el freni kayma sesi, vites sesi, E-Roadster sesi ve nitro hıssı silindi','Ses altyapısı (efektler, yağmur, gök gürültüsü, kazanma sesi, menü sesleri) korundu; araç sesi için yeni sistem bağlanmaya hazır boş bir aud() kancası bırakıldı']},
 {v:'v9.63.5',n:['Isınma turunda mıknatıs butonu kaldırıldı','Menü ve kamera butonu yan yana, sağ üst HUD’un 20 px altına alındı (HUD yüksekliğine göre otomatik)','Fren pedalı gaza yaklaştırıldı (8 px boşluk), gaz ve fren yukarı alındı, el freni ikisinin tam ortasında ve altında boşlukla (üst üste binmez)']},
 {v:'v9.63.4',n:['Motor sesi telefon hoparlöründe duyulur hale getirildi: duyulmayan bas kesildi, orta-tiz harmonikler güçlendirildi (doygunluk + orta-tiz yükseltme), filtre açıldı']},
