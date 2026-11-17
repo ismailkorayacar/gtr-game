@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.66.16</title>
+<title>gtr_game_v9.66.17</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1973,7 +1973,55 @@ body #evd #evdback{display:none!important}
  #evd #evdb.grp #evbx{flex-direction:row!important;width:100%!important;height:auto!important;max-width:none!important;gap:10px}
  #evd #evdb.grp #evbx .btn,#evd #evdb.grp #evbx .btn.p{flex:1 1 0;height:48px!important;min-height:0}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.16</em></div></div>
+
+/* ===== v9.66.17 alt mod sayfası: başlık · harita · araç seçici · küçük resimler · 4 buton ===== */
+#evd #evdb.d2.d2.d2.g2{display:flex!important;flex-direction:column;gap:8px;overflow-y:auto!important;overflow-x:hidden!important;padding:4px 14px 12px!important;top:calc(env(safe-area-inset-top,0px) + 74px)!important;bottom:calc(env(safe-area-inset-bottom,0px) + 80px)!important;grid-template-columns:none!important}
+#evd .g2 .d2h{order:1;flex:none;position:static!important}
+#evd .g2 .d2r{display:contents}
+#evd .g2 .d2m{order:2!important;flex:none;width:100%!important;height:124px!important}
+#evd .g2 .d2i{order:3;flex:none;padding:0!important;background:none!important;overflow:visible!important}
+#evd .g2 .d2i:empty{display:none}
+#evd .g2 .d2i .ghs{margin:0}
+#evd .g2 .d2v{order:4;flex:1 1 0;min-height:130px;display:flex;align-items:center;gap:4px;border-radius:16px;background:radial-gradient(ellipse at 50% 55%,rgba(8,4,28,.82),rgba(8,4,28,.45) 65%,rgba(8,4,28,0))}
+#evd .g2 .d2c{order:5;flex:none;padding:2px 2px 4px!important;margin:0!important;grid-column:auto!important;grid-row:auto!important}
+#evd #evdb.g2 #evbx.d2q{order:6;flex:none!important;position:static!important;padding:0!important;background:none!important;display:grid!important;grid-template-columns:1fr 1fr;gap:8px;width:100%!important;max-width:none!important;height:auto!important;flex-direction:row!important;margin:0!important}
+#evd #evdb.g2 #evbx.d2q .rbn{min-height:46px!important;height:auto!important;padding:6px 30px 6px 10px!important;font-size:12.5px!important;line-height:1.1;letter-spacing:.3px;flex:none;grid-column:auto!important}
+#evd #evdb.g2 #evbx.d2q .rbn:last-child:nth-child(odd){grid-column:auto!important}
+#evd #evdb.g2 #evbx.d2q .rbn::after{width:48px;height:48px;right:-6px}
+.d2ar{flex:none;width:44px;height:76px;border:0;background:none;color:#fff;font:900 54px/1 system-ui;text-shadow:0 0 5px #fff,0 0 14px #b06bff,0 0 28px #8a3dff;-webkit-tap-highlight-color:transparent;padding:0}
+.d2vi{flex:1 1 auto;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.d2vi .th{flex:1 1 auto;width:100%;min-height:70px;background:center/contain no-repeat;filter:drop-shadow(0 8px 14px rgba(0,0,0,.65))}
+.d2vi b{font:italic 900 17px/1.1 system-ui;letter-spacing:.6px;color:#fff;text-transform:uppercase;text-shadow:0 0 4px #fff,0 0 12px #b06bff,0 0 22px #8a3dff;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d2vi small{font:800 10.5px system-ui;letter-spacing:1px;color:#d9c6ff}
+.d2pop{position:absolute;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(4,2,16,.72)}
+.d2pc{position:relative;width:min(440px,100%);max-height:100%;overflow-y:auto;box-sizing:border-box;padding:16px 16px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(40,24,100,.97),rgba(12,7,36,.98));border:1.5px solid #b06bff;box-shadow:0 0 22px rgba(176,107,255,.55),0 10px 30px #000a;color:#efe9ff}
+.d2pc>small{display:block;font:800 10px system-ui;letter-spacing:2px;color:#c9b6ff}
+.d2pc h3{margin:2px 40px 8px 0;font:italic 900 22px/1.1 system-ui;color:#fff;text-shadow:0 0 12px rgba(176,107,255,.8)}
+.d2pc p{margin:0 0 8px;font:600 13px/1.4 system-ui}
+.d2pc .e2cp{display:flex;gap:6px;margin-bottom:8px}
+.d2pc .e2cp span{flex:1 1 0;min-width:0;padding:4px 8px;border-radius:9px;border:1px solid rgba(176,107,255,.5);background:rgba(10,5,34,.6)}
+.d2pc .e2cp small{display:block;font:800 8.5px system-ui;letter-spacing:1px;color:#c9b6ff}
+.d2pc .e2cp b{display:flex;align-items:center;gap:3px;font:800 13px/1.15 system-ui;color:#fff}
+.d2pc h5{margin:0 0 4px;font:900 10.5px system-ui;letter-spacing:1.5px;color:#f0c8ff}
+.d2pc ul{margin:0;padding-left:17px;font:600 12.5px/1.45 system-ui}
+.d2x{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:1.5px solid #b06bff;background:rgba(16,9,48,.9);color:#fff;font:900 15px system-ui;box-shadow:0 0 10px rgba(176,107,255,.5)}
+@media (orientation:portrait) and (max-height:720px){#evd .g2 .d2m{height:92px!important}#evd .g2 .d2v{min-height:100px}.d2vi .th{min-height:46px}#evd .g2 .d2k{flex-basis:84px;height:72px}#evd #evdb.g2 #evbx.d2q .rbn{min-height:40px!important}}
+@media (orientation:landscape){
+ #evd #evdb.d2.d2.d2.g2{display:grid!important;grid-template-columns:minmax(0,1fr) min(210px,30vw)!important;grid-template-rows:auto minmax(0,1fr) auto!important;gap:6px 12px;top:calc(env(safe-area-inset-top,0px) + 84px)!important;bottom:calc(env(safe-area-inset-bottom,0px) + 6px)!important;left:96px!important;padding:0 12px 2px 4px!important;overflow:hidden!important}
+ #evd .g2 .d2h{grid-column:1;grid-row:1;padding:5px 12px 6px;border-radius:14px!important}
+ #evd .g2 .d2v{grid-column:1;grid-row:2;min-height:0}
+ #evd .g2 .d2c{grid-column:1!important;grid-row:3!important;padding-left:2px!important}
+ #evd .g2 .d2r{grid-column:2;grid-row:1/span 3;display:flex;flex-direction:column;gap:6px;min-height:0}
+ #evd .g2 .d2m{order:0!important;width:100%!important;height:min(118px,29vh)!important}
+ #evd .g2 .d2i{order:0}
+ #evd #evdb.g2 #evbx.d2q{order:0;margin-top:auto!important;gap:6px;flex:none!important}
+ #evd #evdb.g2 #evbx.d2q .rbn{min-height:38px!important;font-size:10.5px!important;padding:4px 22px 4px 6px!important}
+ #evd #evdb.g2 #evbx.d2q .rbn::after{width:36px;height:36px;right:-6px}
+ .d2ar{width:38px;height:60px;font-size:46px}
+ .d2vi b{font-size:15px}
+ #evd .g2 .d2k{flex-basis:84px;height:70px}
+}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.17</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3604,7 +3652,15 @@ function evMapDraw(cv,P,lap){const dpr=Math.min(2,window.devicePixelRatio||1),W=
  const dot=(p,col,t)=>{g.beginPath();g.arc(p[0],p[1],7,0,7);g.fillStyle=col;g.fill();g.lineWidth=2;g.strokeStyle='#fff';g.stroke();g.fillStyle='#fff';g.font='800 8px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillText(t,p[0],p[1]+.5)};
  {const k=Math.floor(T.length*.2),a=T[k],b=T[k+2],an=Math.atan2(b[1]-a[1],b[0]-a[0]);g.save();g.translate(a[0],a[1]);g.rotate(an);g.fillStyle='#fff';g.beginPath();g.moveTo(6,0);g.lineTo(-4,-5);g.lineTo(-2,0);g.lineTo(-4,5);g.closePath();g.fill();g.restore()}
  dot(T[0],'#22c55e','S');if(!lap)dot(T[T.length-1],'#ef4444','F')}
-function evCarFill(e){const C=$('d2c');if(!C)return;const S=$('d2sel'),SB=$('d2chg');const upd=()=>{if(!S)return;const ci=e.car?CARS.findIndex(x=>x[0]===e.car):sel.car;if(ci<0||!CARS[ci])return;S.lastChild.textContent=CARS[ci][1];const u=thumbs[CARS[ci][0]];if(u)S.firstChild.style.backgroundImage='url('+u+')'};
+const D2IC={info:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.2M12 7.6v.1"/></svg>',
+ wr:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.9-5.9a4 4 0 0 0 5.2-5.2l-2.5 2.5-2.3-.6-.6-2.3z"/></svg>',
+ fl:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path fill="white" stroke="none" d="M3.5 3.5h4.25v4.25H3.5zM12 3.5h4.25v4.25H12zM7.75 7.75H12V12H7.75zM16.25 7.75h4.25V12h-4.25zM3.5 12h4.25v4.25H3.5zM12 12h4.25v4.25H12zM7.75 16.25H12v4.25H7.75zM16.25 16.25h4.25v4.25h-4.25z"/></svg>'};
+function d2g2(e){$('d2info').style.setProperty('--ic',icUrl(D2IC.info));$('d2up').style.setProperty('--ic',icUrl(D2IC.wr));$('evrk').style.setProperty('--ic',icUrl(RIC.trophyY));$('evpl').style.setProperty('--ic',icUrl(D2IC.fl));
+ $('d2info').onclick=()=>{const old=$('d2pop');if(old)old.remove();const p=document.createElement('div');p.id='d2pop';p.className='d2pop';
+  p.innerHTML='<div class="d2pc"><button type="button" class="d2x" aria-label="Kapat">✕</button><small>'+EVG[evGrp].nm+'</small><h3>'+e.nm+'</h3><p>'+e.ds+'</p><div class="e2cp"><span><small>ZORLUK</small><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></span>'+(e.loc?'<span><small>KONUM</small><b>'+e.loc+'</b></span>':'')+'<span><small>ÖDÜL</small><b>'+COIN+e.reward+'</b></span></div><h5>KURALLAR</h5><ul>'+e.ru.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+  p.onclick=ev=>{if(ev.target===p||ev.target.classList.contains('d2x'))p.remove()};$('evd').appendChild(p)};
+ $('d2up').onclick=()=>{galEv=e;document.body.classList.add('gdir');openGal();let n=0;const iv=setInterval(()=>{n++;if(gIdx>=0||n>40){clearInterval(iv);try{if(gIdx>=0)cuOpen()}catch(x){}document.body.classList.remove('gdir')}},50)}}
+function evCarFill(e){const C=$('d2c');if(!C)return;const S=$('d2sel'),SB=$('d2chg');const V=$('d2vi');const upd=()=>{if(!S&&!V)return;const ci=e.car?CARS.findIndex(x=>x[0]===e.car):sel.car;if(ci<0||!CARS[ci])return;const u=thumbs[CARS[ci][0]];if(S){S.lastChild.textContent=CARS[ci][1];if(u)S.firstChild.style.backgroundImage='url('+u+')'}if(V){V.querySelector('b').textContent=CARS[ci][1];V.querySelector('small').textContent=CARS[ci][2]+' km/s';if(u)V.firstChild.style.backgroundImage='url('+u+')'}};
  const L=e.car?[CARS.findIndex(x=>x[0]===e.car)]:ownedList().filter(i=>evOK(i,e));C.innerHTML='';
  if(!e.car&&L.length&&!L.includes(sel.car)){sel.car=L[0];try{setCar()}catch(x){}}
  L.forEach(i=>{const b=document.createElement('button');b.type='button';b.className='d2k'+(e.car||sel.car===i?' on':'');b.dataset.i=i;b.innerHTML='<span class="th"></span><b>'+CARS[i][1]+'</b>';
@@ -3614,11 +3670,21 @@ function evCarFill(e){const C=$('d2c');if(!C)return;const S=$('d2sel'),SB=$('d2c
  const on=C.querySelector('.d2k.on');if(on)setTimeout(()=>{try{C.scrollLeft=Math.max(0,on.offsetLeft-C.clientWidth/2+on.offsetWidth/2)}catch(x){}},30);
  try{evSlide(C)}catch(x){}
  if(SB){const one=!!e.car||L.length<2;SB.style.display=one?'none':'';SB.onclick=ev=>{ev.stopPropagation();C.classList.toggle('op')}}
+ if(V){const ar=$('evdb').querySelectorAll('.d2ar'),one=!!e.car||L.length<2;const go=d=>{if(one)return;const k=L.indexOf(sel.car),n=L[(k+d+L.length)%L.length];sel.car=n;try{setCar()}catch(x){}C.querySelectorAll('.d2k').forEach(x=>x.classList.toggle('on',+x.dataset.i===n));upd();const on=C.querySelector('.d2k.on');if(on)C.scrollTo({left:Math.max(0,on.offsetLeft-C.clientWidth/2+on.offsetWidth/2),behavior:'smooth'})};
+  ar.forEach(a=>{a.style.visibility=one?'hidden':'';a.onclick=()=>go(a.classList.contains('l')?-1:1)});
+  let tx=null;const vv=$('evdb').querySelector('.d2v');vv.ontouchstart=ev=>{tx=ev.touches[0].clientX};vv.ontouchend=ev=>{if(tx===null)return;const dx=ev.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>40)go(dx<0?1:-1)};
+  window.__d2sync=()=>{C.querySelectorAll('.d2k').forEach(x=>x.classList.toggle('on',+x.dataset.i===sel.car));upd()}}
+ if(!window.__d2sh){window.__d2sh=1;try{const _s2=show;show=function(id,on){const r=_s2.apply(this,arguments);if(id==='evd'&&on&&window.__d2sync)try{window.__d2sync()}catch(x){}return r}}catch(x){}}
  if(!window.__d2pk){window.__d2pk=1;document.addEventListener('pointerdown',ev=>{const c=$('d2c');if(c&&c.classList.contains('op')&&!c.contains(ev.target)&&ev.target.id!=='d2chg')c.classList.remove('op')},true)}
  upd()}
 function evOpen(i){evSel=i;evGrp=evGOf(EVS[i].id);const e=EVS[i],c=evCyc(e),b=evBest(e.id,c.n);
  const mapN=e.hm||(e.id==='dc'?THS[c.th].n:THS[e.th].n),lenT=e.endless?'SINIRSIZ':(+(e.laps?e.lk:e.km)).toFixed(1)+' KM'+(e.laps?' · '+e.laps+' TUR':'');
- const db=$('evdb');db.className='d2'+(evGrp?' grp':'');
+ const db=$('evdb');db.className='d2'+(evGrp?' g2':'');
+ if(evGrp){db.innerHTML='<div class="d2h"><small>'+EVG[evGrp].nm+'</small><b>'+e.nm+'</b></div>'
+  +'<div class="d2r"><div class="d2m"><canvas></canvas><div class="d2mi"><b>'+mapN+'</b><span>'+lenT+'</span></div></div><div class="d2i"></div>'
+  +'<div class="rbg d2q" id="evbx"><button id="d2info" class="btn rbn" type="button">DETAYLAR</button><button id="d2up" class="btn rbn" type="button">ARACINI GELİŞTİR</button><button id="evrk" class="btn rbn" type="button">REKORLAR</button><button id="evpl" class="btn rbn p" type="button">BAŞLA</button></div></div>'
+  +'<div class="d2v"><button type="button" class="d2ar l" aria-label="Önceki araç">‹</button><div class="d2vi" id="d2vi"><span class="th"></span><b></b><small></small></div><button type="button" class="d2ar r" aria-label="Sonraki araç">›</button></div>'
+  +'<div class="d2c" id="d2c"></div>'}else
  db.innerHTML='<div class="d2t"><div class="d2h"><small>'+(evGrp?EVG[evGrp].nm:e.tag)+'</small><b>'+e.nm+'</b>'+(evGrp?'':'<span class="evt" data-i="'+i+'">◷ '+evFmt(c.end-Date.now())+'</span>')+'</div>'
   +'<div class="d2m"><canvas></canvas><div class="d2mi"><b>'+mapN+'</b><span>'+lenT+'</span></div></div></div>'
   +(evGrp?'<div class="d2i"></div>':'<div class="d2i"><p class="d2p">'+e.ds+'</p>'
@@ -3627,6 +3693,7 @@ function evOpen(i){evSel=i;evGrp=evGOf(EVS[i].id);const e=EVS[i],c=evCyc(e),b=ev
   +'<div class="d2b"><div class="d2s"><div class="d2k d2sel" id="d2sel"><span class="th"></span><b></b></div><button type="button" class="d2chg" id="d2chg">ARACI DEĞİŞTİR</button></div><div class="d2c pk" id="d2c"></div><div class="rbg" id="evbx"><button id="evpl" class="btn rbn p" type="button">OYNA</button><button id="evrk" class="btn rbn" type="button">REKORLAR</button></div></div>';
  $('evpl').style.setProperty('--ic',icUrl(RIC.play));$('evrk').style.setProperty('--ic',icUrl(RIC.trophyY));
  $('evpl').onclick=()=>{galEv=null;evStart()};$('evrk').onclick=()=>{evrFromRes=false;evRecShow(evSel);show('evd',false);show('evr',true)};
+ if(evGrp)d2g2(e);
  evCarFill(e);
  try{const cv=db.querySelector('.d2m canvas'),P=evMapPts(e,c),dr=()=>evMapDraw(cv,P,!!e.laps);cv.__k='';setTimeout(dr,40);setTimeout(dr,350);if(window.ResizeObserver){if(db.__ro)db.__ro.disconnect();db.__ro=new ResizeObserver(()=>{cv.__k='';dr()});db.__ro.observe(cv)}}catch(x){console.warn('map',x)}
  show('evs',false);show('evd',true)}
@@ -4880,6 +4947,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.66.17',n:['Alt mod sayfası yeniden tasarlandı: üstte başlık, altında harita, neon oklu araç seçici, küçük araç resimleri ve 4 buton (DETAYLAR, ARACINI GELİŞTİR, REKORLAR, BAŞLA)','DETAYLAR butonu mod detaylarını kapatılabilir (X) bir popup olarak açar; ARACINI GELİŞTİR garajdaki geliştirme ekranına gider ve dönüşte sayfaya geri döner','Yatay düzende araç seçici ve resimler solda, harita ve 4 buton sağda; kariyer ve ısınma turuna dokunulmadı']},
 {v:'v9.66.16',n:['Ana mod ekranında her alt modun görselinin ve isminin altında modun detayları (açıklama, zorluk, konum, ödül, kurallar) ve İLERLE butonu gösteriliyor; İLERLE alt mod sayfasına götürür','Alt mod sayfası sadeleşti: detaylar tekrar gösterilmiyor, başlığın üstünde harita adı yerine ana mod adı yazıyor; REKORTMENLE YARIŞ seçeneği sayfada kaldı','Dikey sıra: başlık, rekortmenle yarış, harita, tam genişlik araç kartı ve ARACI DEĞİŞTİR, altında OYNA ve REKORLAR yan yana']},
 {v:'v9.66.15',n:['Alt mod isimleri: Rekor Denemesi, 5km Rekoru (Speedrun), Max 300 km/s (Circuit), 5km Rekoru ve Ralli Çılgınlığı (Sprint); Kış Rallisi aynı kaldı','Ana mod altındaki modların sonuç ekranlarında (tamamlandı / süre bitti / hasar) sol üstte ana mod adı ve altında alt mod adı yazıyor; butonlar LOBİ, TEKRAR OYNA ve REKORLAR','Görev sayacı mod adına değil mod koduna bakacak şekilde düzeltildi (isim değişince sayım bozulmasın)']},
 {v:'v9.66.14',n:['Alt mod detay ekranı yeniden düzenlendi: seçili araç kartı ve altında ARACI DEĞİŞTİR butonu, OYNA ve REKORLAR alt alta sağ altta; yatayda mod bilgisi solda, araç ortada, harita sağda; dikeyde harita tam genişlikte','Alt mod detay ekranlarından geri butonu kaldırıldı']},
