@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.63</title>
+<title>gtr_game_v9.63.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1718,7 +1718,23 @@ body.u2 #set.lby .qrow button,body #set.igs .qrow button{font-size:13px;height:4
 .k2s,.e2t>small{text-align:left}.e2t>small{align-self:flex-start;margin-left:26px}#cr .k2s{margin-left:26px}#pm .pmh .k2s{align-self:flex-start;margin-left:40px}
 .e2bk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin:0 10px 0 0;padding:0 0 3px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;font:900 24px/1 system-ui;transform:skewX(12deg);cursor:pointer;flex:none;-webkit-tap-highlight-color:transparent}
 @media (orientation:landscape){#pm #pml,body.ls #pm #pml{justify-content:flex-start!important}#pm .pmc{flex:0 0 calc(25% - 8px)!important;max-width:none!important;min-width:0!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.63</em></div></div>
+/* v9.63.1 pedal düzeni: gaz+fren yan yana, el freni ortada altta (+%5) */
+#pdG{right:max(12px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 48px);width:69px;height:69px}
+#pdB{right:calc(max(12px,env(safe-area-inset-right,0px)) + 108px);bottom:calc(env(safe-area-inset-bottom,0px) + 48px);width:57px;height:57px}
+#pdH{right:calc(max(12px,env(safe-area-inset-right,0px)) + 58.5px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);width:54px;height:54px}
+#pdN{right:calc(max(12px,env(safe-area-inset-right,0px)) + 6px);bottom:calc(env(safe-area-inset-bottom,0px) + 110px);width:57px;height:42px;border-radius:28.5px 28.5px 0 0;-webkit-mask-image:radial-gradient(circle at 50% calc(100% + 27.5px),transparent 35.5px,#000 36.1px);mask-image:radial-gradient(circle at 50% calc(100% + 27.5px),transparent 35.5px,#000 36.1px)}
+#pdN svg{width:36px;height:22px}
+body.ls #pdG{right:max(24px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 36px);width:80px;height:80px}
+body.ls #pdB{right:calc(max(24px,env(safe-area-inset-right,0px)) + 139.5px);bottom:calc(env(safe-area-inset-bottom,0px) + 36px);width:65px;height:65px}
+body.ls #pdH{right:calc(max(24px,env(safe-area-inset-right,0px)) + 75px);bottom:calc(env(safe-area-inset-bottom,0px) + 8px);width:62px;height:62px}
+body.ls #pdN{right:calc(max(24px,env(safe-area-inset-right,0px)) + 7.5px);bottom:calc(env(safe-area-inset-bottom,0px) + 107.6px);width:65px;height:48px;border-radius:32.5px 32.5px 0 0;-webkit-mask-image:radial-gradient(circle at 50% calc(100% + 31.6px),transparent 41px,#000 41.6px);mask-image:radial-gradient(circle at 50% calc(100% + 31.6px),transparent 41px,#000 41.6px)}
+body.ls #pdN svg{width:38px;height:23px}
+#hbt #gop{display:none!important}
+#pm #pmmsg{display:none!important;pointer-events:none}
+#mptip{position:fixed;z-index:80;display:none;transform:translate(-50%,-100%);max-width:78vw;white-space:normal;text-align:center;background:rgba(20,10,52,.97);border:1.5px solid #ffc24a;color:#ffd24a;font:800 12px/1.25 system-ui;padding:7px 12px;border-radius:10px;box-shadow:0 4px 14px #000a;pointer-events:none}
+#mptip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;width:10px;height:10px;background:rgba(20,10,52,.97);border-right:1.5px solid #ffc24a;border-bottom:1.5px solid #ffc24a;transform:translateX(-50%) rotate(45deg)}
+@media (orientation:landscape){#cr .k2s{display:block!important;font-size:9px;line-height:1;margin-top:-3px}#cr .k2t{padding:3px 62px 4px 16px;margin:0 0 0 4px;font-size:24px}#cr #crbody{gap:5px}}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.63.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3783,11 +3799,15 @@ function wuMark(){const m=WUM.find(x=>x.th===wuTh)||WUM[0];sel.lv=2;try{applyThe
  const g=$('go');g.textContent='BAŞLA';g.classList.remove('dis');$('dfr').style.display='flex';dfMark()}
 $('go').onclick=()=>{plMode='wu';startRace()};
 function pmOpen(){$('pmbal').innerHTML=COIN+'<span>'+coins+'</span>';$('pmmsg').textContent='';document.querySelectorAll('canvas[data-pf]').forEach(cv=>{const g=cv.getContext('2d');g.clearRect(0,0,cv.width,cv.height);crFlag(g,+cv.dataset.pf,2,2,cv.width-4,cv.height-4)});show('pm',true)}
+function mpTip(b){let t=document.getElementById('mptip');if(!t){t=document.createElement('div');t.id='mptip';t.textContent='Çok oyunculu mod yakında aktif olacak';document.body.appendChild(t)}
+ const r=b.getBoundingClientRect();t.style.display='block';t.style.left=(r.left+r.width/2)+'px';t.style.top=(r.top-8)+'px';t.style.setProperty('--ax','50%');
+ const w=t.getBoundingClientRect();let dx=0;if(w.left<8)dx=8-w.left;else if(w.right>innerWidth-8)dx=innerWidth-8-w.right;if(dx){t.style.left=(r.left+r.width/2+dx)+'px';t.style.setProperty('--ax','calc(50% - '+dx+'px)')}
+ clearTimeout(mpTip.t);mpTip.t=setTimeout(()=>{t.style.display='none'},2200)}
 document.querySelectorAll('.pmc').forEach(b=>b.onclick=()=>{const k=b.dataset.k;
  if(k==='wu'){show('pm',false);ovMode('pre');show('ov',true);mark()}
  else if(k==='cr'){if(window.XCRL&&window.XCRL()){banner('KARİYER SV. 2\'DE AÇILIR');return}fromPm=true;show('pm',false);crOpenScr()}
  else if(EVG[k]){fromPm=true;evGrp=k;show('pm',false);evList();show('evs',true)}
- else{$('pmmsg').textContent='ÇOK OYUNCULU MOD YAKINDA AKTİF OLACAK'}});
+ else{mpTip(b)}});
 $('pmback').onclick=()=>{show('pm',false);ovMode('home');show('ov',true);mark()};
 
 // ===== v3.1 buton sesi =====
@@ -4323,7 +4343,7 @@ var pdG=false,pdB=false,pdH=false;
  {const p=$('pzb');if(p){p.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f3eaff" stroke-width="2.4" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h14"/></svg>';p.setAttribute('aria-label','Menü')}
   const c=$('cvb');if(c){c.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f3eaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5a2 2 0 0 1 2-2h2.2l1.6-2h6.4l1.6 2H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/><path d="M17.6 9.4h.01" stroke-width="2.8"/></svg>';c.setAttribute('aria-label','Kamera')}}
  // ---- dokunmatik ----
- const gP=new Set(),bP=new Set(),hP=new Set(),cap=(el,e)=>{try{el.setPointerCapture(e.pointerId)}catch(x){}};
+ const gP=new Set(),bP=new Set(),hP=new Set(),cap=(el,e)=>{try{el.setPointerCapture(e.pointerId)}catch(x){}};window.__PD={gP,bP,hP};
  const nzHit=e=>{const r=$('pdN').getBoundingClientRect();return e.clientX>=r.left-8&&e.clientX<=r.right+8&&e.clientY>=r.top-14&&e.clientY<=r.bottom+4};
  const nosTry=()=>{if(st==='race'&&!nosAct&&nos>0)nosTap=true};
  const pedal=(el,set,onDown,onMove)=>{el.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();cap(el,e);set.add(e.pointerId);onDown&&onDown(e)});
@@ -4333,6 +4353,10 @@ var pdG=false,pdB=false,pdH=false;
  pedal($('pdN'),gP,()=>nosTry(),null);
  pedal($('pdB'),bP);
  pedal($('pdH'),hP,()=>{if(isDR())drTap=true});
+ {const inC=(e,el)=>{const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,d=Math.hypot(e.clientX-cx,e.clientY-cy);return d<=r.width/2+2};
+  [$('pdG'),$('pdB')].forEach(el=>{el.addEventListener('pointermove',e=>{const id=e.pointerId,iG=gP.has(id),iB=bP.has(id);if(!iG&&!iB)return;
+    if(iG&&inC(e,$('pdB'))&&!inC(e,$('pdG'))){gP.delete(id);bP.add(id)}else if(iB&&inC(e,$('pdG'))&&!inC(e,$('pdB'))){bP.delete(id);gP.add(id)}});
+   ['pointerup','pointercancel','lostpointercapture'].forEach(n=>el.addEventListener(n,e=>{gP.delete(e.pointerId);bP.delete(e.pointerId)}))})}
  {const z=$('stz'),L=$('stL'),R=$('stR'),hit=e=>{const el=document.elementFromPoint(e.clientX,e.clientY);return el&&L.contains(el)?-1:el&&R.contains(el)?1:0};
   [[L,-1],[R,1]].forEach(([p,d])=>{p.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();cap(p,e);ptrs.set(e.pointerId,d);upd()});
    p.addEventListener('pointermove',e=>{if(ptrs.has(e.pointerId)){const h=hit(e);if(h&&ptrs.get(e.pointerId)!==h){ptrs.set(e.pointerId,h);upd()}}});
@@ -4432,6 +4456,7 @@ $$('tbb').onclick=()=>$$('evb').click();
 $$('bal').onclick=()=>{['set','ms','ntf'].forEach(k=>{if(vis(k))$$(k).style.display='none'});if(vis('gal')){try{closeGal(false)}catch(e){}}$$('shopb').click()};
 const I={
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.3"/><path d="M3.3 10.6 9.7 11.5M20.7 10.6l-6.4.9M12 14.3V21"/></svg>',
+ oyn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M5 21V3"/><rect x="5" y="4" width="14.5" height="10.5" rx="1"/><path d="M5 9.25h14.5M9.8 4v10.5M14.7 4v10.5"/><g fill="currentColor" stroke="none"><rect x="5" y="4" width="4.8" height="5.25"/><rect x="14.7" y="4" width="4.8" height="5.25"/><rect x="9.8" y="9.25" width="4.9" height="5.25"/></g></svg>',
  kar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5"/><path d="M12 14v4M8.5 20h7"/></svg>',
  etk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/><path d="m12 12.6.9 1.9 2.1.3-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.3z"/></svg>',
  gar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M3 10 12 4l9 6v10H3z"/><path d="M7 20v-5h10v5M7 17h10"/></svg>',
@@ -4439,9 +4464,9 @@ const I={
 const nv=$$('snv'),vis=id=>{const e=$$(id);return !!e&&getComputedStyle(e).display!=='none'};
 const home=()=>{show('cr',false);show('evs',false);show('pm',false);ovMode('home');show('ov',true);mark()};
 const out=f=>()=>{if(vis('cr')||vis('evs')||vis('pm')){show('cr',false);show('evs',false);show('pm',false);show('ov',true)}f()};
-[['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['kar','KARİYER',()=>{if(vis('cr'))return;if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click();const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();fromPm=true;evGrp=null;show('pm',false);evList();show('evs',true)}],['gar','GARAJ',out(()=>$$('galb2').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
+[['home','LOBİ',()=>{if(vis('cr')||vis('evs')||vis('pm')||(vis('ov')&&$$('ov').dataset.m==='pre'))home()}],['oyn','OYNA',()=>{if(vis('pm'))return;if(vis('cr')){show('cr',false);show('ov',true)}if(vis('evs')){show('evs',false);show('ov',true)}$$('gop').click()}],['etk','ETKİNLİK',()=>{if(vis('evs'))return;if(vis('cr')){show('cr',false);show('ov',true)}$$('gop').click();fromPm=true;evGrp=null;show('pm',false);evList();show('evs',true)}],['gar','GARAJ',out(()=>$$('galb2').click())],['mrk','MARKET',out(()=>$$('shopb').click())]].forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=I[a[0]]+'<span>'+a[1]+'</span>';b.onclick=a[2];nv.appendChild(b)});
 const OT=['res','galw'];
-function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms','ntf'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth&&!(window.__evrRes&&vis('evr')),nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms')||vis('ntf'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===(evGrp?0:2):vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===0:vis('evs')?i===(evGrp?0:2):c?i===1:i===0))}catch(e){}}
+function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$('set'),ly=st==='menu';se.classList.toggle('lby',ly);se.classList.toggle('igs',!ly);se.style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lg+'") center 35%/cover no-repeat #0a0620','important')}catch(e){}try{const o=vis('ov'),c=vis('cr')||vis('evs'),pre=o&&$$('ov').dataset.m==='pre',oth=OT.some(vis)||(vis('set')&&st!=='menu');const pmv=vis('pm'),gv=vis('gal')&&!galEv&&!galCr,gt=vis('gal')&&!!(galEv||galCr)&&!cuOn,sub=['evd','evr','lb','shop','set','ms','ntf'].some(vis),on=(o||c||pmv||gv||sub||gt)&&!oth&&!(window.__evrRes&&vis('evr')),nvOn=on&&!gt,b=document.body.classList;b.toggle('u2',on);b.toggle('u2n',nvOn);[...nv.children].forEach((x,i)=>x.classList.toggle('on',(pre||vis('set')||vis('ms')||vis('ntf'))?false:gv?i===3:(vis('evd')||vis('evr'))?i===(evGrp?1:2):vis('shop')?i===4:(vis('lb')||vis('set'))?false:pmv?i===1:vis('evs')?i===(evGrp?1:2):c?i===1:i===0))}catch(e){}}
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.sp+'")')}catch(e){}
@@ -4682,6 +4707,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.63.1',n:['Araç sesleri yükseltildi (motor ve lastik)','Fren lastik sesi yalnızca fren 1.5 sn’den uzun basılı tutulunca (sert fren) çıkar','Pedal düzeni: gaz+NOS ve fren yan yana, el freni ikisinin tam ortasında altta; gaz ve fren %5 büyüdü; gaz ile fren arasında parmağı sürükleyerek geçiş yapılabilir','Kariyer başlığının altındaki yazı (yatay) geri geldi','Sol menüde Kariyer yerine Oyna eklendi (Oyna ana ekranını açar); lobideki sarı Oyna butonu kaldırıldı','Oyna ekranında üst sıradaki modların açılmaması düzeltildi','Çok oyunculu uyarısı butonun üstünde tooltip olarak gösterilir']},
 {v:'v9.63',n:['TÜM ARAÇ SESLERİ YENİLENDİ: tüm modlarda ve tüm araçlarda eski sentetik/örnek motor, el freni, drift ve vites sesleri kaldırıldı','Gerçek motor döngüleri (6 kademe) devire ve gaza göre karışır; vites geçişinde devir düşer, gaz kesilir','Fren, el freni ve drift için gerçek lastik kayma sesi eklendi']},
 {v:'v9.62.1',n:['Oyna, Kariyer ve Etkinlikler ana ekranlarında başlığın altındaki kısa açıklama sola, başlığın altına hizalandı','Ana mod ve etkinlik liste ekranlarına geri butonu eklendi','Oyna ekranında (yatay) modlar 4 üstte + 3 altta sola hizalı dizildi','Ana modlara ve alt modlara girince sol menüde Etkinlik yerine Lobi aktif kalır']},
 {v:'v9.62',n:['Oyna menüsünde Etkinlikler kaldırıldı: SPEEDRUN, CIRCUIT, SPRINT ve RALLİ artık ana oyun modları (Speedrun: Speedrun + Rekor Denemesi, Circuit, Sprint: 5 km + Ralli, Ralli: Kış Rallisi)','Etkinlikler sekmesinde yalnızca diğer etkinlikler (Drift, Taksi, Otoban PvE, Festival) kalır','Hayalet sistemi sıfırlandı (eski test hayaletleri silinir) ve hayaletlere 60 gün süre sınırı eklendi']},
@@ -5533,7 +5559,7 @@ function load(){if(K||busy||!AC)return;busy=true;ctx0=AC;const C=AC;
   const loops=lb.map((b,i)=>Object.assign(mk(b,bus),{ref:ref[i]}));
   const sq=mk(bs[6],C.destination);
   K={loops,lp,sq,C};window.__SNK=K}).catch(e=>{busy=false;console.warn('araç sesi yüklenemedi',e)})}
-const KENG=.38,KSQ=.5;
+const KENG=1,KSQ=.9;let brkT=0,brkL=0;
 const _a=aud;
 aud=function(boost){_a.apply(this,arguments);try{
  if(!AC)return;const T=AC.currentTime;
@@ -5550,8 +5576,8 @@ aud=function(boost){_a.apply(this,arguments);try{
  /* lastik: fren, el freni, drift */
  let q=0;if(st==='race'){const v=P.v,dr=(typeof isDR==='function'&&isDR());
   if(dr)q=Math.max(q,clamp((Math.abs(drA)-.05)/.34,0,1)*Math.min(1,v/28));
-  else{if(pdH&&v>8)q=Math.max(q,Math.min(1,v/25));if(pdB&&!pdG&&v>14)q=Math.max(q,Math.min(1,(v-14)/30)*.8)}}
- K.sq.g.gain.setTargetAtTime(Math.pow(q,1.3)*KSQ,T,.07);K.sq.s.playbackRate.setTargetAtTime(.86+P.v*.0032+(typeof drA==='number'?Math.abs(drA)*.22:0),T,.1)
+  else{if(pdH&&v>8)q=Math.max(q,Math.min(1,v/25));const nw=performance.now(),dt=Math.min(.1,(nw-brkL)/1000);brkL=nw;if(pdB&&!pdG&&v>14)brkT+=dt;else brkT=0;if(brkT>1.5)q=Math.max(q,Math.min(1,(brkT-1.5)/.4)*Math.min(1,(v-14)/20))}}
+ if(st!=='race')brkT=0;K.sq.g.gain.setTargetAtTime(Math.pow(q,1.3)*KSQ,T,.07);K.sq.s.playbackRate.setTargetAtTime(.86+P.v*.0032+(typeof drA==='number'?Math.abs(drA)*.22:0),T,.1)
 }catch(e){}};
 /* vites sesi: eski sentetik bip yerine motorun kendi devir düşüşü/kesintisi kullanılır */
 const _s=sfx;sfx=function(k){if(k==='shift')return;return _s.apply(this,arguments)};
