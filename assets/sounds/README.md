@@ -10,6 +10,7 @@ Put real audio files here (`.mp3` or `.wav`, `.mp3` is tried first). Every file 
 | tire_drift | loop, drift / handbrake / lateral slip |
 | wheel_spin | loop, burnout / launch |
 | nitro | loop while nitro is active |
+| gear_shift | one-shot on each gear change |
 | crash_car | one-shot, traffic collision |
 | hit_barrier | one-shot, barrier hit |
 | scrape_wall | loop, rubbing the barrier |
