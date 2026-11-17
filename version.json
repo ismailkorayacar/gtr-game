@@ -1,1 +1,1 @@
-{"v": "v9.63.3", "n": ["Motor ve lastik sesi gerçekten yükseltildi: ses sınırlayıcısı eşiği (-8 dB) artışı bastırıyordu, eşik -1.5 dB’ye çıkarıldı"]}
+{"v": "v9.63.4", "n": ["Motor sesi telefon hoparlöründe duyulur hale getirildi: duyulmayan bas kesildi, orta-tiz harmonikler güçlendirildi (doygunluk + orta-tiz yükseltme), filtre açıldı"]}
