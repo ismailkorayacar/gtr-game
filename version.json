@@ -1,1 +1,1 @@
-{"v": "v9.64.1", "n": ["Çarpışma (crash), cam kırılma ve yağ lekesi sesleri de kaldırıldı; ses altyapısında araç/çarpışma/kayma sesi kalmadı"]}
+{"v": "v9.65", "n": ["YENİ ARAÇ SES SİSTEMİ (kodla üretilen, dosya gerektirmez): ilk gaza basışta marş + motor çalışması, hız/gaz ile değişen motor sesi, fren/drift/patinaj lastik sesleri, nitro, araç ve bariyer çarpışması, bariyer sürtünmesi ve trafik kornaları", "Performans: tüm sesler açılışta bir kez üretilir, oyun döngüsünde yalnızca birkaç ses parametresi güncellenir (30 Hz, bellek ayırma yok)"]}
