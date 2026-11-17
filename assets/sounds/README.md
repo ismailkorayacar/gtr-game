@@ -5,6 +5,8 @@ Put real audio files here (`.mp3` or `.wav`, `.mp3` is tried first). Every file 
 | file | use |
 |---|---|
 | engine_start | one-shot on first throttle press |
+| engine_l0 … engine_l4 | engine rpm layers (seamless loops cut from a real engine recording), crossfaded by revs |
+| shift_1 … shift_3 | real recorded gear-shift clips, one per upshift |
 | tire_screech | loop, hard braking |
 | tire_drift | loop, drift / handbrake / lateral slip |
 | wheel_spin | loop, burnout / launch |
