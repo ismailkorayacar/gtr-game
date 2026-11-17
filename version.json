@@ -1,1 +1,1 @@
-{"v": "v9.61.3", "n": ["Rekorlar tablosunda kendi satırı seçilince KENDİ HAYALETİNLE YARIŞ yazar", "REKORTMENLE YARIŞ altındaki yazı güncellendi; açıkken rekortmenin tam adı ve süresi (kronometre ikonuyla) görünür", "Hayalet süre farkı HUD\\'u üstteki puan HUD\\'unun altına taşındı", "+N P bildirimleri %50 küçüldü ve P harfi yerine puan ikonu kullanıyor"]}
+{"v": "v9.61.4", "n": ["Hayalet HUD\\'unda hayalet ikonu kaldırıldı; hayalet sahibinin tam adı gösteriliyor", "Güçlendirici olmayan etkinliklerde sol taraftaki Kalkan ve Mıknatıs butonları gizlendi"]}
