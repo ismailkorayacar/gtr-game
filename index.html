@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.63.3</title>
+<title>gtr_game_v9.63.4</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1733,7 +1733,7 @@ body.ls #pdN svg{width:38px;height:23px}
 #mptip{position:fixed;z-index:80;display:none;transform:translate(-50%,-100%);max-width:78vw;white-space:normal;text-align:center;background:rgba(20,10,52,.97);border:1.5px solid #ffc24a;color:#ffd24a;font:800 12px/1.25 system-ui;padding:7px 12px;border-radius:10px;box-shadow:0 4px 14px #000a;pointer-events:none}
 #mptip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;width:10px;height:10px;background:rgba(20,10,52,.97);border-right:1.5px solid #ffc24a;border-bottom:1.5px solid #ffc24a;transform:translateX(-50%) rotate(45deg)}
 @media (orientation:landscape){#cr .k2t .e2bk{width:22px;height:22px;font-size:18px;margin:0 8px 0 0;padding:0 0 2px}#cr .k2s{display:block!important;font-size:9px;line-height:1;margin-top:-3px}#cr .k2t{padding:3px 62px 4px 16px;margin:0 0 0 4px;font-size:24px}#cr #crbody{gap:4px;justify-content:flex-start!important}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.63.3</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.63.4</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4706,6 +4706,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.63.4',n:['Motor sesi telefon hoparlöründe duyulur hale getirildi: duyulmayan bas kesildi, orta-tiz harmonikler güçlendirildi (doygunluk + orta-tiz yükseltme), filtre açıldı']},
 {v:'v9.63.3',n:['Motor ve lastik sesi gerçekten yükseltildi: ses sınırlayıcısı eşiği (-8 dB) artışı bastırıyordu, eşik -1.5 dB’ye çıkarıldı']},
 {v:'v9.63.2',n:['Gaz ve fren pedalı birbirine yaklaştırıldı; el freni ikisinin ortasında kalıp %50 aşağı alındı','Araç sesleri (motor ve lastik) 3 kat yükseltildi, patlamayı önlemek için sınırlayıcı eklendi','Kariyer ekranına geri butonu eklendi, Isınma Turu yatay ekranında geri butonu görünür oldu (Oyna ekranına döner)']},
 {v:'v9.63.1',n:['Araç sesleri yükseltildi (motor ve lastik)','Fren lastik sesi yalnızca fren 1.5 sn’den uzun basılı tutulunca (sert fren) çıkar','Pedal düzeni: gaz+NOS ve fren yan yana, el freni ikisinin tam ortasında altta; gaz ve fren %5 büyüdü; gaz ile fren arasında parmağı sürükleyerek geçiş yapılabilir','Kariyer başlığının altındaki yazı (yatay) geri geldi','Sol menüde Kariyer yerine Oyna eklendi (Oyna ana ekranını açar); lobideki sarı Oyna butonu kaldırıldı','Oyna ekranında üst sıradaki modların açılmaması düzeltildi','Çok oyunculu uyarısı butonun üstünde tooltip olarak gösterilir']},
@@ -5554,7 +5555,7 @@ function load(){if(K||busy||!AC)return;busy=true;ctx0=AC;const C=AC;
  const dec=b=>new Promise((res,rej)=>{try{const p=C.decodeAudioData(toAB(b),res,rej);if(p&&p.catch)p.catch(rej)}catch(e){rej(e)}});
  const mk=(buf,out)=>{const s=C.createBufferSource();s.buffer=buf;s.loop=true;const g=C.createGain();g.gain.value=0;s.connect(g);g.connect(out);s.start();return{s,g}};
  Promise.all(SW.l.map(dec).concat([dec(SW.s)])).then(bs=>{
-  const bus=C.createGain();bus.gain.value=.9;const lp=C.createBiquadFilter();lp.type='lowpass';lp.frequency.value=5000;const lim=C.createDynamicsCompressor();lim.threshold.value=-1.5;lim.knee.value=2;lim.ratio.value=20;lim.attack.value=.003;lim.release.value=.15;const og=C.createGain();og.gain.value=.85;lim.connect(og);og.connect(C.destination);bus.connect(lp);lp.connect(lim);
+  const bus=C.createGain();bus.gain.value=.9;const lp=C.createBiquadFilter();lp.type='lowpass';lp.frequency.value=5000;const lim=C.createDynamicsCompressor();lim.threshold.value=-1.5;lim.knee.value=2;lim.ratio.value=20;lim.attack.value=.003;lim.release.value=.15;const og=C.createGain();og.gain.value=.85;lim.connect(og);og.connect(C.destination);const hp=C.createBiquadFilter();hp.type='highpass';hp.frequency.value=150;hp.Q.value=.7;const ws=C.createWaveShaper(),cv=new Float32Array(2048);for(let i=0;i<2048;i++){const x=i/1023.5-1;cv[i]=Math.tanh(x*2.6)/Math.tanh(2.6)}ws.curve=cv;ws.oversample='2x';const pk=C.createBiquadFilter();pk.type='peaking';pk.frequency.value=2200;pk.Q.value=.8;pk.gain.value=7;bus.connect(hp);hp.connect(lp);lp.connect(ws);ws.connect(pk);pk.connect(lim);
   const lb=bs.slice(0,6),f=lb.map(f0Of);let ok=true;for(let i=1;i<6;i++)if(f[i]<=f[i-1])ok=false;
   const ref=ok?f.map(x=>x/f[0]*1000):[1000,2000,3100,4300,5600,7000];
   const loops=lb.map((b,i)=>Object.assign(mk(b,bus),{ref:ref[i]}));
@@ -5573,7 +5574,7 @@ aud=function(boost){_a.apply(this,arguments);try{
  let k=0;while(k<4&&rn>L[k+1].ref)k++;
  const tt=clamp((rn-L[k].ref)/(L[k+1].ref-L[k].ref),0,1);
  for(let i=0;i<6;i++){const w=i===k?Math.cos(tt*Math.PI/2):i===k+1?Math.sin(tt*Math.PI/2):0;L[i].g.gain.setTargetAtTime(w*vol,T,.04);L[i].s.playbackRate.setTargetAtTime(clamp(rn/L[i].ref,.4,3),T,.03)}
- K.lp.frequency.setTargetAtTime(1400+5200*(.3+.7*load_)*(.4+.6*rr),T,.06);
+ K.lp.frequency.setTargetAtTime(2800+4200*(.3+.7*load_)*(.4+.6*rr),T,.06);
  /* lastik: fren, el freni, drift */
  let q=0;if(st==='race'){const v=P.v,dr=(typeof isDR==='function'&&isDR());
   if(dr)q=Math.max(q,clamp((Math.abs(drA)-.05)/.34,0,1)*Math.min(1,v/28));
