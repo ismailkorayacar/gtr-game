@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.70.1</title>
+<title>gtr_game_v9.70.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2082,7 +2082,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:landscape){#evd .g2 .d2m{height:min(112px,29vh)!important}}
 #evd #evbx #evpl::after{display:block!important;content:"";position:absolute;right:-6px;top:50%;width:48px;height:48px;transform:translateY(-50%);background:#6b2fd6;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;opacity:.38;pointer-events:none;z-index:-1}
 @media (orientation:landscape){#evd #evbx #evpl::after{width:36px;height:36px}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.70.1</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.70.2</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4248,6 +4248,7 @@ var rgMk=null,rgAM=null,rgFall=[],rgCl=[];
 const rgSignM=new THREE.MeshBasicMaterial({map:(()=>{const c=document.createElement('canvas');c.width=256;c.height=96;const g=c.getContext('2d');g.fillStyle='#ff7a00';g.fillRect(0,0,256,96);g.strokeStyle='#fff';g.lineWidth=6;g.strokeRect(5,5,246,86);g.fillStyle='#111';g.font='900 54px system-ui';g.textAlign='center';g.fillText('YAVAŞ',128,68);const x=new THREE.CanvasTexture(c);x.encoding=THREE.sRGBEncoding;return x})()});
 const rgSandG=geoN(A.rg.tm.g),rgSandM=new THREE.MeshStandardMaterial({map:(()=>{const t=rgTx(A.rg.tm.t,1);t.repeat.set(1,1);return t})(),color:0xa89888,roughness:1,side:THREE.DoubleSide});
 
+/* HERO KURALI: PVE listesindeki etkinlik hem PvE hem baska bir mod (Circuit vb.) olsa da hero her zaman PvE herosudur (evHero) */
 /* PvE YARIŞ KURALLARI (tüm mevcut ve gelecek PvE yarış modları: PVE listesine id ekle)
    4 araç (oyuncu+3 rakip), temas serbest (rakip teması %5 hasar), P puanı yok / NOS var, sıralamaya göre coin (2000/1000/500/0),
    kalkan+mıknatıs yok, kamera x1.68 geride, rakip rozetleri, minimap: trafik yeşil / rakip kırmızı,
@@ -4869,7 +4870,8 @@ function sync(){try{window.__lobChk&&window.__lobChk()}catch(e){}try{const se=$$
 try{const _s=show;show=function(){const r=_s.apply(this,arguments);sync();return r}}catch(e){}
 try{const _o=ovMode;ovMode=function(){const r=_o.apply(this,arguments);sync();return r}}catch(e){}
 try{document.documentElement.style.setProperty('--hsp','url("'+A.hero.wu+'")')}catch(e){}
-window.evHero=function(e){const n=(e&&e.nm)||'';{const g=evGOf(e&&e.id);if(g){const h=({sr:A.hero.sr,ct:A.hero.ci,sp:A.hero.sp,ra:A.hero.ra})[g];if(h)return h}}if(e&&e.drift||/^Drift/i.test(n))return A.hero.dr;if(e&&e.ta||/^Speedrun/i.test(n))return A.hero.sr;if(/^Sprint/i.test(n))return A.hero.sp;if(e&&e.id==='fs')return A.hero.ci;if(/^Circuit/i.test(n))return A.hero.ci;return A.hero.pv};
+/* HERO KURALI (tüm mevcut ve gelecek mod/etkinlikler): önce PvE (PVE listesindeyse her zaman PvE heroyu; detay, rekorlar, yükleme, tamamlandı ekranları dahil), sonra Drift/Speedrun/Sprint/Ralli/Circuit grupları. */
+window.evHero=function(e){const n=(e&&e.nm)||'';if(e&&PVE.includes(e.id))return A.hero.pv;{const g=evGOf(e&&e.id);if(g){const h=({sr:A.hero.sr,ct:A.hero.ci,sp:A.hero.sp,ra:A.hero.ra})[g];if(h)return h}}if(e&&e.drift||/^Drift/i.test(n))return A.hero.dr;if(e&&e.ta||/^Speedrun/i.test(n))return A.hero.sr;if(/^Sprint/i.test(n))return A.hero.sp;if(/^Circuit/i.test(n))return A.hero.ci;return A.hero.pv};
 window.evsBg=function(u){try{$$('evs').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+u+'") center 30%/cover no-repeat #0a0620','important')}catch(e){}};
 try{if(!window.__evsPick)evsBg(A.hero.ev)}catch(e){}
 try{$$('cr').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.kr+'") center 30%/cover no-repeat #0a0620','important')}catch(e){}
@@ -4933,7 +4935,7 @@ try{$$('evd').style.setProperty('background','linear-gradient(rgba(0,0,0,.2),rgb
 (function(){
 const $$=id=>document.getElementById(id);
 let url=null,V=null,on=false,unlocked=false;
-const VOL=.45;
+const VOL=.315;
 /* tek lobi videosu: gömülü veri tarayıcının kendi çözücüsüyle (fetch) bloba çevrilir; ana iş parçacığında bayt döngüsü yok */
 {const src='data:video/mp4;base64,'+A.lobv;A.lobv=null;
  fetch(src).then(r=>r.blob()).then(b=>{url=URL.createObjectURL(b);const v=document.createElement('video');v.src=url;v.muted=true;v.loop=true;v.preload='auto';v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.disablePictureInPicture=true;v.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:8;opacity:0;pointer-events:none;display:none;background:#000';document.body.insertBefore(v,document.body.firstChild);V=v}).catch(()=>{})}
@@ -4943,7 +4945,7 @@ const setVol=(v,k)=>{try{v.volume=Math.max(0,Math.min(1,VOL*k));v.muted=!aud()}c
 function start(){if(!V)return;on=true;window.__lv=true;V.style.display='block';V.style.opacity='1';setVol(V,1);const p=V.play();if(p&&p.catch)p.catch(()=>{V.muted=true;V.play().catch(()=>{})})}
 function stop(){on=false;window.__lv=false;if(!V)return;try{V.pause()}catch(e){}V.style.display='none';V.style.opacity='0';V.currentTime=0}
 const LG=document.createElement('div');LG.id='lgh';LG.style.cssText='position:fixed;inset:0;z-index:8;pointer-events:none;display:none;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("'+A.hero.lv+'") center 35%/cover no-repeat #0a0620';LG.innerHTML='';document.body.insertBefore(LG,document.body.firstChild);
-function lobby(){try{const o=$$('ov');return !!o&&getComputedStyle(o).display!=='none'&&o.dataset.m!=='pre'&&!document.hidden&&!['ntf','set'].some(i=>{const e=$$(i);return !!e&&getComputedStyle(e).display!=='none'})}catch(e){return false}}
+function lobby(){try{const o=$$('ov');return !!o&&getComputedStyle(o).display!=='none'&&o.dataset.m!=='pre'&&!document.hidden&&!['ntf','set','lb','ms'].some(i=>{const e=$$(i);return !!e&&getComputedStyle(e).display!=='none'})}catch(e){return false}}
 function loginUp(){try{const f=$$('fbl');return !!f&&getComputedStyle(f).display!=='none'}catch(e){return false}}
 const chk=()=>{const l=lobby(),lg=l&&loginUp(),v=l&&!lg;LG.style.display=lg?'block':'none';document.body.classList.toggle('lgup',lg);if(v&&!on)start();else if(!v&&on)stop()};window.__lobChk=chk;setInterval(chk,250);
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&on)stop()});
@@ -5039,7 +5041,7 @@ function galFrame(W,H,L){if(!GFR.on){GFR.on=true;const g=document.getElementById
 
 /* ===== v6.0 günlük görev kancaları ===== */
 (function(){try{
-const _rd=rrDone;rrDone=function(){const f=!RRX&&RRFIN===1;const r=_rd.apply(this,arguments);if(f)try{mAdd('pve1',1)}catch(e){}return r};
+const _rd=rrDone;rrDone=function(w){const had=!!RRX;const r=_rd.apply(this,arguments);if(!had&&RRX)try{if((RRFIN>0||!!w)&&RRX.findIndex(q=>q.you)===0)mAdd('pve1',1)}catch(e){}return r};
 const _ef=evFinish;evFinish=function(win){const e=EV;const ok=!!(win||(e&&e.endless&&e.tout));const n=(e&&e.nm)||'';const r=_ef.apply(this,arguments);try{if(ok&&!(e&&PVE.includes(e.id))){if(e&&(e.id==='dc'||e.id==='rg'))mAdd('spr',1);else if(e&&e.id==='ct')mAdd('cir',1)}}catch(x){}return r};
 }catch(e){}})();
 
@@ -5078,8 +5080,9 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.70.2',n:['Günlük görev "Bir PVE yarışını 1. bitir" artık PvE yarışında 1. bitirince doğru sayılıyor.','Lobideyken Bildirimler, Puan Tablosu, Ayarlar veya Günlük Görevler açılınca lobi videosu duruyor; lobi videosunun sesi %30 azaldı.','Hero kuralı: PvE olan bir etkinlik başka bir mod da olsa (ör. Circuit) detay, rekorlar, yükleme ve tamamlandı ekranlarında hep PvE herosunu kullanır.']},
 {v:'v9.70.1',n:['Kariyer modunda eski Kariyer hero görseli geri geldi (ana ekran, yükleme ekranı, tamamlanma ve diğer ekranlar).']},
-{v:'v9.70',n:['Hero görselleri yenilendi (Kariyer hero'su aynı kaldı); eski hero görselleri ve eski lobi videoları kaldırıldı. Lobi videosu yenilendi.','Her sürüşten önce 5 saniyelik yükleme ekranı: o modun hero görseli, alt solda mod başlığı, altta ilerleme çubuğu; sonra karararak sinematiğe geçer.','Ayarlar, Isınma turu ve Market için yeni hero görselleri; Bildirimler ve genel puan tablosu için yeni hero görselleri.']},
+{v:'v9.70',n:['Hero görselleri yenilendi (Kariyer hero görseli aynı kaldı); eski hero görselleri ve eski lobi videoları kaldırıldı. Lobi videosu yenilendi.','Her sürüşten önce 5 saniyelik yükleme ekranı: o modun hero görseli, alt solda mod başlığı, altta ilerleme çubuğu; sonra karararak sinematiğe geçer.','Ayarlar, Isınma turu ve Market için yeni hero görselleri; Bildirimler ve genel puan tablosu için yeni hero görselleri.']},
 {v:'v9.69.2',n:['Etkinlik ve alt mod detayı (yatay): sağdaki harita alanı yaklaşık %30 küçüldü, tüm modlarda aynı boyutta; BAŞLA düğmesi artık ekranın altında yarım kalmıyor.','BAŞLA düğmesi sarı kaldı, yanına silik mor damalı bayrak ikonu eklendi.']},
 {v:'v9.69.1',n:['Etkinlik detayı: bilgi penceresi artık her zaman en üstte, üst çubuğun altında kalmıyor.','Nexus RX: dış görünümde iç mekanın kırmızı renkleri sızmıyor.','KAVREON K1 RS: eski küçük resim önbelleği temizlendi, seçim ve küçük resimler düzeltilmiş araçla yenileniyor.','Mod/etkinlik detayında harita alanı büyüdü, rozet başlığın sağında; sınırsız modlarda KM SINIRI YOK yazıyor; haritadan yazı ve ok kaldırıldı; Circuit haritası 1 tur gösteriyor.','ARACINI GELİŞTİR düğmesi GELİŞTİR oldu, yazı ve ikon aynı boyda.','Geri sayımda gaza basılırsa motor çalışma sesi geliyor; gaza basılmadan kalkışta önce motor çalışma, sonra lastik patinaj ve gazlama sesi geliyor.']},
 {v:'v9.69',n:['Nexus RX ve Elergy RH8: iç kamerada (direksiyon görünümü) artık araçların kendi torpido, konsol, koltuk ve direksiyonu kullanılıyor; direksiyon dönüyor.']},
