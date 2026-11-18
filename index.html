@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.66.19</title>
+<title>gtr_game_v9.66.20</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -1982,6 +1982,7 @@ body #evd #evdback{display:none!important}
 #evd .g2 .d2i{order:7;flex:none;padding:0!important;background:none!important;overflow:visible!important}
 #evd .g2 .d2i:empty,#evd .g2 .d2i:not(.ghon){display:none}
 #evd .g2 .d2i .ghs{margin:0}
+#evd #evdb.g2 .d2v{border-left:4px solid #ff7ad0;border-radius:14px!important;background:linear-gradient(90deg,rgba(14,8,44,.9),rgba(14,8,44,.7))!important}
 #evd .g2 .d2v{order:4;flex:1 1 0;min-height:130px;display:flex;align-items:center;gap:4px;border-radius:16px;background:radial-gradient(ellipse at 50% 55%,rgba(8,4,28,.82),rgba(8,4,28,.45) 65%,rgba(8,4,28,0))}
 #evd .g2 .d2c{order:5;flex:none;padding:2px 2px 4px!important;margin:0!important;grid-column:auto!important;grid-row:auto!important}
 #evd #evdb.g2 #evbx.d2q{order:6;flex:none!important;position:static!important;padding:0!important;background:none!important;display:grid!important;grid-template-columns:1fr 1fr;gap:8px;width:100%!important;max-width:none!important;height:auto!important;flex-direction:row!important;margin:0!important}
@@ -2040,7 +2041,7 @@ body #evd #evdback{display:none!important}
 #cuhs .chl-o{left:36px;top:-8px}
 #cuhs .lo .chl-o{left:auto;right:36px}
 @media (orientation:landscape){#cuhs .chs{left:-25px;top:-25px;width:50px;height:50px}#cuhs .chi{width:21px;height:21px;margin:-10.5px 0 0 -10.5px}#cuhs .chl{font-size:10px}#cuhs .chl-u{top:-46px}#cuhs .chl-d{top:30px}#cuhs .chl-o{left:32px}#cuhs .lo .chl-o{right:32px}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.19</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.66.20</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3475,9 +3476,13 @@ function cuHsUpdate(){const on=cuOn&&cuS&&cuS.pg==='m'&&gM===1,g=gList[gIdx];let
  const cs=$('cus'),rc=cs&&cs.offsetParent?cs.getBoundingClientRect():null;let bot=H-8,rl=W-8,ll=8;if(rc){if(rc.width>W*.7)bot=rc.top-6;else if(rc.left>W*.5)rl=rc.left-6;else ll=rc.right+6}
  const top=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sat'))||0)+64,cl=(v,a,b)=>Math.max(a,Math.min(b,v)),rad=hs.__r||29;
  const cxm=(x0+x1)/2,bw=x1-x0,P={};
- P.p=[cl(cxm,ll+rad+4,rl-rad-4),cl(y0-62,top+rad,bot-rad),R];
- P.n=[cl(x0-14,ll+rad+4,rl-rad-4),cl(Math.max(y1+30,U[1]+24),top+rad,bot-rad-8),U];
- P.w=[cl(Wh[0]+34,ll+rad+4,rl-rad-4),cl(Wh[1]+46,top+rad,bot-rad-8),Wh];
+ {const pd=rad+8,E=[x0-pd,y0-pd,x1+pd,y1+pd],ax0=ll+rad+4,ax1=rl-rad-4,ay0=top+rad,ay1=bot-rad-8,C=[];
+  for(let x=E[0];x<=E[2];x+=8){C.push([x,E[1]],[x,E[3]])}for(let y=E[1];y<=E[3];y+=8){C.push([E[0],y],[E[2],y])}
+  const ideal={p:[cxm,y0-62],n:[x0-14,Math.max(y1+30,U[1]+24)],w:[Wh[0]+34,Wh[1]+46]},A={p:R,n:U,w:Wh},put=[];
+  ['p','w','n'].forEach(k=>{const id=ideal[k];let best=null,bd=1e18;
+   C.forEach(q=>{if(q[0]<ax0||q[0]>ax1||q[1]<ay0||q[1]>ay1)return;if(put.some(o=>Math.hypot(o[0]-q[0],o[1]-q[1])<rad*2+10))return;const d=Math.hypot(q[0]-id[0],q[1]-id[1]);if(d<bd){bd=d;best=q}});
+   if(!best){best=[cl(id[0],ax0,ax1),cl(id[1],ay0,ay1)];let n=0;while(n++<60&&(best[0]>E[0]&&best[0]<E[2]&&best[1]>E[1]&&best[1]<E[3]||put.some(o=>Math.hypot(o[0]-best[0],o[1]-best[1])<rad*2+10)))best=[cl(best[0],ax0,ax1),cl(best[1]+(best[1]>(E[1]+E[3])/2?8:-8),ay0,ay1)]}
+   put.push(best);P[k]=[best[0],best[1],A[k]]})}
  const svg=$('cuhl');let h='';
  CUHS.forEach(o=>{const q=P[o.k],w=hs.querySelector('.chw[data-k="'+o.k+'"]');w.style.transform='translate('+Math.round(q[0])+'px,'+Math.round(q[1])+'px)';w.classList.toggle('lo',o.k==='n'?(q[0]-ll>110):o.k==='w'?(rl-q[0]<110):false);
   const a=q[2],dx=a[0]-q[0],dy=a[1]-q[1],dl=Math.hypot(dx,dy)||1,sx=q[0]+dx/dl*rad,sy=q[1]+dy/dl*rad;
@@ -3719,7 +3724,7 @@ function d2g2(e){$('d2info').style.setProperty('--ic',icUrl(D2IC.info));$('d2up'
   p.onclick=ev=>{if(ev.target===p||ev.target.classList.contains('d2x'))p.remove()};$('evd').appendChild(p)};
  $('d2up').onclick=()=>{galEv=e;document.body.classList.add('gdir');openGal();let n=0;const iv=setInterval(()=>{n++;if(gIdx>=0||n>40){clearInterval(iv);try{if(gIdx>=0)cuOpen()}catch(x){}document.body.classList.remove('gdir')}},50)}}
 function evCarFill(e){const C=$('d2c');if(!C)return;const S=$('d2sel'),SB=$('d2chg');const V=$('d2vi');const upd=()=>{if(!S&&!V)return;const ci=e.car?CARS.findIndex(x=>x[0]===e.car):sel.car;if(ci<0||!CARS[ci])return;const u=thumbs[CARS[ci][0]];if(S){S.lastChild.textContent=CARS[ci][1];if(u)S.firstChild.style.backgroundImage='url('+u+')'}if(V){V.querySelector('b').textContent=CARS[ci][1];V.querySelector('small').textContent=CARS[ci][2]+' km/s';const id=CARS[ci][0];if(hiT[id])V.firstChild.style.backgroundImage='url('+hiT[id]+')';else{if(u)V.firstChild.style.backgroundImage='url('+u+')';clearTimeout(upd.t);upd.t=setTimeout(()=>{try{if(!$('d2vi')||$('d2vi')!==V)return;const h=hiCar(id);if(h&&CARS[ci]&&CARS[ci][0]===id&&V.isConnected)V.firstChild.style.backgroundImage='url('+h+')'}catch(x){}},120)}}};
- const L=e.car?[CARS.findIndex(x=>x[0]===e.car)]:ownedList().filter(i=>evOK(i,e));C.innerHTML='';
+ const L=e.car?[CARS.findIndex(x=>x[0]===e.car)]:ownedList().filter(i=>evOK(i,e));C.innerHTML='';C.style.display=(e.car||L.length<2)&&$('d2vi')?'none':'';
  if(!e.car&&L.length&&!L.includes(sel.car)){sel.car=L[0];try{setCar()}catch(x){}}
  L.forEach(i=>{const b=document.createElement('button');b.type='button';b.className='d2k'+(e.car||sel.car===i?' on':'');b.dataset.i=i;b.innerHTML='<span class="th"></span><b>'+CARS[i][1]+'</b>';
   b.onclick=()=>{if(C.__mv||e.car)return;sel.car=i;try{setCar()}catch(x){}C.querySelectorAll('.d2k').forEach(x=>x.classList.toggle('on',+x.dataset.i===i));upd();C.classList.remove('op')};C.appendChild(b)});
@@ -5005,6 +5010,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.66.20',n:['ARACI GELİŞTİR ekranındaki daire butonlar (BOYA, NEON, JANT) artık hiçbir koşulda aracın üzerine gelmiyor; araç uzak ya da büyük olsa da daire aracın dışına yerleşiyor ve çubuk araca uzanıyor','Mod detayında araç seçim alanı, başlık alanıyla aynı arka plan ve pembe sol çizgi tasarımına alındı','Mod tek araçla oynanıyorsa ya da tek aracın varsa alttaki küçük araç resimleri alanı gizlenir','REKORTMENLE YARIŞ alanı yalnızca bu mod için başka bir oyuncunun kayıtlı rekoru varsa görünür']},
 {v:'v9.66.19',n:['Mod detay ekranındaki harita kuş bakışı, üç boyutlu görünümlü kıvrımlı yol çizimine dönüştü; arkasında etkinliğin çevre görseli var, başlangıç/bitiş, tur kapıları ve kontrol noktaları işaretli','Mod detayındaki büyük araç görseli yüksek çözünürlükte yeniden çiziliyor','ARACINI GELİŞTİR ekranında başlık ARACI GELİŞTİR oldu ve alttaki GERİ doğrudan mod detay ekranına döner','Alttaki BOYA / JANT / NEON butonları oyunun her yerinde kaldırıldı; aracın yanındaki daireler bu işi yapıyor']},
 {v:'v9.66.18',n:['Garajda ARACI GELİŞTİR açıldığında aracın çevresinde neon halka butonlar (BOYA aracın üstünde, NEON altında, JANT tekerleğin yanında) ve araca uzanan çizgiler gösteriliyor; tıklayınca alt butonlarla aynı sayfa, kamera açısı ve animasyon çalışır','Alt mod haritası artık oyundaki gerçek yol eğrisini (mesafe boyunca) çiziyor: gerçek viraj konumları, viraj şiddetine göre renk, kilometre cetveli, checkpoint ve tur işaretleri','Rekortmenle yarış anahtarı butonların altına alındı; mod için kayıtlı rekortmen yoksa gizleniyor']},
 {v:'v9.66.17',n:['Alt mod sayfası yeniden tasarlandı: üstte başlık, altında harita, neon oklu araç seçici, küçük araç resimleri ve 4 buton (DETAYLAR, ARACINI GELİŞTİR, REKORLAR, BAŞLA)','DETAYLAR butonu mod detaylarını kapatılabilir (X) bir popup olarak açar; ARACINI GELİŞTİR garajdaki geliştirme ekranına gider ve dönüşte sayfaya geri döner','Yatay düzende araç seçici ve resimler solda, harita ve 4 buton sağda; kariyer ve ısınma turuna dokunulmadı']},
@@ -5773,6 +5779,7 @@ async function world(e,key,hasMine){if(e.id==='tss'&&!hasMine)return null;const 
   if(L){const c8=L.filter(x=>!x.me).slice(0,8),D=await Promise.all(c8.map(x=>ghGet(key,x.u)));D.forEach(x=>{if(x)ok.push(x)})}
   if(ok.length)r=e.id==='tss'?ok.sort((a,b)=>(+b.s||0)-(+a.s||0))[0]:ok.sort((a,b)=>a.t-b.t)[0]}catch(x){}
  wc[key]={t:Date.now(),r};return r}
+const wcO={};async function worldO(e,key){const c=wcO[key];if(c&&Date.now()-c.t<3e5)return c.r;let r=null;try{const L=window.fbEvTop?await window.fbEvTop(e.id):null;if(L){const c8=L.filter(x=>!x.me).slice(0,8),D=await Promise.all(c8.map(x=>ghGet(key,x.u)));r=D.find(x=>x&&valid(x))||null}}catch(x){}wcO[key]={t:Date.now(),r};return r}
 async function load(e){const key=gk(e),sv=getSel(e.id);if(!sv)return null;const mine=jget('gh_'+key);
  if(mine&&ls('gh_up_'+key)!=='1')up(key,mine);
  if(sv.indexOf('u:')===0){const uid=sv.split(':')[1];return await ghGet(key,uid)}
@@ -5839,7 +5846,7 @@ function ui(e){if(!GHID.includes(e.id))return;const bx=$g('evbx');if(!bx)return;
   if(e.id==='tss'&&!jget('gh_'+gk(e))){toast('Önce bu etkinliği bir kez tamamlamalısın');return}
   setSel(e.id,'world');draw()};
  draw();
- if(getSel(e.id))ghShow(true);else{const key=gk(e),mine=jget('gh_'+key);if(mine&&valid(mine))ghShow(true);else world(e,key,!!mine).then(r=>ghShow(!!r)).catch(()=>{})}}
+ {const key=gk(e);worldO(e,key).then(r=>{ghShow(!!r);if(!r&&getSel(e.id)==='world'){setSel(e.id,'');draw()}}).catch(()=>{})}}
 window.evTopWarm=function(id){try{if(window.fbEvTop&&window.fbUser)window.fbEvTop(id).then(rm=>{if(rm&&rm.length){window.__evTopC=window.__evTopC||{};window.__evTopC[id]=rm}}).catch(()=>{})}catch(x){}};
 const _eo=evOpen;evOpen=function(i){const r=_eo.apply(this,arguments);try{ui(EVS[i])}catch(x){console.warn(x)}try{const sw=document.getElementById('ghsw'),ip=document.querySelector('#evdb .d2i');if(sw&&ip)ip.appendChild(sw)}catch(x){}try{evTopWarm(EVS[i].id)}catch(x){}return r};
 /* ---- rekor satırlarında MEYDAN OKU ---- */
