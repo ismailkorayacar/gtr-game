@@ -1,1 +1,1 @@
-{"v": "v9.71.1", "n": ["Araç sesleri üç ayrı kayıttan yeniden hazırlandı: motor devir katmanları artık kayıttaki temiz, tonlu motor sesinden (perdesi sabitlenmiş) çıkarıldı; kontak/ilk çalışma, vites, patinaj, lastik kayma ve drift sesleri yeni kayıtlardan."]}
+{"v": "v9.71.2", "n": ["Hızlanırken ara sıra duyulan yüksek cızırtı giderildi (vites geçiş sesleri yumuşatıldı).", "Lastik kayma, patinaj ve drift sesleri yeni kayıttan önceki versiyonuna geri alındı."]}
