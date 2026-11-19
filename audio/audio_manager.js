@@ -23,7 +23,7 @@
       crash_car: ['crash_car.wav', 'crash_car.mp3'], hit_barrier: ['hit_barrier.wav', 'hit_barrier.mp3'],
       scrape_wall: ['scrape_wall.wav', 'scrape_wall.mp3'], traffic_horn: ['traffic_horn.wav', 'traffic_horn.mp3']
     },
-    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 1.6, shift_1: 1.1, shift_2: 1.1, shift_3: 1.1, crash_car: 4, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
+    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 2.2, shift_1: 3, shift_2: 3, shift_3: 3, crash_car: 4, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
     B: {}, V: {}, failed: {}
   };
   const LOOPS = { tire_screech: 1, tire_drift: 1, wheel_spin: 1, scrape_wall: 1 };
