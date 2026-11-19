@@ -1,1 +1,1 @@
-{"v": "v9.71.1", "n": ["Motor katmanlarındaki yüksek frekanslı hışırtı ve gürültü azaltıldı (kayıt gürültü temizliğinden ve alçak geçiren filtreden geçirildi); döngü geçişleri uzatıldı."]}
+{"v": "v9.71.1", "n": ["Araç sesleri üç ayrı kayıttan yeniden hazırlandı: motor devir katmanları artık kayıttaki temiz, tonlu motor sesinden (perdesi sabitlenmiş) çıkarıldı; kontak/ilk çalışma, vites, patinaj, lastik kayma ve drift sesleri yeni kayıtlardan."]}
