@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.71.2</title>
+<title>gtr_game_v9.71.3</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2082,7 +2082,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:landscape){#evd .g2 .d2m{height:min(112px,29vh)!important}}
 #evd #evbx #evpl::after{display:block!important;content:"";position:absolute;right:-6px;top:50%;width:48px;height:48px;transform:translateY(-50%);background:#6b2fd6;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;opacity:.38;pointer-events:none;z-index:-1}
 @media (orientation:landscape){#evd #evbx #evpl::after{width:36px;height:36px}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.71.2</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.71.3</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5080,6 +5080,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.71.3',n:['Araç giderkenki motor sesi yükseltildi.','Vites geçiş sesleri belirgin şekilde yükseltildi; vites geçişleri artık duyuluyor.']},
 {v:'v9.71.2',n:['Hızlanırken ara sıra duyulan yüksek cızırtı giderildi (vites geçiş sesleri yumuşatıldı).','Lastik kayma, patinaj ve drift sesleri yeni kayıttan önceki versiyonuna geri alındı.']},
 {v:'v9.71.1',n:['Araç sesleri üç ayrı kayıttan yeniden hazırlandı: motor devir katmanları artık kayıttaki temiz, tonlu motor sesinden (perdesi sabitlenmiş) çıkarıldı; kontak/ilk çalışma, vites, patinaj, lastik kayma ve drift sesleri yeni kayıtlardan.']},
 {v:'v9.71',n:['Araç sesleri yeni ses kaydından yeniden hazırlandı: kontak/marş, motor rölanti ve hızlanma katmanları, vites geçişleri, patinaj, lastik kayma/ani fren ve drift sesleri.']},
@@ -5971,7 +5972,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       crash_car: ['crash_car.wav', 'crash_car.mp3'], hit_barrier: ['hit_barrier.wav', 'hit_barrier.mp3'],
       scrape_wall: ['scrape_wall.wav', 'scrape_wall.mp3'], traffic_horn: ['traffic_horn.wav', 'traffic_horn.mp3']
     },
-    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 1.6, shift_1: 1.1, shift_2: 1.1, shift_3: 1.1, crash_car: 4, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
+    gain: { engine_start: 2.5, tire_screech: 1, tire_drift: 1, wheel_spin: 4, engine_loop: 2.2, shift_1: 3, shift_2: 3, shift_3: 3, crash_car: 4, hit_barrier: 1, scrape_wall: 1, traffic_horn: 1, synth: 1.6 },   // 1 = the file's own level; synth = v9.50 engine / pop / nitro bus
     B: {}, V: {}, failed: {}
   };
   const LOOPS = { tire_screech: 1, tire_drift: 1, wheel_spin: 1, scrape_wall: 1 };
