@@ -92,7 +92,7 @@
 
   /* recorded engine: 5 pitch-flattened rpm layers cut from a real engine acceleration recording (seamless loops),
    * crossfaded by revs and pitch-matched with playbackRate; gear changes play the real recorded shift clips */
-  const LAY_F = [56, 62, 70, 78, 86], LAY_F0 = 54, LAY_F1 = 90;
+  const LAY_F = [64.5, 67, 71.3, 75.6, 80], LAY_F0 = 54, LAY_F1 = 90;
   AM.makeLayers = function (C, dest, bufs) {
     const g = C.createGain(); g.gain.value = AM.gain.engine_loop; const lv = C.createGain(); lv.gain.value = 1;
     const lp = C.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 5000; lp.Q.value = .5;
