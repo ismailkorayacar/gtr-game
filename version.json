@@ -1,1 +1,1 @@
-{"v": "v9.71", "n": ["Araç sesleri yeni ses kaydından yeniden hazırlandı: kontak/marş, motor rölanti ve hızlanma katmanları, vites geçişleri, patinaj, lastik kayma/ani fren ve drift sesleri."]}
+{"v": "v9.71.1", "n": ["Motor katmanlarındaki yüksek frekanslı hışırtı ve gürültü azaltıldı (kayıt gürültü temizliğinden ve alçak geçiren filtreden geçirildi); döngü geçişleri uzatıldı."]}
