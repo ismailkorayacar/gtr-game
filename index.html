@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.79</title>
+<title>gtr_game_v9.80</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2132,7 +2132,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.79</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.80</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3458,6 +3458,7 @@ function applyQ(q,init){Q=q?1:0;try{localStorage.setItem('th_q',Q)}catch(e){}
  ren.domElement.style.filter=Q?(CTM?'none':'saturate(1.5) contrast(1.15)'):'saturate(1.3) contrast(1.08)';
  try{if(Q)scene.environment=mkStudio();else if(typeof TH!=='undefined'&&TH&&skyC[TH.ck||TH.key])scene.environment=skyC[TH.ck||TH.key].env}catch(e){}
  flareM.opacity=Q?.78:.55;tgM.opacity=Q?.62:.45;
+ try{ren.shadowMap.type=Q?THREE.PCFSoftShadowMap:THREE.PCFShadowMap;const ms=Q?2048:1024;if(sun.shadow.mapSize.x!==ms){sun.shadow.mapSize.set(ms,ms);if(sun.shadow.map){sun.shadow.map.dispose();sun.shadow.map=null}}sun.shadow.normalBias=Q?.035:.05}catch(e){}
  if(!init)scene.traverse(o=>{if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{m.needsUpdate=true;if(m.isMeshStandardMaterial&&(m.envMapIntensity===.38||m.envMapIntensity===.75))m.envMapIntensity=Q?.75:.38})})}
 function setSndUI(){$('sdOn').classList.toggle('on',!muted);$('sdOff').classList.toggle('on',muted)}
 $('sdOn').onclick=()=>setMuted(false);$('sdOff').onclick=()=>setMuted(true);
@@ -5207,6 +5208,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.80',n:['Yüksek kalite modunda gölgeler daha keskin ve yumuşak kenarlı (2048 gölge haritası, yumuşak filtre). Düşük kalite modu aynı kalır.']},
 {v:'v9.79',n:['Yeni araç: Karberian Ventor (4000 coin, maksimum hız 320 km/s). Rengi sabit, neon ve jant eklenebilir. Kokpit görünümünde kendi iç mekânı ve direksiyonu kullanılır.','Karberian Ventor için garajda yüksek detaylı model.']},
 {v:'v9.78.1',n:['KARBERIAN elektrikli motor sesi siren gibi tiz geliyordu: ton aralığı alçaltıldı, vınlama yumuşatıldı, gövde uğultusu ve doku eklendi.']},
 {v:'v9.78',n:['Grafik motoru yükseltildi (three.js r128 → r159): daha iyi ışık, yansıma ve gölge işleme. Motor artık oyunla birlikte gelir, internetten indirilmez.','Yol dokusu detayı yeni motorda eski seviyeye göre ayarlandı.']},
