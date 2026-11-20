@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.72</title>
+<title>gtr_game_v9.73</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2083,33 +2083,10 @@ body #evd #evdback{display:none!important}
 #evd #evbx #evpl::after{display:block!important;content:"";position:absolute;right:-6px;top:50%;width:48px;height:48px;transform:translateY(-50%);background:#6b2fd6;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;opacity:.38;pointer-events:none;z-index:-1}
 @media (orientation:landscape){#evd #evbx #evpl::after{width:36px;height:36px}}
 
-/* ===== v9.72 lobi: sağ buton alanı (Kariyer, Etkinlikler, Hızlı Oyun, Garaj, Aracı Geliştir) ===== */
-#lpn{display:none;position:fixed;z-index:5;box-sizing:border-box;grid-template-columns:1fr 1fr;gap:8px;font-family:system-ui,sans-serif}
-#ov.lpok:not([data-m=pre]) #lpn{display:grid}
-.lpb{position:relative;display:block;padding:0;margin:0;min-width:0;min-height:0;border:1.5px solid rgba(176,107,255,.7);border-radius:14px;overflow:hidden;background:#0d0726;color:#fff;text-align:left;cursor:pointer;box-shadow:0 0 14px rgba(140,70,255,.3),0 4px 10px rgba(0,0,0,.4);-webkit-tap-highlight-color:transparent;transition:transform .12s ease}
-.lpb:active{transform:scale(.97)}
-.lpb.w{grid-column:1/-1}
-.lpb .lpi{position:absolute;inset:0;background:var(--img) center 40%/cover no-repeat}
-.lpb::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,4,26,.9) 0,rgba(8,4,26,.55) 52%,rgba(8,4,26,.12) 100%)}
-.lpb .lpt{position:absolute;z-index:2;left:10px;top:50%;transform:translateY(-50%);right:34px}
-.lpb .lpt b{display:block;font:italic 900 15px/1.05 system-ui;letter-spacing:.3px;text-transform:uppercase;text-shadow:0 0 10px rgba(176,107,255,.8)}
-.lpb .lpt b em{font-style:italic;color:#ffc933}
-.lpb .lpt small{display:block;margin-top:3px;font:700 9.5px/1.15 system-ui;color:#d9ccff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.lpb .lpc{position:absolute;z-index:2;right:8px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#ffe066,#ffaa00);color:#3a2200;font:900 16px/21px system-ui;text-align:center}
-.lpb.up{border-color:rgba(255,170,60,.85)}
-.lpb.up .lpi{background:linear-gradient(135deg,#7a2bd6,#ff8a1f)}
-.lpb.up .lpg{position:absolute;z-index:1;right:30px;top:50%;width:46px;height:30px;transform:translateY(-50%);background:center/contain no-repeat;opacity:.95}
-.lpb.up::before{background:linear-gradient(90deg,rgba(8,4,26,.55) 0,rgba(8,4,26,0) 70%)}
-.lpb.h .lpt{right:26px}.lpb.h .lpt b{font-size:13px}
-.lpb.h.up .lpt{right:60px}
-@media (orientation:landscape){
- #lpn{right:62px;top:calc(env(safe-area-inset-top,0px) + 66px);bottom:96px;width:min(50%,390px);grid-template-rows:repeat(4,1fr)}
-}
-@media (orientation:portrait){
- #lpn{left:14px;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 172px);grid-template-rows:repeat(4,46px)}
- .lpb .lpt b{font-size:16px}
-}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.72</em></div></div>
+/* ===== v9.73 lobi: GELİŞTİR butonuna silik İngiliz anahtarı ikonu ===== */
+#hrow #galb{position:relative;overflow:hidden;isolation:isolate}
+#hrow #galb::before{content:"";position:absolute;right:-14px;top:50%;width:92px;height:92px;transform:translateY(-50%);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.3;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,#000 65%)}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.73</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4977,31 +4954,6 @@ function loginUp(){try{const f=$$('fbl');return !!f&&getComputedStyle(f).display
 const chk=()=>{const l=lobby(),lg=l&&loginUp(),v=l&&!lg;LG.style.display=lg?'block':'none';document.body.classList.toggle('lgup',lg);if(v&&!on)start();else if(!v&&on)stop()};window.__lobChk=chk;setInterval(chk,250);
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&on)stop()});
 })();
-/* ===== v9.72 lobi sağ buton alanı ===== */
-(function(){
-const $$=id=>document.getElementById(id);
-try{
- const ov=$$('ov'),d=document.createElement('div');d.id='lpn';d.className='hom';
- const C=[['KARİYER','<em>MODU</em>','Yarışları bitir, yeni zorluklar aç',A.hero.kr,'w',()=>{const b=document.querySelector('.pmc[data-k="cr"]');if(b)b.click();else{$$('gop').click()}}],
-  ['ETKİNLİKLER','','Sınırlı süreli yarışlar',A.hero.ev,'w',()=>{const b=$$('snv').children[2];b&&b.click()}],
-  ['HIZLI','<em>OYUN</em>','Hemen yarışa gir',A.hero.wu,'w',()=>{const b=document.querySelector('.pmc[data-k="wu"]');if(b)b.click();else{$$('gop').click()}}],
-  ['GARAJ','','Araçlarını gör',A.hero.gar,'h',()=>{const b=$$('snv').children[3];b&&b.click()}],
-  ['ARACI','<em>GELİŞTİR</em>','',null,'h up',()=>$$('galb').click()]];
- C.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='lpb '+c[4];
-  if(c[3])b.style.setProperty('--img','url("'+c[3]+'")');
-  b.innerHTML='<i class="lpi"></i>'+(c[4].indexOf('up')>=0?'<i class="lpg"></i>':'')+'<span class="lpt"><b>'+c[0]+(c[1]?' '+c[1]:'')+'</b>'+(c[2]?'<small>'+c[2]+'</small>':'')+'</span><span class="lpc">›</span>';
-  b.onclick=c[5];d.appendChild(b)});
- ov.appendChild(d);
- const up=d.querySelector('.up');
- function upd(){try{
-  const nm=$$('nmw'),ok=!!nm&&getComputedStyle(nm).display==='none';ov.classList.toggle('lpok',ok);
-  const t=document.querySelector('#galb .gt');
-  if(t&&t.style.backgroundImage)up.querySelector('.lpg').style.backgroundImage=t.style.backgroundImage;
- }catch(e){}}
- setInterval(upd,400);upd();
-}catch(e){console.error(e)}
-})();
-
 </script><script>(function(){try{const o=document.getElementById('ov');function g(){try{const p=o.querySelector('.pn');if(!p||o.dataset.m==='pre'||!p.offsetHeight)return;o.style.setProperty('--gt',Math.round(p.getBoundingClientRect().top-o.getBoundingClientRect().top)+'px')}catch(e){}}setInterval(g,400);addEventListener('resize',g);g()}catch(e){}})();</script>
 <script>/* ===== zafer/başarı sesi (araç sesi değil) ===== */
 (function(){try{
@@ -5132,7 +5084,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
-{v:'v9.72',n:['Lobide sağ tarafa yeni buton alanı eklendi: Kariyer, Etkinlikler, Hızlı Oyun, Garaj ve Aracı Geliştir butonları.','Aracı Geliştir butonu seçili aracın geliştirme ekranını doğrudan açar.']},
+{v:'v9.73',n:['Lobide Geliştir butonuna, Günlük Görevler butonundaki gibi silik İngiliz anahtarı ikonu eklendi.']},
 {v:'v9.71.3',n:['Araç giderkenki motor sesi yükseltildi.','Vites geçiş sesleri belirgin şekilde yükseltildi; vites geçişleri artık duyuluyor.']},
 {v:'v9.71.2',n:['Hızlanırken ara sıra duyulan yüksek cızırtı giderildi (vites geçiş sesleri yumuşatıldı).','Lastik kayma, patinaj ve drift sesleri yeni kayıttan önceki versiyonuna geri alındı.']},
 {v:'v9.71.1',n:['Araç sesleri üç ayrı kayıttan yeniden hazırlandı: motor devir katmanları artık kayıttaki temiz, tonlu motor sesinden (perdesi sabitlenmiş) çıkarıldı; kontak/ilk çalışma, vites, patinaj, lastik kayma ve drift sesleri yeni kayıtlardan.']},
