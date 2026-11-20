@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.78</title>
+<title>gtr_game_v9.78.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2132,7 +2132,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.78</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.78.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5207,6 +5207,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.78.1',n:['KARBERIAN elektrikli motor sesi siren gibi tiz geliyordu: ton aralığı alçaltıldı, vınlama yumuşatıldı, gövde uğultusu ve doku eklendi.']},
 {v:'v9.78',n:['Grafik motoru yükseltildi (three.js r128 → r159): daha iyi ışık, yansıma ve gölge işleme. Motor artık oyunla birlikte gelir, internetten indirilmez.','Yol dokusu detayı yeni motorda eski seviyeye göre ayarlandı.']},
 {v:'v9.77',n:['Gerçek HDR yansıma ortamı: gökyüzünde güneş ve garajda ışık panelleri parlak yansıma verir (ayna kaporta daha gerçekçi).','Daha detaylı, yüksek çözünürlüklü asfalt dokusu (çatlak, yama, kalıntı ve pürüzlülük haritası).','KARBERIAN E-ONE X için yeni elektrikli spor motor sesi: hızla yükselen vınlama, harmonikler ve spor uğultu.']},
 {v:'v9.76',n:['Garajda araçlar için yüksek detay (LOD) altyapısı: yüksek detaylı model ayrı dosyadan, sadece garajda o araç görününce yüklenir; yarışta hafif model kullanılır.','KARBERIAN E-ONE X: garajda ~180 bin üçgenlik yüksek detaylı model (pürüzsüz kaporta, ayrıntılı jant).']},
@@ -6184,35 +6185,36 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
     const nb = C.createBuffer(1, C.sampleRate, C.sampleRate), nd = nb.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
     const comp = C.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 4; comp.connect(dest);
     const out = C.createGain(); out.gain.value = 0; out.connect(comp);
-    const tilt = C.createBiquadFilter(); tilt.type = 'lowpass'; tilt.frequency.value = 6500; tilt.Q.value = .4; tilt.connect(out);
+    const tilt = C.createBiquadFilter(); tilt.type = 'lowpass'; tilt.frequency.value = 2200; tilt.Q.value = .4; tilt.connect(out);
     const wg = C.createGain(); wg.gain.value = 0; wg.connect(tilt);
-    const PS = [[1, .6, 'sine'], [2, .24, 'sine'], [3, .14, 'triangle'], [4, .07, 'sine'], [5, .04, 'sine'], [6, .05, 'sine'], [8, .02, 'sine']];
+    const PS = [[1, .5, 'triangle'], [2, .16, 'sine'], [3, .08, 'triangle'], [4, .03, 'sine']];
     const W = []; PS.forEach(p => { for (let k = 0; k < 2; k++) { const o = C.createOscillator(), g = C.createGain(); o.type = p[2]; o.frequency.value = 200; g.gain.value = p[1] * (k ? .55 : 1); o.connect(g); g.connect(wg); o.start(); W.push({ o, m: p[0] * (k ? 1.0045 : 1) }); } });
     const gr = C.createOscillator(); gr.type = 'sawtooth'; gr.frequency.value = 40; const glp = C.createBiquadFilter(); glp.type = 'lowpass'; glp.frequency.value = 420; glp.Q.value = 1.6; const gg = C.createGain(); gg.gain.value = 0; gr.connect(glp); glp.connect(gg); gg.connect(out); gr.start();
     const sb = C.createOscillator(); sb.type = 'sine'; sb.frequency.value = 40; const sg = C.createGain(); sg.gain.value = 0; sb.connect(sg); sg.connect(out); sb.start();
     const tr = C.createOscillator(); tr.frequency.value = 6.5; const trg = C.createGain(); trg.gain.value = .12; tr.connect(trg); trg.connect(gg.gain); tr.start();
     const ns = C.createBufferSource(); ns.buffer = nb; ns.loop = true; const nbp = C.createBiquadFilter(); nbp.type = 'bandpass'; nbp.frequency.value = 2000; nbp.Q.value = .6; const ng = C.createGain(); ng.gain.value = 0; ns.connect(nbp); nbp.connect(ng); ng.connect(out); ns.start();
+    const hs = C.createBufferSource(); hs.buffer = nb; hs.loop = true; const hb = C.createBiquadFilter(); hb.type = 'bandpass'; hb.frequency.value = 400; hb.Q.value = 2.2; const hg = C.createGain(); hg.gain.value = 0; hs.connect(hb); hb.connect(hg); hg.connect(out); hs.start();
     const noise = (f, t, g, type) => { const T = C.currentTime, n = C.createBufferSource(); n.buffer = nb; const fl = C.createBiquadFilter(); fl.type = type || 'lowpass'; fl.frequency.setValueAtTime(f, T); fl.frequency.exponentialRampToValueAtTime(120, T + t); const gn = C.createGain(); gn.gain.setValueAtTime(g, T); gn.gain.exponentialRampToValueAtTime(.001, T + t); n.connect(fl); fl.connect(gn); gn.connect(comp); n.start(T); n.stop(T + t + .05); };
     const chirp = (f0, f1, d, g) => { const o = C.createOscillator(), gn = C.createGain(), T = C.currentTime; o.type = 'sine'; o.frequency.setValueAtTime(f0, T); o.frequency.exponentialRampToValueAtTime(f1, T + d); gn.gain.setValueAtTime(0, T); gn.gain.linearRampToValueAtTime(g, T + d * .3); gn.gain.exponentialRampToValueAtTime(.001, T + d + .25); o.connect(gn); gn.connect(comp); o.start(T); o.stop(T + d + .3); };
     let on0 = 0, sm = 0;
     return {
-      out, start() { chirp(180, 720, .5, .09); chirp(360, 1440, .5, .03); },
+      out, start() { chirp(120, 420, .5, .06); },
       quiet(T) { const P = (p, v, t) => p.setTargetAtTime(v, T, t); P(out.gain, 0, .12); },
       nos() { noise(6500, .75, .5, 'highpass'); chirp(500, 2400, .6, .05); },
       frame(T, s, thr, bo, on) {
         const P = (p, v, t) => p.setTargetAtTime(v, T, t);
         let vv = Math.max(0, s.v50); if (s.v < 4) vv += thr * 9; if (s.st === 'win') vv = Math.max(vv, 30);
-        const pit = bo ? 1.07 : 1, f0 = (110 + vv * 17) * pit, fg = (36 + vv * 1.5) * pit;
+        const pit = bo ? 1.07 : 1, f0 = (85 + vv * 6.5) * pit, fg = (34 + vv * 1.9) * pit;
         const load = s.st === 'race' ? .3 + .7 * thr : (s.st === 'count' ? (s.thr ? .75 : .22) : .35);
         W.forEach(w => P(w.o.frequency, f0 * w.m, .05));
         P(gr.frequency, fg, .05); P(sb.frequency, fg, .05); P(glp.frequency, 340 + vv * 5 + load * 160, .08);
-        P(tr.frequency, 5 + vv * .08, .1); P(tilt.frequency, 3600 + vv * 12, .1);
+        P(tr.frequency, 5 + vv * .08, .1); P(tilt.frequency, 1500 + vv * 14, .1); P(hb.frequency, f0 * 2.5, .06); P(hg.gain, .01 + .035 * load, .08);
         const vol = on ? 1 : 0;
         P(out.gain, vol, .1);
-        P(wg.gain, (.045 + .1 * load) * (.55 + .45 * Math.min(1, vv / 35)), .06);
-        P(gg.gain, (.03 + .07 * load) * (1 - Math.min(.5, vv / 140)), .08);
-        P(sg.gain, .02 + .045 * load, .08);
-        P(ng.gain, Math.min(.05, .004 + vv * .0007), .1); P(nbp.frequency, 1500 + vv * 45, .1);
+        P(wg.gain, (.02 + .045 * load) * (.55 + .45 * Math.min(1, vv / 35)), .06);
+        P(gg.gain, (.06 + .11 * load) * (1 - Math.min(.35, vv / 190)), .08);
+        P(sg.gain, .04 + .07 * load, .08);
+        P(ng.gain, Math.min(.016, .002 + vv * .0002), .1); P(nbp.frequency, 900 + vv * 20, .1);
       }
     };
   };
