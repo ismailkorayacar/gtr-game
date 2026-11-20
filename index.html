@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.75.1</title>
+<title>gtr_game_v9.76</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2132,7 +2132,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.75.1</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.76</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2268,7 +2268,9 @@ function matN0(name,g,rc){const n=g.n,col=new THREE.Color(g.c[0],g.c[1],g.c[2]),
  if(g.t>=0){if(rcol)o.color=rcol,o.map=grayN(name,g.t);else o.map=texN(name,g.t)}else o.color=rcol||col;
  return (rcol||(cuNow&&cuNow.f))?PT(PM(o)):PM(o)}
 const v9_chr=()=>new THREE.MeshStandardMaterial({color:0xe8eaf0,metalness:.85,roughness:.3,emissive:0x2c2e34});
-function makeCarN(name,rc){const d=A.n[name],k=d.k,g=new THREE.Group(),inner=new THREE.Group(),bodies=[],wheels=[],heads=[];g.add(inner);
+var HDON=false;const HDM={Karberian:'assets/hd/Karberian.v1.js'},HDS={};
+function hdReq(name,cb){if(!HDM[name]||(A.hd&&A.hd[name])||HDS[name])return;HDS[name]=1;try{const sc=document.createElement('script');sc.src=HDM[name];sc.onload=()=>{try{cb()}catch(e){}};sc.onerror=()=>{HDS[name]=2};document.head.appendChild(sc)}catch(e){HDS[name]=2}}
+function makeCarN(name,rc){const d=(HDON&&A.hd&&A.hd[name])||A.n[name],k=d.k,g=new THREE.Group(),inner=new THREE.Group(),bodies=[],wheels=[],heads=[];g.add(inner);
  d.body.forEach(gr=>{const geo=geoN(gr),me=new THREE.Mesh(geo,(name==='BlueCar'&&gr.r==='chrome')?v9_chr():matN(name,gr,rc));me.castShadow=true;inner.add(me);bodies.push(me);me.userData.o=Float32Array.from(geo.attributes.position.array);me.userData.c=me.material.color.clone();if(gr.n==='headlights'||gr.n==='Glass'||gr.r==='head'||gr.h)heads.push(geo.attributes.position.array)});
  const doors=[];if(d.doors)d.doors.forEach(dr=>{try{const pg=new THREE.Group();pg.position.set(dr.piv[0],dr.piv[1],dr.piv[2]);dr.g.forEach(gr=>{const geo=geoN(gr),me=new THREE.Mesh(geo,matN(name,gr,rc));me.castShadow=true;pg.add(me);bodies.push(me);me.userData.o=Float32Array.from(geo.attributes.position.array);me.userData.c=me.material.color.clone()});inner.add(pg);doors.push({k:dr.k,g:pg})}catch(e){console.error(e)}});
  let sw=null,swAx=null;if(d.sw){try{sw=new THREE.Group();sw.position.set(d.sw.piv[0],d.sw.piv[1],d.sw.piv[2]);d.sw.g.forEach(gr=>{const geo=geoN(gr),me=new THREE.Mesh(geo,matN(name,gr,rc));me.castShadow=true;sw.add(me);bodies.push(me);me.userData.o=Float32Array.from(geo.attributes.position.array);me.userData.c=me.material.color.clone()});inner.add(sw);swAx=new THREE.Vector3(d.sw.ax[0],d.sw.ax[1],d.sw.ax[2]).normalize()}catch(e){console.error(e)}}
@@ -3543,7 +3545,7 @@ function galBuild(){if(garG)return;garG=new THREE.Group();const K=3;
  gScene.add(garG)}
 function colFor(i){const n=CARS[i][0],cu=cuGet(n);return NOPAINT.has(n)||!COLS[cu.c]?null:new THREE.Color(COLS[cu.c]).convertSRGBToLinear()}
 function galKill(g){if(!g.car)return;gScene.remove(g.car.mesh);g.car.bodies.forEach(b=>b.geometry.dispose());g.car=null}
-function galEnsure(i){const g=gList[i];if(!g||g.car)return;const c=makeCarC(CARS[g.idx][0],colFor(g.idx),cuGet(CARS[g.idx][0]));g.car=c;g.col=sel.col;gScene.add(c.mesh);
+function galEnsure(i){const g=gList[i];if(!g||g.car)return;const nm=CARS[g.idx][0];HDON=true;let c;try{c=makeCarC(nm,colFor(g.idx),cuGet(nm))}finally{HDON=false}g.car=c;g.hd=!!(A.hd&&A.hd[nm]);if(!g.hd)hdReq(nm,()=>{if(g.car&&!g.hd){const ix=gList.indexOf(g);if(ix<0)return;const ry=g.car.mesh.rotation.y;galKill(g);galEnsure(ix);if(g.car)g.car.mesh.rotation.y=ry}});g.col=sel.col;gScene.add(c.mesh);
  if(!g.sh){g.sh=new THREE.Mesh(new THREE.PlaneGeometry(7,3.6),new THREE.MeshBasicMaterial({map:galShT,transparent:true,depthWrite:false,toneMapped:false}));g.sh.rotation.x=-Math.PI/2;gScene.add(g.sh)}}
 const GCLS=p=>p<=50?'D':p<=700?'C':p<=1000?'B':p<=1300?'A':'S';
 function galLabel(){const i=Math.max(0,Math.min(gList.length-1,Math.round(gx)));if(i===gIdx)return;gIdx=i;const ci=gList[i].idx,c=CARS[ci];$('gsn').textContent=c[1];$('gsv').textContent=c[2]+' km/s';$('gsb').style.width=Math.min(100,c[2]/350*100)+'%';$('gsc').textContent=GCLS(c[3]);{const np=NOPAINT.has(c[0]);[...$('cols').children].forEach((b,k)=>{b.style.display=(k===0||!np)?'':'none';b.classList.toggle('on',np?k===0:k===sel.col)})}$('gspr').style.display=c[3]?'flex':'none';$('galpv').innerHTML=c[3]?COIN+'<span>'+c[3]+'</span>':'';
@@ -5183,6 +5185,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.76',n:['Garajda araçlar için yüksek detay (LOD) altyapısı: yüksek detaylı model ayrı dosyadan, sadece garajda o araç görününce yüklenir; yarışta hafif model kullanılır.','KARBERIAN E-ONE X: garajda ~180 bin üçgenlik yüksek detaylı model (pürüzsüz kaporta, ayrıntılı jant).']},
 {v:'v9.75.1',n:['KARBERIAN E-ONE X: varsayılan renk gümüş-gri ayna efektli metalik oldu; gövde ayrıntısı artırıldı.','Jantlar yenilendi: düz kapak kaldırıldı, modelin kendi 5 kollu parlak jantı, fren diski ve kaliperi görünüyor.']},
 {v:'v9.75',n:['İki eski araç oyundan tamamen kaldırıldı.','Kilitli araç sistemi kapatıldı: hiçbir araç kilitli değil, tüm araçlar mağazadan satın alınabilir.','Yeni araç: KARBERIAN E-ONE X (3000 coin, maksimum hız 300 km/s). Boya, jant ve neon ile özelleştirilebilir; kokpit görünümünde kendi iç mekânı ve direksiyonu kullanılır.']},
 {v:'v9.74.3',n:['Etkinlikler: "Sınırlı süreli etkinlik" sayacı artık ortak değil; her etkinlik kartının içinde kendi kalan süresini gösteriyor.']},
