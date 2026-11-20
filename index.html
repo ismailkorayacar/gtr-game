@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.74</title>
+<title>gtr_game_v9.74.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2109,9 +2109,11 @@ body #evd #evdback{display:none!important}
 .fzp.arm .fzg{opacity:1;transform:translateY(0) skewX(-8deg);pointer-events:auto}
 .fzn{position:absolute;z-index:3;right:10px;top:10px;padding:3px 9px;border-radius:8px;background:#ff2b4a;color:#fff;font:900 10px/1.2 system-ui;letter-spacing:.6px}
 .fzp .evtp{font:700 11px system-ui;color:#ffd9a8}
-#pm #pml,#pm .pmh{display:none!important}
-html body #pm>#pml{display:none!important}
-#evs.fzm #evl{display:none!important}
+#pm #pml#pml#pml,#pm .pmh.pmh.pmh{display:none!important}
+#evs.fzm #evl#evl#evl{display:none!important}
+.fzc{position:absolute;z-index:3;left:10px;top:10px;padding:3px 9px;border-radius:8px;background:rgba(8,5,26,.78);border:1px solid rgba(255,190,80,.6);font:700 11px/1.2 system-ui;color:#ffd9a8;letter-spacing:.3px}
+.fzc .evtp{font:700 11px/1.2 system-ui;color:#ffd9a8}
+.fzn.y{background:linear-gradient(180deg,#ffe066,#ffb300);color:#3a2200}
 #pm .fzw,#evs .fzw{display:none}
 #pm.fzon .fzw,#evs.fzm .fzw{display:block}
 @media (orientation:landscape){
@@ -2122,7 +2124,7 @@ html body #pm>#pml{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -4999,7 +5001,8 @@ window.fzBuild=function(host,items){
  items.forEach((it,i)=>{const p=document.createElement('div');p.className='fzp';p.setAttribute('role','button');
   let im;if(it.cv){im=it.cv;im.className='fzi'}else{im=document.createElement('i');im.className='fzi';if(it.img)im.style.backgroundImage='url("'+it.img+'")'}
   p.appendChild(im);
-  if(it.badge){const n=document.createElement('u');n.className='fzn';n.style.textDecoration='none';n.textContent=it.badge;p.appendChild(n)}
+  if(it.badge){const n=document.createElement('u');n.className='fzn'+(it.by?' y':'');n.style.textDecoration='none';n.textContent=it.badge;p.appendChild(n)}
+  if(it.chip){const c=document.createElement('span');c.className='fzc';c.innerHTML=it.chip;p.appendChild(c)}
   const t=document.createElement('div');t.className='fzt';t.innerHTML='<b></b><span class="fzd"></span>';t.firstChild.textContent=it.t;
   if(it.sh)t.querySelector('.fzd').innerHTML=it.sh;else t.querySelector('.fzd').textContent=it.s||'';
   p.appendChild(t);
@@ -5014,7 +5017,7 @@ window.fzBuild=function(host,items){
 try{
  const pm=$$('pm'),bs=[...document.querySelectorAll('#pml .pmc')];
  const m={wu:A.hero.wu,cr:A.hero.kr,sr:A.hero.sr,ct:A.hero.ci,sp:A.hero.sp,ra:A.hero.ra,mp:A.hero.mp};
- const it=bs.map(b=>({t:(b.querySelector('.pmt b').textContent||'').replace(/\s+/g,' ').trim(),s:(b.querySelector('.pmt em')||{}).textContent||'',img:m[b.dataset.k],go:()=>b.click()}));
+ const it=bs.map(b=>({t:(b.querySelector('.pmt b').textContent||'').replace(/\s+/g,' ').trim(),s:(b.querySelector('.pmt em')||{}).textContent||'',img:m[b.dataset.k],badge:b.dataset.k==='mp'?'YAKINDA':'',by:1,go:()=>b.click()}));
  window.__pmFz=fzBuild(pm,it);pm.classList.add('fzon');
 }catch(e){console.error(e)}
 /* Etkinlikler ana ekranı */
@@ -5029,7 +5032,7 @@ try{
     const ks=[...document.querySelectorAll('#evl .e2c>.e2k')].map(d=>+d.dataset.i);
     const it=ks.map(i=>{const e=EVS[i],c=evCyc(e),cv=document.createElement('canvas');evArt(cv,e,c);
      const old=document.querySelector('#evl .e2k[data-i="'+i+'"]'),tp=old&&old.querySelector('.evtp');
-     return {t:e.nm,sh:tp?tp.outerHTML:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)}}});
+     return {t:e.nm,s:'',chip:tp?tp.outerHTML:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)}}});
     fzBuild(evs,it);
    }
   }catch(e){console.error(e)}
@@ -5167,6 +5170,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.74.1',n:['Oyna ve Etkinlikler ekranlarında eski kutular kaldırıldı; yeni paneller artık tıklanabiliyor.','Etkinlik panellerinde YENİ rozeti ve kalan süre her zaman görünür.']},
 {v:'v9.74',n:['Oyna ekranı ve Etkinlikler ana ekranı yeni dikey panel tasarımına geçti: ilk panel aydınlık, diğerleri daha karanlık ve şeffaf.','Bir panele dokununca ismi yukarı kayar, açıklama ve GİR butonu belirir; GİR ile mod/etkinlik detayına geçilir.']},
 {v:'v9.73',n:['Lobide Geliştir butonuna, Günlük Görevler butonundaki gibi silik İngiliz anahtarı ikonu eklendi.']},
 {v:'v9.71.3',n:['Araç giderkenki motor sesi yükseltildi.','Vites geçiş sesleri belirgin şekilde yükseltildi; vites geçişleri artık duyuluyor.']},
