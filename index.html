@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.76</title>
+<title>gtr_game_v9.77</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2132,7 +2132,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.76</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.77</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2312,12 +2312,19 @@ function buildParts(parts,bend){const g=new THREE.Group();parts.forEach(pt=>pt.m
  if(m.n.indexOf('side')<0){mat.polygonOffset=true;mat.polygonOffsetFactor=mat.polygonOffsetUnits=m.n.indexOf('road')>=0?-2:-4}const me=new THREE.Mesh(geo,bendMat(mat));me.frustumCulled=false;me.receiveShadow=true;if(m.n.indexOf('side')>=0||!bend)tagK(me,'sw');if(mat===asphaltMat)ROADM.push(me);g.add(me)}));if(bend)addLines(g);return g}
 const RL=28.18,BL=22.73,tiles=[],blocks=[];
 const lnM=bendMat(new THREE.MeshStandardMaterial({color:0xe8e8e8,roughness:.6,polygonOffset:true,polygonOffsetFactor:-6,polygonOffsetUnits:-6})),lnG=new THREE.BoxGeometry(.16,.03,6),edG=new THREE.BoxGeometry(.2,.03,RL);
-const asT=(()=>{const c=document.createElement('canvas');c.width=c.height=512;const g=c.getContext('2d');g.fillStyle='#46474b';g.fillRect(0,0,512,512);
- for(let i=0;i<26000;i++){const v=60+R()*70|0;g.fillStyle=`rgba(${v},${v},${v+4},${.25+R()*.35})`;g.fillRect(R()*512,R()*512,1+R()*1.6,1+R()*1.6)}
- for(let i=0;i<40;i++){g.fillStyle=`rgba(20,20,22,${.05+R()*.07})`;g.fillRect(R()*512,R()*512,40+R()*120,30+R()*90)}
- g.strokeStyle='rgba(15,15,17,.5)';g.lineWidth=1.2;for(let i=0;i<7;i++){let x=R()*512,y=R()*512;g.beginPath();g.moveTo(x,y);for(let k=0;k<9;k++){x+=(R()-.5)*50;y+=(R()-.3)*40;g.lineTo(x,y)}g.stroke()}
- g.strokeStyle='rgba(10,10,12,.3)';g.lineWidth=2;g.beginPath();g.moveTo(0,200);g.lineTo(512,203);g.stroke();
- const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=8;t.encoding=THREE.sRGBEncoding;return t})();
+const asR=(()=>{const c=document.createElement('canvas');c.width=c.height=1024;return c})();
+const asT=(()=>{const N=1024,c=document.createElement('canvas');c.width=c.height=N;const g=c.getContext('2d'),r=asR.getContext('2d');g.fillStyle='#45464a';g.fillRect(0,0,N,N);r.fillStyle='rgb(214,214,214)';r.fillRect(0,0,N,N);
+ const wrap=(f)=>{for(const dx of[-N,0,N])for(const dy of[-N,0,N])f(dx,dy)};
+ for(let i=0;i<70;i++){const x=R()*N,y=R()*N,rr=60+R()*170,l=R()<.5,a=.04+R()*.07;wrap((dx,dy)=>{const rg=g.createRadialGradient(x+dx,y+dy,0,x+dx,y+dy,rr);rg.addColorStop(0,l?`rgba(120,122,128,${a})`:`rgba(18,18,22,${a*1.3})`);rg.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=rg;g.fillRect(x+dx-rr,y+dy-rr,rr*2,rr*2)})}
+ for(let i=0;i<110000;i++){const v=55+R()*85|0,sz=.7+R()*1.7;g.fillStyle=`rgba(${v},${v},${v+4},${.22+R()*.4})`;g.fillRect(R()*N,R()*N,sz,sz)}
+ for(let i=0;i<2600;i++){const v=170+R()*70|0;g.fillStyle=`rgba(${v},${v},${v},${.25+R()*.4})`;g.fillRect(R()*N,R()*N,1+R()*1.2,1+R()*1.2)}
+ for(let i=0;i<20000;i++){const v=150+R()*80|0;r.fillStyle=`rgba(${v},${v},${v},.5)`;r.fillRect(R()*N,R()*N,1+R()*2,1+R()*2)}
+ for(let i=0;i<28;i++){const x=R()*N,y=R()*N,w=50+R()*210,h=40+R()*150;g.fillStyle=`rgba(22,22,26,${.07+R()*.09})`;g.fillRect(x,y,w,h);r.fillStyle='rgba(110,110,110,.45)';r.fillRect(x,y,w,h)}
+ for(let i=0;i<9;i++){let x=R()*N,y=R()*N;const pts=[[x,y]];for(let k=0;k<12;k++){x+=(R()-.5)*90;y+=(R()-.3)*75;pts.push([x,y])}
+  for(const [col,lw,ox,rc] of [['rgba(12,12,14,.6)',2.2,0,'rgba(90,90,90,.8)'],['rgba(150,152,158,.16)',1,1.6,null]]){g.strokeStyle=col;g.lineWidth=lw;g.beginPath();pts.forEach((p,k)=>k?g.lineTo(p[0]+ox,p[1]+ox):g.moveTo(p[0]+ox,p[1]+ox));g.stroke();if(rc){r.strokeStyle=rc;r.lineWidth=3;r.beginPath();pts.forEach((p,k)=>k?r.lineTo(p[0],p[1]):r.moveTo(p[0],p[1]));r.stroke()}}}
+ g.strokeStyle='rgba(8,8,10,.42)';g.lineWidth=4;g.beginPath();g.moveTo(0,400);g.lineTo(N,406);g.stroke();g.strokeStyle='rgba(140,142,148,.12)';g.lineWidth=1.2;g.beginPath();g.moveTo(0,403);g.lineTo(N,409);g.stroke();r.strokeStyle='rgba(100,100,100,.8)';r.lineWidth=5;r.beginPath();r.moveTo(0,400);r.lineTo(N,406);r.stroke();
+ const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=Math.min(16,ren.capabilities.getMaxAnisotropy());t.encoding=THREE.sRGBEncoding;
+ const rt=new THREE.CanvasTexture(asR);rt.wrapS=rt.wrapT=THREE.RepeatWrapping;rt.anisotropy=t.anisotropy;asR.tex=rt;return t})();
 const v9_conT=(()=>{const c=document.createElement('canvas');c.width=c.height=512;const g=c.getContext('2d');g.fillStyle='#9a9a96';g.fillRect(0,0,512,512);
  for(let i=0;i<30000;i++){const v=110+R()*90|0;g.fillStyle=`rgba(${v},${v},${v-4},${.2+R()*.4})`;g.fillRect(R()*512,R()*512,1+R()*2,1+R()*2)}
  for(let i=0;i<30;i++){g.fillStyle=`rgba(50,48,44,${.05+R()*.09})`;g.fillRect(R()*512,R()*512,30+R()*110,20+R()*60)}
@@ -2331,7 +2338,7 @@ const v9_rlT=(()=>{const c=document.createElement('canvas');c.width=2048;c.heigh
  for(let k=0;k<7;k++){const u=(1.99+k*4.03)/28.18;const x=u*2048;g.fillStyle='#202428';g.beginPath();g.arc(x,64,9,0,7);g.fill();g.fillStyle='#9aa0a6';g.beginPath();g.arc(x,64,6,0,7);g.fill();g.fillStyle='#fff';g.fillRect(x-2,61,3,2)}
  for(let k=0;k<2;k++){const x=k*2047;g.fillStyle='rgba(20,20,22,.7)';g.fillRect(x,0,1,128)}
  const t=new THREE.CanvasTexture(c);t.anisotropy=8;t.encoding=THREE.sRGBEncoding;return t})();
-const asphaltMat=new THREE.MeshStandardMaterial({map:asT,bumpMap:asT,bumpScale:.6,roughness:.93,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2});
+const asphaltMat=new THREE.MeshStandardMaterial({map:asT,bumpMap:asT,roughnessMap:asR.tex,bumpScale:.6,roughness:.93,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2});
 
 const rgTx=(u,srgb)=>{const im=new Image(),t=new THREE.Texture(im);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(5,5);t.anisotropy=8;if(srgb)t.encoding=THREE.sRGBEncoding;im.onload=()=>{t.needsUpdate=true};im.src=u;return t};
 var RGRD={value:new THREE.Vector2(3.4,5.4)};
@@ -3091,11 +3098,15 @@ let TH=THS[1],SO=[30,45,19],curTh=0;
 const lvKm=L=>L<4?3:L;
 const lvChanges=L=>[...(THS[L].ch||[]),'Trafik %10 daha yoğun','Coin ödülü +%5 artar'].concat(L>=4?['Yol uzunluğu '+lvKm(L)+' km']:[]).concat(L>6?['Yağ birikintileri daha sık']:[]);
 const skyC={};
+function hdrTex(c,o){try{if(!(THREE.DataUtils&&THREE.DataUtils.toHalfFloat))return null;const gl=ren.getContext(),w2=ren.capabilities.isWebGL2;if(!w2&&!(gl.getExtension('OES_texture_half_float')&&gl.getExtension('OES_texture_half_float_linear')))return null;
+ const W=1024,H=512,t=document.createElement('canvas');t.width=W;t.height=H;const g=t.getContext('2d');g.drawImage(c,0,0,W,H);const px=g.getImageData(0,0,W,H).data,out=new Uint16Array(W*H*4),tH=THREE.DataUtils.toHalfFloat,lut=new Float32Array(256);for(let i=0;i<256;i++)lut[i]=Math.pow(i/255,2.2);
+ const one=tH(1),gn=o.gain,kn=o.knee;for(let y=0;y<H;y++){const ro=(H-1-y)*W*4,ri=y*W*4;for(let x=0;x<W;x++){const i=ri+x*4,r=lut[px[i]],gg=lut[px[i+1]],b=lut[px[i+2]],l=Math.max(r,gg,b);let k=1;if(l>kn){const u=Math.min(1,(l-kn)/(1-kn));k=1+gn*u*u}const j=ro+x*4;out[j]=tH(r*k);out[j+1]=tH(gg*k);out[j+2]=tH(b*k);out[j+3]=one}}
+ const d=new THREE.DataTexture(out,W,H,THREE.RGBAFormat,THREE.HalfFloatType);d.mapping=THREE.EquirectangularReflectionMapping;d.minFilter=d.magFilter=THREE.LinearFilter;d.generateMipmaps=false;d.encoding=THREE.LinearEncoding;d.needsUpdate=true;return d}catch(e){return null}}
 function mkSky(T){const W=2048,H=1024,c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d'),gr=g.createLinearGradient(0,0,0,H);T.sk.forEach(s=>gr.addColorStop(s[0],s[1]));g.fillStyle=gr;g.fillRect(0,0,W,H);
  for(let i=0;i<(T.stars||0);i++){g.fillStyle='rgba(255,255,255,'+(.3+R()*.7)+')';g.fillRect(R()*W,R()*H*.48,1+R()*1.5,1+R()*1.5)}
  for(let i=0;i<T.cn;i++){const c0=R()*W,y0=150+R()*260,s=.6+R()*1.2;for(let k=0;k<10;k++){const x=c0+(R()-.5)*190*s,y=y0+(R()-.5)*26*s,r=(30+R()*55)*s;for(const dx of[-W,0,W]){const rg=g.createRadialGradient(x+dx,y,0,x+dx,y,r);rg.addColorStop(0,'rgba('+T.cc+',.5)');rg.addColorStop(.6,'rgba('+T.cc+',.18)');rg.addColorStop(1,'rgba('+T.cc+',0)');g.fillStyle=rg;g.fillRect(x+dx-r,y-r,r*2,r*2)}}}
  if(T.sun){const [x,y,r,c1]=T.sun,sg=g.createRadialGradient(x,y,0,x,y,r);sg.addColorStop(0,'#fff');sg.addColorStop(.18,c1);sg.addColorStop(1,'rgba(255,240,200,0)');g.fillStyle=sg;g.fillRect(x-r,y-r,r*2,r*2)}
- const tx=new THREE.CanvasTexture(c);tx.mapping=THREE.EquirectangularReflectionMapping;tx.encoding=THREE.sRGBEncoding;const pm=new THREE.PMREMGenerator(ren),env=pm.fromEquirectangular(tx).texture;pm.dispose();return{tx,env}}
+ const tx=new THREE.CanvasTexture(c);tx.mapping=THREE.EquirectangularReflectionMapping;tx.encoding=THREE.sRGBEncoding;const pm=new THREE.PMREMGenerator(ren),env=pm.fromEquirectangular(hdrTex(c,{gain:(T.key==='night'||T.key==='fnight')?2:7,knee:.94})||tx).texture;pm.dispose();return{tx,env}}
 const HEMI=scene.children.find(o=>o.isHemisphereLight);
 const hlS=new THREE.SpotLight(0xfff0d0,0,150,.5,1,1.1);scene.add(hlS,hlS.target);
 const lampGlow=[];lamps.forEach(l=>{const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:flT,color:0xffe6a8,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:false}));sp.scale.set(4.5,4.5,1);sp.position.set(l.children[1].position.x,6.3,0);sp.visible=false;l.add(sp);lampGlow.push(sp)});
@@ -3198,7 +3209,7 @@ function applyTheme(L){L=Math.max(1,Math.min(17,L||1));if(curTh===L)return;curTh
  if(window.treeMat){treeMat.color.set(T.tc||0xffffff);if(treeMat.userData.snowU)treeMat.userData.snowU.value=(T.key==='snow'||T.wn)?1:0}if(window.hillMat)hillMat.color.set(T.hc||0xffffff);(window.ridgeM||[]).forEach(m=>m.material.color.set(T.rc||0xffffff));rgRidgeSwap(HDK(L)?'n':(T.wn?'w':true));
  asphaltMat.roughness=T.wet?.16:.93;asphaltMat.envMapIntensity=T.wet?2.2:1;v8_pudM.color.set(T.hl?0x5a6c92:0xc8d6e6);asphaltMat.color.set(T.wet?0x6c7178:0xffffff);{const GL={day:[.55,1.5,0xffffff],dawn:[.55,1.5,0xffffff],dusk:[.55,1.5,0xffffff],night:[.3,1.9,0x8c929c],fnight:[.3,1.9,0x8c929c],fog:[.5,1.3,0xffffff]}[T.key];if(!T.wet&&GL){asphaltMat.roughness=GL[0];asphaltMat.envMapIntensity=GL[1];asphaltMat.color.set(GL[2])}}
  lampGlow.forEach(s=>s.visible=!!T.lamp);lamps.forEach(l=>{l.children[1].material.emissiveIntensity=T.lamp?3:1.2});
- {const fo=T.key==='forest',des=T.key==='desert',sn=T.key==='snow',nm=des?dirtRoadT:sn?snowRoadT:asT;if(asphaltMat.map!==nm){asphaltMat.map=asphaltMat.bumpMap=nm;asphaltMat.needsUpdate=true}
+ {const fo=T.key==='forest',des=T.key==='desert',sn=T.key==='snow',nm=des?dirtRoadT:sn?snowRoadT:asT;if(asphaltMat.map!==nm){asphaltMat.map=asphaltMat.bumpMap=nm;asphaltMat.roughnessMap=nm===asT?asR.tex:null;asphaltMat.needsUpdate=true}
   if(sn){asphaltMat.color.set(0xffffff);asphaltMat.roughness=.8}
   asphaltMat.bumpScale=des?1.1:sn?.25:.6;v9_conM.color.set(sn?0xe6edf5:0xffffff);
   const tn=T.key==='tunnel';tunG.visible=tn;ROADK.forEach(m=>m.visible=!(((des||fo)&&m.userData.k)||(T.dr&&m.userData.k==='ln')||(sn&&m.userData.k==='wr')));ROADM.forEach(m=>{const w=fo?(T.wn?winMat:rallyMat):asphaltMat;if(m.material!==w)m.material=w});SNR.want=!!(fo&&T.wn);if(SNR.want)snowRoadLoad();snowRoadVis();lamps.forEach(l=>l.visible=!des&&!tn&&!fo);if(fo){LANES.length=0;LANES.push(-1.7,1.7);LIM=3.3}else if(LANES.length!==5){LANES.length=0;LANES.push(-7,-3.5,0,3.5,7);LIM=7.5}(window.ridgeM||[]).forEach(m=>m.visible=!des&&!tn&&!T.dr);ground.visible=!T.dr;tiles.forEach(t=>t.scale.x=T.dr?1.3:1);grM.color.set(T.dr?0xe4e8ee:0xb8bcc2);grM.roughness=T.dr?.22:.4;try{if(T.tm)tsBuild();if(window.tsG)tsG.visible=!!T.tm;if(window.drCity)drCity.visible=!!T.dr;if(window.drSg)drSg.visible=!!T.dr}catch(e){}LIM=fo?3.3:T.dr?9.8:7.5;dunes.forEach(h=>h.visible=des);dunesF.forEach(h=>h.visible=des);try{treeS.forEach(g=>{g.im.visible=!des&&!tn&&!T.dr&&(!fo||!!T.wn);g.im.count=g.n1})}catch(e){}try{rgF.visible=fo&&!T.wn;rgHills(fo)}catch(e){}uHs.value=fo?1:T.dr?2:0;lnM.opacity=sn?.82:1;lnM.transparent=sn}
@@ -3430,7 +3441,7 @@ function mkStudio(){if(studioEnv)return studioEnv;const W=1024,H=512,c=document.
  g.shadowColor='#fff';g.shadowBlur=28;const box=(x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x*W,y*H,w*W,h*H)};
  box(.05,.2,.1,.24,'rgba(255,255,255,.95)');box(.3,.12,.14,.18,'rgba(255,255,255,.8)');box(.55,.22,.08,.3,'rgba(255,255,255,.9)');box(.78,.14,.14,.2,'rgba(255,240,230,.85)');box(.3,.02,.4,.06,'rgba(255,255,255,1)');
  g.shadowColor='#ff5fa8';box(.42,.36,.08,.1,'rgba(255,110,190,.7)');box(.9,.34,.06,.12,'rgba(90,200,255,.7)');
- const tx=new THREE.CanvasTexture(c);tx.mapping=THREE.EquirectangularReflectionMapping;tx.encoding=THREE.sRGBEncoding;const pm=new THREE.PMREMGenerator(ren);studioEnv=pm.fromEquirectangular(tx).texture;pm.dispose();return studioEnv}
+ const tx=new THREE.CanvasTexture(c);tx.mapping=THREE.EquirectangularReflectionMapping;tx.encoding=THREE.sRGBEncoding;const pm=new THREE.PMREMGenerator(ren);studioEnv=pm.fromEquirectangular(hdrTex(c,{gain:6,knee:.72})||tx).texture;pm.dispose();return studioEnv}
 function applyQ(q,init){Q=q?1:0;try{localStorage.setItem('th_q',Q)}catch(e){}
  ren.toneMapping=(Q&&CTM)?THREE.CustomToneMapping:THREE.ACESFilmicToneMapping;
  ren.domElement.style.filter=Q?(CTM?'none':'saturate(1.5) contrast(1.15)'):'saturate(1.3) contrast(1.08)';
@@ -5185,6 +5196,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.77',n:['Gerçek HDR yansıma ortamı: gökyüzünde güneş ve garajda ışık panelleri parlak yansıma verir (ayna kaporta daha gerçekçi).','Daha detaylı, yüksek çözünürlüklü asfalt dokusu (çatlak, yama, kalıntı ve pürüzlülük haritası).','KARBERIAN E-ONE X için yeni elektrikli spor motor sesi: hızla yükselen vınlama, harmonikler ve spor uğultu.']},
 {v:'v9.76',n:['Garajda araçlar için yüksek detay (LOD) altyapısı: yüksek detaylı model ayrı dosyadan, sadece garajda o araç görününce yüklenir; yarışta hafif model kullanılır.','KARBERIAN E-ONE X: garajda ~180 bin üçgenlik yüksek detaylı model (pürüzsüz kaporta, ayrıntılı jant).']},
 {v:'v9.75.1',n:['KARBERIAN E-ONE X: varsayılan renk gümüş-gri ayna efektli metalik oldu; gövde ayrıntısı artırıldı.','Jantlar yenilendi: düz kapak kaldırıldı, modelin kendi 5 kollu parlak jantı, fren diski ve kaliperi görünüyor.']},
 {v:'v9.75',n:['İki eski araç oyundan tamamen kaldırıldı.','Kilitli araç sistemi kapatıldı: hiçbir araç kilitli değil, tüm araçlar mağazadan satın alınabilir.','Yeni araç: KARBERIAN E-ONE X (3000 coin, maksimum hız 300 km/s). Boya, jant ve neon ile özelleştirilebilir; kokpit görünümünde kendi iç mekânı ve direksiyonu kullanılır.']},
@@ -6152,6 +6164,46 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
     };
   };
 
+  /* v9.77 electric-sport engine voice (Web Audio only: oscillators + filters, no worklet) - used for cars in EVSET.
+   * motor whine = harmonic stack rising with speed (+ detuned twin for shimmer), synthetic sport growl + sub, air/road hiss */
+  const EVSET = { Karberian: 1 };
+  AM.makeEV = function (C, dest) {
+    const nb = C.createBuffer(1, C.sampleRate, C.sampleRate), nd = nb.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+    const comp = C.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 4; comp.connect(dest);
+    const out = C.createGain(); out.gain.value = 0; out.connect(comp);
+    const tilt = C.createBiquadFilter(); tilt.type = 'lowpass'; tilt.frequency.value = 6500; tilt.Q.value = .4; tilt.connect(out);
+    const wg = C.createGain(); wg.gain.value = 0; wg.connect(tilt);
+    const PS = [[1, .6, 'sine'], [2, .24, 'sine'], [3, .14, 'triangle'], [4, .07, 'sine'], [5, .04, 'sine'], [6, .05, 'sine'], [8, .02, 'sine']];
+    const W = []; PS.forEach(p => { for (let k = 0; k < 2; k++) { const o = C.createOscillator(), g = C.createGain(); o.type = p[2]; o.frequency.value = 200; g.gain.value = p[1] * (k ? .55 : 1); o.connect(g); g.connect(wg); o.start(); W.push({ o, m: p[0] * (k ? 1.0045 : 1) }); } });
+    const gr = C.createOscillator(); gr.type = 'sawtooth'; gr.frequency.value = 40; const glp = C.createBiquadFilter(); glp.type = 'lowpass'; glp.frequency.value = 420; glp.Q.value = 1.6; const gg = C.createGain(); gg.gain.value = 0; gr.connect(glp); glp.connect(gg); gg.connect(out); gr.start();
+    const sb = C.createOscillator(); sb.type = 'sine'; sb.frequency.value = 40; const sg = C.createGain(); sg.gain.value = 0; sb.connect(sg); sg.connect(out); sb.start();
+    const tr = C.createOscillator(); tr.frequency.value = 6.5; const trg = C.createGain(); trg.gain.value = .12; tr.connect(trg); trg.connect(gg.gain); tr.start();
+    const ns = C.createBufferSource(); ns.buffer = nb; ns.loop = true; const nbp = C.createBiquadFilter(); nbp.type = 'bandpass'; nbp.frequency.value = 2000; nbp.Q.value = .6; const ng = C.createGain(); ng.gain.value = 0; ns.connect(nbp); nbp.connect(ng); ng.connect(out); ns.start();
+    const noise = (f, t, g, type) => { const T = C.currentTime, n = C.createBufferSource(); n.buffer = nb; const fl = C.createBiquadFilter(); fl.type = type || 'lowpass'; fl.frequency.setValueAtTime(f, T); fl.frequency.exponentialRampToValueAtTime(120, T + t); const gn = C.createGain(); gn.gain.setValueAtTime(g, T); gn.gain.exponentialRampToValueAtTime(.001, T + t); n.connect(fl); fl.connect(gn); gn.connect(comp); n.start(T); n.stop(T + t + .05); };
+    const chirp = (f0, f1, d, g) => { const o = C.createOscillator(), gn = C.createGain(), T = C.currentTime; o.type = 'sine'; o.frequency.setValueAtTime(f0, T); o.frequency.exponentialRampToValueAtTime(f1, T + d); gn.gain.setValueAtTime(0, T); gn.gain.linearRampToValueAtTime(g, T + d * .3); gn.gain.exponentialRampToValueAtTime(.001, T + d + .25); o.connect(gn); gn.connect(comp); o.start(T); o.stop(T + d + .3); };
+    let on0 = 0, sm = 0;
+    return {
+      out, start() { chirp(180, 720, .5, .09); chirp(360, 1440, .5, .03); },
+      quiet(T) { const P = (p, v, t) => p.setTargetAtTime(v, T, t); P(out.gain, 0, .12); },
+      nos() { noise(6500, .75, .5, 'highpass'); chirp(500, 2400, .6, .05); },
+      frame(T, s, thr, bo, on) {
+        const P = (p, v, t) => p.setTargetAtTime(v, T, t);
+        let vv = Math.max(0, s.v50); if (s.v < 4) vv += thr * 9; if (s.st === 'win') vv = Math.max(vv, 30);
+        const pit = bo ? 1.07 : 1, f0 = (110 + vv * 17) * pit, fg = (36 + vv * 1.5) * pit;
+        const load = s.st === 'race' ? .3 + .7 * thr : (s.st === 'count' ? (s.thr ? .75 : .22) : .35);
+        W.forEach(w => P(w.o.frequency, f0 * w.m, .05));
+        P(gr.frequency, fg, .05); P(sb.frequency, fg, .05); P(glp.frequency, 340 + vv * 5 + load * 160, .08);
+        P(tr.frequency, 5 + vv * .08, .1); P(tilt.frequency, 3600 + vv * 12, .1);
+        const vol = on ? 1 : 0;
+        P(out.gain, vol, .1);
+        P(wg.gain, (.045 + .1 * load) * (.55 + .45 * Math.min(1, vv / 35)), .06);
+        P(gg.gain, (.03 + .07 * load) * (1 - Math.min(.5, vv / 140)), .08);
+        P(sg.gain, .02 + .045 * load, .08);
+        P(ng.gain, Math.min(.05, .004 + vv * .0007), .1); P(nbp.frequency, 1500 + vv * 45, .1);
+      }
+    };
+  };
+
   /* recorded engine: 5 pitch-flattened rpm layers cut from a real engine acceleration recording (seamless loops),
    * crossfaded by revs and pitch-matched with playbackRate; gear changes play the real recorded shift clips */
   const LAY_F = [64.5, 67, 71.3, 75.6, 80], LAY_F0 = 54, LAY_F1 = 90;
@@ -6181,7 +6233,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       const sb = ctx.createGain(); sb.gain.value = AM.gain.synth; sb.connect(master);
       M = { master, pan: !!ctx.createStereoPanner };
       const eb = ctx.createGain(); eb.gain.value = 0; eb.connect(master); AM.eb = eb;                                    // engine bus (ignite / stop fade)
-      AM.syn = AM.makeV50(ctx, sb); AM.syn.ef.gain.value = 1; AM.lay = null; AM.V.engine_loop = { g: eb };                                       // v9.50 synth: nitro (+ engine until the recorded layers are decoded)
+      AM.ev = AM.makeEV(ctx, sb); AM.prof = 'ice'; AM.syn = AM.makeV50(ctx, sb); AM.syn.ef.gain.value = 1; AM.lay = null; AM.V.engine_loop = { g: eb };                                       // v9.50 synth: nitro (+ engine until the recorded layers are decoded)
       AM.ready = true;
       for (const n in AM.files) tryLoad(n, 0);
     } catch (e) { AM.ready = false; }
@@ -6203,6 +6255,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
   AM.ignite = function () {                           // first throttle press: engine_start, then the engine takes over
     try {
       if (!AM.ctx || !M || AM.running) return; AM.running = true; igT = 0; thrS = 0; engOn = false; E.rpm = 1100; E.gear = 0; E.gT = 0; E.rr = null;
+      if (AM.prof === 'ev' && AM.ev) { engOn = true; AM.ev.start(); return; }
       const T = AM.ctx.currentTime, d = shot('engine_start', 1, 1, 0), V = AM.V.engine_loop;
       if (V) {
         const delay = .08, g = V.g.gain; engOn = true;
@@ -6215,7 +6268,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
   };
   AM.stop = function (fade) {
     try {
-      AM.running = false; engOn = false; igT = 99; const V = AM.V.engine_loop; if (!AM.ctx || !V) return;
+      AM.running = false; engOn = false; igT = 99; try { if (AM.ev) AM.ev.quiet(AM.ctx.currentTime); } catch (e) { } const V = AM.V.engine_loop; if (!AM.ctx || !V) return;
       const g = V.g.gain, T = AM.ctx.currentTime; g.cancelScheduledValues(T); g.setValueAtTime(g.value, T); g.linearRampToValueAtTime(0, T + (fade || .35));
     } catch (e) { }
   };
@@ -6233,6 +6286,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
   AM.update = function (s) {
     try {
       if (!AM.ctx || !M) return; const now = AM.now(); if (now - lastU < 30) return; const dt = Math.min(.1, (now - lastU) / 1000); lastU = now;
+      AM.prof = (EVSET[s.cid] && AM.ev) ? 'ev' : 'ice';
       const V = AM.V, on = s.play ? 1 : 0, gn = AM.gain;
       if (AM.running && !s.play) AM.stop(.4);
       if (V.tire_screech) setP(V.tire_screech.g.gain, s.screech * gn.tire_screech * on, .05);
@@ -6243,6 +6297,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       if (!AM.running || !s.play || !engOn || !AM.syn) return;
       igT += dt; thrS += ((s.thr ? 1 : 0) - thrS) * Math.min(1, dt * 8);
       const bo = s.boost ? 1 : 0, T = AM.ctx.currentTime, v = s.v50, L = AM.lay;
+      if (AM.prof === 'ev') { if (bo && !boostOn) AM.ev.nos(); boostOn = bo; AM.ev.frame(T, s, thrS, bo, true); return; }
       let g = 0; for (let i = 0; i < GS.length; i++) if (v >= GS[i]) g = i;
       const up = g > E.gear;
       if (g !== E.gear) {
@@ -6304,7 +6359,7 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       } else { brkT = 0; if (st === 'count' && thrT > .25) spin = 1; }                // gas held during the 3-2-1 countdown: tyres spin on the spot
       if (st === 'win' && !cinEnd && typeof winC !== 'undefined' && winC && !(typeof buyAnim !== 'undefined' && buyAnim) && !(typeof TX !== 'undefined' && TX && typeof EV !== 'undefined' && EV && EV.tx && TX.wt != null)) slide = .9;   // victory donut
       S.play = play; S.st = st; S.cdT = typeof cdT !== 'undefined' ? cdT : 0; S.v50 = v / (1 + (typeof lvl !== 'undefined' ? lvl : 0) * .158); S.v = v; S.sn = clamp(v / Math.max(curV, 1), 0, 1.1); S.thr = thr; S.boost = !!boost;
-      S.screech = screech; S.slide = slide; S.spin = spin; S.scrape = scrape;
+      S.screech = screech; S.slide = slide; S.spin = spin; S.scrape = scrape; S.cid = (typeof CARS !== 'undefined' && typeof sel !== 'undefined' && CARS[sel.car]) ? CARS[sel.car][0] : '';
       AM.update(S);
     } catch (e) { }
   };
