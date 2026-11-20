@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.74.2</title>
+<title>gtr_game_v9.74.3</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2115,8 +2115,13 @@ body #evd #evdback{display:none!important}
 #evs.fzm #evl#evl#evl{display:none!important}
 .fzc{position:absolute;z-index:3;left:10px;top:10px;padding:3px 9px;border-radius:8px;background:rgba(8,5,26,.78);border:1px solid rgba(255,190,80,.6);font:700 11px/1.2 system-ui;color:#ffd9a8;letter-spacing:.3px}
 .fzc .evtp{font:700 11px/1.2 system-ui;color:#ffd9a8}
-#evs .fzb{position:absolute;right:16px;top:calc(env(safe-area-inset-top,0px) + 72px);z-index:6;align-self:auto;box-shadow:0 0 10px rgba(255,190,80,.7),0 0 24px rgba(255,150,60,.45),inset 0 0 10px rgba(255,190,80,.25);border-color:#ffc24a;background:linear-gradient(180deg,rgba(60,28,120,.82),rgba(20,10,52,.88))}
-@media (orientation:portrait){#evs .fzb{top:calc(env(safe-area-inset-top,0px) + 70px);right:10px}}
+#evs .fzp .fzb{position:absolute;left:8px;right:8px;top:8px;z-index:3;align-self:auto;padding:4px 6px 5px;gap:3px;border-color:#ffc24a;box-shadow:0 0 10px rgba(255,190,80,.7),0 0 22px rgba(255,150,60,.4),inset 0 0 10px rgba(255,190,80,.25);background:linear-gradient(180deg,rgba(60,28,120,.85),rgba(20,10,52,.9));pointer-events:none}
+#evs .fzb small{font-size:8px;letter-spacing:.6px;white-space:nowrap}
+#evs .fzb .e2tc{width:100%;gap:4px;margin:0}
+#evs .fzb .e2tc u{flex:1 1 0;min-width:0;padding:2px 1px}
+#evs .fzb .e2tc u b{font-size:14px}
+#evs .fzb .e2tc u i{font-size:7px}
+#evs .fzp .fzn{top:72px}
 #pm .fzw,#evs .fzw{display:none}
 #pm.fzon .fzw,#evs.fzm .fzw{display:block}
 @media (orientation:landscape){
@@ -2127,7 +2132,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74.2</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74.3</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5005,6 +5010,7 @@ window.fzBuild=function(host,items){
   let im;if(it.cv){im=it.cv;im.className='fzi'}else{im=document.createElement('i');im.className='fzi';if(it.img)im.style.backgroundImage='url("'+it.img+'")'}
   p.appendChild(im);
   if(it.badge){const n=document.createElement('u');n.className='fzn'+(it.by?' y':'');n.style.textDecoration='none';n.textContent=it.badge;p.appendChild(n)}
+  if(it.blk){const b=document.createElement('div');b.className='e2b fzb';b.innerHTML=it.blk;p.appendChild(b)}
   if(it.chip){const c=document.createElement('span');c.className='fzc';c.innerHTML=it.chip;p.appendChild(c)}
   const t=document.createElement('div');t.className='fzt';t.innerHTML='<b></b><span class="fzd"></span>';t.firstChild.textContent=it.t;
   if(it.sh)t.querySelector('.fzd').innerHTML=it.sh;else t.querySelector('.fzd').textContent=it.s||'';
@@ -5035,8 +5041,8 @@ try{
     const ks=[...document.querySelectorAll('#evl .e2c>.e2k')].map(d=>+d.dataset.i);
     const it=ks.map(i=>{const e=EVS[i],c=evCyc(e),cv=document.createElement('canvas');evArt(cv,e,c);
      const old=document.querySelector('#evl .e2k[data-i="'+i+'"]'),tp=old&&old.querySelector('.evtp');
-     return {t:e.nm,s:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)},sel:()=>{const tc=evs.querySelector('.fzb .e2tc');if(tc){tc.dataset.i=i;tc.innerHTML=evCells(evCyc(e).end-Date.now())}}}});
-    const w=fzBuild(evs,it);const bx=document.createElement('div');bx.className='e2b fzb';bx.innerHTML='<small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="-1"></span>';w.appendChild(bx);if(ks.length)it[0].sel();else bx.style.display='none';
+     return {t:e.nm,s:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)},blk:'<small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="'+i+'">'+evCells(c.end-Date.now())+'</span>'}});
+    fzBuild(evs,it);
    }
   }catch(e){console.error(e)}
   return r};
@@ -5173,6 +5179,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.74.3',n:['Etkinlikler: "Sınırlı süreli etkinlik" sayacı artık ortak değil; her etkinlik kartının içinde kendi kalan süresini gösteriyor.']},
 {v:'v9.74.2',n:['GİR butonları neon tasarıma geçti.','Etkinliklerde YENİ rozeti eski gibi sarı ve neon oldu.','Seçili etkinliğin kalan süresi "SINIRLI SÜRELİ ETKİNLİK" alanında sağ üstte yeniden gösteriliyor.']},
 {v:'v9.74.1',n:['Oyna ve Etkinlikler ekranlarında eski kutular kaldırıldı; yeni paneller artık tıklanabiliyor.','Etkinlik panellerinde YENİ rozeti ve kalan süre her zaman görünür.']},
 {v:'v9.74',n:['Oyna ekranı ve Etkinlikler ana ekranı yeni dikey panel tasarımına geçti: ilk panel aydınlık, diğerleri daha karanlık ve şeffaf.','Bir panele dokununca ismi yukarı kayar, açıklama ve GİR butonu belirir; GİR ile mod/etkinlik detayına geçilir.']},
