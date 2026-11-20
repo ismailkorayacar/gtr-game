@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.74.1</title>
+<title>gtr_game_v9.74.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2105,15 +2105,18 @@ body #evd #evdback{display:none!important}
 .fzp.arm .fzt{transform:translateY(calc(-1 * var(--up)))}
 .fzd{display:block;max-height:0;opacity:0;overflow:hidden;padding:0 12px 0 14px;font:600 11px/1.3 system-ui;color:#e7dcff;letter-spacing:.3px;text-shadow:0 1px 6px #000;transition:opacity .4s .12s,max-height .4s .12s,padding .4s}
 .fzp.arm .fzd{max-height:46px;opacity:1;padding-top:8px}
-.fzg{position:absolute;z-index:3;left:14px;bottom:14px;height:42px;padding:0 24px;border:2px solid rgba(255,255,255,.6);border-radius:10px;background:linear-gradient(180deg,#ffe066,#ffb300);color:#3a2200;font:italic 900 16px/1 system-ui;letter-spacing:1px;transform:translateY(16px) skewX(-8deg);opacity:0;pointer-events:none;transition:opacity .35s .18s,transform .4s .18s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 18px rgba(255,170,0,.5);cursor:pointer}
+.fzg{position:absolute;z-index:3;left:14px;bottom:14px;height:42px;padding:0 24px;border:2px solid #ff7ad0;border-radius:10px;background:rgba(16,8,48,.72);color:#fff;font:italic 900 16px/1 system-ui;letter-spacing:2px;text-shadow:0 0 6px #fff,0 0 12px #ff7ad0,0 0 22px #b06bff;transform:translateY(16px) skewX(-8deg);opacity:0;pointer-events:none;transition:opacity .35s .18s,transform .4s .18s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 8px #ff4fa3,0 0 20px rgba(176,107,255,.85),inset 0 0 12px rgba(176,107,255,.55);cursor:pointer}
+@keyframes fzgp{0%,100%{box-shadow:0 0 8px #ff4fa3,0 0 20px rgba(176,107,255,.85),inset 0 0 12px rgba(176,107,255,.55)}50%{box-shadow:0 0 14px #ff7ad0,0 0 34px rgba(176,107,255,1),inset 0 0 18px rgba(176,107,255,.8)}}
+.fzp.arm .fzg{animation:fzgp 1.8s ease-in-out .6s infinite}
 .fzp.arm .fzg{opacity:1;transform:translateY(0) skewX(-8deg);pointer-events:auto}
-.fzn{position:absolute;z-index:3;right:10px;top:10px;padding:3px 9px;border-radius:8px;background:#ff2b4a;color:#fff;font:900 10px/1.2 system-ui;letter-spacing:.6px}
+.fzn{position:absolute;z-index:3;right:10px;top:10px;padding:2px 9px;border-radius:999px;background:rgba(10,5,60,.78);border:1.5px solid #ffe34d;color:#ffe34d;font:900 10px/1.4 system-ui;letter-spacing:1px;text-shadow:0 0 6px #ffe34d;box-shadow:0 0 8px rgba(255,227,77,.8),0 0 16px rgba(255,200,40,.5),inset 0 0 8px rgba(255,227,77,.3)}
 .fzp .evtp{font:700 11px system-ui;color:#ffd9a8}
 #pm #pml#pml#pml,#pm .pmh.pmh.pmh{display:none!important}
 #evs.fzm #evl#evl#evl{display:none!important}
 .fzc{position:absolute;z-index:3;left:10px;top:10px;padding:3px 9px;border-radius:8px;background:rgba(8,5,26,.78);border:1px solid rgba(255,190,80,.6);font:700 11px/1.2 system-ui;color:#ffd9a8;letter-spacing:.3px}
 .fzc .evtp{font:700 11px/1.2 system-ui;color:#ffd9a8}
-.fzn.y{background:linear-gradient(180deg,#ffe066,#ffb300);color:#3a2200}
+#evs .fzb{position:absolute;right:16px;top:calc(env(safe-area-inset-top,0px) + 72px);z-index:6;align-self:auto;box-shadow:0 0 10px rgba(255,190,80,.7),0 0 24px rgba(255,150,60,.45),inset 0 0 10px rgba(255,190,80,.25);border-color:#ffc24a;background:linear-gradient(180deg,rgba(60,28,120,.82),rgba(20,10,52,.88))}
+@media (orientation:portrait){#evs .fzb{top:calc(env(safe-area-inset-top,0px) + 70px);right:10px}}
 #pm .fzw,#evs .fzw{display:none}
 #pm.fzon .fzw,#evs.fzm .fzw{display:block}
 @media (orientation:landscape){
@@ -2124,7 +2127,7 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74.1</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.74.2</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5006,12 +5009,12 @@ window.fzBuild=function(host,items){
   const t=document.createElement('div');t.className='fzt';t.innerHTML='<b></b><span class="fzd"></span>';t.firstChild.textContent=it.t;
   if(it.sh)t.querySelector('.fzd').innerHTML=it.sh;else t.querySelector('.fzd').textContent=it.s||'';
   p.appendChild(t);
-  const g=document.createElement('button');g.type='button';g.className='fzg';g.textContent='GİR';p.appendChild(g);
-  const sel=()=>{P.forEach(q=>{q.classList.remove('on','arm')});p.classList.add('on','arm');try{p.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'})}catch(e){}};
+  const g=document.createElement('button');g.type='button';g.className='fzg';g.textContent='GİR ›';p.appendChild(g);
+  const sel=()=>{P.forEach(q=>{q.classList.remove('on','arm')});p.classList.add('on','arm');try{it.sel&&it.sel()}catch(e){}try{p.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'})}catch(e){}};
   p.onclick=e=>{if(p.classList.contains('arm')){it.go()}else sel()};
   g.onclick=e=>{e.stopPropagation();it.go()};
   P.push(p);z.appendChild(p)});
- if(P[0])P[0].classList.add('on');
+ if(P[0]){P[0].classList.add('on');try{items[0].sel&&items[0].sel()}catch(e){}}
  w.appendChild(z);host.appendChild(w);return w};
 /* Oyna menüsü */
 try{
@@ -5032,8 +5035,8 @@ try{
     const ks=[...document.querySelectorAll('#evl .e2c>.e2k')].map(d=>+d.dataset.i);
     const it=ks.map(i=>{const e=EVS[i],c=evCyc(e),cv=document.createElement('canvas');evArt(cv,e,c);
      const old=document.querySelector('#evl .e2k[data-i="'+i+'"]'),tp=old&&old.querySelector('.evtp');
-     return {t:e.nm,s:'',chip:tp?tp.outerHTML:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)}}});
-    fzBuild(evs,it);
+     return {t:e.nm,s:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)},sel:()=>{const tc=evs.querySelector('.fzb .e2tc');if(tc){tc.dataset.i=i;tc.innerHTML=evCells(evCyc(e).end-Date.now())}}}});
+    const w=fzBuild(evs,it);const bx=document.createElement('div');bx.className='e2b fzb';bx.innerHTML='<small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="-1"></span>';w.appendChild(bx);if(ks.length)it[0].sel();else bx.style.display='none';
    }
   }catch(e){console.error(e)}
   return r};
@@ -5170,6 +5173,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.74.2',n:['GİR butonları neon tasarıma geçti.','Etkinliklerde YENİ rozeti eski gibi sarı ve neon oldu.','Seçili etkinliğin kalan süresi "SINIRLI SÜRELİ ETKİNLİK" alanında sağ üstte yeniden gösteriliyor.']},
 {v:'v9.74.1',n:['Oyna ve Etkinlikler ekranlarında eski kutular kaldırıldı; yeni paneller artık tıklanabiliyor.','Etkinlik panellerinde YENİ rozeti ve kalan süre her zaman görünür.']},
 {v:'v9.74',n:['Oyna ekranı ve Etkinlikler ana ekranı yeni dikey panel tasarımına geçti: ilk panel aydınlık, diğerleri daha karanlık ve şeffaf.','Bir panele dokununca ismi yukarı kayar, açıklama ve GİR butonu belirir; GİR ile mod/etkinlik detayına geçilir.']},
 {v:'v9.73',n:['Lobide Geliştir butonuna, Günlük Görevler butonundaki gibi silik İngiliz anahtarı ikonu eklendi.']},
