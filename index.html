@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.80.1</title>
+<title>gtr_game_v9.81</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2132,7 +2132,25 @@ body #evd #evdback{display:none!important}
 @media (orientation:portrait){
  #pm .fz,#evs .fz{left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 62px);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);--pw:58vw;--up:104px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.80.1</em></div></div>
+
+/* v9.81 Etkinlikler: referans kart tasarımı (yalnızca #evs) */
+.fzr .fz{gap:10px;padding:0 10px;scroll-snap-type:none;align-items:flex-start}
+.fzr .fzp{flex:0 0 var(--pw);height:calc(100% - 26px);margin-top:13px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.45);transition:flex-basis .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1),margin .45s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.fzr .fzp.on{flex-basis:calc(var(--pw)*1.4);height:100%;margin-top:0;box-shadow:0 0 26px rgba(0,0,0,.75),0 0 0 2px rgba(255,255,255,.55)}
+.fzr .fzt{display:none}
+.fzr .fzh{position:absolute;z-index:3;left:12px;right:10px;top:10px;display:flex;align-items:baseline;gap:8px;text-shadow:0 2px 8px rgba(0,0,0,.7);pointer-events:none}
+.fzr .fzh i{font:italic 800 26px/1 system-ui;color:#34d6e8}
+.fzr .fzh b{font:700 19px/1.05 system-ui;letter-spacing:.8px;text-transform:uppercase;transition:font-size .4s}
+.fzr .fzp.on .fzh b{font-size:23px}
+#evs .fzr .fzp .fzb{top:62px;left:0;right:auto;width:auto;max-width:92%;border-radius:0 8px 8px 0;border-left:0}
+#evs .fzr .fzp .fzn{top:10px;right:10px}
+.fzr .fzbar{position:absolute;z-index:4;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:rgba(255,255,255,.9);transform:translateY(105%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1) .1s,opacity .35s .1s;pointer-events:none}
+.fzr .fzp.arm .fzbar{transform:translateY(0);opacity:1;pointer-events:auto}
+.fzr .fzrw{display:flex;align-items:center;gap:6px;color:#0b0b14;font:800 16px/1 system-ui}
+.fzr .fzrw s{text-decoration:none}
+.fzr .fzg{position:relative;left:auto;bottom:auto;opacity:1;transform:skewX(-8deg);height:34px;padding:0 18px;font-size:14px}
+.fzr .fzp.on:not(.arm) .fzbar{transform:translateY(105%)}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.81</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3348,7 +3366,7 @@ function cockStep(dt){if(introT>0&&st==='count'){ckG.visible=false;introCam();re
  if(on){if(P.mesh!==ckMesh||!ckClip){ckMesh=P.mesh;ckClip=true;ckApply(P.mesh,!KK)}}else if(ckClip){ckClip=false;ckApply(ckMesh,false)}
  if(!on)return;
  if(KK)cam.near=.1;
- const z=P.z,h=P.yaw+Math.atan(cd(z)),sn=Math.sin(h),cs=Math.cos(h),lx=KK?KK.e[0]:-.3,lz=KK?KK.e[2]:-P.hl*.1,ey=(KK?KK.e[1]:Math.max(1.02,P.hh*.88))*1.1+((CARS[sel.car]||[])[0]==='KarberianVentor'?.16:0),ex=P.x+cx(z)+lx*cs+lz*sn,ez=z-lx*sn+lz*cs,sk2=Math.min(shake,.5)*.04;
+ const z=P.z,h=P.yaw+Math.atan(cd(z)),sn=Math.sin(h),cs=Math.cos(h),lx=KK?KK.e[0]:-.3,lz=KK?KK.e[2]:-P.hl*.1,ey=(KK?KK.e[1]:Math.max(1.02,P.hh*.88))*1.08,ex=P.x+cx(z)+lx*cs+lz*sn,ez=z-lx*sn+lz*cs,sk2=Math.min(shake,.5)*.04;
  cam.position.set(ex+(R()-.5)*sk2,ey+(R()-.5)*sk2,ez);cam.lookAt(ex-sn*30,ey-2.2,ez-cs*30);cam.rotateZ(-P.vx*.004);ckPl.setFromNormalAndCoplanarPoint(_ckN.set(-sn,0,-cs),_ckC.set(ex-sn*1.15,ey,ez-cs*1.15));
  const asp=cam.aspect||1;cam.fov=Math.max(document.body.classList.contains('ls')?52:62,Math.min(95,2*Math.atan(Math.tan(.61)/asp)*57.2958))+(nosAct?6:0);cam.updateProjectionMatrix();
  const tgt=Math.max(-1,Math.min(1,P.vx/12))*1.9;swA+=(tgt-swA)*Math.min(1,dt*9);wr.rotation.z=-swA;if(KK&&P.mesh.userData.sw)P.mesh.userData.sw.setRotationFromAxisAngle(P.mesh.userData.swAx,-swA*.9);
@@ -5032,8 +5050,8 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&on)stop()}
 /* ===== v9.74 Oyna + Etkinlikler panel tasarımı ===== */
 (function(){
 const $$=id=>document.getElementById(id);
-window.fzBuild=function(host,items){
- const w=document.createElement('div');w.className='fzw';const z=document.createElement('div');z.className='fz';
+window.fzBuild=function(host,items,opt){opt=opt||{};
+ const w=document.createElement('div');w.className='fzw'+(opt.ref?' fzr':'');const z=document.createElement('div');z.className='fz';
  const P=[];
  items.forEach((it,i)=>{const p=document.createElement('div');p.className='fzp';p.setAttribute('role','button');
   let im;if(it.cv){im=it.cv;im.className='fzi'}else{im=document.createElement('i');im.className='fzi';if(it.img)im.style.backgroundImage='url("'+it.img+'")'}
@@ -5044,12 +5062,14 @@ window.fzBuild=function(host,items){
   const t=document.createElement('div');t.className='fzt';t.innerHTML='<b></b><span class="fzd"></span>';t.firstChild.textContent=it.t;
   if(it.sh)t.querySelector('.fzd').innerHTML=it.sh;else t.querySelector('.fzd').textContent=it.s||'';
   p.appendChild(t);
-  const g=document.createElement('button');g.type='button';g.className='fzg';g.textContent='GİR ›';p.appendChild(g);
+  const g=document.createElement('button');g.type='button';g.className='fzg';g.textContent=opt.ref?'GİRİŞ ›':'GİR ›';
+  if(opt.ref){const h=document.createElement('div');h.className='fzh';h.innerHTML='<i>'+(i+1)+'</i><b></b>';h.lastChild.textContent=it.t;p.appendChild(h);
+   const bar=document.createElement('div');bar.className='fzbar';const rw=document.createElement('span');rw.className='fzrw';rw.innerHTML=it.rw||'';bar.appendChild(rw);bar.appendChild(g);p.appendChild(bar)}else p.appendChild(g);
   const sel=()=>{P.forEach(q=>{q.classList.remove('on','arm')});p.classList.add('on','arm');try{it.sel&&it.sel()}catch(e){}try{p.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'})}catch(e){}};
   p.onclick=e=>{if(p.classList.contains('arm')){it.go()}else sel()};
   g.onclick=e=>{e.stopPropagation();it.go()};
   P.push(p);z.appendChild(p)});
- if(P[0]){P[0].classList.add('on');try{items[0].sel&&items[0].sel()}catch(e){}}
+ if(P[0]&&!opt.ref){P[0].classList.add('on');try{items[0].sel&&items[0].sel()}catch(e){}}
  w.appendChild(z);host.appendChild(w);return w};
 /* Oyna menüsü */
 try{
@@ -5070,8 +5090,8 @@ try{
     const ks=[...document.querySelectorAll('#evl .e2c>.e2k')].map(d=>+d.dataset.i);
     const it=ks.map(i=>{const e=EVS[i],c=evCyc(e),cv=document.createElement('canvas');evArt(cv,e,c);
      const old=document.querySelector('#evl .e2k[data-i="'+i+'"]'),tp=old&&old.querySelector('.evtp');
-     return {t:e.nm,s:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)},blk:'<small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="'+i+'">'+evCells(c.end-Date.now())+'</span>'}});
-    fzBuild(evs,it);
+     return {t:e.nm,s:'',cv,badge:old&&old.querySelector('.e2n')?'YENİ':'',go:()=>{evFeat=i;evOpen(i)},rw:'<s>'+(typeof COIN!=='undefined'?COIN:'🪙')+'</s><b>'+(e.reward||0)+'</b>',blk:'<small>SINIRLI SÜRELİ ETKİNLİK</small><span class="e2tc evtp" data-i="'+i+'">'+evCells(c.end-Date.now())+'</span>'}});
+    fzBuild(evs,it,{ref:1});
    }
   }catch(e){console.error(e)}
   return r};
@@ -5208,6 +5228,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.81',n:['Etkinlikler ekranı yeni kart tasarımına geçti: kartlar numaralı ve isimli, üstte sınırlı süreli etkinlik alanı görünür. Karta dokununca kart büyür ve altta ödülle birlikte GİRİŞ çıkar; varsayılan olarak hiçbir kart büyük değildir.','Kokpit kamera yüksekliği tüm araçlarda %8 oldu (önceki %10); Karberian Ventor için ek yükseklik kaldırıldı.']},
 {v:'v9.80.1',n:['Karberian e-one X adı küçük harfle yazıldı.','Kokpit kamerası tüm araçlarda %10 yükseltildi; Karberian Ventor için ayrıca yükseltildi.']},
 {v:'v9.80',n:['Yüksek kalite modunda gölgeler daha keskin ve yumuşak kenarlı (2048 gölge haritası, yumuşak filtre). Düşük kalite modu aynı kalır.']},
 {v:'v9.79',n:['Yeni araç: Karberian Ventor (4000 coin, maksimum hız 320 km/s). Rengi sabit, neon ve jant eklenebilir. Kokpit görünümünde kendi iç mekânı ve direksiyonu kullanılır.','Karberian Ventor için garajda yüksek detaylı model.']},
