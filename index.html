@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.87</title>
+<title>gtr_game_v9.88</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2160,7 +2160,7 @@ body #evd #evdback{display:none!important}
 .fzw:not(.fzr) .fzg,.fzw:not(.fzr) .fzp.arm .fzg{left:auto;right:0}
 .fzr .fzrw em{font:700 11px/1 system-ui;letter-spacing:1px;font-style:normal;color:#555}
 .fzr .fzg,.fzr .fzp.arm .fzg{height:auto;padding:0 8px;border:0;border-radius:0;background:none;box-shadow:none;animation:none;transform:none;color:#0b0b14;text-shadow:none;font:800 17px/1 system-ui;letter-spacing:1.5px;font-style:normal}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.87</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.88</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5253,6 +5253,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.88',n:['Şehir Turu trafiği: kırmızı ışıkta (10 sn) araçlar durur, fren lambaları yanar; yeşilde (30 sn) devam eder.','Kavşaklarda bazı araçlar sinyal verip sağa/sola ara sokağa döner; öndeki araca çarpmadan takip mesafesi tutar.','Trafik ışıkları artık gerçekten kırmızı/sarı/yeşil yanıp söner.']},
 {v:'v9.87',n:['Şehir Turu artık serbest sürüş: mesafe sınırı, süre, puan ve rakip yok; çarpışmada yarış bitmez.','Asfalt dokusu yenilendi: dallanan gerçekçi çatlaklar, düzensiz yama lekeleri; asfaltta görünen kare/dikdörtgen izler kaldırıldı.','Islak asfaltta ışık yansımaları geliştirildi (uzayan ışık izleri, bölgesel parlaklık farkı).','Şehirde oyunun gerçek ağaç modeli kullanılıyor.','Binalarda balkon, tente, neon tabela, daha ayrıntılı dükkân ve pencereler; hidrantlar.','Yolda hız kesici tümsekler: araç yavaşlar, zıplar ve sarsılır.']},
 {v:'v9.86',n:['Isınma Turu’na yeni harita: Şehir Turu (3 km). Gece şehir caddesi; iki yanda gökdelenler, ışıklı pencereler, dükkân vitrinleri ve tabelalar, kaldırımlar, ağaçlar, kavşaklar, trafik ışıkları ve zebra geçitleri.']},
 {v:'v9.85',n:['Drift lastik/el freni sesi v7’deki eski ses ile değiştirildi.','Drift haritasındaki yokuş (tepe/çukur) kaldırıldı, yol düz zeminde; virajlar aynı.']},
@@ -5621,6 +5622,7 @@ const MT={
  hyd:new THREE.MeshStandardMaterial({color:0xffffff,roughness:.5,metalness:.2}),
  bill:new THREE.MeshBasicMaterial({color:0xffffff}),
  lens:new THREE.MeshBasicMaterial({color:0xffffff}),
+ tlens:new THREE.MeshBasicMaterial({color:0xffffff}),
  sign:new THREE.MeshBasicMaterial({color:0xffffff}),
  sgn:new THREE.MeshStandardMaterial({color:0x0f5a3a,roughness:.5,emissive:0x052a1a}),
  bump:new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.55,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3})
@@ -5673,10 +5675,10 @@ for(let b=0;b<PER/BL;b++){
   const px=sd*(SW0+.6),pz=zg+q*8.7;
   add('dark',px,3.6,pz,.28,7.2,.28);add('dark',px-sd*3.2,6.9,pz,6.4,.22,.22);
   add('dark',px-sd*6.1,6.1,pz,.55,1.5,.45);
-  add('lens',px-sd*6.1,6.6,pz+.24,.34,.34,.06,[.12,.02,.02]);add('lens',px-sd*6.1,6.1,pz+.24,.34,.34,.06,[.14,.1,.02]);add('lens',px-sd*6.1,5.6,pz+.24,.34,.34,.06,[.05,1,.35]);
+  [[6.6,0,[.12,.02,.02]],[6.1,1,[.14,.1,.02]],[5.6,2,[.05,1,.35]]].forEach(([yy,ph,cc])=>{add('tlens',px-sd*6.1,yy,pz+.24,.4,.4,.06,cc);const l=K.tlens.a[K.tlens.a.length-1];l.ph=ph;l.b=b});
   add('sgn',px-sd*2.4,5.9,pz+.2,2.2,.5,.06);
  }
- for(const q of[-1,1])for(let i=0;i<13;i++)add('white',-7.8+i*1.3,.03,zg+q*9.8,.62,.04,3.6);
+ for(const q of[-1,1])for(let i=0;i<13;i++)add('white',-7.8+i*1.3,.03,zg+q*9.8,.62,.04,3.6);add('white',0,.03,zT+1.9,17.2,.04,.4);
 }
 /* ---- örnekler ---- */
 const G=new THREE.Group();G.visible=false;G.name='cityG2';scene.add(G);
@@ -5710,10 +5712,45 @@ const _pp=placePk;placePk=function(k,z0){if(CITY()){k.z=-99999;k.x=0;return}retu
 const _cr=crash;crash=function(fx){if(CITY()){if(invT>0)return;invT=1.2;shake=Math.max(shake,.7);P.v*=.55;return}return _cr.apply(this,arguments)};
 const cityOn=()=>!!(TH&&TH.ct);
 const hide=()=>{try{treeS.forEach(g=>{g.im.visible=false});(window.ridgeM||[]).forEach(m=>m.visible=false);[typeof trees!=='undefined'&&trees,typeof hills!=='undefined'&&hills,typeof blocks!=='undefined'&&blocks].forEach(a=>a&&a.forEach(o=>o.visible=false));ROADK.forEach(m=>{if(m.userData.k==='gr')m.visible=false})}catch(e){}};
-window.cityStep=function(dt){document.body.classList.toggle('cty',CITY());if(!cityOn()){if(G.visible)G.visible=false;return}G.visible=true;hide();cityUpd(false);bumpStep(dt)};
+window.cityStep=function(dt){document.body.classList.toggle('cty',CITY());if(!cityOn()){if(G.visible)G.visible=false;return}G.visible=true;hide();cityUpd(false);bumpStep(dt);if(!paused&&dt>0)clk+=Math.min(dt,.05);lightStep()};
 const _ws=weatherStep;weatherStep=function(dt){const r=_ws.apply(this,arguments);try{window.cityStep(dt)}catch(e){}return r};
 const _at=applyTheme;applyTheme=function(){const r=_at.apply(this,arguments);try{const on=cityOn();G.visible=on;document.body.classList.toggle('cty',CITY());if(on){hide();lastK=-1e9;cityUpd(true)}else{yb=vy=pG=pf=0}}catch(e){console.error('city',e)}return r};
-window.__city={G,inst,K,hb,BZ};
+
+/* ---- trafik: ışıklar (30 sn yeşil / 10 sn kırmızı), durma, fren lambası, sinyalli dönüş ---- */
+let clk=0;const CYC=40,GRN=28,AMB=30;
+const sigState=b=>{const t=(clk+b*13)%CYC;return t<GRN?0:t<AMB?1:2};
+const lineZ=b=>-(b*BL)+1.5;
+const LD=[[[1,.06,.05],[.14,.02,.02]],[[1,.72,.05],[.15,.1,.02]],[[.05,1,.35],[.02,.15,.07]]];
+const tlI=inst.find(i=>i.a===K.tlens.a);
+function lightStep(){if(!tlI)return;const a=tlI.a;for(let i=0;i<a.length;i++){const e=a[i],c=LD[e.ph][sigState(e.b)===e.ph?0:1];tlI.im.setColorAt(i,CL.setRGB(c[0],c[1],c[2]))}tlI.im.instanceColor.needsUpdate=true}
+const bsp=new THREE.SpriteMaterial({map:blkM.map,color:0xff1208,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:false});
+function brk(t,on){if(!t._bs){if(!on)return;t._bs=[];for(const sd of[-1,1]){const sp=new THREE.Sprite(bsp);sp.scale.set(.9,.9,1);sp.position.set(sd*(t.hw-.25),.8,t.hl-.2);sp.visible=false;t.mesh.add(sp);t._bs.push(sp)}}t._bs.forEach(x=>x.visible=on)}
+function nextInt(f){let bb=0,bd=1e9;for(let b=0;b<3;b++){const D=(((f-lineZ(b))%PER)+PER)%PER;if(D<bd){bd=D;bb=b}}return{b:bb,D:bd}}
+function turnStep(t,dt){const c=t.cty;
+ if(c.a<1.5708){c.a=Math.min(1.5708,c.a+c.v/c.R*dt);c.x+=c.d*c.v*Math.sin(c.a)*dt;c.z-=c.v*Math.cos(c.a)*dt;c.v=Math.min(c.v+1.5*dt,7.5)}else{c.v=Math.min(c.v+3*dt,10);c.x+=c.d*c.v*dt}
+ const on=c.a<1.5&&Math.floor(clk*3)%2===0;t.blk.L.forEach(x=>x.visible=on&&c.d<0);t.blk.R.forEach(x=>x.visible=on&&c.d>0);brk(t,false);
+ if(Math.abs(c.x)>72){t.cty=null;t.pl=0;t.on=false;t.mesh.visible=false;return}
+ t.v=c.v;t.vx=0;t.yaw=0;t.yr=0;t.x=Math.max(-LIM,Math.min(LIM,c.x));t.home=t.x;t.z=Math.abs(c.x)>11?P.z+30:c.z;t.ps=1}
+const _la=laneAI;laneAI=function(t,dt){
+ if(!CITY()){if(t._bs)brk(t,false);t.cty=null;t.pl=0;t.pb=-1;return _la.apply(this,arguments)}
+ if(t.cty){turnStep(t,dt);return}
+ const nx=nextInt(t.z-t.hl),D=nx.D;
+ if(t.pb!==nx.b&&D<75){t.pb=nx.b;t.pl=0;if(t.sg===0&&Math.abs(t.home-t.x)<.5&&rnd()<.3)t.pl=t.home>2?1:t.home<-2?-1:0}
+ let zS=0,dd=1e9;if(t.pl){zS=-(t.pb*BL)-(t.pl>0?2:9);dd=(((t.z-zS)%PER)+PER)%PER;if(dd>PER-8){t.pl=0;dd=1e9}}
+ if(D<90||t.pl)t.lt=0;
+ _la.call(this,t,dt);
+ let vd=t.hv?NV*t.sp:NV;const sg=sigState(nx.b);
+ if(D<120&&(sg===2||(sg===1&&D>t.v*t.v/10+1)))vd=Math.min(vd,Math.sqrt(11*Math.max(D-.4,0)));
+ if(t.pl&&dd<30)vd=Math.min(vd,7);
+ for(const o of traffic){if(o===t||!o.on||o.cty)continue;const dz=t.z-o.z;if(dz<=0||dz>90||Math.abs(o.x-t.x)>2.4)continue;vd=Math.min(vd,Math.max(0,o.v)+Math.sqrt(10*Math.max(dz-t.hl-o.hl-4,0)))}
+ if(t.v>vd)t.v=Math.max(vd,t.v-(vd<.5?9:7)*dt);else t.v=Math.min(vd,t.v+3*dt);
+ if(vd<.05&&t.v<.4)t.v=0;
+ brk(t,t.v>vd+.3||(t.v<.5&&vd<.5));t.lv=t.v;
+ if(t.pl){const on=Math.floor(clk*3)%2===0;t.blk.L.forEach(x=>x.visible=on&&t.pl<0);t.blk.R.forEach(x=>x.visible=on&&t.pl>0);
+  const d=dd;if(d<1.6&&t.v>.3){t.cty={a:0,d:t.pl,R:t.pl>0?5:6,x:t.x,z:t.z,v:Math.max(3.5,Math.min(t.v,7))};t.ps=1}}};
+const _pl=place;place=function(t){t.cty=null;t.pl=0;t.pb=-1;if(t._bs)brk(t,false);return _pl.apply(this,arguments)};
+const _dv=dmgVis;dmgVis=function(o){const r=_dv.apply(this,arguments);try{const c=o.cty;if(c&&o.on!==false){o.mesh.position.set(c.x+cx(c.z),0,c.z);o.mesh.rotation.y=-c.d*c.a+Math.atan(cd(c.z))}}catch(e){}return r};
+window.__city={G,inst,K,hb,BZ,setClk:v=>{clk=v},sig:sigState};
 }catch(e){console.error('city',e)}})();
 </script>
 <script>/* v8.4 festival sonuç */
