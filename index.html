@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.85</title>
+<title>gtr_game_v9.86</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2160,7 +2160,7 @@ body #evd #evdback{display:none!important}
 .fzw:not(.fzr) .fzg,.fzw:not(.fzr) .fzp.arm .fzg{left:auto;right:0}
 .fzr .fzrw em{font:700 11px/1 system-ui;letter-spacing:1px;font-style:normal;color:#555}
 .fzr .fzg,.fzr .fzp.arm .fzg{height:auto;padding:0 8px;border:0;border-radius:0;background:none;box-shadow:none;animation:none;transform:none;color:#0b0b14;text-shadow:none;font:800 17px/1 system-ui;letter-spacing:1.5px;font-style:normal}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.85</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.86</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -3115,7 +3115,7 @@ function v7_lvMark(){wuMark()}
 
 // ---------- v8: seviye temaları ----------
 const DAYSK=[[0,'#1a55b0'],[.3,'#4a93e0'],[.48,'#a4cdf2'],[.56,'#e6f0f9'],[1,'#a3b3a2']];
-const HDX=[11,13,14,16,17],HDK=L=>HDX.indexOf(L)<0; /* v9.56: gerçek ağaç + arazi dağları; tünel(11,16), ralli(13,14), festival(17) hariç */
+const HDX=[11,13,14,16,17,18],HDK=L=>HDX.indexOf(L)<0; /* v9.56: gerçek ağaç + arazi dağları; tünel(11,16), ralli(13,14), festival(17) hariç */
 const THS=[null,
  {n:'Gündüz',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xcfe0ee,110,640],sc:0xffeed0,si:2.5,so:[30,45,19],hm:[0xc4dcff,0x5a6a40,.62],exp:.95,cu:[28,6,.0042,.009,1],ch:[]},
  {n:'Gündüz · virajlı yol',key:'day',sk:DAYSK,cn:40,cc:'255,255,255',sun:[1400,260,150,'#fff6cf'],fog:[0xbcd6ee,150,560],sc:0xfff1d8,si:2.4,so:[30,45,19],hm:[0xbcd8ff,0x5a6a40,.6],exp:.95,cu:[34,14,.0045,.011,1],ch:['Yol daha virajlı']},
@@ -3133,6 +3133,7 @@ const THS=[null,
 THS[14]=Object.assign({},THS[13],{n:'Norveç Kış Parkuru',wn:1,ck:'winter',tc:0xffffff,rc:0xffffff,hc:0xffffff,sk:[[0,'#7fa6d4'],[.35,'#b4cfe8'],[.52,'#e4edf5'],[.56,'#f2f6fa'],[1,'#dfe8ef']],fog:[0xdfe8f0,45,320],gc:0xdfe6ee,hm:[0xdbe8f5,0xaebccb,.9],sc:0xfff3df,si:1.7,cn:16,cc:'252,253,255'});
 THS[16]=Object.assign({},THS[11],{n:'Tianshan Shengli Tüneli',tm:1,ch:[]});
 THS[15]=Object.assign({},THS[10],{n:'Gece Dağ Yolu',dr:1,gc:0x3f6347,exp:1.7,cu:[10,88,.004,.014,1],ch:[]});
+THS[18]=Object.assign({},THS[5],{n:'Şehir Turu',ck:'city',ct:1,gm:1,gc:0x1b1d22,sk:[[0,'#04060f'],[.3,'#0a0f2c'],[.46,'#1c2850'],[.52,'#5a4458'],[.56,'#b87a58'],[1,'#1a1620']],stars:140,cn:18,cc:'60,50,80',fog:[0x1c2138,55,380],cu:[0,0,.004,.01,1,0],ch:['Gece şehir caddesi','Kavşaklar, trafik ışıkları ve gökdelenler']});
 THS[17]=Object.assign({},THS[10],{n:'Festival',ck:'fest',fs:1,sk:[[0,'#080318'],[.3,'#1a0a44'],[.46,'#44186e'],[.52,'#9a2a86'],[.56,'#ff5f9c'],[1,'#180a28']],stars:260,cn:70,cc:'130,64,180',fog:[0x1e0c3c,40,360],hm:[0x7a46c8,0x160a2c,.75],exp:1.4,sc:0xc8a0ff,si:.7,gc:0x20183a,hc:0x2a1c46,rc:0x1c1438,tc:0x2a1a40,cu:[40,18,.0048,.012,1,2],ch:['Festival alanı','Yağmur ve neon ışıklar']});
 let TH=THS[1],SO=[30,45,19],curTh=0;
 const lvKm=L=>L<4?3:L;
@@ -3250,7 +3251,7 @@ function tsBuild(){if(tsG||!A.tm)return;try{const D=A.tm,dec=(b,T)=>{const s=ato
  add(tsC,rp(part('sh'),o10),m0);add(tsC,rp(part('c1'),o10),m1);add(tsC,rp(part('c2'),o10),m2);add(tsC,rp(part('k'),o10),mk);add(tsA,rp(part('a1'),o50),m1);
  tsG.add(tsC,tsA);tsG.visible=false;scene.add(tsG)}catch(e){console.error(e)}}
 function tsStep(pz){tsG.visible=!!TH.tm;if(!tsG.visible)return;tsC.position.z=Math.ceil(pz/10)*10+40;tsA.position.z=Math.ceil(pz/50)*50+50}
-function applyTheme(L){L=Math.max(1,Math.min(17,L||1));if(curTh===L)return;curTh=L;const T=THS[L];TH=T;
+function applyTheme(L){L=Math.max(1,Math.min(18,L||1));if(curTh===L)return;curTh=L;const T=THS[L];TH=T;
  for(const k of['a','b','f1','f2','p','c'])CU[k].value=T.cu['a b f1 f2 p c'.split(' ').indexOf(k)]||0;
  if(!skyC[T.ck||T.key])skyC[T.ck||T.key]=mkSky(T);scene.background=skyC[T.ck||T.key].tx;scene.environment=(Q&&studioEnv)?studioEnv:skyC[T.ck||T.key].env;asphaltMat.envMap=skyC[T.ck||T.key].env;asphaltMat.needsUpdate=true;
  scene.fog.color.set(T.fog[0]);scene.fog.near=T.fog[1]*(T.key==='desert'?.8:1);scene.fog.far=T.fog[2]*(T.key==='desert'?.8:1);
@@ -4321,9 +4322,9 @@ function crFinish(win){resCardStd();document.body.classList.remove('rp');$('rp')
 $('crback').onclick=()=>{show('cr',false);show('pm',true)};$('crbody').addEventListener('click',e=>{if(e.target.closest&&e.target.closest('.e2bk')){e.stopPropagation();$('crback').click()}});
 
 // ===== v3 OYNA menüsü + Isınma turu =====
-const WUM=[{th:1,n:'GÜNEŞLİ',i:'☀️'},{th:3,n:'YAĞMURLU',i:'🌧️'},{th:10,n:'YAĞMURLU GECE',i:'⛈️'},{th:4,n:'SİSLİ GECE',i:'🌫️'},{th:7,n:'ÇÖL',i:'🏜️'},{th:8,n:'KAR',i:'❄️'}];
+const WUM=[{th:1,n:'GÜNEŞLİ',i:'☀️'},{th:3,n:'YAĞMURLU',i:'🌧️'},{th:10,n:'YAĞMURLU GECE',i:'⛈️'},{th:4,n:'SİSLİ GECE',i:'🌫️'},{th:7,n:'ÇÖL',i:'🏜️'},{th:8,n:'KAR',i:'❄️'},{th:18,n:'ŞEHİR TURU',i:'🏙️',km:3}];
 let wuTh=1;try{const v=+localStorage.getItem('th_wu');if(WUM.some(m=>m.th===v))wuTh=v}catch(e){}
-const wuObj=()=>{const m=WUM.find(x=>x.th===wuTh)||WUM[0];return {wu:1,hn:'ISINMA TURU',n:m.n,th:m.th,d:2,km:5}};
+const wuObj=()=>{const m=WUM.find(x=>x.th===wuTh)||WUM[0];return {wu:1,hn:'ISINMA TURU',n:m.n,th:m.th,d:2,km:m.km||5}};
 {const w=$('wum');WUM.forEach(m=>{const b=document.createElement('button');b.type='button';b.className='wub';b.dataset.t=m.th;b.innerHTML='<i>'+m.i+'</i><span>'+m.n+'</span>';b.onclick=()=>{wuTh=m.th;try{localStorage.setItem('th_wu',m.th)}catch(e){}wuMark()};w.appendChild(b)})}
 function wuMark(){const m=WUM.find(x=>x.th===wuTh)||WUM[0];sel.lv=2;try{applyTheme(m.th)}catch(e){}
  document.querySelectorAll('#wum .wub').forEach(b=>b.classList.toggle('on',+b.dataset.t===wuTh));
@@ -5249,6 +5250,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.86',n:['Isınma Turu’na yeni harita: Şehir Turu (3 km). Gece şehir caddesi; iki yanda gökdelenler, ışıklı pencereler, dükkân vitrinleri ve tabelalar, kaldırımlar, ağaçlar, kavşaklar, trafik ışıkları ve zebra geçitleri.']},
 {v:'v9.85',n:['Drift lastik/el freni sesi v7’deki eski ses ile değiştirildi.','Drift haritasındaki yokuş (tepe/çukur) kaldırıldı, yol düz zeminde; virajlar aynı.']},
 {v:'v9.84',n:['Işık yansımaları yeniden yapıldı: gece ve yağmurlu haritalarda (drift dahil) yol lambaları, tünel ışıkları ve aracın arka farları ıslak yolda gerçek ışık hesabıyla yansıyor.','Drift lastik sesi yenilendi: önceki ses kendi içinde sürekli kesiliyordu; yeni ses düzgün ve kesintisiz döngü yapıyor. Ses geçişleri yumuşatıldı, hıza göre ses tonu değişiyor.']},
 {v:'v9.83',n:['Drift haritası yenilendi: gece, yağmurlu ve ıslak yol; yolun iki yanında çimenli zemin, dağlar ve ağaçlar (yol artık havada durmuyor).','Yolun kenarlarında turkuaz drift şeritleri.','Işıklar (yol lambaları ve aracın arka farları) ıslak yolda uzayan yansıma çizgileri bırakıyor.']},
@@ -5558,6 +5560,115 @@ window.fsStep=fsF;
 const _ws=weatherStep;weatherStep=function(dt){const r=_ws.apply(this,arguments);try{fsF(dt)}catch(e){}return r};
 const _at=applyTheme;applyTheme=function(){const r=_at.apply(this,arguments);try{G.visible=!!(TH&&TH.fs);if(TH&&TH.fs)treeS.forEach(g=>{g.im.visible=false})}catch(e){}return r};
 }catch(e){console.error('festival',e)}})();
+</script>
+<script>/* ===== v9.86 Şehir Turu (THS[18], ct:1) — tamamen kodla üretilen gece şehir caddesi ===== */
+(function(){try{
+const PER=384,BL=128,GAP=22,AHEAD=50,SW0=8.9,SW1=14.9,FRONT=15;
+let seed=20261123;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+const rr=(a,b)=>a+rnd()*(b-a),pick=a=>a[Math.floor(rnd()*a.length)];
+const mkTex=(w,h,fn,srgb)=>{const c=document.createElement('canvas');c.width=w;c.height=h;fn(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;if(srgb!==false)t.encoding=THREE.sRGBEncoding;return t};
+/* ---- dokular: bina cephesi (8x8 pencere) ve dükkân bandı (8 vitrin) ---- */
+const WARM=['255,206,128','255,196,110','255,244,224','255,222,160','196,218,255','255,170,90'];
+const facade=(wall,glass,mull,litP)=>{
+ const map=mkTex(512,512,(g,w,h)=>{g.fillStyle=wall;g.fillRect(0,0,w,h);
+  for(let j=0;j<8;j++)for(let i=0;i<8;i++){const x=i*64,y=j*64;g.fillStyle=mull;g.fillRect(x,y,64,64);const gr=g.createLinearGradient(0,y+mull_,0,y+64-mull_);gr.addColorStop(0,glass[0]);gr.addColorStop(1,glass[1]);g.fillStyle=gr;g.fillRect(x+mull_,y+mull_,64-2*mull_,64-2*mull_)}});
+ return map};
+let mull_=7;
+const mapA=(()=>{mull_=9;return facade('#c9c4bb',['#2a3447','#141b2a'],'#8d8a84')})();
+const mapB=(()=>{mull_=4;return facade('#9aa3b4',['#26405e','#10223a'],'#5a6578')})();
+const emi=(p,mu)=>mkTex(512,512,(g,w,h)=>{g.fillStyle='#000';g.fillRect(0,0,w,h);
+ for(let j=0;j<8;j++)for(let i=0;i<8;i++){if(rnd()>p)continue;const c=pick(WARM),a=.55+rnd()*.45,x=i*64+mu,y=j*64+mu,ww=64-2*mu,hh=64-2*mu,half=rnd()<.2;g.fillStyle='rgba('+c+','+a+')';g.fillRect(x,y,ww,half?hh*.55:hh);if(half){g.fillStyle='rgba('+c+','+a*.25+')';g.fillRect(x,y+hh*.55,ww,hh*.45)}}},true);
+const emA=emi(.3,9),emB=emi(.34,4);
+const shopMap=mkTex(1024,128,(g,w,h)=>{g.fillStyle='#23252c';g.fillRect(0,0,w,h);for(let i=0;i<8;i++){g.fillStyle='#34363e';g.fillRect(i*128,0,6,h);g.fillStyle='#0f1318';g.fillRect(i*128+10,14,108,h-30)}g.fillStyle='#16181d';g.fillRect(0,0,w,12)});
+const shopEm=mkTex(1024,128,(g,w,h)=>{g.fillStyle='#000';g.fillRect(0,0,w,h);const C=['255,190,110','245,245,235','255,120,170','110,200,255','255,140,50','255,215,120'];
+ for(let i=0;i<8;i++){if(rnd()<.18)continue;const c=pick(C),gr=g.createLinearGradient(0,14,0,h-16);gr.addColorStop(0,'rgba('+c+',.95)');gr.addColorStop(1,'rgba('+c+',.55)');g.fillStyle=gr;g.fillRect(i*128+10,14,108,h-30);g.fillStyle='rgba('+c+',.9)';g.fillRect(i*128+10,2,108,7)}},true);
+/* ---- cephe malzemesi: dünya ölçüsüne göre UV (pencere boyu sabit) ---- */
+let mid=0;
+const facM=(map,em,win,rep,ei,rough,met)=>{const m=new THREE.MeshStandardMaterial({color:0xffffff,map,emissiveMap:em,emissive:0xffffff,emissiveIntensity:ei,roughness:rough,metalness:met});const id=mid++;
+ m.customProgramCacheKey=()=>'cityfac'+id;
+ m.onBeforeCompile=s=>{s.vertexShader=s.vertexShader.replace('void main() {','varying float vRf;\nvoid main() {').replace('#include <uv_vertex>',`#include <uv_vertex>
+ {vec3 isc=vec3(length(instanceMatrix[0].xyz),length(instanceMatrix[1].xyz),length(instanceMatrix[2].xyz));
+  vec2 fu=abs(normal.x)>.5?vec2(isc.z,isc.y):(abs(normal.y)>.5?vec2(isc.x,isc.z):vec2(isc.x,isc.y));
+  float hh=fract(sin(dot(instanceMatrix[3].xz,vec2(12.9898,78.233)))*43758.5453);
+  vec2 q=uv*fu/vec2(${win[0].toFixed(2)},${win[1].toFixed(2)})/vec2(${rep[0].toFixed(1)},${rep[1].toFixed(1)})+vec2(hh,fract(hh*7.13));
+  vRf=abs(normal.y)>.5?1.:0.;vMapUv=q;vEmissiveMapUv=q;}`);
+  s.fragmentShader=s.fragmentShader.replace('void main() {','varying float vRf;\nvoid main() {').replace('#include <map_fragment>','#include <map_fragment>\ndiffuseColor.rgb=mix(diffuseColor.rgb,vec3(.04),vRf);').replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance*=1.-vRf;')};return m};
+const MT={
+ tw1:facM(mapA,emA,[2.4,3.6],[8,8],1.15,.55,.1),
+ tw2:facM(mapB,emB,[1.5,3.6],[8,8],1.05,.3,.45),
+ shop:facM(shopMap,shopEm,[3.4,4.8],[8,1],1.0,.4,.2),
+ conc:new THREE.MeshStandardMaterial({color:0x6b6e75,roughness:.92}),
+ dark:new THREE.MeshStandardMaterial({color:0x202228,roughness:.6,metalness:.5}),
+ asph:new THREE.MeshStandardMaterial({color:0x121418,roughness:.45,metalness:.05}),
+ white:new THREE.MeshStandardMaterial({color:0xdfe1e4,roughness:.5,emissive:0x2a2c30}),
+ trunk:new THREE.MeshStandardMaterial({color:0x4a3a2c,roughness:1}),
+ leaf:new THREE.MeshStandardMaterial({color:0x1b3a25,roughness:.9,flatShading:true,emissive:0x030805}),
+ lens:new THREE.MeshBasicMaterial({color:0xffffff}),
+ sign:new THREE.MeshBasicMaterial({color:0xffffff}),
+ sgn:new THREE.MeshStandardMaterial({color:0x0f5a3a,roughness:.5,emissive:0x052a1a})
+};
+const GEO={box:new THREE.BoxGeometry(1,1,1),trunk:new THREE.CylinderGeometry(.16,.24,1,7),leaf:new THREE.IcosahedronGeometry(1,1)};
+const K={};const add=(k,x,y,z,sx,sy,sz,c,g)=>{(K[k]||(K[k]={g:g||'box',a:[]})).a.push({x,y,z,sx,sy,sz,c:c||null})};
+const SD=[1,-1];
+const TINT=[[1,1,1],[.92,.88,.84],[.85,.88,.95],[1,.95,.85],[.8,.78,.76],[.95,.8,.7],[.75,.8,.88]];
+const SIGC=[[1,.15,.2],[.1,.8,1],[1,.8,.1],[1,.2,.8],[.2,1,.5],[1,.5,.1]];
+/* ---- blok başına yerleşim ---- */
+for(let b=0;b<PER/BL;b++){
+ const zT=-(b*BL),zg=zT-GAP/2;            // kavşak ortası
+ const zs=zT-GAP,ze=zT-BL;              // blok: zs -> ze (azalan)
+ for(const sd of SD){
+  // kaldırım (blok boyunca) + kavşak sokağı kaldırımları + asfalt
+  add('conc',sd*(SW0+SW1)/2,.07,(zs+ze)/2,SW1-SW0,.16,zs-ze);
+  add('asph',sd*(SW0+31),-.045,zg,62,.1,16);
+  for(const q of[-1,1])add('conc',sd*(SW0+31+3),.07,zg+q*9.5,62,.16,3);
+  for(let i=0;i<8;i++)add('white',sd*(SW0+6+i*7),.012,zg,3.4,.03,.22);
+  // ağaçlar
+  for(let z=zs-9;z>ze+6;z-=13){add('trunk',sd*10.3,1.6,z,1,3.2,1,null,'trunk');add('leaf',sd*10.3,5.1,z,2.3,2.0,2.3,[.7+rnd()*.3,.8+rnd()*.2,.7+rnd()*.3],'leaf')}
+  // binalar
+  let z=zs;
+  while(z>ze+8){let w=rr(16,36);if(z-w<ze+12)w=z-ze;const zc=z-w/2,d=rr(26,44),r=rnd();
+   const type=r<.3?0:r<.72?1:2,tw=rnd()<.5?'tw1':'tw2',t=pick(TINT);
+   let h=type===0?rr(15,28):type===1?rr(32,70):rr(95,190);
+   const x0=sd*(FRONT+d/2);
+   if(type===2){const ph=rr(14,22);add(tw,x0,ph/2,zc,d,ph,w-.2,t);const d2=d-6,w2=w-8;add(tw,sd*(FRONT+3+d2/2),ph+(h-ph)/2,zc,d2,h-ph,w2,t);
+    add('dark',sd*(FRONT+3+d2/2),h+1.6,zc,d2*.55,3.2,w2*.55);add('white',sd*(FRONT+3+d2/2),h+10,zc,.3,16,.3);add('lens',sd*(FRONT+3+d2/2),h+18.3,zc,.9,.9,.9,[1,.1,.1])}
+   else{add(tw,x0,h/2,zc,d,h,w-.2,t);add('dark',x0,h+1.2,zc,d*.45,2.4,w*.4)}
+   // dükkân bandı + tabela
+   add('shop',sd*(FRONT+d/2-.3),2.5,zc,d+.6,5,w-.4);
+   if(rnd()<.75){const sc=pick(SIGC);add('sign',sd*(FRONT-.9),3.9,zc+rr(-w/3,w/3),1.6,1.5,.12,sc)}
+   z-=w;
+   if(rnd()<.18)z-=rr(3,6);
+  }
+  // arka plan silueti
+  for(let i=0;i<4;i++){const w=rr(26,50),d=rr(30,50),h=rr(70,230),x=sd*rr(62,150);add(rnd()<.5?'tw1':'tw2',x,h/2,rr(ze,zs),d,h,w,pick(TINT));}
+ }
+ // trafik ışıkları + zebra (4 köşe)
+ for(const sd of SD)for(const q of[-1,1]){
+  const px=sd*(SW0+.6),pz=zg+q*(8.7);
+  add('dark',px,3.6,pz,.28,7.2,.28);add('dark',px-sd*3.2,6.9,pz,6.4,.22,.22);
+  add('dark',px-sd*6.1,6.1,pz,.55,1.5,.45);
+  add('lens',px-sd*6.1,6.6,pz+.24,.34,.34,.06,[.12,.02,.02]);add('lens',px-sd*6.1,6.1,pz+.24,.34,.34,.06,[.14,.1,.02]);add('lens',px-sd*6.1,5.6,pz+.24,.34,.34,.06,[.05,1,.35]);
+  add('sgn',px-sd*2.4,5.9,pz+.2,2.2,.5,.06);
+ }
+ for(const q of[-1,1])for(let i=0;i<13;i++)add('white',-7.8+i*1.3,.03,zg+q*9.8,.62,.04,3.6);
+}
+/* ---- örnekler ---- */
+const G=new THREE.Group();G.visible=false;G.name='cityG2';scene.add(G);
+const inst=[],M4=new THREE.Matrix4(),Qn=new THREE.Quaternion(),V=new THREE.Vector3(),S=new THREE.Vector3(),CL=new THREE.Color();
+for(const k in K){const o=K[k],mat=MT[k]||MT.dark,im=new THREE.InstancedMesh(GEO[o.g],mat,o.a.length);im.frustumCulled=false;im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+ o.a.forEach((e,i)=>{if(e.c){CL.setRGB(e.c[0],e.c[1],e.c[2]);im.setColorAt(i,CL)}else if(k==='tw1'||k==='tw2'||k==='shop'||k==='sign'||k==='lens'||k==='leaf'){im.setColorAt(i,CL.setRGB(1,1,1))}});
+ if(im.instanceColor)im.instanceColor.needsUpdate=true;G.add(im);inst.push({im,a:o.a})}
+const wz=z0=>{let d=(P.z+AHEAD-z0)%PER;if(d<0)d+=PER;return P.z+AHEAD-d};
+let lastK=-1e9;
+function cityUpd(force){const k=Math.floor(P.z/6);if(!force&&k===lastK)return;lastK=k;
+ for(const o of inst){const a=o.a;for(let i=0;i<a.length;i++){const e=a[i];M4.compose(V.set(e.x,e.y,wz(e.z)),Qn.identity(),S.set(e.sx,e.sy,e.sz));o.im.setMatrixAt(i,M4)}o.im.instanceMatrix.needsUpdate=true}}
+const cityOn=()=>!!(TH&&TH.ct);
+const hide=()=>{try{treeS.forEach(g=>{g.im.visible=false});(window.ridgeM||[]).forEach(m=>m.visible=false);[typeof trees!=='undefined'&&trees,typeof hills!=='undefined'&&hills,typeof blocks!=='undefined'&&blocks].forEach(a=>a&&a.forEach(o=>o.visible=false));ROADK.forEach(m=>{if(m.userData.k==='gr')m.visible=false})}catch(e){}};
+window.cityStep=function(){if(!cityOn()){if(G.visible)G.visible=false;return}G.visible=true;hide();cityUpd(false)};
+const _ws=weatherStep;weatherStep=function(dt){const r=_ws.apply(this,arguments);try{window.cityStep(dt)}catch(e){}return r};
+const _at=applyTheme;applyTheme=function(){const r=_at.apply(this,arguments);try{const on=cityOn();G.visible=on;if(on){hide();lastK=-1e9;cityUpd(true)}}catch(e){console.error('city',e)}return r};
+window.__city={G,inst,K};
+}catch(e){console.error('city',e)}})();
 </script>
 <script>/* v8.4 festival sonuç */
 (function(){try{
