@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.89</title>
+<title>gtr_game_v9.89.1</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2160,7 +2160,7 @@ body #evd #evdback{display:none!important}
 .fzw:not(.fzr) .fzg,.fzw:not(.fzr) .fzp.arm .fzg{left:auto;right:0}
 .fzr .fzrw em{font:700 11px/1 system-ui;letter-spacing:1px;font-style:normal;color:#555}
 .fzr .fzg,.fzr .fzp.arm .fzg{height:auto;padding:0 8px;border:0;border-radius:0;background:none;box-shadow:none;animation:none;transform:none;color:#0b0b14;text-shadow:none;font:800 17px/1 system-ui;letter-spacing:1.5px;font-style:normal}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.89</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.89.1</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2738,7 +2738,7 @@ function step(dt){
 const fw=P.v>=0,dm=.8*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7)),tg=s*dm;P.dl+=(tg-P.dl)*Math.min(1,dt*(Math.abs(tg)>Math.abs(P.dl)?7:10));
 if(live){if(fw){/* ileri: şerit mantığı — kısa dokunuş ≈ araç yarım genişliği, ~0.5 sn ≈ 1 şerit, uzun basış ≈ 3 şerit; bırakınca araç düzelir. Düşük hızda (<~8 m/s) bisiklet modeli (U dönüşü) */
  P.hd=Math.abs(s)>.05?Math.min(1,(P.hd||0)+dt/2):Math.max(0,(P.hd||0)-dt*6);{const sd=Math.abs(s)>.05?Math.sign(s):0;P.ht=sd&&sd===P.hs?(P.ht||0)+dt:0;P.hs=sd}
- const hi=Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*(1+.6*Math.max(0,Math.min(1,((P.ht||0)-.35)/.1)))*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
+ const hi=(window.__cBk&&window.__cBk())?0:Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*(1+.6*Math.max(0,Math.min(1,((P.ht||0)-.35)/.1)))*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
  P.psi+=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT-P.psi)*Math.min(1,dt*10)}else P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;
  if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
 P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*Math.cos(P.psi||0)*dt}
@@ -5253,6 +5253,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.89.1',n:['Şehir Turu: ara sokağa girerken araç artık hızdan bağımsız tam dönebiliyor; sokak içinde kendiliğinden dönme/kayma ve takılma düzeltildi.']},
 {v:'v9.89',n:['Şehir Turu: yol iki şerit gidiş + iki şerit geliş oldu; ters yönden gelen trafik, kavşaklarda her iki yönde sinyalli dönüşler, ışık ve durma çizgileri.','Trafik ışıkları 200 m arayla; başlangıç artık ışıksız yolda. Ara sokaklara oyuncu aracı da girebilir. Kavşaklardaki bariyerler kaldırıldı.','Işıkların yola yansıması uzaktan itibaren yumuşak devreye giriyor (tüm ıslak/lambalı haritalar); yaya geçitleri ve çizgiler uzaktan görünüyor.','Trafik yoğunluğu Şehir Turu’nda %20 arttı.']},
 {v:'v9.88',n:['Şehir Turu trafiği: kırmızı ışıkta (10 sn) araçlar durur, fren lambaları yanar; yeşilde (30 sn) devam eder.','Kavşaklarda bazı araçlar sinyal verip sağa/sola ara sokağa döner; öndeki araca çarpmadan takip mesafesi tutar.','Trafik ışıkları artık gerçekten kırmızı/sarı/yeşil yanıp söner.']},
 {v:'v9.87',n:['Şehir Turu artık serbest sürüş: mesafe sınırı, süre, puan ve rakip yok; çarpışmada yarış bitmez.','Asfalt dokusu yenilendi: dallanan gerçekçi çatlaklar, düzensiz yama lekeleri; asfaltta görünen kare/dikdörtgen izler kaldırıldı.','Islak asfaltta ışık yansımaları geliştirildi (uzayan ışık izleri, bölgesel parlaklık farkı).','Şehirde oyunun gerçek ağaç modeli kullanılıyor.','Binalarda balkon, tente, neon tabela, daha ayrıntılı dükkân ve pencereler; hidrantlar.','Yolda hız kesici tümsekler: araç yavaşlar, zıplar ve sarsılır.']},
@@ -5766,8 +5767,9 @@ const _pl=place;place=function(t){t.cty=null;t.pl=0;t.pb=-1;if(t._bs)brk(t,false
   for(let k=0;k<12&&traffic.some(o=>o!==t&&o.on&&Math.abs(o.x-x)<2.4&&Math.abs(o.z-t.z)<30);k++)t.z-=30}else t.od=0;return r};
 const _dv=dmgVis;dmgVis=function(o){const r=_dv.apply(this,arguments);try{if(o.on!==false&&CITY()){const c=o.cty,m=o.od?-1:1;if(c){const rz=m*c.z;o.mesh.position.set(m*c.x+cx(rz),0,rz);o.mesh.rotation.y=-c.d*c.a+(o.od?Math.PI:0)+Math.atan(cd(rz))}else if(o.od)o.mesh.rotation.y=Math.PI+o.yaw+Math.atan(cd(o.z))}}catch(e){}return r};
 /* ---- oyuncu: ara sokaklara girebilsin (kavşak bölgesinde yan sınır kalkar, sokak içinde z sınırlı) ---- */
+let inZ_=false;window.__cBk=()=>CITY()&&(Math.abs(P.x)>8.6||Math.abs(P.psi||0)>.5||(inZ_&&Math.abs(swv)>.6));
 function playerCross(){let inZ=false,zgw=0;for(let b=0;b<NB;b++){const g0=zTb(b)-GAP/2,w=g0+Math.round((P.z-g0)/PER)*PER;if(Math.abs(P.z-w)<8.4){inZ=true;zgw=w}}
- LIM=inZ?70:7.5;
+ inZ_=inZ;LIM=inZ?70:7.5;
  if(inZ&&Math.abs(P.x)>9.5){const z2=Math.max(zgw-7.2,Math.min(zgw+7.2,P.z));if(z2!==P.z){if(Math.abs(P.v)>5){shake=Math.max(shake,.3);P.v*=.97}P.z=z2}}}
 const _dr=drRefl;drRefl=function(){try{if(CITY()&&st!=='menu'&&st!=='replay'&&st!=='win'){const ps=P.psi||0,w=Math.max(0,Math.min(1,(Math.abs(ps)-.9)/.5));if(w>0){const hx=Math.sin(ps),hz=-Math.cos(ps),px=P.x+cx(P.z),cd0=Math.max(8.6,(P.hl||2.3)+6.2)*1.15*.85,y=cam.position.y;
   cam.position.lerp(new THREE.Vector3(px-hx*cd0,y,P.z-hz*cd0),w);cam.lookAt(px+(px+hx*14-px)*w,1.1,P.z-14+(P.z+hz*14-(P.z-14))*w)}}}catch(e){}return _dr.apply(this,arguments)};
