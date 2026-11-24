@@ -1,1 +1,1 @@
-{"v": "v9.90", "n": ["Şehir Turu: trafik ışıkları yeni low-poly modelle değiştirildi (ışık renkleri doğru yanıyor); tümsekler deceleration_zone modeliyle; şeritler/kaldırım çizgileri artık kaybolmuyor.", "Yan bariyere çarpınca araç artık kaymıyor (tüm oyunda).", "SES: oyuna girişte ilk gaz → car-start; 3-2-1 öncesi her gaz basışında car-engine-roaring; sürüşte gaz/vites seslerinde car-engine-sound-loop, vites geçişleri belirgin."]}
+{"v": "v9.90.1", "n": ["Motor sesi: kısa döngülerden kaynaklanan yankı/eko giderildi (daha uzun, kesintisiz motor katmanları)."]}
