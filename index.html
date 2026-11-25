@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.98</title>
+<title>gtr_game_v9.99</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2287,7 +2287,27 @@ html.fbh:not(.fbu):not(.fbf) #qpb{display:none!important}
 #go.sti2,#evd #evbx #evpl,#galsel.sti2{font-style:normal!important;font-size:20px!important}
 #qp .qc2.win.fl{animation:qFl .4s steps(1) infinite}
 @keyframes qFl{0%{filter:brightness(1.9) saturate(1.3);box-shadow:0 0 38px #fff,0 0 22px #38e58f;border-color:#fff}50%{filter:brightness(.65);box-shadow:0 0 6px rgba(56,229,143,.4);border-color:#38e58f}}
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.98</em></div></div>
+/* ===== v9.99 lobi yerleşimi ===== */
+@media (orientation:landscape){
+ #lbt{width:min(46vw,400px)!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1.1fr 1fr!important}
+ #lbt .lt.dly{grid-column:1/3!important;grid-row:1!important}
+ #lbt .lt.mkt{grid-column:1!important;grid-row:2!important}
+ #lbt .lt.car{grid-column:2!important;grid-row:2!important}
+ #lbt .lt.ev{position:absolute!important;grid-column:auto!important;grid-row:auto!important;right:calc(100% + 8px);bottom:0;width:min(30vw,250px);height:calc((100% - 8px)/2.1)}
+}
+@media (orientation:portrait){
+ #lbt{grid-template-columns:1fr!important;grid-template-rows:1.3fr 1fr!important;height:min(40vh,300px)!important}
+ #lbt .lt.ev{grid-column:1!important;grid-row:1!important}
+ #lbt .lt.mkt,#lbt .lt.car{display:none!important}
+ #lbt .lt.dly{grid-column:1!important;grid-row:2!important;background:none!important;border:0!important;box-shadow:none!important;transform:none!important;overflow:visible}
+ #lbt .lt.dly>*{transform:none!important}
+ #lbt .lt.dly b{display:none}
+ #lbt .lt.dly .ltd{right:auto;left:-3px;top:-5px;z-index:2}
+ #lbt .lt.dly .dls{position:static;display:flex;flex-direction:column;justify-content:space-between;gap:6px;height:100%}
+ #lbt .lt.dly .dr{flex:1;min-height:0;align-content:center;padding:0 12px;border-radius:12px;border:1.5px solid rgba(150,170,255,.55);background:linear-gradient(165deg,#2a1a78,#120a3e 80%);box-shadow:0 4px 10px rgba(0,0,0,.4);font-size:12px}
+ #lbt .lt.dly .dr i{margin-top:3px}
+}
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.99</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5395,6 +5415,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v9.99',n:['Lobi (yatay): Son etkinlik kartı sol alttaki alana taşındı, sağda Günlük Görevler, Market ve Aracı Geliştir.','Lobi (dikey): yalnızca son etkinlik kartı ve altında Günlük Görevler butonları; Market ve Aracı Geliştir kartları kaldırıldı.']},
 {v:'v9.98',n:['Hızlı Oyun: kariyer çıkarıldı; seçilen kart 2 sn yanıp söner ve oyun doğrudan başlar (ısınma turu normal modda, etkinlikler yükleme ekranıyla).','Lobi: puan tablosu butonu eski yerine döndü, yön butonu yanında; kartlar sağa hizalandı: Son Etkinlik, Günlük Görevler (3 madde), Market, Aracı Geliştir.','Alt gezinme referans tasarıma birebir uyarlandı; Market çubuktan kalktı (Lobi, Oyna, Hızlı Oyun, Etkinlik, Garaj).','BAŞLA düğmeleri Race Now tasarımına geçti.']},
 {v:'v9.97',n:['Lobi kartlarında Aracı Geliştir ile aynı yerde ve görünümde ikonlar: Etkinlik, Günlük Görevler, Puan Tablosu (kupa).','Puan tablosu kupa butonu sağ üstten kalktı; üst barda Bildirimler ile Ayarlar arasında.','Alt gezinme çubuğu yeni tasarıma geçti (yatay ve dikey); ortada yeşil HIZLI OYUN butonu.','Hızlı Oyun: kura/çark animasyonuyla rastgele mod veya etkinlik seçilir, BAŞLA ile ilgili sayfaya gidilir.']},
 {v:'v9.96',n:['Son eklenen etkinlik (Miami Yarışı) her zaman YENİ rozetiyle etkinlikler listesinin en başında; Miami hero görseli güncellendi.','Lobi yeniden düzenlendi: Aracı Geliştir, son etkinlik, Günlük Görevler ve Puan Tablosu kartları (alttaki eski butonlar kaldırıldı).','Minimap tüm oyunda yeni kare harita görünümüne geçti (kenarları silik, turuncu yön oku).','Miami: bisiklet tekerlekleri yeşil yola gömülmüyor.']},
