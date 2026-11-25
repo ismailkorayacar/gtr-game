@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v9.99</title>
+<title>gtr_game_v10.0</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2230,6 +2230,25 @@ html.fbh:not(.fbu):not(.fbf) #qpb{display:none!important}
  #snv button:nth-child(3){margin-left:0!important;margin-top:auto!important}
  #qpb .ql{left:calc(50% - 42px);top:68px;font-size:11px}
 }
+/* ===== v10.0 mor gezinme ===== */
+#nvbg{z-index:14!important}
+body.u2 #snv,#snv{z-index:15!important}
+#qpb{z-index:16!important}
+#snv button svg{width:33px!important;height:33px!important}
+#snv button.on{color:#d6a8ff!important}
+#snv button.on svg{fill:rgba(176,107,255,.35);filter:drop-shadow(0 0 7px rgba(176,107,255,.95))}
+#qpb .qc{background:radial-gradient(circle at 50% 35%,#3a1a80,#14083a 70%);box-shadow:0 0 0 3px #38e58f,0 0 0 5px #0b6b45,0 0 0 7px #14083a,0 0 20px 4px rgba(56,229,143,.65),inset 0 0 12px rgba(56,229,143,.3)}
+#qpb .ql{top:72px;font:italic 900 12px/1 'Arial Black',Impact,system-ui;letter-spacing:1.4px;text-transform:uppercase;color:#fff;text-shadow:0 0 8px rgba(56,229,143,.85),0 2px 0 #14083a}
+body.u2n #set,body.u2n #ms,body.u2n #ntf{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 74px)!important;box-sizing:border-box}
+@media (orientation:portrait){
+ body.u2n #gal .galc{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 126px)!important}
+ body.u2n #gal #galp{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 200px)!important}
+}
+@media (orientation:landscape){
+ #snv button svg{width:30px!important;height:30px!important}
+ #qpb .ql{left:calc(50% - 46px);top:72px;font-size:10px;letter-spacing:1px}
+ body.u2n #set,body.u2n #ms,body.u2n #ntf{padding-bottom:0!important;padding-left:84px!important}
+}
 /* ===== v9.97 hızlı oyun ekranı ===== */
 #qp{display:none;position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 58px);bottom:calc(env(safe-area-inset-bottom,0px) + 66px);z-index:9;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 10px;box-sizing:border-box;--cw:min(62vw,260px)}
 #qp .qph{text-align:center;line-height:1;padding-top:6px}
@@ -2307,7 +2326,7 @@ html.fbh:not(.fbu):not(.fbf) #qpb{display:none!important}
  #lbt .lt.dly .dr{flex:1;min-height:0;align-content:center;padding:0 12px;border-radius:12px;border:1.5px solid rgba(150,170,255,.55);background:linear-gradient(165deg,#2a1a78,#120a3e 80%);box-shadow:0 4px 10px rgba(0,0,0,.4);font-size:12px}
  #lbt .lt.dly .dr i{margin-top:3px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v9.99</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v10.0</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -5415,6 +5434,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v10.0',n:['Alt gezinme ve minimap mor tema: kenarlıklar garajdaki Aracı Geliştir butonuyla aynı mor, minimap içindeki kare bloklar kaldırıldı.','Gezinme çubuğu ayarlar, bildirimler ve günlük görevler ekranlarında artık tam görünüyor; ikonlar büyütüldü, Hızlı Oyun yazısı yenilendi.']},
 {v:'v9.99',n:['Lobi (yatay): Son etkinlik kartı sol alttaki alana taşındı, sağda Günlük Görevler, Market ve Aracı Geliştir.','Lobi (dikey): yalnızca son etkinlik kartı ve altında Günlük Görevler butonları; Market ve Aracı Geliştir kartları kaldırıldı.']},
 {v:'v9.98',n:['Hızlı Oyun: kariyer çıkarıldı; seçilen kart 2 sn yanıp söner ve oyun doğrudan başlar (ısınma turu normal modda, etkinlikler yükleme ekranıyla).','Lobi: puan tablosu butonu eski yerine döndü, yön butonu yanında; kartlar sağa hizalandı: Son Etkinlik, Günlük Görevler (3 madde), Market, Aracı Geliştir.','Alt gezinme referans tasarıma birebir uyarlandı; Market çubuktan kalktı (Lobi, Oyna, Hızlı Oyun, Etkinlik, Garaj).','BAŞLA düğmeleri Race Now tasarımına geçti.']},
 {v:'v9.97',n:['Lobi kartlarında Aracı Geliştir ile aynı yerde ve görünümde ikonlar: Etkinlik, Günlük Görevler, Puan Tablosu (kupa).','Puan tablosu kupa butonu sağ üstten kalktı; üst barda Bildirimler ile Ayarlar arasında.','Alt gezinme çubuğu yeni tasarıma geçti (yatay ve dikey); ortada yeşil HIZLI OYUN butonu.','Hızlı Oyun: kura/çark animasyonuyla rastgele mod veya etkinlik seçilir, BAŞLA ile ilgili sayfaya gidilir.']},
@@ -7192,25 +7212,20 @@ mapStep=function(){if(st==='menu')return;const now=performance.now();if(now-lt<5
  const pz=P.z,pcx=P.x+cx(pz),sx=(x,z)=>px+(x+cx(z)-pcx)*MS,sy=z=>py+(z-pz)*MS;
  const zA=pz-py/MS-CS,zB=pz+(W-py)/MS+CS;
  g.clearRect(0,0,W,W);
- const bg=g.createLinearGradient(0,0,0,W);bg.addColorStop(0,'#1b5c7e');bg.addColorStop(1,'#123f60');g.fillStyle=bg;g.fillRect(0,0,W,W);
- /* şehir blokları */
+ const bg=g.createLinearGradient(0,0,0,W);bg.addColorStop(0,'#3a1c7a');bg.addColorStop(1,'#1c0c48');g.fillStyle=bg;g.fillRect(0,0,W,W);
  const k1=Math.floor(zA/CS),k2=Math.ceil(zB/CS);
- for(let k=k1;k<k2;k++){const za=k*CS+3,zb=(k+1)*CS-3;
-  for(let i=0;i<OFS.length-1;i++){if(OFS[i]<0&&OFS[i+1]>0)continue;const h=H(k,i);if(h<.14)continue;const oa=OFS[i]+3,ob=OFS[i+1]-3;
-   g.beginPath();g.moveTo(sx(oa,za),sy(za));g.lineTo(sx(ob,za),sy(za));g.lineTo(sx(ob,zb),sy(zb));g.lineTo(sx(oa,zb),sy(zb));g.closePath();
-   g.fillStyle=h>.7?'rgba(70,150,190,.62)':h>.4?'rgba(48,122,162,.58)':'rgba(34,100,138,.55)';g.fill();if(h>.55){g.strokeStyle='rgba(120,190,225,.28)';g.lineWidth=1;g.stroke()}}}
  /* sokaklar */
  g.lineCap='round';g.lineJoin='round';
- for(let k=k1;k<=k2;k++){const z=k*CS,Y=sy(z),big=k%3===0;g.beginPath();g.moveTo(0,Y);g.lineTo(W,Y);g.lineWidth=big?3.2:1.8;g.strokeStyle=big?'rgba(110,190,230,.75)':'rgba(84,160,204,.6)';g.stroke()}
+ for(let k=k1;k<=k2;k++){const z=k*CS,Y=sy(z),big=k%3===0;g.beginPath();g.moveTo(0,Y);g.lineTo(W,Y);g.lineWidth=big?3.2:1.8;g.strokeStyle=big?'rgba(190,140,255,.8)':'rgba(150,100,235,.6)';g.stroke()}
  const path=o=>{g.beginPath();for(let z=zB,n=0;z>zA;z-=5,n++){const X=sx(o,z),Y=sy(z);n?g.lineTo(X,Y):g.moveTo(X,Y)}};
- for(const o of OFS){path(o);g.lineWidth=Math.abs(o)===112||Math.abs(o)===44?3:1.8;g.strokeStyle=Math.abs(o)===112||Math.abs(o)===44?'rgba(110,190,230,.75)':'rgba(84,160,204,.6)';g.stroke()}
+ for(const o of OFS){path(o);g.lineWidth=Math.abs(o)===112||Math.abs(o)===44?3:1.8;g.strokeStyle=Math.abs(o)===112||Math.abs(o)===44?'rgba(190,140,255,.8)':'rgba(150,100,235,.6)';g.stroke()}
  /* rota */
  const hw=Math.min(LIM+1.2,9),rw=Math.max(5,hw*2*MS);
- path(0);g.lineWidth=rw+5;g.strokeStyle='rgba(150,215,250,.38)';g.stroke();
- path(0);g.lineWidth=rw;g.strokeStyle='#f4fbff';g.shadowColor='rgba(180,230,255,.9)';g.shadowBlur=6;g.stroke();g.shadowBlur=0;
- path(0);g.lineWidth=1;g.strokeStyle='rgba(90,150,190,.55)';g.setLineDash([5,5]);g.stroke();g.setLineDash([]);
+ path(0);g.lineWidth=rw+5;g.strokeStyle='rgba(200,160,255,.4)';g.stroke();
+ path(0);g.lineWidth=rw;g.strokeStyle='#f4fbff';g.shadowColor='rgba(210,170,255,.9)';g.shadowBlur=6;g.stroke();g.shadowBlur=0;
+ path(0);g.lineWidth=1;g.strokeStyle='rgba(120,80,200,.55)';g.setLineDash([5,5]);g.stroke();g.setLineDash([]);
  /* kavşaklar */
- for(let k=k1;k<=k2;k++){if(k%4!==0)continue;const z=k*CS,X=sx(0,z),Y=sy(z);g.beginPath();g.arc(X,Y,10,0,6.283);g.lineWidth=2.2;g.strokeStyle='#fff';g.stroke();g.beginPath();g.arc(X,Y,5.4,0,6.283);g.fillStyle='rgba(27,92,126,.9)';g.fill();g.lineWidth=1.2;g.strokeStyle='rgba(255,255,255,.7)';g.stroke()}
+ for(let k=k1;k<=k2;k++){if(k%4!==0)continue;const z=k*CS,X=sx(0,z),Y=sy(z);g.beginPath();g.arc(X,Y,10,0,6.283);g.lineWidth=2.2;g.strokeStyle='#fff';g.stroke();g.beginPath();g.arc(X,Y,5.4,0,6.283);g.fillStyle='rgba(42,20,100,.92)';g.fill();g.lineWidth=1.2;g.strokeStyle='rgba(255,255,255,.7)';g.stroke()}
  /* bitiş */
  const fz=-FINISH;if(fz<zB&&fz>zA&&!(EV&&EV.tx)){const Y=sy(fz),x0=sx(-hw,fz),x1=sx(hw,fz);g.fillStyle='#fff';g.fillRect(x0,Y-2,x1-x0,4);g.fillStyle='#111';for(let i=0;i<8;i++)if(i%2)g.fillRect(x0+i*(x1-x0)/8,Y-2,(x1-x0)/8,4)}
  v7_segs.forEach(s=>{if(s.z0>zA&&s.z0-s.len<zB){g.beginPath();g.moveTo(sx(LANES[s.l],s.z0),sy(s.z0));g.lineTo(sx(LANES[s.l],s.z0-s.len),sy(s.z0-s.len));g.lineWidth=3;g.strokeStyle='rgba(255,170,60,.95)';g.stroke()}});
@@ -7272,7 +7287,7 @@ const lay=()=>{try{const nv=$$('snv');if(getComputedStyle(nv).display==='none')r
  if(!ls){w=n.width;h=n.height+B;const x=cx-n.left,y=B,t='H'+(x-HW)+'C'+(x-HW+32)+' '+y+' '+(x-52)+' '+AP+' '+x+' '+AP+'S'+(x+HW-32)+' '+y+' '+(x+HW)+' '+y+'H'+w;line='M0 '+y+t;fill='M0 '+h+'V'+y+t+'V'+h+'Z';st='left:'+n.left+'px;top:'+(n.top-B)+'px;width:'+w+'px;height:'+h+'px'}
  else{w=n.width+B;h=n.height;const x=n.width,y=cy-n.top,ax=x+B-4,t='V'+(y-HW)+'C'+x+' '+(y-HW+32)+' '+ax+' '+(y-52)+' '+ax+' '+y+'S'+x+' '+(y+HW-32)+' '+x+' '+(y+HW)+'V'+h;line='M'+x+' 0'+t;fill='M0 0H'+x+t+'H0Z';st='left:'+n.left+'px;top:'+n.top+'px;width:'+w+'px;height:'+h+'px'}
  nb.style.cssText=st;
- nb.innerHTML='<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><defs><linearGradient id="nvf" x1="'+(ls?0:0)+'" y1="0" x2="'+(ls?1:0)+'" y2="'+(ls?0:1)+'"><stop offset="0" stop-color="'+(ls?'#051028':'#0d3560')+'"/><stop offset="1" stop-color="'+(ls?'#0b2c55':'#051028')+'"/></linearGradient><linearGradient id="nvs" x1="0" y1="0" x2="'+(ls?0:1)+'" y2="'+(ls?1:0)+'"><stop offset="0" stop-color="#1c8fb8"/><stop offset=".5" stop-color="#36d4f2"/><stop offset="1" stop-color="#1c8fb8"/></linearGradient></defs><path d="'+fill+'" fill="url(#nvf)"/><path d="'+line+'" fill="none" stroke="#2bc4ea" stroke-opacity=".3" stroke-width="5"/><path d="'+line+'" fill="none" stroke="url(#nvs)" stroke-width="1.6"/></svg>';
+ nb.innerHTML='<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><defs><linearGradient id="nvf" x1="'+(ls?0:0)+'" y1="0" x2="'+(ls?1:0)+'" y2="'+(ls?0:1)+'"><stop offset="0" stop-color="'+(ls?'#10062e':'#2a1368')+'"/><stop offset="1" stop-color="'+(ls?'#24104f':'#10062e')+'"/></linearGradient><linearGradient id="nvs" x1="0" y1="0" x2="'+(ls?0:1)+'" y2="'+(ls?1:0)+'"><stop offset="0" stop-color="#9a55ff"/><stop offset=".5" stop-color="#c48cff"/><stop offset="1" stop-color="#9a55ff"/></linearGradient></defs><path d="'+fill+'" fill="url(#nvf)"/><path d="'+line+'" fill="none" stroke="#b06bff" stroke-opacity=".35" stroke-width="5"/><path d="'+line+'" fill="none" stroke="url(#nvs)" stroke-width="1.6"/></svg>';
  qb.classList.toggle('on',vis('qp'))}catch(x){}};
 setInterval(lay,300);addEventListener('resize',()=>{nk='';lay()});addEventListener('orientationchange',()=>setTimeout(()=>{nk='';lay()},250));lay();
 }catch(e){console.error('v998',e)}})();
