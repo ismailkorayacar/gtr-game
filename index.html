@@ -10,7 +10,7 @@
 <meta name="author" content="İsmail Koray Açar"><meta name="copyright" content="Copyright 2026 İsmail Koray Açar. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#1a0e55"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GTR">
-<title>gtr_game_v10.1.1</title>
+<title>gtr_game_v10.1.2</title>
 <style>
 :root{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif;color:#fff}
@@ -2217,6 +2217,37 @@ html.fbh:not(.fbu):not(.fbf) #qpb{display:none!important}
 #qpb .ql{position:absolute;left:50%;top:70px;transform:translateX(-50%);white-space:nowrap;font:300 14px/1 system-ui;letter-spacing:.3px;color:#fff}
 @media (orientation:landscape){
 }
+/* ===== v10.1.2 alt mod kartları (referans tasarım) ===== */
+#evl.grp .e2c{display:flex!important;justify-content:center;align-items:flex-start;gap:16px!important;overflow:visible!important;flex-wrap:wrap;scroll-snap-type:none!important;padding:6px 14px!important;cursor:auto}
+#evl.grp .g3c{flex:0 0 auto;width:172px;display:flex;flex-direction:column;border-radius:6px;overflow:hidden;background:#0b0520;box-shadow:0 8px 24px rgba(0,0,0,.55),0 0 0 1.5px rgba(176,107,255,.65),0 0 18px rgba(140,70,255,.35)}
+#evl.grp .g3i{position:relative;height:160px}
+#evl.grp .g3i .e2k{position:absolute!important;inset:0;width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
+#evl.grp .g3a{position:absolute;left:0;right:0;bottom:0;height:38px;display:flex;background:rgba(8,4,26,.74);z-index:3}
+#evl.grp .g3a button{flex:1;border:0;background:none;font:800 11px/1 system-ui;letter-spacing:.8px;text-transform:uppercase;color:#d6a8ff;padding:0;-webkit-tap-highlight-color:transparent}
+#evl.grp .g3a button+button{border-left:1px solid rgba(176,107,255,.4)}
+#evl.grp .g3n{padding:11px 8px;text-align:center;font:italic 900 15px/1.1 system-ui;letter-spacing:1px;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,#8d4bff,#5a24c8);text-shadow:0 1px 0 #2f0e78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#evl.grp .g3i canvas{object-fit:cover}
+@media (orientation:portrait){#evl.grp .e2c{flex-wrap:nowrap!important;gap:12px!important}#evl.grp .g3c{width:min(168px,42vw)}#evl.grp .g3i{height:240px}}
+#g3dt{position:fixed;inset:0;z-index:60;background:rgba(5,2,18,.74);display:flex;align-items:center;justify-content:center;padding:14px;box-sizing:border-box}
+#g3dt .g3q{width:min(430px,100%);max-height:100%;overflow-y:auto;box-sizing:border-box;padding:14px 16px;border-radius:16px;background:linear-gradient(180deg,rgba(30,14,76,.97),rgba(12,6,38,.98));border:1.5px solid rgba(176,107,255,.6);box-shadow:0 0 24px rgba(140,70,255,.45);color:#efe9ff;font-family:system-ui}
+#g3dt h4{margin:0 0 6px;font:italic 900 17px system-ui;letter-spacing:.8px;text-transform:uppercase;color:#fff}
+#g3dt p{margin:0 0 8px;font:600 12.5px/1.4 system-ui}
+#g3dt .g3r{display:flex;gap:6px;margin-bottom:8px}
+#g3dt .g3r span{flex:1 1 0;min-width:0;padding:4px 7px;border-radius:9px;border:1px solid rgba(176,107,255,.5);background:rgba(10,5,34,.6)}
+#g3dt .g3r small{display:block;font:800 8.5px system-ui;letter-spacing:1px;color:#c9b6ff}
+#g3dt .g3r b{display:flex;align-items:center;gap:3px;font:800 12px/1.2 system-ui;color:#fff}
+#g3dt h5{margin:0 0 4px;font:900 10px system-ui;letter-spacing:1.5px;color:#f0c8ff}
+#g3dt ul{margin:0 0 10px;padding-left:16px;font:600 11.5px/1.45 system-ui}
+#g3dt .g3x{display:block;width:100%;height:38px;border:0;border-radius:11px;font:italic 900 14px system-ui;letter-spacing:.6px;color:#fff;background:linear-gradient(180deg,#8d4bff,#5a24c8);box-shadow:0 3px 0 #2f0e78}
+/* ===== v10.1.2 günlük görevler butonu (yatay) ===== */
+@media (orientation:portrait){#lbt .lt.dly s{display:none!important}}
+@media (orientation:landscape){
+ #lbt .lt.dly{align-self:end;height:64px!important;overflow:visible}
+ #lbt .lt.dly .dls{display:none!important}
+ #lbt .lt.dly b{display:flex!important;align-items:center;top:0!important;bottom:0!important;left:14px!important;right:62px!important;font-size:14px!important;line-height:1.08!important;letter-spacing:.4px}
+ #lbt .lt.dly s{right:6px!important;bottom:auto!important;top:50%;width:50px!important;height:50px!important;margin-top:-25px;opacity:.4!important}
+ #lbt .lt.dly .ltd{right:-4px!important;top:-5px!important;left:auto!important;z-index:3}
+}
 /* ===== v10.1 gezinme: düz, %50 şeffaf, etiketli ===== */
 #nvbg{display:none!important}
 #snv{z-index:15!important;background:linear-gradient(180deg,rgba(26,12,70,.5),rgba(12,6,36,.5))!important;border-top:1.5px solid rgba(176,107,255,.6)!important;justify-content:flex-start!important;gap:0!important;padding:6px 6px calc(env(safe-area-inset-bottom,0px) + 6px)!important;align-items:stretch}
@@ -2319,7 +2350,7 @@ body.u2n #set,body.u2n #ms,body.u2n #ntf{padding-bottom:calc(env(safe-area-inset
  #lbt .lt.dly .dr{flex:1;min-height:0;align-content:center;padding:0 12px;border-radius:12px;border:1.5px solid rgba(150,170,255,.55);background:linear-gradient(165deg,#2a1a78,#120a3e 80%);box-shadow:0 4px 10px rgba(0,0,0,.4);font-size:12px}
  #lbt .lt.dly .dr i{margin-top:3px}
 }
-</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v10.1.1</em></div></div>
+</style></head><body class="ui"><div id="boot" class="gd"><div class="logo gtr" style="position:relative"><small>GRAND</small><b>TRAFFIC</b><span>RACING</span></div><div style="position:relative"><div class="bl"><i></i></div><em id="bootv" style="position:absolute;right:0;top:calc(100% + 8px);font:600 9px/1 system-ui;font-style:normal;letter-spacing:.4px;color:rgba(255,255,255,.55)">v10.1.2</em></div></div>
 <canvas id="c"></canvas><div id="vig"></div><canvas id="drp"></canvas><canvas id="blt"></canvas><div id="red"></div><canvas id="crack"></canvas><canvas id="conf"></canvas><div id="win"><div class="wt" id="wtt">KAZANDIN!</div><div class="ws"><span id="wk" style="display:none">10</span><span id="wnc">HİÇ KAZA YAPMADAN</span></div><div class="wc"><i class="cn">$</i> <span id="wbp">+</span><span id="wb">2000</span> <span id="wbl">BONUS</span></div></div><div id="rp"><i></i>REPLAY</div><div id="rrg"></div><div id="rri"><b></b><svg viewBox="0 0 24 24" fill="#fff"><path d="M11 6v12l-8.5-6zM21.5 6v12L13 12z"/></svg></div><div id="rrr"></div>
 <div class="hud" id="tl"><div id="pn"></div><div id="pc"></div><div class="cpill"><i class="cn">$</i><span id="rc">0</span></div><div id="dmgb" style="display:none"><i></i><b></b></div></div>
 <div class="hud" id="sc"><span id="score">0</span><small id="scl"><i class="pi">P</i></small></div><div class="hud" id="lpb"></div>
@@ -2898,7 +2929,7 @@ const fw=P.v>=0,dm=.8*SG()*(sl?1.5:1)/(1+Math.pow(av/12,1.7)),tg=s*dm;P.dl+=(tg-
 if(live){if(fw){/* ileri: şerit mantığı — kısa dokunuş ≈ araç yarım genişliği, ~0.5 sn ≈ 1 şerit, uzun basış ≈ 3 şerit; bırakınca araç düzelir. Düşük hızda (<~8 m/s) bisiklet modeli (U dönüşü) */
  P.hd=Math.abs(s)>.05?Math.min(1,(P.hd||0)+dt/2):Math.max(0,(P.hd||0)-dt*6);{const sd=Math.abs(s)>.05?Math.sign(s):0;P.ht=sd&&sd===P.hs?(P.ht||0)+dt:0;P.hs=sd}
  const hi=(window.__cBk&&window.__cBk())?0:Math.min(1,Math.max(0,(av-6)/4)),vT=s*13*(.5+.5*P.hd)*(1+.6*Math.max(0,Math.min(1,((P.ht||0)-.35)/.1)))*SG()/(1+Math.pow(av/150,2)),pT=Math.asin(Math.max(-.8,Math.min(.8,vT/Math.max(av,10))));
- P.psi+=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT-P.psi)*Math.min(1,dt*10)}else P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;
+ if(isDR())P.psi+=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT-P.psi)*Math.min(1,dt*10);else{/* v10.1.2: düşük hızda ağır direksiyon — hıza bağlı dönüş hızı sınırı */const o=P.psi,ls=.45+.55*Math.max(0,Math.min(1,(av-6)/24)),pT2=Math.asin(Math.max(-.8,Math.min(.8,vT*ls/Math.max(av,10)))),q=Math.min(1,av/30);let dd=(1-hi)*(P.v/2.7)*Math.tan(P.dl)*dt+hi*(pT2-o)*Math.min(1,dt*(4+6*q));const cp=(.4+av*.05)*dt;dd=Math.max(-cp,Math.min(cp,dd));P.psi=o+dd}}else P.psi+=(P.v/2.7)*Math.tan(P.dl)*dt;
  if(P.psi>Math.PI)P.psi-=2*Math.PI;else if(P.psi<-Math.PI)P.psi+=2*Math.PI}
 P.vx+=(P.v*Math.sin(P.psi)-P.vx)*Math.min(1,dt*14)};if(v7_oilT>0)P.vx+=Math.sin(raceT*8)*27*Math.min(1,v7_oilT)*dt;{const fk=TH.key==='forest'?.5:1;if(skwT>0)P.vx+=Math.sin(raceT*9)*19.5*Math.min(1,skwT)*skwK*dt*fk;if(cvS>0)P.vx+=Math.sin(raceT*9)*19.5*.35*cvS*dt*fk}if(!isFinite(P.vx))P.vx=0;if(!isFinite(P.x))P.x=0;P.x+=P.vx*dt;P.z-=P.v*Math.cos(P.psi||0)*dt}
  P._wl=Math.max(0,(P._wl||0)-dt);if(Math.abs(P.x)>LIM){const sg=Math.sign(P.x),fr=!(P._wl>0),hv=Math.abs(P.vx);if(fr&&hv>3){if(padT<=0)P.hp=Math.max(0,P.hp-hv*.3);shake=Math.max(shake,.3);puff(sg*(LIM+1.3),.8,P.z,0xffc040,8,8,.07,.4)}P._wl=.3;P.x=sg*LIM;if(P.v>=0){const ps=P.psi||0;if(sg*ps>0){if(fr&&hv>2.5){P.v*=1-.22*Math.min(1,Math.abs(Math.sin(ps))*1.5);P.psi=-ps*.25}else{P.psi=0;P.v*=1-.35*dt}}P.vx=P.v*Math.sin(P.psi||0)}else{P.vx=-P.vx*.3;P.psi=-(P.psi||0)*.3}}
@@ -4042,12 +4073,19 @@ function evList(){window.__evsPick=false;try{evsBg(evGrp?(({sr:A.hero.sr,ct:A.he
  ks.forEach(i=>{const e=EVS[i],c=evCyc(e),d=document.createElement('button');d.type='button';d.className='e2k'+(i===evFeat?' on':'');d.dataset.i=i;
   d.innerHTML=(i===nw?'<u class="e2n">YENİ</u><i class="e2sh"></i>':'')+'<canvas></canvas><div class="e2ki"><b>'+e.nm+'</b><span class="evtp" data-i="'+i+'">◷ <em>'+evFmtDH(c.end-Date.now())+'</em></span></div>';
   evArt(d.querySelector('canvas'),e,c);d.onclick=()=>{if(C.__moved)return;evFeat=i;evOpen(i);return};
-  if(evGrp){const w=document.createElement('div');w.className='e2s';w.appendChild(d);const nn=document.createElement('span');nn.className='e2nn';nn.textContent=e.nm;nn.onclick=()=>{if(!C.__moved)evOpen(i)};w.appendChild(nn);
-   const dt=document.createElement('div');dt.className='e2dt';dt.innerHTML='<p>'+e.ds+'</p><div class="e2cp"><span><small>ZORLUK</small><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></span>'+(e.loc?'<span><small>KONUM</small><b>'+e.loc+'</b></span>':'')+'<span><small>ÖDÜL</small><b>'+COIN+e.reward+'</b></span></div><h5>KURALLAR</h5><ul>'+e.ru.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
-   const go=document.createElement('button');go.type='button';go.className='e2go';go.textContent='İLERLE';go.onclick=ev=>{ev.stopPropagation();if(!C.__moved)evOpen(i)};
-   const lf=document.createElement('div');lf.className='e2l';lf.appendChild(d);lf.appendChild(nn);const rt=document.createElement('div');rt.className='e2r';rt.appendChild(dt);rt.appendChild(go);w.innerHTML='';w.appendChild(lf);w.appendChild(rt);C.appendChild(w)}else C.appendChild(d)});
+  if(evGrp){const w=document.createElement('div');w.className='g3c';
+   const im=document.createElement('div');im.className='g3i';im.appendChild(d);
+   const ac=document.createElement('div');ac.className='g3a';
+   const pb=document.createElement('button');pb.type='button';pb.className='g3p';pb.textContent='İLERLE';pb.onclick=ev=>{ev.stopPropagation();evOpen(i)};
+   const db=document.createElement('button');db.type='button';db.className='g3d';db.textContent='DETAYLAR';db.onclick=ev=>{ev.stopPropagation();g3Det(i)};
+   ac.appendChild(pb);ac.appendChild(db);im.appendChild(ac);
+   const nm=document.createElement('div');nm.className='g3n';nm.textContent=e.nm;
+   w.appendChild(im);w.appendChild(nm);C.appendChild(w)}else C.appendChild(d)});
  if(evGrp){evSlide(C);EVG[evGrp].ids.forEach(id=>{try{evTopWarm(id)}catch(x){}})}
  e2Feat();$('evbal').innerHTML=COIN+' '+coins}
+function g3Det(i){const e=EVS[i];let o=document.getElementById('g3dt');if(o)o.remove();o=document.createElement('div');o.id='g3dt';
+ o.innerHTML='<div class="g3q"><h4>'+e.nm+'</h4><p>'+e.ds+'</p><div class="g3r"><span><small>ZORLUK</small><b>'+['Kolay','Normal','Zor'][e.dfl!=null?e.dfl:e.df]+'</b></span>'+(e.loc?'<span><small>KONUM</small><b>'+e.loc+'</b></span>':'')+'<span><small>ÖDÜL</small><b>'+COIN+e.reward+'</b></span></div><h5>KURALLAR</h5><ul>'+e.ru.map(x=>'<li>'+x+'</li>').join('')+'</ul><button class="g3x" type="button">KAPAT</button></div>';
+ o.onclick=ev=>{if(ev.target===o||ev.target.classList.contains('g3x'))o.remove()};document.body.appendChild(o)}
 function evSlide(C){if(C.__sl)return;C.__sl=1;let dn=false,sx=0,sl=0,id=-1;
  C.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;dn=true;sx=e.clientX;sl=C.scrollLeft;id=e.pointerId;C.__moved=false});
  C.addEventListener('pointermove',e=>{if(!dn)return;const dx=e.clientX-sx;if(Math.abs(dx)>4){C.__moved=true;try{C.setPointerCapture(id)}catch(x){}C.style.scrollSnapType='none';C.scrollLeft=sl-dx}});
@@ -5427,6 +5465,7 @@ setInterval(fit,250);addEventListener('resize',fit);addEventListener('orientatio
 <script>/* ===== v8.2 bildirimler ===== */
 (function(){try{
 const HIST=[
+{v:'v10.1.2',n:['Alt mod seçim ekranı yeniden tasarlandı: görsel kart, alt bantta mod adı, İLERLE ve DETAYLAR (detay penceresi).','Lobi (yatay): Günlük Görevler tek buton oldu; silik ikon ve bildirim kırmızı noktası.','Sürüş: düşük hızda direksiyon ağırlaştırıldı, burun artık hıza bağlı bir dönüş hızıyla kırılıyor (yüksek hız değişmedi).','Ses: vites değişimlerinde motor sesi neredeyse tamamen kesiliyordu; artık yumuşak kısılıp geri geliyor (kesik kesik ses giderildi).']},
 {v:'v10.1.1',n:['BAŞLA düğmeleri eski (sarı) tasarımına döndü.','Drift - Gece: virajlardaki ok tabelaları havada uçuyordu, artık bariyer hizasında yerde duruyor.','Hızlı Oyun butonu neon mor oldu.','Etkinlik detay haritaları: yol eğriliği artık gerçek yol şekline göre ölçekleniyor (düz yollar düz, virajlı yollar virajlı görünür); sonsuz etkinlikte ilk 6 km gösteriliyor.']},
 {v:'v10.1',n:['Alt/yan gezinme eski boyutuna döndü: çıkıntı kalktı, menü isimleri geri geldi, arka plan %50 şeffaf; üst başlık da %50 şeffaf.','Hızlı Oyun butonu diğer menülerle aynı boyutta, içinde yazısı olan yeşil rozet oldu.','Lobi (yatay): Günlük Görevler tek kart boyutuna indi.']},
 {v:'v10.0',n:['Alt gezinme ve minimap mor tema: kenarlıklar garajdaki Aracı Geliştir butonuyla aynı mor, minimap içindeki kare bloklar kaldırıldı.','Gezinme çubuğu ayarlar, bildirimler ve günlük görevler ekranlarında artık tam görünüyor; ikonlar büyütüldü, Hızlı Oyun yazısı yenilendi.']},
@@ -6785,15 +6824,15 @@ window.ghRow=function(d,r,e){if(!GHID.includes(e.id)||!r)return;const key=gk(e);
       let g = 0; for (let i = 0; i < GS.length; i++) if (v >= GS[i]) g = i;
       const up = g > E.gear;
       if (g !== E.gear) {
-        if (up && s.st === 'race') { if (L) { L.g.gain.cancelScheduledValues(T); if (AM.B['shift_' + Math.min(g, 4)]) shot('shift_' + Math.min(g, 4), 1, 1, 0); L.g.gain.setTargetAtTime(gn.engine_loop * .03, T, .012); L.g.gain.setTargetAtTime(gn.engine_loop, T + .42, .06); } else AM.syn.pop(); }
-        E.gT = .18; E.gear = g; E.rr = null;
+        if (up && s.st === 'race') { if (L) { L.g.gain.cancelScheduledValues(T); if (AM.B['shift_' + Math.min(g, 4)]) shot('shift_' + Math.min(g, 4), 1, 1, 0); L.g.gain.setTargetAtTime(gn.engine_loop * .62, T, .03); L.g.gain.setTargetAtTime(gn.engine_loop, T + .16, .09); } else AM.syn.pop(); }
+        E.gT = .14; E.gear = g; E.rr = null;
       }
       const lo = GS[g], hi = GS[g + 1] || 76; let fr = cl((v - lo) / (hi - lo), 0, 1);
       if (s.st === 'count') fr = s.thr ? Math.min(.7, .1 + (3 - s.cdT) * .3) : 0; else if (s.st === 'win') fr = .85;
       if (s.v < 4 && thrS > .1) fr = Math.max(fr, .3 * thrS);                       // gas pressed while standing: engine revs
       E.gT = Math.max(0, E.gT - dt);
       const thr = bo ? 1 : (s.st === 'race' ? .8 : .5), k = 1 - Math.pow(.75, dt / .016);
-      E.rpm += ((1100 + fr * 5600 - (E.gT > 0 ? 600 : 0) + (bo ? 300 : 0)) - E.rpm) * k;
+      E.rpm += ((1100 + fr * 5600 - (E.gT > 0 ? 300 : 0) + (bo ? 300 : 0)) - E.rpm) * k;
       if (E.rr == null) E.rr = fr; else E.rr += (fr - E.rr) * Math.min(1, k);
       if (bo && !boostOn) AM.syn.nos(); boostOn = bo;
       if (L) L.set(E.rr, bo ? 1 : thrS, .05);
@@ -7174,7 +7213,7 @@ lay();setInterval(lay,100);addEventListener('resize',lay);addEventListener('orie
 const $$=id=>document.getElementById(id),ov=$$('ov');if(!ov)return;
 const w=document.createElement('div');w.id='lbt';w.className='hom';
 w.innerHTML='<button class="lt ev" type="button"><i class="lti"></i><u class="ltn">YENİ</u><s></s><b></b><span class="ltt">◷ <em></em></span></button>'
- +'<button class="lt dly" type="button"><u class="ltd"></u><b>GÜNLÜK GÖREVLER</b><div class="dls"></div></button>'
+ +'<button class="lt dly" type="button"><u class="ltd"></u><b>GÜNLÜK GÖREVLER</b><s></s><div class="dls"></div></button>'
  +'<button class="lt mkt" type="button"><i class="lti"></i><s></s><b>MARKET</b></button>'
  +'<button class="lt car" type="button"><i class="lti"></i><s></s><b>ARACI GELİŞTİR</b></button>';
 ov.appendChild(w);
